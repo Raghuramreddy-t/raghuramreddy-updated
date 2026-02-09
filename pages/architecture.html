@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Architecture | RaghuRamReddy Thummalapalli</title>
+  <title>Architecture | Raghuramreddy Thummalapalli - Platform Architect</title>
   <meta name="description" content="Reference architectures, operating models, ADR thinking, and platform blueprints across enterprise delivery systems." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,6 @@
     <div class="orb orb-3"></div>
   </div>
 
-  <!-- Right Side Decoration -->
   <div class="right-side-decoration">
       <div class="floating-icon">☸️</div>
       <div class="floating-icon">🔒</div>
@@ -115,6 +114,51 @@
           <div class="principle-number">04</div>
           <h3>Rollback Is a Feature</h3>
           <p>Every migration plan includes blast-radius controls, canarying, and reversible steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Blueprints</span>
+        <h2 class="section-title">Reusable Architecture Artifacts</h2>
+        <p class="section-subtitle">Patterns I repeat because they scale across teams and tools.</p>
+      </div>
+
+      <div class="capabilities-grid">
+        <div class="capability-card" data-aos="fade-up">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path><path d="M4 9h16M9 4v16"></path></svg>
+          </div>
+          <h3>Platform Reference Architecture</h3>
+          <p>Compute + identity + networking + delivery + security + observability, with clear ownership boundaries.</p>
+          <div class="card-tags"><span>IDP</span><span>Multi-tenant</span><span>Guardrails</span></div>
+        </div>
+        <div class="capability-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>Policy-as-Code + Exceptions</h3>
+          <p>Default deny with a sane exception workflow. Audit trail built-in, not “email approvals”.</p>
+          <div class="card-tags"><span>OPA</span><span>Cosign/SBOM</span><span>Compliance</span></div>
+        </div>
+        <div class="capability-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+          </div>
+          <h3>Evidence-Driven Delivery</h3>
+          <p>Lead time, failure rate, MTTR, and risk posture tracked per platform capability.</p>
+          <div class="card-tags"><span>SLO</span><span>DORA</span><span>Risk KPIs</span></div>
+        </div>
+        <div class="capability-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
+          </div>
+          <h3>Migration Runbooks</h3>
+          <p>VM → containers → OpenShift with preflight validation, staging gates, and rollback plans.</p>
+          <div class="card-tags"><span>Helm</span><span>Tekton</span><span>DR/HA</span></div>
         </div>
       </div>
     </div>
