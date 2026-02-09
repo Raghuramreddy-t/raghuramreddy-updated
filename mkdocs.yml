@@ -1,0 +1,33 @@
+﻿site_name: Raghuramreddy Thummalapalli
+site_url: https://raghuramreddy.tech
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.top
+    - header.autohide
+  font:
+    text: Inter
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+
+extra_css:
+  - styles/custom.css

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "xops-operating-model",
+    "type": "blog",
+    "title": "The XOps Operating Model: Beyond DevOps",
+    "date": "2026-02-01",
+    "tags": ["Platform Engineering", "Strategy", "DevOps"],
+    "summary": "Why DevOps silos fail at scale and how a unified XOps model integrates platform, security, and reliability.",
+    "url": "../pages/blog.html"
+  },
+  {
+    "id": "automating-risk",
+    "type": "blog",
+    "title": "From Reporting to Visibility: Automating Risk",
+    "date": "2026-01-15",
+    "tags": ["Automation", "Project SHIELD", "Security"],
+    "summary": "Moving from manual spreadsheets to an automated, AI-assisted risk dashboard for CAB readiness.",
+    "url": "../pages/blog.html"
+  },
+  {
+    "id": "safe-ai-agents",
+    "type": "blog",
+    "title": "Designing Safe AI Agents for Production Ops",
+    "date": "2025-12-10",
+    "tags": ["AI Agents", "Future Ops", "Governance"],
+    "summary": "A framework for Human-in-the-loop AI operations with guardrails and audit trails.",
+    "url": "../pages/blog.html"
+  },
+  {
+    "id": "upgrade-factory",
+    "type": "project",
+    "title": "Upgrade Factory",
+    "tags": ["Automation", "OpenShift", "Platform"],
+    "summary": "Automated platform upgrade orchestration for 100+ clusters with zero downtime.",
+    "url": "../pages/projects.html#upgrade-factory"
+  },
+  {
+    "id": "project-shield",
+    "type": "project",
+    "title": "Project SHIELD",
+    "tags": ["DevSecOps", "Security", "Reporting"],
+    "summary": "AI-assisted vulnerability aggregation and risk visibility platform.",
+    "url": "../pages/projects.html#shield"
+  },
+  {
+    "id": "toolchain-containerization",
+    "type": "project",
+    "title": "Toolchain Containerization",
+    "tags": ["Delivery", "Docker", "Kubernetes"],
+    "summary": "Modernizing developer toolchains with containerized, hermetic build environments.",
+    "url": "../pages/projects.html#toolchain"
+  },
+  {
+    "id": "copilot-governance",
+    "type": "project",
+    "title": "Copilot Governance Framework",
+    "tags": ["AI", "Governance", "Policy"],
+    "summary": "Enterprise framework for safe Copilot deployment with policy enforcement.",
+    "url": "../pages/ai-ops.html#governance"
+  },
+  {
+    "id": "otel-notes",
+    "type": "resource",
+    "title": "OpenTelemetry Certification Notes",
+    "tags": ["Observability", "PDF"],
+    "summary": "Comprehensive study guide for OTel certification.",
+    "url": "../pages/media-hub.html"
+  },
+  {
+    "id": "k8s-patterns",
+    "type": "resource",
+    "title": "Kubernetes Patterns Cheat Sheet",
+    "tags": ["Architecture", "PDF"],
+    "summary": "Quick reference for common K8s architectural patterns.",
+    "url": "../pages/media-hub.html"
+  }
+]

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /search
+
+# Specify crawl delay (optional)
+Crawl-delay: 10
+
+# Sitemap
+Sitemap: https://raghuramreddy.tech/sitemap.xml

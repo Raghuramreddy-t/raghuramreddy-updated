@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture | Raghuramreddy Thummalapalli - Platform Architect</title>
+  <meta name="description" content="Reference architectures, operating models, ADR thinking, and platform blueprints across enterprise delivery systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+  <link rel="stylesheet" href="../assets/css/pages.css" />
+  <link rel="stylesheet" href="../assets/css/ai-assistant.css">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="floating-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">RRR</span>
+        <div class="logo-stack">
+            <span class="logo-name">Raghuramreddy</span>
+            <span class="logo-tagline">Designing technology for human experience</span>
+        </div>
+      </a>
+      <div class="nav-menu" id="nav-menu">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="impact.html" class="nav-link">Impact</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="platforms.html" class="nav-link">Platforms</a>
+        <a href="architecture.html" class="nav-link active">Architecture</a>
+        <a href="-"blications.html" class="nav-link"cts</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <span class="page-tag animate-fade-in">Architecture</span>
+        <h1 class="page-title animate-slide-up">Reference Designs & <span class="gradient-text">Operating Models</span></h1>
+        <p class="page-subtitle animate-slide-up delay-1">
+          Architecture that’s implementable: clear decisions, guardrails, and measurable outcomes.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Ecosystem</span>
+        <h2 class="section-title">How I Structure Platform Architecture</h2>
+        <p class="section-subtitle">A consistent 6-layer view keeps teams aligned and reduces architecture churn.</p>
+      </div>
+      <div id="ecosystem"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="ai-hero" data-aos="fade-up">
+        <h2>My Architecture Default</h2>
+        <p>
+          I optimize for <strong>adoption</strong> and <strong>operability</strong>, not just diagrams.
+          Every design ships with guardrails (policy), a rollout plan, and a rollback story.
+        </p>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle-card" data-aos="fade-up">
+          <div class="principle-number">01</div>
+          <h3>Decision → Guardrail → Automation</h3>
+          <p>Architecture is real only when it becomes a paved road: templates, policy checks, and measurable SLOs.</p>
+        </div>
+        <div class="principle-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="principle-number">02</div>
+          <h3>Gold Paths, Not PDF Paths</h3>
+          <p>Docs are necessary, but adoption comes from scaffolding + self-service + strong defaults.</p>
+        </div>
+        <div class="principle-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="principle-number">03</div>
+          <h3>Runtime Truth Wins</h3>
+          <p>Observability (metrics/logs/traces) is the source of truth for architecture effectiveness.</p>
+        </div>
+        <div class="principle-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="principle-number">04</div>
+          <h3>Rollback Is a Feature</h3>
+          <p>Every migration plan includes blast-radius controls, canarying, and reversible steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Blueprints</span>
+        <h2 class="section-title">Reusable Architecture Artifacts</h2>
+        <p class="section-subtitle">Patterns I repeat because they scale across teams and tools.</p>
+      </div>
+
+      <div class="capabilities-grid">
+        <div class="capability-card" data-aos="fade-up">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path><path d="M4 9h16M9 4v16"></path></svg>
+          </div>
+          <h3>Platform Reference Architecture</h3>
+          <p>Compute + identity + networking + delivery + security + observability, with clear ownership boundaries.</p>
+          <div class="card-tags"><span>IDP</span><span>Multi-tenant</span><span>Guardrails</span></div>
+        </div>
+        <div class="capability-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <h3>Policy-as-Code + Exceptions</h3>
+          <p>Default deny with a sane exception workflow. Audit trail built-in, not “email approvals”.</p>
+          <div class="card-tags"><span>OPA</span><span>Cosign/SBOM</span><span>Compliance</span></div>
+        </div>
+        <div class="capability-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+          </div>
+          <h3>Evidence-Driven Delivery</h3>
+          <p>Lead time, failure rate, MTTR, and risk posture tracked per platform capability.</p>
+          <div class="card-tags"><span>SLO</span><span>DORA</span><span>Risk KPIs</span></div>
+        </div>
+        <div class="capability-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
+          </div>
+          <h3>Migration Runbooks</h3>
+          <p>VM → containers → OpenShift with preflight validation, staging gates, and rollback plans.</p>
+          <div class="card-tags"><span>Helm</span><span>Tekton</span><span>DR/HA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER DIVIDER -->
+  <div class="footer-divider"></div>
+
+  <footer class="footer footer--pro">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- LEFT: BRAND CARD -->
+        <div class="footer-card footer-brand-card">
+          <a href="../index.html" class="footer-logo">
+            <span class="logo-icon">RRR</span>
+            <span class="logo-text">RaghuRamReddy</span>
+          </a>
+
+          <p class="footer-tagline">
+            Designing technology for human experience
+          </p>
+
+          <p class="footer-subline">
+            Platform Engineering • DevSecOps • Automation • AI-assisted Operations
+          </p>
+
+          <div class="footer-social-row">
+            <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+            <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="social-pill" href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <!-- MIDDLE: NAV LINKS -->
+        <div class="footer-links-col">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Navigation</h4>
+            <div class="footer-links">
+              <a href="../index.html" class="footer-link">Home</a>
+              <a href="impact.html" class="footer-link">Impact</a>
+              <a href="projects.html" class="footer-link">Projects</a>
+              <a href="about.html" class="footer-link">About</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Explore</h4>
+            <div class="footer-links">
+              <a href="architecture.html" class="footer-link">Architecture</a>
+              <a href="platforms.html" class="footer-link">Platforms</a>
+              <a href="ai-ops.html" class="footer-link">AI Ops</a>
+              <a href="media-hub.html" class="footer-link">Media Hub</a>
+              <a href="blog.html" class="footer-link">Blog</a>
+              <a href="publications.html" class="footer-link">Publications</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: CONNECT CARD -->
+        <div class="footer-card footer-connect-card">
+          <div class="footer-connect-header">
+            <h4 class="footer-col-title">Connect</h4>
+            <p class="footer-connect-note">Fastest response on LinkedIn.</p>
+          </div>
+
+          <div class="footer-icon-grid">
+            <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+              <!-- simple icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/>
+              </svg>
+            </a>
+
+            <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/>
+                <path d="M2 9h4v12H2z"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </a>
+
+            <a class="icon-btn" href="contact.html" aria-label="Contact">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 4h16v16H4z"/>
+                <path d="M4 7l8 6 8-6"/>
+              </svg>
+            </a>
+          </div>
+
+          <a class="footer-cta" href="contact.html">
+            Let’s talk →
+          </a>
+        </div>
+
+        <!-- RIGHT SIDE MICRO VISUALS (fills the empty space feel) -->
+        <div class="footer-visual" aria-hidden="true">
+          <span class="fv-orb fv-orb-1"></span>
+          <span class="fv-orb fv-orb-2"></span>
+          <span class="fv-line fv-line-1"></span>
+          <span class="fv-line fv-line-2"></span>
+          <span class="fv-dot fv-dot-1"></span>
+          <span class="fv-dot fv-dot-2"></span>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom footer-bottom--pro">
+        <p>&copy; 2026 Raghuramreddy Thummalapalli. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/ecosystem-data.js"></script>
+  <script src="../assets/js/ecosystem-render.js"></script>
+  <script>renderEcosystem("ecosystem");</script>
+</body>
+</html>

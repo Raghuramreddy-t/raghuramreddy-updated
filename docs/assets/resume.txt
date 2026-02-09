@@ -1,0 +1,10 @@
+Raghuramreddy Thummalapalli
+
+Resume placeholder. Replace with your PDF at docs/assets/resume.pdf
+
+Experience:
+- Platform Architect (OpenShift, Kubernetes)
+- Lead Engineer (Multi-cloud platforms)
+- Principal Consultant (IaC migrations)
+
+Contact: contact@raghuramreddy.tech

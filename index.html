@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<!--
+SITE INTENT (DO NOT BREAK)
+
+This site is a single public portfolio focused on:
+- Platform Engineering
+- DevSecOps
+- Cloud-Native Systems
+- Safe, Auditable AI Operations
+
+Rules:
+- No duplicate or overlapping pages
+- No hype or marketing language
+- AI enhances human decision-making, never replaces it
+- Navigation must stay consistent across all pages
+- Design should feel calm, intentional, and architect-level
+
+Primary Goal:
+Show real systems, real impact, and clear thinking.
+-->
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaghuRamReddy Thummalapalli | Platform & DevSecOps Leader</title>
+    <meta name="description" content="Designing platforms that scale people, not just systems.Platform Architect specializing in AI-augmented operations, enterprise infrastructure, and DevSecOps.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/ai-assistant.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    
+    <div class="hero-streak s1"></div>
+    <div class="hero-streak s2"></div>
+    
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Right Side Decoration -->
+    <div class="right-side-decoration">
+        <div class="floating-icon">☸️</div>
+        <div class="floating-icon">🔒</div>
+        <div class="floating-icon">📈</div>
+        <div class="floating-icon">☁️</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">RRR</span>
+                <div class="logo-stack">
+                    <span class="logo-name">RaghuRamReddy</span>
+                    <span class="logo-tagline">Designing technology for human experience</span>
+                </div>
+            </a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="pages/impact.html" class="nav-link">Impact</a>
+                <a href="pages/projects.html" class="nav-link">Projects</a>
+                <a href="pages/platforms.html" class="nav-link">Platforms</a>
+                <a href="pages/architecture.html" class="nav-link">Architecture</a>
+                <a href="pages/ai-ops.html" class="nav-link">AI Ops</a>
+                <a href="pages/publications.html" class="nav-link">Publications</a>
+                <a href="pages/media-hub.html" class="nav-link">Media & Artifacts</a>
+                <a href="pages/blog.html" class="nav-link">Blog</a>
+                <a href="pages/about.html" class="nav-link">About</a>
+                <a href="pages/contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <canvas id="hero-particles"></canvas>
+        <div class="hero-content">
+            <div class="hero-text-stack">
+                <h1 class="hero-line line-1 animate-slide-up">RaghuRamReddy</h1>
+                <h2 class="hero-line line-2 animate-slide-up delay-1">Designing technology for human experience</h2>
+                <p class="hero-line line-3 animate-slide-up delay-2">
+                    Platform Engineering • DevSecOps • Automation • AI-assisted Operations
+                </p>
+            </div>
+
+            <div class="hero-stats animate-slide-up delay-2">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="50">0</span>
+                    <span class="stat-label">Systems Influenced</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="20">0</span>
+                    <span class="stat-label">Major Upgrades Led</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="10">0</span>
+                    <span class="stat-label">Years Platform Exp</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-label">Large-Scale Programs</span>
+                </div>
+            </div>
+            
+            <!-- Ecosystem Strip -->
+            <div class="hero-ecosystem-strip animate-slide-up delay-3">
+                <p>I build across these 6 layers:</p>
+                <div class="ecosystem-chips">
+                    <a href="#ecosystem-section" class="eco-chip">Foundation</a>
+                    <a href="#ecosystem-section" class="eco-chip">Delivery</a>
+                    <a href="#ecosystem-section" class="eco-chip">DevSecOps</a>
+                    <a href="#ecosystem-section" class="eco-chip">Observability</a>
+                    <a href="#ecosystem-section" class="eco-chip">Automation</a>
+                    <a href="#ecosystem-section" class="eco-chip">AI</a>
+                </div>
+            </div>
+
+            <div class="hero-cta animate-slide-up delay-3">
+                <a href="pages/projects.html" class="btn btn-primary">
+                    <span>View My Work</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+                <a href="pages/ai-ops.html" class="btn btn-secondary">
+                    <span>Explore AI Ops</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual animate-fade-in delay-2">
+            <div class="core-badge">
+                <div class="core-inner">
+                    <div class="core-text">RRR Core</div>
+                </div>
+            </div>
+
+            <!-- orbit ring 1 -->
+            <div class="orbit orbit-1" aria-hidden="true">
+                <span class="orb-word">Platform Eng</span>
+                <span class="orb-word">DevSecOps</span>
+                <span class="orb-word">OpenShift</span>
+                <span class="orb-word">Kubernetes</span>
+                <span class="orb-word">CI/CD</span>
+                <span class="orb-word">GitOps</span>
+                <span class="orb-word">Observability</span>
+                <span class="orb-word">Policy as Code</span>
+            </div>
+
+            <!-- orbit ring 2 -->
+            <div class="orbit orbit-2" aria-hidden="true">
+                <span class="orb-word">Automation</span>
+                <span class="orb-word">Supply Chain</span>
+                <span class="orb-word">SAST/SCA</span>
+                <span class="orb-word">Release Eng</span>
+                <span class="orb-word">Resilience</span>
+                <span class="orb-word">Guardrails</span>
+                <span class="orb-word">AI Ops</span>
+                <span class="orb-word">Metrics</span>
+            </div>
+        </div>
+        <div class="scroll-indicator animate-fade-in delay-4">
+            <div class="scroll-line"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Ecosystem Section -->
+    <section class="section ecosystem" id="ecosystem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Architecture</span>
+                <h2 class="section-title">The Platform Ecosystem</h2>
+                <p class="section-subtitle">A single platform view: delivery + security + reliability + AI.</p>
+            </div>
+            <div id="ecosystem"></div>
+        </div>
+    </section>
+
+    <!-- What I Build Section -->
+    <section class="section what-i-build" id="what-i-build">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Expertise</span>
+                <h2 class="section-title">What I Build</h2>
+                <p class="section-subtitle">Platform systems that enable teams to deliver faster, safer, and with confidence</p>
+            </div>
+            <div class="capabilities-grid">
+                <div class="capability-card" data-aos="fade-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path>
+                            <path d="M4 9h16M9 4v16"></path>
+                        </svg>
+                    </div>
+                    <h3>Platform Engineering</h3>
+                    <p>Building Internal Developer Platforms (IDPs) that abstract complexity and accelerate delivery through golden paths and self-service capabilities.</p>
+                    <div class="card-tags">
+                        <span>Kubernetes</span>
+                        <span>OpenShift</span>
+                        <span>Backstage</span>
+                    </div>
+                </div>
+                <div class="capability-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"></path>
+                            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <h3>CI/CD & Automation</h3>
+                    <p>Designing and implementing enterprise CI/CD pipelines with governance, security scanning, and compliance automation baked in.</p>
+                    <div class="card-tags">
+                        <span>GitLab CI</span>
+                        <span>Jenkins</span>
+                        <span>ArgoCD</span>
+                    </div>
+                </div>
+                <div class="capability-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>DevSecOps & Compliance</h3>
+                    <p>Integrating security into every phase of the SDLC with automated vulnerability management, compliance reporting, and audit trails.</p>
+                    <div class="card-tags">
+                        <span>SAST/DAST</span>
+                        <span>SonarQube</span>
+                        <span>Prisma Cloud</span>
+                    </div>
+                </div>
+                <div class="capability-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
+                            <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"></path>
+                        </svg>
+                    </div>
+                    <h3>Cloud Architecture</h3>
+                    <p>Architecting multi-cloud and hybrid cloud solutions with Infrastructure as Code, cost optimization, and disaster recovery built in.</p>
+                    <div class="card-tags">
+                        <span>Terraform</span>
+                        <span>AWS</span>
+                        <span>Azure</span>
+                    </div>
+                </div>
+                <div class="capability-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Observability & SRE</h3>
+                    <p>Building comprehensive observability stacks with metrics, logs, traces, and intelligent alerting for proactive incident management.</p>
+                    <div class="card-tags">
+                        <span>Prometheus</span>
+                        <span>Grafana</span>
+                        <span>ELK Stack</span>
+                    </div>
+                </div>
+                <div class="capability-card featured" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>AI-Augmented Operations</h3>
+                    <p>Integrating AI/ML into platform operations for intelligent automation, predictive scaling, anomaly detection, and governed Copilot workflows.</p>
+                    <div class="card-tags">
+                        <span>MLOps</span>
+                        <span>LLM Ops</span>
+                        <span>AIOps</span>
+                    </div>
+                    <div class="card-badge">Featured</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Preview -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Outcomes</span>
+                <h2 class="section-title">Measurable Impact</h2>
+                <p class="section-subtitle">Driving business value through platform engineering and automation.</p>
+            </div>
+            <div class="evidence-grid">
+                <div class="evidence-card" data-aos="fade-up">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3>90% Faster Upgrades</h3>
+                    <p>Reduced cluster upgrade time from 8 hours to 45 minutes via Upgrade Factory.</p>
+                </div>
+                <div class="evidence-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Risk Visibility</h3>
+                    <p>Unified reporting across toolchains for proactive risk management before CAB.</p>
+                </div>
+                <div class="evidence-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <h3>Standardization</h3>
+                    <p>Shifted from snowflake VM upgrades to standardized Helm/GitOps patterns.</p>
+                </div>
+                <div class="evidence-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                    </div>
+                    <h3>Remediation Speed</h3>
+                    <p>80% reduction in vulnerability remediation time through automated aggregation.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="pages/impact.html" class="btn btn-secondary">View Full Impact Report</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flagship Systems Section -->
+    <section class="section flagship-systems" id="flagship-systems">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Flagship Systems</h2>
+                <p class="section-subtitle">Enterprise-scale solutions that demonstrate platform thinking and technical depth</p>
+            </div>
+            <div class="systems-showcase">
+                <div class="system-card large" data-aos="fade-right">
+                    <div class="system-visual">
+                        <div class="system-diagram">
+                            <div class="diagram-node central">Upgrade Factory</div>
+                            <div class="diagram-node" style="--pos: 0">Pre-flight</div>
+                            <div class="diagram-node" style="--pos: 1">Canary</div>
+                            <div class="diagram-node" style="--pos: 2">Upgrade</div>
+                            <div class="diagram-node" style="--pos: 3">Validation</div>
+                            <div class="diagram-connections"></div>
+                        </div>
+                    </div>
+                    <div class="system-content">
+                        <span class="system-tag">Platform System</span>
+                        <h3>Upgrade Factory</h3>
+                        <p>Automated platform upgrade orchestration system handling 100+ OpenShift clusters with zero-downtime migrations, rollback capabilities, and compliance validation.</p>
+                        <ul class="system-features">
+                            <li>Automated pre-flight checks and compatibility analysis</li>
+                            <li>Staged rollout with canary deployments</li>
+                            <li>Integrated compliance and security scanning</li>
+                            <li>Automated rollback on failure detection</li>
+                        </ul>
+                        <a href="pages/projects.html#upgrade-factory" class="system-link">
+                            <span>View Case Study</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="system-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="system-tag">Security</span>
+                    <h3>Project SHIELD</h3>
+                    <p>Enterprise vulnerability aggregation and reporting platform consolidating findings from 15+ security tools into unified risk dashboards.</p>
+                    <a href="pages/projects.html#shield" class="system-link">
+                        <span>Learn More</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="system-card" data-aos="fade-up" data-aos-delay="200">
+                    <span class="system-tag">Governance</span>
+                    <h3>Toolchain Modernization</h3>
+                    <p>Enterprise developer toolchain modernization with containerized build environments, hermetic builds, and reproducible pipelines.</p>
+                    <a href="pages/projects.html#toolchain" class="system-link">
+                        <span>Learn More</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Systems Preview -->
+    <section class="section ai-preview" id="ai-preview">
+        <div class="container">
+            <div class="ai-content">
+                <div class="ai-text" data-aos="fade-right">
+                    <span class="section-tag">Innovation</span>
+                    <h2>AI-Augmented Platform Systems</h2>
+                    <p class="ai-description">
+                        Practical AI embedded into platforms to improve reliability, speed, and decision quality.
+                    </p>
+                    <div class="ai-principles">
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </div>
+                            <div class="principle-content">
+                                <h4>Operational Awareness</h4>
+                                <p>AI surfaces anomalies, risks, and patterns early — before they become incidents.</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="principle-content">
+                                <h4>Human-in-Control Decisions</h4>
+                                <p>Recommendations are explainable and always reviewed by engineers.</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="principle-content">
+                                <h4>Auditable by Default</h4>
+                                <p>Every signal, action, and outcome is traceable and reviewable.</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <div class="principle-content">
+                                <h4>Measured by Impact</h4>
+                                <p>AI is justified only when it improves uptime, delivery speed, or cost efficiency.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="pages/ai-ops.html" class="btn btn-primary">
+                        <span>Explore AI Ops</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="ai-visual" data-aos="fade-left">
+                    <div class="decision-panel">
+                        <div class="decision-header">
+                            <span class="decision-title">Platform Intelligence Panel</span>
+                            <span class="decision-status">Active</span>
+                        </div>
+                        <div class="decision-content">
+                            <div class="decision-item">
+                                <div class="d-icon">🔍</div>
+                                <div class="d-text">
+                                    <strong>Signal Detected</strong>
+                                    <span>Memory pressure increasing across 3 nodes</span>
+                                </div>
+                            </div>
+                            <div class="decision-item">
+                                <div class="d-icon">📊</div>
+                                <div class="d-text">
+                                    <strong>Context Added</strong>
+                                    <span>Correlated with deployment window and traffic spike</span>
+                                </div>
+                            </div>
+                            <div class="decision-item highlight">
+                                <div class="d-icon">🧠</div>
+                                <div class="d-text">
+                                    <strong>Recommendation</strong>
+                                    <span>Scale pool + delay non-critical rollout</span>
+                                </div>
+                            </div>
+                            <div class="decision-item success">
+                                <div class="d-icon">👤</div>
+                                <div class="d-text">
+                                    <strong>Human Decision</strong>
+                                    <span>Engineer reviewed → Approved</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="decision-footer">
+                            AI assists. Engineers decide.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evidence Section -->
+    <section class="section evidence" id="evidence">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Credibility</span>
+                <h2 class="section-title">Evidence & Artifacts</h2>
+                <p class="section-subtitle">Public documentation of expertise, research, and technical contributions</p>
+            </div>
+            <div class="evidence-grid">
+                <a href="pages/media-hub.html" class="evidence-card" data-aos="fade-up">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Media Hub</h3>
+                    <p>PDFs, diagrams, and study packs</p>
+                    <span class="evidence-count">Resources</span>
+                </a>
+                <a href="pages/architecture.html" class="evidence-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"></path>
+                        </svg>
+                    </div>
+                    <h3>Architecture</h3>
+                    <p>Reference architectures and operating models</p>
+                    <span class="evidence-count">Systems</span>
+                </a>
+                <a href="pages/blog.html" class="evidence-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <path d="M3 9h18M9 21V9"></path>
+                        </svg>
+                    </div>
+                    <h3>Blog</h3>
+                    <p>Technical writing and thoughts</p>
+                    <span class="evidence-count">Articles</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motto Section -->
+    <section class="section motto" id="motto">
+        <div class="container">
+            <div class="motto-content" data-aos="zoom-in">
+                <blockquote class="motto-quote">
+                    Engineering platforms teams can trust.
+                </blockquote>
+                <p class="motto-explanation">
+                    I design systems with three non-negotiables: <strong>scalability</strong> to grow without re-architecture, <strong>security</strong> to earn trust by default, and <strong>simplicity</strong> so teams can adopt and operate with confidence.
+                    <br><br>
+                    The goal is not just working software — but platforms that remain reliable, understandable, and sustainable over time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- FOOTER DIVIDER -->
+    <div class="footer-divider"></div>
+
+    <footer class="footer footer--pro">
+      <div class="container">
+        <div class="footer-grid">
+          
+          <!-- LEFT: BRAND CARD -->
+          <div class="footer-card footer-brand-card">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-icon">RRR</span>
+              <span class="logo-text">RaghuRamReddy</span>
+            </a>
+
+            <p class="footer-tagline">
+              Designing technology for human experience
+            </p>
+
+            <p class="footer-subline">
+              Platform Engineering • DevSecOps • Automation • AI-assisted Operations
+            </p>
+
+            <div class="footer-social-row">
+              <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+              <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="social-pill" href="pages/contact.html">Contact</a>
+            </div>
+          </div>
+
+          <!-- MIDDLE: NAV LINKS -->
+          <div class="footer-links-col">
+            <div class="footer-col">
+              <h4 class="footer-col-title">Navigation</h4>
+              <div class="footer-links">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="pages/impact.html" class="footer-link">Impact</a>
+                <a href="pages/projects.html" class="footer-link">Projects</a>
+                <a href="pages/about.html" class="footer-link">About</a>
+              </div>
+            </div>
+
+            <div class="footer-col">
+              <h4 class="footer-col-title">Explore</h4>
+              <div class="footer-links">
+                <a href="pages/architecture.html" class="footer-link">Architecture</a>
+                <a href="pages/platforms.html" class="footer-link">Platforms</a>
+                <a href="pages/ai-ops.html" class="footer-link">AI Ops</a>
+                <a href="pages/media-hub.html" class="footer-link">Media Hub</a>
+                <a href="pages/blog.html" class="footer-link">Blog</a>
+                <a href="pages/publications.html" class="footer-link">Publications</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: CONNECT CARD -->
+          <div class="footer-card footer-connect-card">
+            <div class="footer-connect-header">
+              <h4 class="footer-col-title">Connect</h4>
+              <p class="footer-connect-note">Fastest response on LinkedIn.</p>
+            </div>
+
+            <div class="footer-icon-grid">
+              <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+                <!-- simple icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/>
+                </svg>
+              </a>
+
+              <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/>
+                  <path d="M2 9h4v12H2z"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </a>
+
+              <a class="icon-btn" href="pages/contact.html" aria-label="Contact">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M4 4h16v16H4z"/>
+                  <path d="M4 7l8 6 8-6"/>
+                </svg>
+              </a>
+            </div>
+
+            <a class="footer-cta" href="pages/contact.html">
+              Let’s talk →
+            </a>
+          </div>
+
+          <!-- RIGHT SIDE MICRO VISUALS (fills the empty space feel) -->
+          <div class="footer-visual" aria-hidden="true">
+            <span class="fv-orb fv-orb-1"></span>
+            <span class="fv-orb fv-orb-2"></span>
+            <span class="fv-line fv-line-1"></span>
+            <span class="fv-line fv-line-2"></span>
+            <span class="fv-dot fv-dot-1"></span>
+            <span class="fv-dot fv-dot-2"></span>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom footer-bottom--pro">
+          <p>&copy; 2026 Raghuramreddy Thummalapalli. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/ecosystem-data.js"></script>
+    <script src="assets/js/ecosystem-render.js"></script>
+    <script>renderEcosystem("ecosystem");</script>
+</body>
+</html>
