@@ -797,7 +797,15 @@ function initGlobalAIWidget() {
     const KB = buildAIKnowledgeBase();
 
     // Dynamic Knowledge Loading (Blog)
-    fetch('assets/data/blog-index.json')
+    // Determine correct path based on current location depth
+    let blogIndexPath = 'assets/data/blog-index.json';
+    if (window.location.pathname.includes('/pages/blog/')) {
+        blogIndexPath = '../../assets/data/blog-index.json';
+    } else if (window.location.pathname.includes('/pages/')) {
+        blogIndexPath = '../assets/data/blog-index.json';
+    }
+
+    fetch(blogIndexPath)
         .then(res => res.json())
         .then(data => {
             if (data && data.posts) {

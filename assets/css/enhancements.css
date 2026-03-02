@@ -1,0 +1,1186 @@
+/* ============================================
+   ENHANCEMENTS CSS
+   Top-1% visual & UX additions layered on top
+   of the existing design system.
+   ============================================ */
+
+/* ── Pipeline Diagram (Upgrade Factory) ─── */
+.pipeline-diagram {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 28px 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.pipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.pipe-title-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.3px;
+}
+
+.pipe-running {
+    font-size: 11px;
+    font-weight: 600;
+    color: #22c55e;
+    background: rgba(34,197,94,0.1);
+    padding: 3px 10px;
+    border-radius: 50px;
+}
+
+.pipe-steps { display: flex; flex-direction: column; }
+
+.pipe-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 9px 0;
+}
+
+.pipe-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.pipe-done .pipe-dot   { background: #22c55e; }
+.pipe-active .pipe-dot { background: var(--accent-primary); animation: pulse-node 1.8s ease-in-out infinite; }
+.pipe-pending .pipe-dot { background: var(--bg-tertiary); border: 1px solid var(--border-color); }
+
+@keyframes pulse-node {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.5); }
+    50%       { box-shadow: 0 0 0 6px rgba(59,130,246,0); }
+}
+
+.pipe-body    { flex: 1; display: flex; flex-direction: column; }
+.pipe-name    { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.pipe-pending .pipe-name { color: var(--text-muted); }
+.pipe-desc    { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+.pipe-badge-ok      { font-size: 11px; font-weight: 700; color: #22c55e; background: rgba(34,197,94,0.12); padding: 2px 8px; border-radius: 50px; }
+.pipe-badge-running { font-size: 11px; font-weight: 700; color: var(--accent-primary); background: var(--accent-gradient-soft); padding: 2px 8px; border-radius: 50px; animation: blink-run 1.5s ease-in-out infinite; }
+.pipe-badge-pending { font-size: 16px; color: var(--border-color); letter-spacing: 1px; padding: 0 4px; }
+
+@keyframes blink-run { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.pipe-line     { width: 1px; height: 12px; background: var(--border-color); margin-left: 4px; }
+.pipe-line-dim { width: 1px; height: 12px; background: rgba(255,255,255,0.06); margin-left: 4px; }
+
+.pipe-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+/* ── Cert brand colors ───────────────────── */
+.cert-card[data-brand="aws"]    { --cert-color: #FF9900; }
+.cert-card[data-brand="lf"]     { --cert-color: #003778; }
+.cert-card[data-brand="google"] { --cert-color: #4285F4; }
+
+.cert-card { transition: all 0.3s ease; }
+.cert-card:hover { border-color: var(--cert-color, var(--accent-primary)); }
+.cert-card .cert-icon {
+    background: color-mix(in srgb, var(--cert-color, var(--accent-primary)) 12%, transparent);
+    border-radius: 14px;
+    padding: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+.cert-card .cert-icon svg,
+.cert-card .cert-icon img { color: var(--cert-color, var(--accent-primary)); }
+
+/* ── Decision panel animation ────────────── */
+.decision-item {
+    animation: d-item-in 0.4s ease both;
+}
+.decision-item:nth-child(1) { animation-delay: 0.1s; }
+.decision-item:nth-child(2) { animation-delay: 0.3s; }
+.decision-item:nth-child(3) { animation-delay: 0.5s; }
+.decision-item:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes d-item-in {
+    from { opacity: 0; transform: translateX(-8px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.d-icon svg { width: 16px; height: 16px; stroke: var(--accent-primary); flex-shrink: 0; }
+.decision-item.success .d-icon svg { stroke: #22c55e; }
+
+/* ── Metrics Bar (Impact page) ───────────── */
+.metrics-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+}
+
+.metric-tile {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 36px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.metric-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent-gradient);
+}
+
+.metric-tile:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.metric-number {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.metric-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.metric-context {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ── Impact Blocks ───────────────────────── */
+.impact-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.impact-block {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.impact-block:hover {
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.impact-block-header {
+    padding: 26px 36px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.impact-block-header h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.impact-stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: var(--accent-gradient-soft);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-primary);
+    white-space: nowrap;
+}
+
+.impact-block-body {
+    padding: 28px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+}
+
+.impact-col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.impact-col p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Skills Visualization ────────────────── */
+.skills-section {
+    background: var(--bg-secondary);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 64px;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.skill-level {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.skill-bar-track {
+    height: 5px;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 3px;
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-bar-fill.animated {
+    width: var(--target-width);
+}
+
+/* ── Tech Stack Chips ────────────────────── */
+.tech-stack-section {
+    background: var(--bg-primary);
+}
+
+.tech-stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    cursor: default;
+}
+
+.tech-chip:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: var(--accent-gradient-soft);
+    transform: translateY(-2px);
+}
+
+.tech-chip-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+/* ── Project features list ───────────────── */
+.project-features {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+}
+
+.project-features li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    padding: 5px 0 5px 20px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.project-features li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+.project-impact-badge {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    padding: 5px 14px;
+    background: var(--accent-gradient);
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.3px;
+}
+
+/* ── Sectors Grid (Impact page) ──────────── */
+.sectors-section {
+    background: var(--bg-secondary);
+}
+
+.sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.sector-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 28px 16px;
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.sector-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.sector-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.sector-card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.sector-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* ── Blog page ───────────────────────────── */
+.blog-search-container {
+  margin: 0 auto 2rem;
+  max-width: 680px;
+}
+
+.blog-search-wrapper {
+  position: relative;
+}
+
+.blog-search-input {
+  width: 100%;
+  padding: 12px 44px 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 16px;
+  outline: none;
+}
+
+.blog-search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.blog-edit-note {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.blog-edit-note code {
+  color: var(--text-primary);
+}
+
+.blog-card-content { grid-column: 1 / -1; }
+.blog-card-tags { margin-bottom: 12px; }
+.blog-card-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+.blog-card-secondary-link { opacity: .75; font-size: 13px; color: var(--text-muted); text-decoration: none; }
+
+/* ── Open Graph / social preview image hint ─ */
+/* (no visual, just keeping the meta in order) */
+
+/* ── Responsive ──────────────────────────── */
+@media (max-width: 1024px) {
+    .metrics-bar        { grid-template-columns: repeat(2, 1fr); }
+    .sectors-grid       { grid-template-columns: repeat(3, 1fr); }
+    .impact-block-body  { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .skills-grid        { gap: 20px 40px; }
+}
+
+@media (max-width: 768px) {
+    .metrics-bar        { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .skills-grid        { grid-template-columns: 1fr; }
+    .sectors-grid       { grid-template-columns: repeat(2, 1fr); }
+    .impact-block-body  { grid-template-columns: 1fr; }
+    .impact-block-header { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── Animation Upgrades ───────────────────── */
+
+/* a) Animated gradient on gradient-text */
+.gradient-text {
+    background-size: 200% auto;
+    animation: gradientFlow 4s linear infinite;
+}
+
+/* b) Floating icons — more visible with accent tint */
+.floating-icon {
+    opacity: 0.55;
+}
+.floating-icon svg {
+    stroke: var(--accent-primary);
+    filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.4));
+}
+
+/* c) Glowing gradient border on capability cards */
+.capability-card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(59,130,246,0.6), rgba(139,92,246,0.6));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+.capability-card:hover::after { opacity: 1; }
+
+/* d) Section title blurIn on scroll-reveal */
+.section-header[data-aos].aos-animate .section-title {
+    animation: blurIn 0.9s ease both;
+}
+.section-header[data-aos].aos-animate .section-subtitle {
+    animation: blurIn 0.9s ease 0.2s both;
+}
+
+/* e) Stat shimmer glow after counter completes */
+@keyframes shimmer-num {
+    0%   { text-shadow: none; }
+    50%  { text-shadow: 0 0 20px rgba(59,130,246,0.7), 0 0 40px rgba(139,92,246,0.4); }
+    100% { text-shadow: none; }
+}
+.stat-number.counted {
+    animation: shimmer-num 1.4s ease forwards;
+}
+
+/* f) Pipeline diagram — scroll-triggered sequential reveal */
+.pipeline-diagram .pipe-row,
+.pipeline-diagram .pipe-line,
+.pipeline-diagram .pipe-line-dim {
+    opacity: 0;
+    transform: translateX(-14px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.pipeline-diagram.pipe-visible .pipe-row,
+.pipeline-diagram.pipe-visible .pipe-line,
+.pipeline-diagram.pipe-visible .pipe-line-dim { opacity: 1; transform: none; }
+.pipeline-diagram.pipe-visible .pipe-row:nth-child(1)  { transition-delay: 0.10s; }
+.pipeline-diagram.pipe-visible .pipe-line:nth-child(2) { transition-delay: 0.20s; }
+.pipeline-diagram.pipe-visible .pipe-row:nth-child(3)  { transition-delay: 0.30s; }
+.pipeline-diagram.pipe-visible .pipe-line:nth-child(4) { transition-delay: 0.40s; }
+.pipeline-diagram.pipe-visible .pipe-row:nth-child(5)  { transition-delay: 0.50s; }
+.pipeline-diagram.pipe-visible .pipe-line-dim:nth-child(6) { transition-delay: 0.60s; }
+.pipeline-diagram.pipe-visible .pipe-row:nth-child(7)  { transition-delay: 0.70s; }
+.pipeline-diagram .pipe-footer {
+    opacity: 0;
+    transition: opacity 0.5s ease 0.95s;
+}
+.pipeline-diagram.pipe-visible .pipe-footer { opacity: 1; }
+
+/* g) Decision panel — scroll-triggered (override always-on animation) */
+.decision-item {
+    animation: none;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.decision-panel.panel-visible .decision-item              { opacity: 1; transform: none; }
+.decision-panel.panel-visible .decision-item:nth-child(1) { transition-delay: 0.10s; }
+.decision-panel.panel-visible .decision-item:nth-child(2) { transition-delay: 0.28s; }
+.decision-panel.panel-visible .decision-item:nth-child(3) { transition-delay: 0.46s; }
+.decision-panel.panel-visible .decision-item:nth-child(4) { transition-delay: 0.64s; }
+
+/* h) Card 3D tilt — perspective on grid parent */
+.capabilities-grid {
+    perspective: 1000px;
+}
+.capability-card {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* ═══════════════════════════════════════════
+   TOP-1% VISUAL UPGRADES
+   ═══════════════════════════════════════════ */
+
+/* ── 1. Card Mouse-Tracking Spotlight ────── */
+/* Override previous ::after glow border — spotlight replaces it */
+.capability-card::after { display: none; }
+
+.capability-card,
+.system-card,
+.evidence-card,
+.metric-tile,
+.cert-card,
+.impact-block,
+.sector-card,
+.footer-card {
+    background-image: radial-gradient(
+        380px circle at var(--spotlight-x, -600px) var(--spotlight-y, -600px),
+        rgba(59, 130, 246, 0.10),
+        transparent 50%
+    );
+}
+
+/* ── 2. Custom Cursor — dot only ─────────── */
+#cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    mix-blend-mode: screen;
+    will-change: left, top;
+}
+@media (pointer: coarse) {
+    #cursor-dot { display: none; }
+}
+
+/* ── 3. Animated Background Gradient ─────── */
+@keyframes bgShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.bg-gradient {
+    background: linear-gradient(
+        -45deg,
+        var(--bg-primary) 0%,
+        rgba(59, 130, 246, 0.08) 25%,
+        rgba(139, 92, 246, 0.10) 50%,
+        rgba(0, 200, 255, 0.06) 75%,
+        var(--bg-primary) 100%
+    ) !important;
+    background-size: 400% 400% !important;
+    animation: bgShift 18s ease infinite;
+}
+
+/* ── 4. Noise / Grain Texture Overlay ───── */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    pointer-events: none;
+    opacity: 0.038;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+}
+
+/* ── 5. Auto-Scrolling Tech Marquee Strip ── */
+.tech-marquee {
+    overflow: hidden;
+    padding: 18px 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    user-select: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    white-space: nowrap;
+    width: max-content;
+    animation: marqueeScroll 34s linear infinite;
+}
+.tech-marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.4px;
+    transition: color 0.2s ease;
+}
+.marquee-item:hover { color: var(--accent-primary); }
+.marquee-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+@keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* ── 6. Spinning Gradient Border (featured card + pipeline) ── */
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes spin-border { to { --border-angle: 360deg; } }
+
+.capability-card.featured {
+    border-color: transparent !important;
+    position: relative;
+}
+.capability-card.featured::after {
+    display: block !important;
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    border-radius: inherit;
+    background: conic-gradient(
+        from var(--border-angle),
+        transparent 60%,
+        rgba(59, 130, 246, 0.85),
+        rgba(139, 92, 246, 0.90),
+        transparent 40%
+    );
+    z-index: -1;
+    animation: spin-border 5s linear infinite;
+}
+
+.pipeline-diagram {
+    position: relative;
+}
+.pipeline-diagram::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: conic-gradient(
+        from var(--border-angle),
+        transparent 65%,
+        rgba(59, 130, 246, 0.7),
+        rgba(34, 197, 94, 0.6),
+        transparent 35%
+    );
+    z-index: -1;
+    animation: spin-border 6s linear infinite;
+}
+
+/* ── 7. Custom Thin Scrollbar ────────────── */
+::-webkit-scrollbar            { width: 4px; }
+::-webkit-scrollbar-track      { background: transparent; }
+::-webkit-scrollbar-thumb      {
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+/* ── 7b. Navbar glow + nav-link underline ── */
+.navbar.scrolled {
+    box-shadow: 0 1px 0 var(--glass-border), 0 4px 24px rgba(59, 130, 246, 0.07) !important;
+}
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background: var(--accent-primary);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+    border-radius: 2px;
+}
+.nav-link:hover::after,
+.nav-link.active::after { transform: scaleX(1); }
+
+/* ═══ PAGE-HEADER UNIQUE ACCENT GLOWS ═══ */
+.page-header.ph--impact     { background: radial-gradient(ellipse at 50% 0%, rgba(34,197,94,0.12),   transparent 70%); }
+.page-header.ph--projects   { background: radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.12),   transparent 70%); }
+.page-header.ph--platform   { background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.12),  transparent 70%); }
+.page-header.ph--ai         { background: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.12),  transparent 70%); }
+.page-header.ph--research   { background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.12),  transparent 70%); }
+.page-header.ph--media      { background: radial-gradient(ellipse at 50% 0%, rgba(236,72,153,0.12),  transparent 70%); }
+.page-header.ph--blog       { background: radial-gradient(ellipse at 50% 0%, rgba(20,184,166,0.12),  transparent 70%); }
+.page-header.ph--about      { background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.12),  transparent 70%); }
+.page-header.ph--contact    { background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.12),  transparent 70%); }
+
+/* =================================================================
+   PREMIUM GLASSMORPHISM REDESIGN — Apple / Stripe aesthetic
+   ================================================================= */
+
+/* 1. GLASS CARD BASE */
+.capability-card,
+.publication-card,
+.system-card,
+.evidence-card,
+.metric-tile,
+.cert-card,
+.impact-block,
+.sector-card,
+.principle-card,
+.footer-card {
+    background: rgba(255,255,255,0.03) !important;
+    backdrop-filter: blur(24px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease !important;
+}
+
+.capability-card:hover,
+.publication-card:hover,
+.system-card:hover,
+.evidence-card:hover,
+.metric-tile:hover,
+.cert-card:hover,
+.impact-block:hover,
+.sector-card:hover,
+.principle-card:hover {
+    background: rgba(255,255,255,0.06) !important;
+    border-color: rgba(99,102,241,0.35) !important;
+    box-shadow:
+        0 24px 64px rgba(0,0,0,0.40),
+        inset 0 1px 0 rgba(255,255,255,0.14),
+        0 0 0 1px rgba(99,102,241,0.15),
+        0 0 40px rgba(59,130,246,0.06) !important;
+}
+
+/* 2. PRINCIPLE CARDS */
+.principle-card { border-radius: 20px !important; padding: 32px !important; position: relative !important; }
+.principle-number {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, rgba(59,130,246,0.6), rgba(139,92,246,0.6));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+}
+
+/* 3. HERO */
+.hero-title, .hero-name {
+    font-size: clamp(3rem, 7vw, 6rem) !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.05 !important;
+    font-weight: 800 !important;
+}
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem) !important;
+    line-height: 1.7 !important;
+    max-width: 600px !important;
+    color: rgba(148,163,184,0.95) !important;
+}
+
+/* 4. PAGE HEADERS */
+.page-header { padding: 120px 0 80px !important; position: relative !important; overflow: hidden !important; }
+.page-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(99,102,241,0.15), transparent 70%);
+    pointer-events: none;
+}
+.page-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.1 !important;
+    font-weight: 800 !important;
+}
+.page-subtitle {
+    font-size: 1.12rem !important;
+    line-height: 1.8 !important;
+    color: rgba(148,163,184,0.9) !important;
+    max-width: 580px !important;
+    margin: 0 auto !important;
+}
+
+/* 5. GRADIENT TEXT */
+.gradient-text {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    background-size: 200% auto !important;
+    animation: gradientFlow 4s linear infinite !important;
+}
+
+/* 6. SECTION HEADERS */
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.75rem) !important;
+    letter-spacing: -0.02em !important;
+    font-weight: 700 !important;
+}
+.section-tag {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.14em !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    padding: 5px 14px !important;
+    background: rgba(99,102,241,0.12) !important;
+    border: 1px solid rgba(99,102,241,0.25) !important;
+    border-radius: 100px !important;
+    color: rgba(165,180,252,0.95) !important;
+}
+
+/* 7. STAT NUMBERS */
+.stat-number {
+    font-size: clamp(2.5rem, 5vw, 4rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    background: linear-gradient(135deg, #fff 0%, rgba(148,163,184,0.8) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* 8. BUTTONS */
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+    box-shadow: 0 4px 20px rgba(59,130,246,0.35), inset 0 1px 0 rgba(255,255,255,0.15) !important;
+    border: none !important;
+    font-weight: 600 !important;
+    transition: all 0.25s ease !important;
+}
+.btn-primary:hover {
+    box-shadow: 0 8px 32px rgba(59,130,246,0.55), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+    transform: translateY(-2px) !important;
+}
+.btn-secondary {
+    background: rgba(255,255,255,0.05) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08) !important;
+    transition: all 0.25s ease !important;
+}
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.09) !important;
+    border-color: rgba(99,102,241,0.4) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 9. AI-HERO CALLOUT */
+.ai-hero {
+    background: rgba(99,102,241,0.06) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(99,102,241,0.18) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 8px 40px rgba(99,102,241,0.08), inset 0 1px 0 rgba(255,255,255,0.06) !important;
+}
+
+/* 10. CARD ICONS */
+.card-icon {
+    background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15)) !important;
+    border: 1px solid rgba(99,102,241,0.2) !important;
+    box-shadow: 0 4px 16px rgba(59,130,246,0.1) !important;
+}
+
+/* 11. TAGS */
+.card-tags span, .project-tags span, .blog-card-tags span {
+    background: rgba(99,102,241,0.1) !important;
+    border: 1px solid rgba(99,102,241,0.2) !important;
+    color: rgba(165,180,252,0.9) !important;
+    border-radius: 6px !important;
+    font-size: 0.72rem !important;
+    font-weight: 500 !important;
+}
+
+/* 12. AMBIENT ORBS */
+.orb-1 { background: radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%) !important; }
+.orb-2 { background: radial-gradient(circle, rgba(139,92,246,0.25) 0%, transparent 70%) !important; }
+.orb-3 { background: radial-gradient(circle, rgba(20,184,166,0.20) 0%, transparent 70%) !important; }
+
+/* 13. PUBLICATION / BLOG CARDS */
+.publication-card { border-radius: 20px !important; padding: 32px !important; }
+.publication-card h3 {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* 14. IMPACT NUMBERS */
+.impact-number {
+    font-size: clamp(2rem,4vw,3rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    background: linear-gradient(135deg, #fff 0%, rgba(148,163,184,0.8) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* 15. ECOSYSTEM CHIPS */
+.eco-chip {
+    background: rgba(255,255,255,0.04) !important;
+    backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255,255,255,0.09) !important;
+    transition: all 0.2s ease !important;
+}
+.eco-chip:hover {
+    background: rgba(99,102,241,0.12) !important;
+    border-color: rgba(99,102,241,0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 16. FOOTER CTA */
+.footer-cta {
+    background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15)) !important;
+    border: 1px solid rgba(99,102,241,0.25) !important;
+    transition: all 0.25s ease !important;
+}
+.footer-cta:hover {
+    background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(139,92,246,0.25)) !important;
+    box-shadow: 0 4px 20px rgba(59,130,246,0.25) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ── HERO ILLUSTRATION ─────────────────────────────────────────── */
+.hero-illustration {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    filter: drop-shadow(0 20px 60px rgba(99,102,241,0.22));
+    animation: illustFloat 6s ease-in-out infinite;
+}
+
+@keyframes illustFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-14px); }
+}
+
+.hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .hero-illustration { max-width: 300px; margin: 28px auto 0; }
+}
+
+/* Page-header inline illustrations — hide on mobile to prevent overlap */
+.page-header-illustration {
+    display: block;
+}
+@media (max-width: 900px) {
+    .page-header-illustration { display: none !important; }
+    .page-header-content { max-width: 100% !important; }
+}
+
+/* =================================================================
+   LIGHT MODE OVERRIDES — full visual parity
+   ================================================================= */
+[data-theme="light"] {
+    /* Glass cards */
+    .capability-card,
+    .publication-card,
+    .system-card,
+    .evidence-card,
+    .metric-tile,
+    .cert-card,
+    .impact-block,
+    .sector-card,
+    .principle-card,
+    .footer-card {
+        background: rgba(255,255,255,0.75) !important;
+        border: 1px solid rgba(0,0,0,0.08) !important;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+    }
+    .capability-card:hover,
+    .publication-card:hover,
+    .system-card:hover,
+    .evidence-card:hover,
+    .metric-tile:hover,
+    .cert-card:hover,
+    .impact-block:hover,
+    .sector-card:hover,
+    .principle-card:hover {
+        background: rgba(255,255,255,0.92) !important;
+        border-color: rgba(99,102,241,0.3) !important;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(99,102,241,0.12) !important;
+    }
+
+    /* Eco chips */
+    .eco-chip {
+        background: rgba(0,0,0,0.04) !important;
+        border: 1px solid rgba(0,0,0,0.1) !important;
+    }
+    .eco-chip:hover {
+        background: rgba(99,102,241,0.08) !important;
+        border-color: rgba(99,102,241,0.25) !important;
+    }
+
+    /* Secondary button */
+    .btn-secondary {
+        background: rgba(0,0,0,0.04) !important;
+        border: 1px solid rgba(0,0,0,0.12) !important;
+        box-shadow: none !important;
+        color: var(--text-primary) !important;
+    }
+    .btn-secondary:hover {
+        background: rgba(99,102,241,0.08) !important;
+        border-color: rgba(99,102,241,0.3) !important;
+    }
+
+    /* AI hero callout */
+    .ai-hero {
+        background: rgba(99,102,241,0.06) !important;
+        border: 1px solid rgba(99,102,241,0.15) !important;
+        box-shadow: 0 4px 24px rgba(99,102,241,0.06) !important;
+    }
+
+    /* Card tags */
+    .card-tags span, .project-tags span, .blog-card-tags span {
+        background: rgba(99,102,241,0.08) !important;
+        border: 1px solid rgba(99,102,241,0.15) !important;
+        color: rgba(79,70,229,0.9) !important;
+    }
+
+    /* Section tag pill */
+    .section-tag {
+        background: rgba(99,102,241,0.1) !important;
+        border: 1px solid rgba(99,102,241,0.2) !important;
+        color: rgba(79,70,229,0.9) !important;
+    }
+
+    /* Stat / impact numbers */
+    .stat-number, .impact-number {
+        background: linear-gradient(135deg, #1e293b 0%, #475569 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
+    }
+
+    /* Page subtitle */
+    .page-subtitle {
+        color: rgba(51,65,85,0.85) !important;
+    }
+
+    /* Hero subtitle */
+    .hero-subtitle {
+        color: rgba(51,65,85,0.85) !important;
+    }
+
+    /* Footer CTA */
+    .footer-cta {
+        background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1)) !important;
+        border: 1px solid rgba(99,102,241,0.18) !important;
+    }
+
+    /* Orbs (subtler in light mode) */
+    .orb-1 { background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%) !important; }
+    .orb-2 { background: radial-gradient(circle, rgba(139,92,246,0.10) 0%, transparent 70%) !important; }
+    .orb-3 { background: radial-gradient(circle, rgba(20,184,166,0.08) 0%, transparent 70%) !important; }
+
+    /* Card icon */
+    .card-icon {
+        background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1)) !important;
+        border: 1px solid rgba(99,102,241,0.15) !important;
+    }
+
+    /* Page-header ph-- glows (lighter tints for light bg) */
+    .page-header.ph--impact     { background: radial-gradient(ellipse at 50% 0%, rgba(34,197,94,0.08),   transparent 70%); }
+    .page-header.ph--projects   { background: radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.08),   transparent 70%); }
+    .page-header.ph--platform   { background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.08),  transparent 70%); }
+    .page-header.ph--ai         { background: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.08),  transparent 70%); }
+    .page-header.ph--research   { background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.08),  transparent 70%); }
+    .page-header.ph--media      { background: radial-gradient(ellipse at 50% 0%, rgba(236,72,153,0.08),  transparent 70%); }
+    .page-header.ph--blog       { background: radial-gradient(ellipse at 50% 0%, rgba(20,184,166,0.08),  transparent 70%); }
+    .page-header.ph--about      { background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.08),  transparent 70%); }
+    .page-header.ph--contact    { background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.08),  transparent 70%); }
+}

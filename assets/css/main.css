@@ -246,7 +246,7 @@ body {
 .nav-menu {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 2px;
 }
 
 /* Nav Groups for Desktop (Flattened) */
@@ -257,14 +257,15 @@ body {
 .nav-divider { display: none; }
 
 .nav-link {
-    padding: 10px 16px;
+    padding: 7px 10px;
     text-decoration: none;
     color: var(--text-secondary);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     border-radius: 8px;
     transition: all var(--transition-fast);
     position: relative;
+    white-space: nowrap;
 }
 
 .nav-link:hover {

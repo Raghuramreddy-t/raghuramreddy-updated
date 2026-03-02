@@ -29,7 +29,7 @@
       </div>
     `).join("");
   } catch (e) {
-    el.innerHTML = `<div class="publication-card"><div class="publication-content">Could not load blog list.</div></div>`;
-    console.warn(e);
+    console.warn("blog-list: could not load, showing static articles", e);
+    // Static articles in HTML remain — do not overwrite
   }
 })();

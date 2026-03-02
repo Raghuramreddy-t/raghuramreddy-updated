@@ -3,7 +3,12 @@
   async function loadBlogIndex() {
     try {
       // Use a relative path to ensure it works when hosted in subdirectories.
-      const path = window.location.pathname.includes('/pages/') ? '../../assets/data/blog-index.json' : './assets/data/blog-index.json';
+      let path = './assets/data/blog-index.json';
+      if (window.location.pathname.includes('/pages/blog/')) {
+          path = '../../assets/data/blog-index.json';
+      } else if (window.location.pathname.includes('/pages/')) {
+          path = '../assets/data/blog-index.json';
+      }
       const res = await fetch(path, { cache: "no-store" });
       if (!res.ok) throw new Error("Failed to load blog index");
       return await res.json();

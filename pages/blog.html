@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../assets/css/animations.css">
     <link rel="stylesheet" href="../assets/css/pages.css">
     <link rel="stylesheet" href="../assets/css/ai-assistant.css">
+    <link rel="stylesheet" href="../assets/css/enhancements.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -75,7 +76,53 @@
 
     <section class="section">
         <div class="container">
-            <div class="publications-grid" id="blog-list"></div>
+            <div class="publications-grid" id="blog-list">
+                <div class="publication-card">
+                    <div class="publication-content blog-card-content">
+                        <div class="project-tags blog-card-tags">
+                            <span>XOps</span><span>DevOps</span><span>Platform Engineering</span><span>AI Ops</span>
+                        </div>
+                        <h3>Why XOps Is the Next Step Beyond DevOps in 2025</h3>
+                        <p>DevOps got us here — but it won't take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.</p>
+                        <div class="blog-card-actions">
+                            <a href="blog/xops-beyond-devops-2025.html" class="project-link">
+                                <span>Read Article</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <div class="publication-content blog-card-content">
+                        <div class="project-tags blog-card-tags">
+                            <span>AI</span><span>LLM</span><span>Claude</span><span>GenAI</span>
+                        </div>
+                        <h3>Claude Sonnet 4.6 Is Here — And It's Closing the Gap with Opus</h3>
+                        <p>Claude Sonnet 4.6 overview, capability improvements, and what the model shift means for practical AI engineering workflows.</p>
+                        <div class="blog-card-actions">
+                            <a href="https://raghuramreddy-tech.medium.com/claude-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e" target="_blank" rel="noopener" class="project-link">
+                                <span>Read on Medium</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <div class="publication-content blog-card-content">
+                        <div class="project-tags blog-card-tags">
+                            <span>Platform Engineering</span><span>Reliability</span><span>Infrastructure</span>
+                        </div>
+                        <h3>Software Platforms as Critical Infrastructure: Why Reliability Is Now a Public Interest Problem</h3>
+                        <p>Why platform reliability is now a public-interest problem and how platform teams should treat reliability, governance, and resilience as infrastructure responsibilities.</p>
+                        <div class="blog-card-actions">
+                            <a href="https://raghuramreddy-tech.medium.com/software-platforms-as-critical-infrastructure-why-reliability-is-now-a-public-interest-problem-27da1b5dfc1b" target="_blank" rel="noopener" class="project-link">
+                                <span>Read on Medium</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -188,6 +235,17 @@
     </footer>
 
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/blog-list.js"></script>
+    <script>
+    (function() {
+        var input = document.getElementById('blog-search');
+        if (!input) return;
+        input.addEventListener('input', function() {
+            var q = this.value.toLowerCase().trim();
+            document.querySelectorAll('#blog-list .publication-card').forEach(function(card) {
+                card.style.display = (!q || card.textContent.toLowerCase().includes(q)) ? '' : 'none';
+            });
+        });
+    })();
+    </script>
 </body>
 </html>

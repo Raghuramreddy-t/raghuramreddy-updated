@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -l \"right-side-decoration\" \"c:/Users/raghu/.minimax-agent/projects/1/portfolio-site/pages\"/*.html)",
+      "Bash(grep -l \"logo-tagline\" index.html pages/*.html)",
+      "WebFetch(domain:raghuramreddy.tech)",
+      "WebFetch(domain:www.linkedin.com)"
+    ]
+  }
+}

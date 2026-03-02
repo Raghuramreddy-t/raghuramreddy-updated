@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../assets/css/animations.css">
     <link rel="stylesheet" href="../assets/css/pages.css">
     <link rel="stylesheet" href="../assets/css/ai-assistant.css">
+    <link rel="stylesheet" href="../assets/css/enhancements.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
 </head>
 <body>
@@ -43,9 +44,8 @@
                 <a href="../index.html" class="nav-link">Home</a>
                 <a href="impact.html" class="nav-link">Impact</a>
                 <a href="projects.html" class="nav-link">Projects</a>
-        <a href="platforms.html" class="nav-link active">Platforms</a>
-                <a href="architecture.html" class="nav-link">Architecture</a>
-        <a href="ai-ops.html" class="nav-link">AI Ops</a>
+                <a href="platforms.html" class="nav-link active">Platforms</a>
+                <a href="ai-ops.html" class="nav-link">AI Ops</a>
         <a href="publications.html" class="nav-link">Publications</a>
                 <a href="media-hub.html" class="nav-link">Media & Artifacts</a>
         <a href="blog.html" class="nav-link">Blog</a>
@@ -77,11 +77,11 @@
         </div>
     </header>
 
-    <!-- Ecosystem Context -->
-    <section class="section" style="padding-bottom: 0;">
+    <!-- Platform Engineering Section -->
+    <section class="section" id="platform-engineering" style="padding-bottom: 0;">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Architecture</span>
+                <span class="section-tag">Platform Engineering</span>
                 <h2 class="section-title">Foundation & Delivery</h2>
                 <p class="section-subtitle">Focusing on the core layers that enable speed, stability, and scale.</p>
             </div>
@@ -91,13 +91,13 @@
 
     <section class="section">
         <div class="container">
-            <div class="ai-hero" data-aos="fade-up">
+            <div class="ai-hero">
                 <h2>The Digital Nervous System</h2>
                 <p>A robust cloud-native platform is more than just Kubernetes. It's a cohesive system of compute, networking, identity, and delivery pipelines that allows developers to ship code without thinking about infrastructure.</p>
             </div>
 
             <div class="capabilities-grid">
-                <div class="capability-card" data-aos="fade-up">
+                <div class="capability-card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path><path d="M4 9h16M9 4v16"></path></svg>
                     </div>
@@ -106,7 +106,7 @@
                     <div class="card-tags"><span>OpenShift</span><span>EKS/AKS</span><span>Helm</span></div>
                 </div>
 
-                <div class="capability-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="capability-card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg>
                     </div>
@@ -115,7 +115,7 @@
                     <div class="card-tags"><span>Terraform</span><span>Ansible</span><span>Crossplane</span></div>
                 </div>
 
-                <div class="capability-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="capability-card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                     </div>
@@ -124,13 +124,160 @@
                     <div class="card-tags"><span>Istio</span><span>OIDC/OAuth</span><span>Cilium</span></div>
                 </div>
 
-                <div class="capability-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="capability-card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
                     </div>
                     <h3>GitOps Delivery</h3>
                     <p>Declarative continuous delivery using Git as the single source of truth. Automated drift detection and reconciliation.</p>
                     <div class="card-tags"><span>ArgoCD</span><span>Flux</span><span>Kustomize</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="section" id="architecture" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Architecture</span>
+                <h2 class="section-title">Reference Designs & <span class="gradient-text">Operating Models</span></h2>
+                <p class="section-subtitle">Architecture that's implementable: clear decisions, guardrails, and measurable outcomes.</p>
+            </div>
+
+            <div class="ai-hero">
+                <h2>My Architecture Default</h2>
+                <p>I optimize for <strong>adoption</strong> and <strong>operability</strong>, not just diagrams. Every design ships with guardrails (policy), a rollout plan, and a rollback story.</p>
+            </div>
+
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-number">01</div>
+                    <h3>Decision → Guardrail → Automation</h3>
+                    <p>Architecture is real only when it becomes a paved road: templates, policy checks, and measurable SLOs.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-number">02</div>
+                    <h3>Gold Paths, Not PDF Paths</h3>
+                    <p>Docs are necessary, but adoption comes from scaffolding + self-service + strong defaults.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-number">03</div>
+                    <h3>Runtime Truth Wins</h3>
+                    <p>Observability (metrics/logs/traces) is the source of truth for architecture effectiveness.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="principle-number">04</div>
+                    <h3>Rollback Is a Feature</h3>
+                    <p>Every migration plan includes blast-radius controls, canarying, and reversible steps.</p>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 3rem;">
+                <span class="section-tag">Blueprints</span>
+                <h2 class="section-title">Reusable Architecture Artifacts</h2>
+                <p class="section-subtitle">Patterns I repeat because they scale across teams and tools.</p>
+            </div>
+
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path><path d="M4 9h16M9 4v16"></path></svg>
+                    </div>
+                    <h3>Platform Reference Architecture</h3>
+                    <p>Compute + identity + networking + delivery + security + observability, with clear ownership boundaries.</p>
+                    <div class="card-tags"><span>IDP</span><span>Multi-tenant</span><span>Guardrails</span></div>
+                </div>
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Policy-as-Code + Exceptions</h3>
+                    <p>Default deny with a sane exception workflow. Audit trail built-in, not "email approvals".</p>
+                    <div class="card-tags"><span>OPA</span><span>Cosign/SBOM</span><span>Compliance</span></div>
+                </div>
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"></path><path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path></svg>
+                    </div>
+                    <h3>Evidence-Driven Delivery</h3>
+                    <p>Lead time, failure rate, MTTR, and risk posture tracked per platform capability.</p>
+                    <div class="card-tags"><span>SLO</span><span>DORA</span><span>Risk KPIs</span></div>
+                </div>
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
+                    </div>
+                    <h3>Migration Runbooks</h3>
+                    <p>VM → containers → OpenShift with preflight validation, staging gates, and rollback plans.</p>
+                    <div class="card-tags"><span>Helm</span><span>Tekton</span><span>DR/HA</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cloud-Native Section -->
+    <section class="section" id="cloud-native">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Cloud-Native</span>
+                <h2 class="section-title">Cloud-Native <span class="gradient-text">Excellence</span></h2>
+                <p class="section-subtitle">Building the resilient bedrock and delivery highways for the modern enterprise.</p>
+            </div>
+
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path><path d="M4 9h16M9 4v16"></path></svg>
+                    </div>
+                    <h3>Kubernetes & Orchestration</h3>
+                    <p>Managing fleet-wide container orchestration with OpenShift and EKS. Focusing on multi-tenancy, resource quotas, and auto-scaling strategies.</p>
+                    <div class="card-tags"><span>OpenShift</span><span>EKS/AKS</span><span>Helm</span></div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg>
+                    </div>
+                    <h3>Infrastructure as Code</h3>
+                    <p>Treating infrastructure as software. Modular Terraform architectures that enforce policy, security, and standardization across all environments.</p>
+                    <div class="card-tags"><span>Terraform</span><span>Ansible</span><span>Crossplane</span></div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Identity & Networking</h3>
+                    <p>Zero-trust networking and unified identity management. Service mesh implementation for traffic control, mTLS, and observability.</p>
+                    <div class="card-tags"><span>Istio</span><span>OIDC/OAuth</span><span>Cilium</span></div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
+                    </div>
+                    <h3>GitOps Delivery</h3>
+                    <p>Declarative continuous delivery using Git as the single source of truth. Automated drift detection and reconciliation.</p>
+                    <div class="card-tags"><span>ArgoCD</span><span>Flux</span><span>Kustomize</span></div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <h3>Golden Paths</h3>
+                    <p>Standardized, supported templates for common workloads. Reducing cognitive load by providing "paved roads" for developers.</p>
+                    <div class="card-tags"><span>Backstage</span><span>Cookiecutter</span><span>Scaffolding</span></div>
+                </div>
+
+                <div class="capability-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                    </div>
+                    <h3>Container Security</h3>
+                    <p>Securing the supply chain from base image to runtime. Image signing, SBOM generation, and runtime threat detection.</p>
+                    <div class="card-tags"><span>Cosign</span><span>Trivy</span><span>Falco</span></div>
                 </div>
             </div>
         </div>

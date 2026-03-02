@@ -1,0 +1,35 @@
+{
+  "site": {
+    "baseUrl": "https://raghuramreddy.tech",
+    "author": "Raghuramreddy Thummalapalli"
+  },
+  "posts": [
+    {
+      "id": "xops-beyond-devops-2025",
+      "title": "Why XOps Is the Next Step Beyond DevOps in 2025",
+      "description": "DevOps got us here — but it won't take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.",
+      "url": "blog/xops-beyond-devops-2025.html",
+      "tags": ["XOps", "DevOps", "Platform Engineering", "AI Ops"],
+      "published": "2026-02-08",
+      "version": "1.0.0"
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "title": "Claude Sonnet 4.6 Is Here - And It's Closing the Gap with Opus",
+      "description": "Claude Sonnet 4.6 overview, capability improvements, and what the model shift means for practical AI engineering workflows.",
+      "url": "https://raghuramreddy-tech.medium.com/claude-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e",
+      "tags": ["AI", "LLM", "Claude", "GenAI"],
+      "published": "2024-10-25",
+      "version": "1.0.0"
+    },
+    {
+      "id": "software-platforms-critical-infra",
+      "title": "Software Platforms as Critical Infrastructure: Why Reliability Is Now a Public Interest Problem",
+      "description": "Why platform reliability is now a public-interest problem and how platform teams should treat reliability, governance, and resilience as infrastructure responsibilities.",
+      "url": "https://raghuramreddy-tech.medium.com/software-platforms-as-critical-infrastructure-why-reliability-is-now-a-public-interest-problem-27da1b5dfc1b",
+      "tags": ["Platform Engineering", "Reliability", "Infrastructure"],
+      "published": "2024-10-20",
+      "version": "1.0.0"
+    }
+  ]
+}

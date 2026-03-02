@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:8080/assets/js/media-render.js)",
+      "Bash(curl -s --max-time 15 -A \"Mozilla/5.0\" \"https://raghuramreddy.tech/\")",
+      "Bash(python -c \":*)",
+      "Bash(python3 -c \":*)"
+    ]
+  }
+}
