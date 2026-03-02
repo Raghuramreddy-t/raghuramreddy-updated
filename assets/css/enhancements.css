@@ -1062,6 +1062,62 @@ body::after {
     .page-header-content { max-width: 100% !important; }
 }
 
+/* ==============================================================
+   Premium Visual Layer (global)
+   ============================================================== */
+.page-tag::before,
+.section-tag::before {
+    content: "◆";
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 10px;
+    color: rgba(96, 165, 250, 0.95);
+    transform: translateY(-1px);
+}
+
+.page-header-content {
+    position: relative;
+}
+
+
+.capability-card,
+.principle-card,
+.evidence-card,
+.publication-card,
+.system-card,
+.contact-method {
+    position: relative;
+}
+
+.capability-card::after,
+.principle-card::after,
+.evidence-card::after,
+.publication-card::after,
+.system-card::after {
+    content: "✦";
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    font-size: 14px;
+    color: rgba(96, 165, 250, 0.7);
+    pointer-events: none;
+}
+
+.btn-primary,
+.btn-secondary {
+    letter-spacing: 0.2px;
+}
+
+.btn-primary::before {
+    content: "◈";
+    margin-right: 8px;
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+@media (max-width: 900px) {
+}
+
 /* =================================================================
    LIGHT MODE OVERRIDES — full visual parity
    ================================================================= */

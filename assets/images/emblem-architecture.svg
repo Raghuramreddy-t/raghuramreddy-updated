@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Architecture emblem">
+  <defs>
+    <linearGradient id="line" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="320" fill="#0b1222"/>
+  <rect x="68" y="52" width="344" height="216" rx="18" fill="#0f172a" stroke="#1e293b"/>
+  <rect x="96" y="86" width="288" height="28" rx="8" fill="#111827" stroke="#334155"/>
+  <rect x="96" y="136" width="128" height="36" rx="8" fill="#111827" stroke="#334155"/>
+  <rect x="256" y="136" width="128" height="36" rx="8" fill="#111827" stroke="#334155"/>
+  <rect x="96" y="194" width="288" height="36" rx="8" fill="#111827" stroke="#334155"/>
+  <path d="M240 114v22M224 154h-20M256 154h20M240 172v22" stroke="url(#line)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="240" cy="154" r="7" fill="#93c5fd"/>
+</svg>

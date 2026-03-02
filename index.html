@@ -149,8 +149,8 @@ Show real systems, real impact, and clear thinking.
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
                 </a>
-                <a href="pages/ai-ops.html" class="btn btn-secondary">
-                    <span>Explore AI Ops</span>
+                <a href="pages/architecture.html" class="btn btn-secondary">
+                    <span>View Architecture</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
@@ -364,6 +364,20 @@ Show real systems, real impact, and clear thinking.
             <div class="systems-showcase">
                 <div class="system-card large" data-aos="fade-right">
                     <div class="system-visual">
+                        <div class="system-preview-board" aria-hidden="true">
+                            <div class="sp-header">
+                                <span class="sp-dot"></span>
+                                <span class="sp-dot"></span>
+                                <span class="sp-dot"></span>
+                                <span class="sp-title">Upgrade Flow Monitor</span>
+                            </div>
+                            <div class="sp-track">
+                                <span class="sp-step done">Pre-flight</span>
+                                <span class="sp-step active">Canary</span>
+                                <span class="sp-step">Upgrade</span>
+                                <span class="sp-step">Validation</span>
+                            </div>
+                        </div>
                         <div class="system-diagram">
                             <div class="diagram-node central">Upgrade Factory</div>
                             <div class="diagram-node" style="--pos: 0">Pre-flight</div>
@@ -393,6 +407,14 @@ Show real systems, real impact, and clear thinking.
                 </div>
                 <div class="system-card" data-aos="fade-up" data-aos-delay="100">
                     <span class="system-tag">Security</span>
+                    <div class="system-mini-visual shield-visual" aria-hidden="true">
+                        <span class="shield-ring"></span>
+                        <span class="shield-core">THREAT GRID</span>
+                        <span class="shield-scan"></span>
+                        <span class="shield-node"></span>
+                        <span class="shield-node"></span>
+                        <span class="shield-node"></span>
+                    </div>
                     <h3>Project SHIELD</h3>
                     <p>Enterprise vulnerability aggregation and reporting platform consolidating findings from 15+ security tools into unified risk dashboards.</p>
                     <a href="pages/projects.html#shield" class="system-link">
@@ -475,17 +497,28 @@ Show real systems, real impact, and clear thinking.
                         </div>
                     </div>
                     <a href="pages/ai-ops.html" class="btn btn-primary">
-                        <span>Explore AI Ops</span>
+                        <span>See AI Operating Model</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"></path>
                         </svg>
                     </a>
                 </div>
                 <div class="ai-visual" data-aos="fade-left">
-                    <div class="decision-panel">
+                    <div class="decision-panel panel-visible">
+                        <div class="decision-panel-hero" aria-hidden="true">
+                            <span class="pulse-dot"></span>
+                            <span class="pulse-dot"></span>
+                            <span class="pulse-dot"></span>
+                            <span class="scan-line"></span>
+                        </div>
                         <div class="decision-header">
                             <span class="decision-title">Platform Intelligence Panel</span>
                             <span class="decision-status">Active</span>
+                        </div>
+                        <div class="decision-metrics">
+                            <div class="dm-item"><strong>3</strong><span>Signals</span></div>
+                            <div class="dm-item"><strong>2</strong><span>Correlations</span></div>
+                            <div class="dm-item"><strong>1</strong><span>Action</span></div>
                         </div>
                         <div class="decision-content">
                             <div class="decision-item">
