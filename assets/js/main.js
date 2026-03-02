@@ -179,7 +179,7 @@ function animateCounter(element, target) {
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-            element.textContent = target;
+            element.textContent = target + '+';
             clearInterval(timer);
         } else {
             element.textContent = Math.floor(current);
@@ -801,13 +801,16 @@ function initGlobalAIWidget() {
         .then(res => res.json())
         .then(data => {
             if (data && data.posts) {
+                const baseUrl = data.site?.baseUrl || window.location.origin;
                 data.posts.forEach(post => {
+                    // Construct a full, absolute URL to avoid broken relative links.
+                    const fullUrl = post.url.startsWith('http') ? post.url : `${baseUrl}${post.url}`;
                     KB.push({
                         keywords: [
                             ...post.tags.map(t => t.toLowerCase()), 
                             ...post.title.toLowerCase().split(' ')
                         ],
-                        response: `I found an article about that: "${post.title}".\n\nSummary: ${post.description}\n\nRead here: ${post.url}`
+                        response: `I found an article about that: "${post.title}".\n\nSummary: ${post.description}\n\nRead here: ${fullUrl}`
                     });
                 });
             }

@@ -2,7 +2,9 @@
   // 1) Load blog index
   async function loadBlogIndex() {
     try {
-      const res = await fetch("/assets/data/blog-index.json", { cache: "no-store" });
+      // Use a relative path to ensure it works when hosted in subdirectories.
+      const path = window.location.pathname.includes('/pages/') ? '../../assets/data/blog-index.json' : './assets/data/blog-index.json';
+      const res = await fetch(path, { cache: "no-store" });
       if (!res.ok) throw new Error("Failed to load blog index");
       return await res.json();
     } catch (e) {
@@ -16,8 +18,11 @@
     const changelogContainer = document.getElementById("changelog");
     if (!changelogContainer || !index) return;
 
-    const path = window.location.pathname;
-    const post = (index.posts || []).find(p => p.url === path);
+    // Normalize the current page's path to match the format in blog-index.json
+    // e.g., turn ".../pages/blog/post.html" into "/pages/blog/post.html"
+    const currentPath = window.location.pathname;
+    const normalizedPath = currentPath.substring(currentPath.indexOf('/pages/'));
+    const post = (index.posts || []).find(p => p.url === normalizedPath);
 
     if (!post || !post.changelog) {
       changelogContainer.innerHTML = "<p style='opacity:.7;'>No changelog available.</p>";
@@ -37,78 +42,8 @@
     `).join("");
   }
 
-  // 3) Build AI search index (blog + future media)
-  function buildSearchIndexFromBlog(index) {
-    if (!index) return [];
-
-    return (index.posts || []).map(p => ({
-      title: p.title,
-      type: "Blog Post",
-      url: p.url,
-      tags: (p.tags || []).join(", "),
-      text: `${p.title} ${p.description} ${(p.aiIndexText || "")} ${(p.tags || []).join(" ")}`
-    }));
-  }
-
-  // 4) Hook into your AI Assistant (if present)
-  function attachToAIAssistant(searchItems) {
-    // If your AIAssistant class exists, add a new method it can call.
-    if (!window.AIAssistant) return;
-
-    // Patch: add lightweight search ability to the assistant instance.
-    const originalBuild = window.AIAssistant.prototype.buildKnowledgeBase;
-
-    window.AIAssistant.prototype.buildKnowledgeBase = function () {
-      const kb = originalBuild.call(this);
-
-      kb.search = {
-        keywords: ["search", "find", "article", "blog", "post", "read", "xops", "devops", "platform"],
-        response: "" // dynamic
-      };
-
-      // Add dynamic responder
-      const originalGetResponse = window.AIAssistant.prototype.getResponse;
-
-      window.AIAssistant.prototype.getResponse = function (query) {
-        const q = query.toLowerCase();
-
-        // If user seems to be searching, return top matches
-        const wantsSearch =
-          q.startsWith("search ") || q.startsWith("find ") || q.includes("show me") || q.includes("read ");
-
-        if (wantsSearch) {
-          const hits = searchItems
-            .map(item => {
-              const score =
-                (item.text.toLowerCase().includes(q) ? 3 : 0) +
-                (item.title.toLowerCase().includes(q) ? 5 : 0) +
-                (item.tags.toLowerCase().includes(q) ? 2 : 0);
-              return { item, score };
-            })
-            .filter(x => x.score > 0)
-            .sort((a, b) => b.score - a.score)
-            .slice(0, 5);
-
-          if (hits.length === 0) {
-            return `I didn’t find an exact match. Try keywords like: *XOps*, *Platform Engineering*, *DevSecOps*, *AI-assisted Operations*, or *Upgrade Factory*.`;
-          }
-
-          const lines = hits.map(h => `• **${h.item.title}** (${h.item.type}) — <a href="${h.item.url}">open</a>`);
-          return `Here are the closest matches:\n\n${lines.join("\n")}`;
-        }
-
-        return originalGetResponse.call(this, query);
-      };
-
-      return kb;
-    };
-  }
-
   // Run
   const index = await loadBlogIndex();
   await renderChangelogIfPresent(index);
-
-  const searchItems = buildSearchIndexFromBlog(index);
-  attachToAIAssistant(searchItems);
 
 })();
