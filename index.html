@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<!--
+SITE INTENT (DO NOT BREAK)
+
+This site is a single public portfolio focused on:
+- Platform Engineering
+- DevSecOps
+- Cloud-Native Systems
+- Safe, Auditable AI Operations
+
+Rules:
+- No duplicate or overlapping pages
+- No hype or marketing language
+- AI enhances human decision-making, never replaces it
+- Navigation must stay consistent across all pages
+- Design should feel calm, intentional, and architect-level
+
+Primary Goal:
+Show real systems, real impact, and clear thinking.
+-->
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaghuRamReddy Thummalapalli | Enterprise Platform Engineering & DevSecOps Leader</title>
+    <meta name="description" content="Enterprise platform engineering and DevSecOps leader specializing in secure software delivery at scale, AI-augmented operations, and critical infrastructure for regulated industries.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <link rel="stylesheet" href="assets/css/enhancements.css">
+    <link rel="stylesheet" href="assets/css/design-v2.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
+</head>
+<body class="home-page">
+
+    <!-- WELCOME SPLASH -->
+    <div id="site-splash" class="splash-hidden" style="transition:none" aria-modal="true" role="dialog" aria-label="Welcome to you!">
+        <canvas id="splash-canvas" aria-hidden="true"></canvas>
+
+        <!-- Centred heading -->
+        <div class="splash-content">
+            <h1 class="splash-name" aria-label="Raghu welcomes you">
+                <span id="splash-tw-main"></span><span id="splash-tw-accent"></span><span id="splash-tw-dots"></span><span class="splash-tw-cur" aria-hidden="true">|</span>
+            </h1>
+        </div>
+
+        <!-- Bottom enter button -->
+        <button class="splash-music" id="splash-music" type="button" aria-pressed="false" aria-label="Play welcome voice">
+            Play Welcome Voice
+        </button>
+        <button class="splash-enter" id="splash-enter" aria-label="Enter portfolio">
+            Enter Portfolio
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+    </div>
+
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <canvas id="aurora-canvas" aria-hidden="true"></canvas>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">RRR</span>
+                <div class="logo-stack">
+                    <span class="logo-name">RaghuRamReddy</span>
+                    <!-- LOCKED TAGLINE: do not change -->
+                    <span class="logo-tagline">Designing technology for human experience</span>
+                </div>
+            </a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="pages/work.html" class="nav-link">Work &amp; Impact</a>
+                <a href="pages/applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
+                <a href="pages/future-systems.html" class="nav-link">Future Systems</a>
+                <a href="pages/writing.html" class="nav-link">Writing</a>
+                <a href="pages/about.html" class="nav-link">About</a>
+                <a href="pages/contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <canvas id="hero-particles"></canvas>
+        <div class="hero-content">
+            <div class="hero-text-stack">
+                <h1 class="hero-line line-1 animate-slide-up">RaghuRamReddy</h1>
+                <div class="typewriter-wrap animate-slide-up delay-1">
+                    <span class="typewriter-static">Raghu &mdash;</span>
+                    <span id="typewriter-text">Platform Engineering Lead</span><span id="typewriter-cursor"></span>
+                </div>
+                <p class="hero-line line-3 animate-slide-up delay-2">
+                    From CI/CD governance to AI-driven operations, I build enterprise platforms that reduce risk, increase delivery speed, and eliminate operational chaos.
+                </p>
+                <div class="hero-cta animate-slide-up delay-2">
+                    <a href="pages/operational-standards-library.html" class="btn btn-secondary">
+                        <span>Operational Standards Library</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-stats animate-slide-up delay-2">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="120">120</span>
+                    <span class="stat-label">Systems Influenced</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="100">100</span>
+                    <span class="stat-label">Pipelines Governed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="10">10</span>
+                    <span class="stat-label">Years Platform Exp</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="15">15</span>
+                    <span class="stat-label">Enterprise Tools Integrated</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual animate-fade-in delay-2">
+            <!-- Terminal window -->
+            <div id="hero-terminal" style="position: relative; z-index: 2;">
+                <div class="term-titlebar">
+                    <span class="term-btn term-btn-r"></span>
+                    <span class="term-btn term-btn-y"></span>
+                    <span class="term-btn term-btn-g"></span>
+                    <span class="term-title-label">raghuramreddy - bash</span>
+                </div>
+                <div class="term-body">
+                    <div class="term-current-prompt">
+                        <span class="term-prompt-ps1">raghuramreddy:~$</span>
+                        <span class="term-prompt-text"></span>
+                        <span class="term-cursor"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator animate-fade-in delay-4">
+            <div class="scroll-line"></div>
+            <span>Scroll to explore</span>
+        </div>
+
+        <!-- Black Hole Portal Button -->
+        <a href="index.html?welcome=1" class="bh-portal-btn" aria-label="Enter the cosmos - revisit welcome screen" title="Enter the Cosmos">
+            <span class="bh-orbit bh-orbit-1"></span>
+            <span class="bh-orbit bh-orbit-2"></span>
+            <span class="bh-core">
+                <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor" opacity=".3"/></svg>
+            </span>
+            <span class="bh-label">Enter the Cosmos</span>
+        </a>
+    </section>
+    <hr class="gradient-divider">
+
+    <!-- Featured Spotlight Carousel -->
+<section class="section featured-carousel-section" id="featured-spotlight">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Featured Work</span>
+            <h2 class="section-title">Areas of Impact</h2>
+            <p class="section-subtitle">Platform engineering &middot; Security automation &middot; AI operations &middot; Knowledge sharing</p>
+        </div>
+        <div class="spotlight-carousel" id="spotlightCarousel">
+            <!-- Slide 1: Platform Engineering -->
+            <div class="spotlight-slide active" data-slide="0">
+                <div class="spotlight-content">
+                    <div class="spotlight-badge">Platform Engineering</div>
+                    <h3>Enterprise-Scale Delivery Platforms</h3>
+                    <p>Designing and operating internal developer platforms that serve 5,000+ engineers across regulated industries. Built standardized CI/CD governance, release reliability, and software supply chain security controls &mdash; enabling repeatable, auditable deployments at national scale.</p>
+                    <div class="spotlight-stats">
+                        <div class="sstat"><span class="sstat-num">5K+</span><span class="sstat-label">Developers Served</span></div>
+                        <div class="sstat"><span class="sstat-num">35+</span><span class="sstat-label">Teams Enabled</span></div>
+                        <div class="sstat"><span class="sstat-num">80%</span><span class="sstat-label">Faster Remediation</span></div>
+                    </div>
+                    <a href="pages/work.html" class="spotlight-cta">View Platform Work &rarr;</a>
+                </div>
+                <div class="spotlight-visual">
+                    <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Pipeline flow diagram -->
+                        <rect x="20" y="110" width="70" height="40" rx="8" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.6)" stroke-width="1.5"/>
+                        <text x="55" y="135" text-anchor="middle" fill="#60a5fa" font-size="11" font-family="monospace">Plan</text>
+                        <path d="M90 130 L110 130" stroke="rgba(59,130,246,0.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+                        <rect x="110" y="110" width="70" height="40" rx="8" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.6)" stroke-width="1.5"/>
+                        <text x="145" y="135" text-anchor="middle" fill="#60a5fa" font-size="11" font-family="monospace">Build</text>
+                        <path d="M180 130 L200 130" stroke="rgba(59,130,246,0.5)" stroke-width="1.5"/>
+                        <rect x="200" y="110" width="70" height="40" rx="8" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.6)" stroke-width="1.5"/>
+                        <text x="235" y="135" text-anchor="middle" fill="#a78bfa" font-size="11" font-family="monospace">Test</text>
+                        <path d="M270 130 L290 130" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
+                        <rect x="290" y="110" width="80" height="40" rx="8" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.6)" stroke-width="1.5"/>
+                        <text x="330" y="135" text-anchor="middle" fill="#34d399" font-size="11" font-family="monospace">Deploy</text>
+                        <!-- Live flow packet -->
+                        <circle class="flow-packet" cx="90" cy="130" r="4.5" fill="#60a5fa"/>
+                        <circle class="flow-packet flow-packet-2" cx="90" cy="130" r="3.5" fill="#34d399"/>
+                        <!-- Security shield -->
+                        <path d="M195 60 L205 55 L215 60 L215 72 L205 78 L195 72 Z" fill="rgba(59,130,246,0.2)" stroke="#60a5fa" stroke-width="1.5"/>
+                        <text x="205" y="70" text-anchor="middle" fill="#60a5fa" font-size="9">SEC</text>
+                        <!-- Metrics -->
+                        <rect x="40" y="180" width="120" height="60" rx="10" fill="rgba(15,23,42,0.8)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
+                        <text x="100" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">MTTR</text>
+                        <text x="100" y="225" text-anchor="middle" fill="#34d399" font-size="20" font-weight="bold">11 min</text>
+                        <rect x="230" y="180" width="120" height="60" rx="10" fill="rgba(15,23,42,0.8)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+                        <text x="290" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">Coverage</text>
+                        <text x="290" y="225" text-anchor="middle" fill="#a78bfa" font-size="20" font-weight="bold">5,000+</text>
+                        <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="rgba(59,130,246,0.5)"/></marker></defs>
+                    </svg>
+                </div>
+            </div>
+            <!-- Slide 2: AI & Security -->
+            <div class="spotlight-slide" data-slide="1">
+                <div class="spotlight-content">
+                    <div class="spotlight-badge">AI & Cybersecurity</div>
+                    <h3>AI-Driven Security & Operations</h3>
+                    <p>Integrating applied AI into DevSecOps workflows &mdash; from intelligent pipeline anomaly detection to automated compliance validation. Building the intersection of AI and secure software delivery for critical enterprise infrastructure.</p>
+                    <div class="spotlight-stats">
+                        <div class="sstat"><span class="sstat-num">40%</span><span class="sstat-label">Fewer Incidents</span></div>
+                        <div class="sstat"><span class="sstat-num">3x</span><span class="sstat-label">Faster Detection</span></div>
+                        <div class="sstat"><span class="sstat-num">Zero</span><span class="sstat-label">Critical CVEs Shipped</span></div>
+                    </div>
+                    <a href="pages/applied-ai-systems.html" class="spotlight-cta">View AI Work &rarr;</a>
+                </div>
+                <div class="spotlight-visual">
+                    <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background grid lines -->
+                        <line x1="0" y1="70" x2="400" y2="70" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
+                        <line x1="0" y1="140" x2="400" y2="140" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
+                        <line x1="0" y1="210" x2="400" y2="210" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
+                        <!-- Input layer -->
+                        <circle cx="55" cy="80" r="16" fill="rgba(59,130,246,0.25)" stroke="#60a5fa" stroke-width="2"/>
+                        <text x="55" y="85" text-anchor="middle" fill="#93c5fd" font-size="9">IN</text>
+                        <circle cx="55" cy="140" r="16" fill="rgba(59,130,246,0.25)" stroke="#60a5fa" stroke-width="2"/>
+                        <text x="55" y="145" text-anchor="middle" fill="#93c5fd" font-size="9">SIG</text>
+                        <circle cx="55" cy="200" r="16" fill="rgba(59,130,246,0.25)" stroke="#60a5fa" stroke-width="2"/>
+                        <text x="55" y="205" text-anchor="middle" fill="#93c5fd" font-size="9">LOG</text>
+                        <!-- Hidden layer 1 -->
+                        <circle cx="155" cy="60" r="16" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
+                        <circle cx="155" cy="110" r="16" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
+                        <circle cx="155" cy="160" r="16" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
+                        <circle cx="155" cy="210" r="16" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
+                        <!-- Hidden layer 2 -->
+                        <circle cx="255" cy="100" r="16" fill="rgba(52,211,153,0.25)" stroke="#34d399" stroke-width="2"/>
+                        <circle cx="255" cy="160" r="16" fill="rgba(52,211,153,0.25)" stroke="#34d399" stroke-width="2"/>
+                        <!-- Output / AI node -->
+                        <circle cx="345" cy="130" r="22" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="2.5"/>
+                        <text x="345" y="127" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">AI</text>
+                        <text x="345" y="141" text-anchor="middle" fill="#fbbf24" font-size="8">OPS</text>
+                        <!-- Connections: input to h1 -->
+                        <line x1="71" y1="80" x2="139" y2="60" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
+                        <line x1="71" y1="80" x2="139" y2="110" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
+                        <line x1="71" y1="140" x2="139" y2="110" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
+                        <line x1="71" y1="140" x2="139" y2="160" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
+                        <line x1="71" y1="200" x2="139" y2="160" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
+                        <line x1="71" y1="200" x2="139" y2="210" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
+                        <!-- Connections: h1 to h2 -->
+                        <line x1="171" y1="60" x2="239" y2="100" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
+                        <line x1="171" y1="110" x2="239" y2="100" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
+                        <line x1="171" y1="160" x2="239" y2="160" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
+                        <line x1="171" y1="210" x2="239" y2="160" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
+                        <!-- Connections: h2 to output -->
+                        <line x1="271" y1="100" x2="323" y2="120" stroke="rgba(52,211,153,0.6)" stroke-width="2"/>
+                        <line x1="271" y1="160" x2="323" y2="140" stroke="rgba(52,211,153,0.6)" stroke-width="2"/>
+                        <!-- Status cards -->
+                        <rect x="10" y="235" width="105" height="34" rx="8" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.4)" stroke-width="1"/>
+                        <text x="62" y="250" text-anchor="middle" fill="#94a3b8" font-size="9">Anomaly Detect</text>
+                        <text x="62" y="263" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="700">Active</text>
+                        <rect x="145" y="235" width="110" height="34" rx="8" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+                        <text x="200" y="250" text-anchor="middle" fill="#94a3b8" font-size="9">Policy Validation</text>
+                        <text x="200" y="263" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="700">Auto-enforced</text>
+                        <rect x="275" y="235" width="115" height="34" rx="8" fill="rgba(52,211,153,0.12)" stroke="rgba(52,211,153,0.4)" stroke-width="1"/>
+                        <text x="332" y="250" text-anchor="middle" fill="#94a3b8" font-size="9">Remediation</text>
+                        <text x="332" y="263" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700">AI-Assisted</text>
+                    </svg>
+                </div>
+            </div>
+            <!-- Slide 3: Writing & Publications -->
+            <div class="spotlight-slide" data-slide="2">
+                <div class="spotlight-content">
+                    <div class="spotlight-badge">Research & Writing</div>
+                    <h3>Published Research & Industry Knowledge</h3>
+                    <p>Advancing the field through peer-reviewed research, technical writing, and an open knowledge-sharing platform. Covering DevSecOps, platform engineering, AI operations, and software supply chain security to benefit the broader engineering community.</p>
+                    <div class="spotlight-stats">
+                        <div class="sstat"><span class="sstat-num">10+</span><span class="sstat-label">Technical Articles</span></div>
+                        <div class="sstat"><span class="sstat-num">Open</span><span class="sstat-label">Knowledge Hub</span></div>
+                        <div class="sstat"><span class="sstat-num">CET</span><span class="sstat-label">Field Contributor</span></div>
+                    </div>
+                    <a href="pages/writing.html" class="spotlight-cta">View Writing &rarr;</a>
+                </div>
+                <div class="spotlight-visual">
+                    <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Article cards stacked -->
+                        <rect x="50" y="30" width="200" height="130" rx="12" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.5)" stroke-width="1.5"/>
+                        <rect x="58" y="50" width="140" height="10" rx="5" fill="rgba(59,130,246,0.5)"/>
+                        <rect x="58" y="70" width="110" height="7" rx="3" fill="rgba(59,130,246,0.3)"/>
+                        <rect x="58" y="84" width="130" height="7" rx="3" fill="rgba(59,130,246,0.25)"/>
+                        <rect x="58" y="98" width="95" height="7" rx="3" fill="rgba(59,130,246,0.2)"/>
+                        <rect x="58" y="118" width="60" height="22" rx="6" fill="rgba(59,130,246,0.25)" stroke="rgba(59,130,246,0.6)" stroke-width="1"/>
+                        <text x="88" y="133" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">DevSecOps</text>
+                        <!-- Second article card (offset) -->
+                        <rect x="80" y="80" width="200" height="130" rx="12" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
+                        <rect x="88" y="100" width="140" height="10" rx="5" fill="rgba(167,139,250,0.5)"/>
+                        <rect x="88" y="120" width="110" height="7" rx="3" fill="rgba(167,139,250,0.3)"/>
+                        <rect x="88" y="134" width="130" height="7" rx="3" fill="rgba(167,139,250,0.25)"/>
+                        <rect x="88" y="148" width="60" height="22" rx="6" fill="rgba(167,139,250,0.25)" stroke="rgba(167,139,250,0.6)" stroke-width="1"/>
+                        <text x="118" y="163" text-anchor="middle" fill="#c4b5fd" font-size="9" font-weight="700">Platform Eng</text>
+                        <!-- Third article card (most front) -->
+                        <rect x="110" y="130" width="200" height="115" rx="12" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.5)" stroke-width="1.5"/>
+                        <rect x="118" y="150" width="140" height="10" rx="5" fill="rgba(52,211,153,0.5)"/>
+                        <rect x="118" y="170" width="110" height="7" rx="3" fill="rgba(52,211,153,0.3)"/>
+                        <rect x="118" y="184" width="130" height="7" rx="3" fill="rgba(52,211,153,0.25)"/>
+                        <rect x="118" y="200" width="60" height="22" rx="6" fill="rgba(52,211,153,0.25)" stroke="rgba(52,211,153,0.6)" stroke-width="1"/>
+                        <text x="148" y="215" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">AI-OPS</text>
+                        <!-- Side knowledge pills -->
+                        <rect x="328" y="50" width="62" height="26" rx="8" fill="rgba(251,191,36,0.15)" stroke="rgba(251,191,36,0.5)" stroke-width="1"/>
+                        <text x="359" y="67" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Research</text>
+                        <rect x="332" y="100" width="58" height="26" rx="8" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.5)" stroke-width="1"/>
+                        <text x="361" y="117" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">Writing</text>
+                        <rect x="328" y="150" width="62" height="26" rx="8" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.5)" stroke-width="1"/>
+                        <text x="359" y="167" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="600">Open KB</text>
+                        <rect x="330" y="200" width="60" height="26" rx="8" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/>
+                        <text x="360" y="217" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="600">10+ Posts</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel Controls -->
+        <div class="carousel-controls">
+            <button class="carousel-dot active" data-target="0" aria-label="Slide 1"></button>
+            <button class="carousel-dot" data-target="1" aria-label="Slide 2"></button>
+            <button class="carousel-dot" data-target="2" aria-label="Slide 3"></button>
+        </div>
+    </div>
+</section>
+
+    <!-- Ecosystem Section -->
+    <section class="section ecosystem" id="ecosystem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Architecture</span>
+                <h2 class="section-title">The Platform Ecosystem</h2>
+                <p class="section-subtitle">A single platform view: delivery + security + reliability + AI.</p>
+            </div>
+            <div id="ecosystem"></div>
+        </div>
+    </section>
+
+    <!-- What I Build Section -->
+    <section class="section what-i-build" id="what-i-build">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Expertise</span>
+                <h2 class="section-title">What I Build</h2>
+                <p class="section-subtitle">Platform systems that enable teams to deliver faster, safer, and with confidence</p>
+            </div>
+            <div class="capabilities-grid">
+                <div class="capability-card" data-aos="fade-up" data-category="platform">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5z"></path>
+                            <path d="M4 9h16M9 4v16"></path>
+                        </svg>
+                    </div>
+                    <h3>Platform Engineering</h3>
+                    <p>Building Internal Developer Platforms (IDPs) that abstract complexity and accelerate delivery through golden paths and self-service capabilities.</p>
+                    <div class="card-tags">
+                        <span>Kubernetes</span>
+                        <span>enterprise container platform</span>
+                        <span>Backstage</span>
+                    </div>
+                </div>
+                <div class="capability-card" data-aos="fade-up" data-aos-delay="100" data-category="platform">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"></path>
+                            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <h3>CI/CD & Automation</h3>
+                    <p>Designing and implementing enterprise CI/CD pipelines with governance, security scanning, and compliance automation baked in.</p>
+                    <div class="card-tags">
+                        <span>CI platform</span>
+                        <span>legacy CI</span>
+                        <span>GitOps controllers</span>
+                    </div>
+                </div>
+                <div class="capability-card" data-aos="fade-up" data-aos-delay="200" data-category="platform">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h3>DevSecOps & Compliance</h3>
+                    <p>Integrating security into every phase of the SDLC with automated vulnerability management, compliance reporting, and audit trails.</p>
+                    <div class="card-tags">
+                        <span>SAST/DAST</span>
+                        <span>code quality scanner</span>
+                        <span>cloud security platform</span>
+                    </div>
+                </div>
+                <div class="capability-card" data-aos="fade-up" data-aos-delay="300" data-category="platform">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path>
+                            <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"></path>
+                        </svg>
+                    </div>
+                    <h3>Cloud Architecture</h3>
+                    <p>Architecting multi-cloud and hybrid cloud solutions with Infrastructure as Code, cost optimization, and disaster recovery built in.</p>
+                    <div class="card-tags">
+                        <span>infrastructure as code</span>
+                        <span>AWS</span>
+                        <span>Azure</span>
+                    </div>
+                </div>
+                <div class="capability-card" data-aos="fade-up" data-aos-delay="400" data-category="platform">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Observability & SRE</h3>
+                    <p>Building comprehensive observability stacks with metrics, logs, traces, and intelligent alerting for proactive incident management.</p>
+                    <div class="card-tags">
+                        <span>metrics platform</span>
+                        <span>Grafana</span>
+                        <span>ELK Stack</span>
+                    </div>
+                </div>
+                <div class="capability-card featured" data-aos="fade-up" data-aos-delay="500" data-category="ai">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>AI-Augmented Operations</h3>
+                    <p>Integrating AI/ML into platform operations for intelligent automation, predictive scaling, anomaly detection, and governed Copilot workflows.</p>
+                    <div class="card-tags">
+                        <span>MLOps</span>
+                        <span>LLM Ops</span>
+                        <span>AIOps</span>
+                    </div>
+                    <div class="card-badge">Featured</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Preview -->
+    <section class="section" style="background: var(--bg-primary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Outcomes</span>
+                <h2 class="section-title">Measurable Impact</h2>
+                <p class="section-subtitle">Driving business value through platform engineering and automation.</p>
+            </div>
+            <div class="evidence-grid">
+                <div class="evidence-card" data-aos="fade-up">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3>90% Faster Upgrades</h3>
+                    <p>Reduced cluster upgrade time from 8 hours to 45 minutes via Upgrade Factory.</p>
+                </div>
+                <div class="evidence-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <h3>Risk Visibility</h3>
+                    <p>Unified reporting across toolchains for proactive risk management before CAB.</p>
+                </div>
+                <div class="evidence-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <h3>Standardization</h3>
+                    <p>Shifted from snowflake VM upgrades to standardized Helm/GitOps patterns.</p>
+                </div>
+                <div class="evidence-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                    </div>
+                    <h3>Remediation Speed</h3>
+                    <p>80% reduction in vulnerability remediation time through automated aggregation.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="pages/work.html#impact" class="btn btn-secondary">View Full Impact Report</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Systems Preview -->
+    <section class="section ai-preview" id="ai-preview">
+        <div class="container">
+            <div class="ai-content">
+                <div class="ai-text" data-aos="fade-right">
+                    <span class="section-tag">Applied AI</span>
+                    <h2>AI-Augmented Platform Systems</h2>
+                    <p class="ai-description">
+                        CI/CD Failure AI Agent architecture: ingest pipeline logs and events, run retrieval plus policy checks, then generate confidence-scored RCA and safe remediation options for engineer approval.
+                    </p>
+                    <div class="ai-principles">
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                            </div>
+                            <div class="principle-content">
+                                <h4>Input Layer</h4>
+                                <p>Logs, test failures, deployment events, and change metadata are normalized into one incident context stream.</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="principle-content">
+                                <h4>Inference Layer</h4>
+                                <p>Hybrid engine uses embedding retrieval, known-failure patterns, and policy gates to build an RCA hypothesis.</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="principle-content">
+                                <h4>Output Layer</h4>
+                                <p>Produces ranked fixes, blast-radius estimate, and rollback-safe recommendations with human approval before execution.</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <div class="principle-content">
+                                <h4>Measured by Impact</h4>
+                                <p>Success criteria: faster MTTR, fewer repeat incidents, and fewer risky production changes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="pages/applied-ai-systems.html" class="btn btn-primary">
+                        <span>See AI Operating Model</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="ai-visual" data-aos="fade-left">
+                    <div class="decision-panel panel-visible">
+                        <div class="decision-panel-hero" aria-hidden="true">
+                            <span class="pulse-dot"></span>
+                            <span class="pulse-dot"></span>
+                            <span class="pulse-dot"></span>
+                            <span class="scan-line"></span>
+                        </div>
+                        <div class="decision-header">
+                            <span class="decision-title">Platform Intelligence Panel</span>
+                            <span class="decision-status">Active</span>
+                        </div>
+                        <div class="decision-metrics">
+                            <div class="dm-item"><strong>3</strong><span>Signals</span></div>
+                            <div class="dm-item"><strong>2</strong><span>Correlations</span></div>
+                            <div class="dm-item"><strong>1</strong><span>Action</span></div>
+                        </div>
+                        <div class="decision-content">
+                            <div class="decision-item">
+                                <div class="d-text">
+                                    <strong>Signal Detected</strong>
+                                    <span>Memory pressure increasing across 3 nodes</span>
+                                </div>
+                            </div>
+                            <div class="decision-item">
+                                <div class="d-text">
+                                    <strong>Context Added</strong>
+                                    <span>Correlated with deployment window and traffic spike</span>
+                                </div>
+                            </div>
+                            <div class="decision-item highlight">
+                                <div class="d-text">
+                                    <strong>Recommendation</strong>
+                                    <span>Scale pool + delay non-critical rollout</span>
+                                </div>
+                            </div>
+                            <div class="decision-item success">
+                                <div class="d-text">
+                                    <strong>Human Decision</strong>
+                                    <span>Engineer reviewed &rarr; Approved</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="decision-footer">
+                            AI assists. Engineers decide.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evidence Section -->
+    <section class="section evidence" id="evidence">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Credibility</span>
+                <h2 class="section-title">Evidence & Artifacts</h2>
+                <p class="section-subtitle">Public documentation of expertise, research, and technical contributions</p>
+            </div>
+            <div class="evidence-grid">
+                <a href="pages/operational-standards-library.html" class="evidence-card" data-aos="fade-up">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Operational Standards Library</h3>
+                    <p>PDFs, diagrams, and study packs</p>
+                    <span class="evidence-count">Resources</span>
+                </a>
+                <a href="pages/work.html#platforms" class="evidence-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"></path>
+                        </svg>
+                    </div>
+                    <h3>Architecture</h3>
+                    <p>Reference architectures and operating models</p>
+                    <span class="evidence-count">Systems</span>
+                </a>
+                <a href="pages/writing.html" class="evidence-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="evidence-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <path d="M3 9h18M9 21V9"></path>
+                        </svg>
+                    </div>
+                    <h3>Blog</h3>
+                    <p>Technical writing and thoughts</p>
+                    <span class="evidence-count">Articles</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motto Section -->
+    <section class="section motto" id="motto">
+        <div class="container">
+            <div class="motto-content" data-aos="zoom-in">
+                <blockquote class="motto-quote">
+                    Engineering platforms teams can trust.
+                </blockquote>
+                <p class="motto-explanation">
+                    I design systems with three non-negotiables: <strong>scalability</strong> to grow without re-architecture, <strong>security</strong> to earn trust by default, and <strong>simplicity</strong> so teams can adopt and operate with confidence.
+                    <br><br>
+                    The goal is not just working software &mdash; but platforms that remain reliable, understandable, and sustainable over time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Hub Section -->
+<section class="section knowledge-hub-section" id="knowledge-hub">
+    <div class="container">
+        <div class="knowledge-hub-grid">
+            <div class="kh-content">
+                <span class="section-tag">Knowledge Sharing</span>
+                <h2 class="section-title" style="text-align:left; margin-bottom:16px;">What I Build, I Share</h2>
+                <p style="color:var(--text-secondary); margin-bottom:24px; line-height:1.8;">I share platform engineering, DevSecOps, and cloud architecture practices through practical articles, implementation notes, and reusable frameworks for modern delivery teams.</p>
+                <div class="kh-channels">
+                    <div class="kh-channel">
+                        <div class="kh-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Technical Articles</h4>
+                            <p>Deep dives on platform engineering, CI/CD governance, and AI operations.</p>
+                        </div>
+                    </div>
+                    <div class="kh-channel">
+                        <div class="kh-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="5"/><path d="M12 8v8M8 12h8"/></svg>
+                        </div>
+                        <div>
+                            <h4>Knowledge Briefs</h4>
+                            <p>Visual guides, architecture playbooks, and concise engineering patterns.</p>
+                        </div>
+                    </div>
+                    <div class="kh-channel">
+                        <div class="kh-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Research Publications</h4>
+                            <p>Peer-reviewed publications advancing platform engineering as a discipline.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="pages/writing.html" class="btn btn-secondary" style="margin-top:24px; display:inline-flex;">
+                    <span>Explore Writing & Research</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </a>
+            </div>
+            <div class="kh-preview">
+                <div class="kh-article-preview">
+                    <div class="kh-art-tag">Latest</div>
+                    <h4>XOps: The Operating Model Beyond DevOps</h4>
+                    <p>How platform engineering evolves the DevOps model for enterprise scale and security</p>
+                    <a href="pages/blog/xops-beyond-devops-2025.html">Read article &rarr;</a>
+                </div>
+                <div class="kh-article-preview">
+                    <div class="kh-art-tag">Research</div>
+                    <h4>CI/CD Failures at Scale &mdash; Root Cause Analysis</h4>
+                    <p>Patterns and anti-patterns from operating CI/CD at enterprise scale</p>
+                    <a href="pages/writing.html#blog">Read article &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FOOTER DIVIDER -->
+        <div class="footer-divider"></div>
+
+    <footer class="footer footer--pro">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-card footer-brand-card">
+            <a href="index.html" class="footer-logo">
+              <span class="logo-icon">RRR</span>
+              <span class="logo-text">RaghuRamReddy</span>
+            </a>
+
+            <p class="footer-tagline">Designing technology for human experience</p>
+            <p class="footer-subline">Platform Engineering &bull; DevSecOps &bull; Automation &bull; AI-assisted Operations</p>
+
+            <div class="footer-social-row">
+              <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+              <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="social-pill" href="pages/contact.html">Contact</a>
+            </div>
+          </div>
+
+          <div class="footer-links-col">
+            <div class="footer-col">
+              <h4 class="footer-col-title">Navigation</h4>
+              <div class="footer-links">
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="pages/work.html" class="footer-link">Work &amp; Impact</a>
+                <a href="pages/applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
+                <a href="pages/writing.html" class="footer-link">Writing</a>
+                <a href="pages/about.html" class="footer-link">About</a>
+                <a href="pages/contact.html" class="footer-link">Contact</a>
+              </div>
+            </div>
+
+            <div class="footer-col">
+              <h4 class="footer-col-title">Explore</h4>
+              <div class="footer-links">
+                <a href="pages/future-systems.html" class="footer-link">Future Systems</a>
+                <a href="pages/operational-standards-library.html" class="footer-link">Operational Standards Library</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-card footer-connect-card">
+            <div class="footer-connect-header">
+              <h4 class="footer-col-title">Connect</h4>
+              <p class="footer-connect-note">Fastest response on LinkedIn.</p>
+            </div>
+
+            <div class="footer-icon-grid">
+              <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+              </a>
+              <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a class="icon-btn" href="pages/contact.html" aria-label="Contact">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+              </a>
+            </div>
+
+            <a class="footer-cta" href="pages/contact.html">Let&apos;s talk &rarr;</a>
+          </div>
+
+          <div class="footer-visual" aria-hidden="true">
+            <span class="fv-orb fv-orb-1"></span>
+            <span class="fv-orb fv-orb-2"></span>
+            <span class="fv-line fv-line-1"></span>
+            <span class="fv-line fv-line-2"></span>
+            <span class="fv-dot fv-dot-1"></span>
+            <span class="fv-dot fv-dot-2"></span>
+          </div>
+        </div>
+
+        <div class="footer-bottom footer-bottom--pro">
+          <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/particles.js"></script>
+    <script src="assets/js/aurora.js"></script>
+    <script src="assets/js/pages/splash-canvas.js"></script>
+    <script>
+    // Splash screen - show once per session
+    (function() {
+        var forceSplash = false;
+        try {
+            forceSplash = new URLSearchParams(window.location.search).get('welcome') === '1';
+        } catch (e) {}
+        var splash = document.getElementById('site-splash');
+        var btn    = document.getElementById('splash-enter');
+        var timerEl = document.getElementById('splash-timer');
+        var timerBar = document.getElementById('splash-progress-bar');
+        var musicBtn = document.getElementById('splash-music');
+        var evilEye = splash ? splash.querySelector('.splash-evil-eye') : null;
+        var evilIris = splash ? splash.querySelector('.evil-eye-iris') : null;
+        var splashBg = splash ? splash.querySelector('.splash-bg') : null;
+        var eyePupil = document.getElementById('evil-eye-pupil');
+        var controls = {
+            eyeColor: document.getElementById('eye-color'),
+            bgColor: document.getElementById('bg-color'),
+            intensity: document.getElementById('eye-intensity'),
+            pupilSize: document.getElementById('pupil-size'),
+            irisWidth: document.getElementById('iris-width'),
+            glowIntensity: document.getElementById('glow-intensity'),
+            scale: document.getElementById('eye-scale'),
+            noiseScale: document.getElementById('noise-scale'),
+            pupilFollow: document.getElementById('pupil-follow'),
+            flameSpeed: document.getElementById('flame-speed')
+        };
+        var pupilFollowFactor = 1;
+        var voicePlayed = false;
+        var dismissTimer = null;
+        var countdownTicker = null;
+        if (!splash) return;
+
+        // Decide immediately — before any paint — whether to show or skip
+        var shouldShow = forceSplash || !sessionStorage.getItem('splashSeen');
+        if (!shouldShow) {
+            // Already hidden (class + inline style set in HTML) — do nothing
+            return;
+        }
+        // Reveal splash: remove hidden class, then on next frame restore the
+        // CSS transition so the dismiss fade-out still works smoothly
+        splash.classList.remove('splash-hidden');
+        requestAnimationFrame(function () {
+            splash.style.transition = '';
+        });
+
+
+        function hexToRgb(hex) {
+            var h = (hex || '').replace('#', '');
+            if (h.length !== 6) return { r: 255, g: 111, b: 55 };
+            return {
+                r: parseInt(h.substring(0, 2), 16),
+                g: parseInt(h.substring(2, 4), 16),
+                b: parseInt(h.substring(4, 6), 16)
+            };
+        }
+
+        function clamp(v, min, max) {
+            return Math.max(min, Math.min(max, v));
+        }
+
+        function applyEvilEyeSettings() {
+            if (!evilEye || !controls.eyeColor || !controls.bgColor) return;
+            var eyeHex = controls.eyeColor.value || '#FF6F37';
+            var bgHex = controls.bgColor.value || '#060010';
+            var rgb = hexToRgb(eyeHex);
+            var intensity = parseFloat(controls.intensity.value || '1.5');
+            var pupilSize = parseFloat(controls.pupilSize.value || '0.6');
+            var irisWidth = parseFloat(controls.irisWidth.value || '0.25');
+            var glowIntensity = parseFloat(controls.glowIntensity.value || '0.35');
+            var scale = parseFloat(controls.scale.value || '0.8');
+            var noiseScale = parseFloat(controls.noiseScale.value || '1');
+            pupilFollowFactor = parseFloat(controls.pupilFollow.value || '1');
+            var flameSpeed = parseFloat(controls.flameSpeed.value || '1');
+
+            var innerAlpha = clamp(0.12 * intensity, 0.08, 0.6);
+            var centerAlpha = clamp(0.45 * intensity, 0.2, 0.95);
+            var borderAlpha = clamp(0.24 * intensity, 0.12, 0.8);
+            var glowAlpha = clamp(glowIntensity * intensity, 0.08, 1);
+            var irisPercent = clamp(34 + (irisWidth * 40), 24, 58);
+            var pupilPercent = clamp(8 + (pupilSize * 18), 10, 30);
+
+            evilEye.style.background = 'radial-gradient(ellipse at center, rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + centerAlpha + ') 0%, rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + innerAlpha + ') 26%, ' + bgHex + ' 62%), linear-gradient(135deg, rgba(12,14,35,0.95), rgba(18,14,42,0.95))';
+            evilEye.style.borderColor = 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + borderAlpha + ')';
+            evilEye.style.boxShadow = '0 0 ' + (38 + glowIntensity * 48) + 'px rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.22 * glowAlpha) + '), inset 0 0 ' + (34 + glowIntensity * 60) + 'px rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.16 * glowAlpha) + ')';
+            evilEye.style.transform = 'scale(' + scale + ')';
+            evilEye.style.setProperty('--noise-scale', String(clamp(noiseScale, 0.5, 2)));
+            evilEye.style.animationDuration = (4.5 / clamp(flameSpeed, 0.5, 2.5)) + 's';
+
+            if (evilIris) {
+                evilIris.style.width = irisPercent + '%';
+                evilIris.style.background = 'radial-gradient(circle at 40% 40%, rgba(255,232,204,0.95) 0%, rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.95) 42%, rgba(70,22,20,0.8) 72%, #090510 100%)';
+            }
+            if (eyePupil) eyePupil.style.width = pupilPercent + '%';
+
+            if (splashBg) {
+                splashBg.style.background = 'radial-gradient(ellipse 90% 80% at 50% 40%, ' + bgHex + ' 0%, #08091a 60%, #050710 100%)';
+            }
+        }
+
+        Object.keys(controls).forEach(function(key) {
+            var input = controls[key];
+            if (input) input.addEventListener('input', applyEvilEyeSettings);
+        });
+        applyEvilEyeSettings();
+
+        // Typewriter for "Welcome to you!"
+        (function() {
+            var mainEl   = document.getElementById('splash-tw-main');
+            var accentEl = document.getElementById('splash-tw-accent');
+            var dotsEl   = document.getElementById('splash-tw-dots');
+            if (!mainEl || !accentEl) return;
+
+            var part1 = 'Raghu Welcomes';
+            var part2 = 'YOU';
+            var i1 = 0, i2 = 0;
+
+            function typePart1() {
+                mainEl.textContent = part1.slice(0, i1++);
+                if (i1 <= part1.length) setTimeout(typePart1, 120);
+                else setTimeout(typePart2, 400);
+            }
+            function typePart2() {
+                accentEl.textContent = part2.slice(0, i2++);
+                if (i2 <= part2.length) setTimeout(typePart2, 180);
+                else setTimeout(function() {
+                    if (!dotsEl) return;
+                    dotsEl.textContent = '...';
+                }, 350);
+            }
+            setTimeout(typePart1, 800);
+        })();
+
+        function updateVoiceButton() {
+            if (!musicBtn) return;
+            musicBtn.textContent = voicePlayed ? 'Replay Welcome Voice' : 'Play Welcome Voice';
+            musicBtn.setAttribute('aria-pressed', voicePlayed ? 'true' : 'false');
+        }
+
+        function playWelcomeVoice() {
+            if (!('speechSynthesis' in window)) {
+                updateVoiceButton();
+                return;
+            }
+            try { window.speechSynthesis.cancel(); } catch (e) {}
+            var utterance = new SpeechSynthesisUtterance('Raghu Welcomes You!');
+            // Slightly faster to match the typewriter pacing
+            utterance.rate = 1.08;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            voicePlayed = true;
+            updateVoiceButton();
+            window.speechSynthesis.speak(utterance);
+        }
+
+        document.body.classList.add('splash-open');
+        var secondsLeft = 120;
+        if (timerEl) timerEl.textContent = 'Entering in ' + secondsLeft + 's';
+        dismissTimer = setTimeout(dismiss, 120000);
+        countdownTicker = setInterval(function() {
+            secondsLeft -= 1;
+            if (timerEl && secondsLeft >= 0) timerEl.textContent = 'Entering in ' + secondsLeft + 's';
+            if (timerBar) timerBar.style.transform = 'scaleX(' + Math.max(0, secondsLeft / 120) + ')';
+            if (secondsLeft <= 0 && countdownTicker) {
+                clearInterval(countdownTicker);
+                countdownTicker = null;
+            }
+        }, 1000);
+        splash.addEventListener('click', dismiss, { once: true });
+
+        function dismiss() {
+            if (dismissTimer) {
+                clearTimeout(dismissTimer);
+                dismissTimer = null;
+            }
+            if (countdownTicker) {
+                clearInterval(countdownTicker);
+                countdownTicker = null;
+            }
+            try { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); } catch (e) {}
+            sessionStorage.setItem('splashSeen', '1');
+            splash.classList.add('splash-hidden');
+            document.body.classList.remove('splash-open');
+            if (forceSplash) {
+                var cleanUrl = new URL(window.location.href);
+                cleanUrl.searchParams.delete('welcome');
+                window.history.replaceState({}, '', cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+                forceSplash = false;
+            }
+        }
+
+        if (btn) btn.addEventListener('click', dismiss);
+        if (musicBtn) {
+            musicBtn.addEventListener('click', function(e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                playWelcomeVoice();
+            });
+        }
+        updateVoiceButton();
+        // Auto-play voice once per session for new visitors.
+        // Always allow auto-play on explicit welcome redirect (?welcome=1).
+        var canAutoPlayVoice = forceSplash;
+        try {
+            if (!forceSplash && !sessionStorage.getItem('welcomeVoicePlayed')) {
+                canAutoPlayVoice = true;
+            }
+        } catch (e) {}
+        if (canAutoPlayVoice) {
+            setTimeout(playWelcomeVoice, 900);
+            try { sessionStorage.setItem('welcomeVoicePlayed', '1'); } catch (e) {}
+        }
+
+        if (eyePupil) {
+            splash.addEventListener('mousemove', function(e) {
+                var rect = splash.getBoundingClientRect();
+                var x = (e.clientX - rect.left) / rect.width - 0.5;
+                var y = (e.clientY - rect.top) / rect.height - 0.5;
+                var tx = Math.max(-1, Math.min(1, x * 2)) * 10 * pupilFollowFactor;
+                var ty = Math.max(-1, Math.min(1, y * 2)) * 6 * pupilFollowFactor;
+                eyePupil.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
+            });
+            splash.addEventListener('mouseleave', function() {
+                eyePupil.style.transform = 'translate(0,0)';
+            });
+        }
+
+        // Also dismiss on any keyboard press (accessibility)
+        document.addEventListener('keydown', function handler(e) {
+            if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+                dismiss();
+                document.removeEventListener('keydown', handler);
+            }
+        });
+    })();
+    </script>
+    <script src="assets/js/pages/ecosystem-data.js"></script>
+    <script src="assets/js/pages/ecosystem-render.js"></script>
+    <script src="assets/js/pages/terminal-hero.js"></script>
+    <script>renderEcosystem("ecosystem");</script>
+<script>
+// Spotlight Carousel
+(function() {
+    var slides = document.querySelectorAll('.spotlight-slide');
+    var dots   = document.querySelectorAll('.carousel-dot');
+    var carousel = document.getElementById('spotlightCarousel');
+    var current = 0;
+    var timer;
+
+    function goTo(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+    }
+
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            stopAuto();
+            goTo(parseInt(this.dataset.target));
+            startAuto();
+        });
+    });
+
+    function stopAuto() {
+        if (timer) clearInterval(timer);
+    }
+
+    function startAuto() {
+        stopAuto();
+        timer = setInterval(function() { goTo(current + 1); }, 5200);
+    }
+
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopAuto);
+        carousel.addEventListener('mouseleave', startAuto);
+        carousel.addEventListener('touchstart', stopAuto, { passive: true });
+        carousel.addEventListener('touchend', startAuto, { passive: true });
+    }
+
+    startAuto();
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

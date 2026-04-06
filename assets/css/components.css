@@ -1,0 +1,353 @@
+/* ============================================
+   COMPONENTS — Terminal & Neural Network
+   ============================================ */
+
+/* ============================================
+   HERO TERMINAL
+   ============================================ */
+#hero-terminal {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 14px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 460px;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    box-shadow:
+        0 0 0 1px rgba(59, 130, 246, 0.08),
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 50px rgba(59, 130, 246, 0.07);
+    position: relative;
+}
+
+[data-theme="light"] #hero-terminal {
+    background: #1a1a2e;
+    border-color: #2d2d44;
+}
+
+.term-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #161b22;
+    border-bottom: 1px solid #21262d;
+}
+
+[data-theme="light"] .term-titlebar {
+    background: #16213e;
+    border-bottom-color: #2d2d44;
+}
+
+.term-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.term-btn-r { background: #ff5f57; }
+.term-btn-y { background: #febc2e; }
+.term-btn-g { background: #28c840; }
+
+.term-title-label {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 11px;
+    color: rgba(148, 163, 184, 0.5);
+    letter-spacing: 0.5px;
+}
+
+.term-body {
+    padding: 14px 16px;
+    min-height: 220px;
+    max-height: 280px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.term-hist-line {
+    line-height: 1.7;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.term-ps1 {
+    color: #8b5cf6;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.term-hist-cmd {
+    color: #e2e8f0;
+}
+
+.term-output-line {
+    color: rgba(148, 163, 184, 0.85);
+    line-height: 1.7;
+    padding-left: 2px;
+    white-space: pre;
+}
+
+.term-output-line.success {
+    color: #22c55e;
+}
+
+.term-current-prompt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.7;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.term-prompt-ps1 {
+    color: #8b5cf6;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.term-prompt-text {
+    color: #e2e8f0;
+}
+
+.term-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: #3b82f6;
+    border-radius: 1px;
+    animation: termBlink 1s step-end infinite;
+    vertical-align: -2px;
+    margin-left: 1px;
+    flex-shrink: 0;
+}
+
+@keyframes termBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* Glow frame around terminal in dark mode */
+[data-theme="dark"] #hero-terminal::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 15px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3), rgba(6, 182, 212, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* ============================================
+   NEURAL NETWORK CANVAS SECTION
+   ============================================ */
+.neural-section {
+    padding: 60px 0;
+    position: relative;
+}
+
+.neural-canvas-wrap {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(10, 10, 20, 0.6);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .neural-canvas-wrap {
+    background: rgba(240, 245, 255, 0.8);
+    border-color: rgba(59, 130, 246, 0.18);
+}
+
+#neural-canvas {
+    display: block;
+    width: 100%;
+    height: 320px;
+}
+
+.neural-caption {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(59, 130, 246, 0.55);
+    letter-spacing: 0.5px;
+}
+
+.neural-labels {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 14%;
+    font-size: 11px;
+    color: rgba(148, 163, 184, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================
+   SKILL RADAR CHART (SVG-based)
+   ============================================ */
+.radar-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.radar-chart-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    flex-shrink: 0;
+}
+
+#radar-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.radar-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.radar-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.radar-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.radar-label-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.radar-pct {
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent-primary);
+    margin-left: auto;
+}
+
+/* ============================================
+   DATA FLOW DIAGRAM
+   ============================================ */
+.data-flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 32px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 100px;
+}
+
+.flow-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.flow-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-primary);
+}
+
+.flow-node:hover .flow-icon {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    transform: translateY(-4px);
+}
+
+.flow-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.flow-arrow {
+    width: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.flow-arrow svg {
+    width: 32px;
+    height: 12px;
+    color: rgba(59, 130, 246, 0.35);
+}
+
+/* Animated pulse on flow arrows */
+.flow-arrow .flow-pulse {
+    animation: flowPulse 1.8s ease-in-out infinite;
+}
+
+.flow-node:nth-child(2) ~ .flow-arrow .flow-pulse { animation-delay: 0.3s; }
+.flow-node:nth-child(4) ~ .flow-arrow .flow-pulse { animation-delay: 0.6s; }
+.flow-node:nth-child(6) ~ .flow-arrow .flow-pulse { animation-delay: 0.9s; }
+
+@keyframes flowPulse {
+    0%, 100% { opacity: 0.25; transform: translateX(0); }
+    50%       { opacity: 0.9;  transform: translateX(4px); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+    .radar-wrap { flex-direction: column; }
+    .radar-chart-container { width: 260px; height: 260px; }
+    .data-flow { gap: 8px; }
+}
+
+@media (max-width: 600px) {
+    #hero-terminal { max-width: 100%; font-size: 11.5px; }
+    #neural-canvas { height: 220px; }
+}

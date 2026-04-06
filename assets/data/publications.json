@@ -1,0 +1,79 @@
+{
+  "_readme": "Add new items to any array below. No 'year' field — dates are intentionally omitted from display. Use '#' for link when not yet published. Tags are shown as chips.",
+
+  "papers": [
+    {
+      "id": "idp-resilient",
+      "title": "Building Resilient Internal Developer Platforms",
+      "type": "Technical Paper",
+      "description": "A comprehensive guide to designing Internal Developer Platforms that scale with organizational growth while maintaining developer experience and operational reliability.",
+      "link": "#",
+      "tags": ["IDP", "Platform Engineering", "Reliability"]
+    },
+    {
+      "id": "devsecops-scale",
+      "title": "DevSecOps at Enterprise Scale: Lessons Learned",
+      "type": "Technical Paper",
+      "description": "Practical insights from implementing security automation across large enterprises. Covers toolchain integration, policy enforcement, and cultural transformation.",
+      "link": "#",
+      "tags": ["DevSecOps", "Enterprise", "Security Automation"]
+    },
+    {
+      "id": "ai-governance",
+      "title": "AI Governance Framework for Enterprise Operations",
+      "type": "Technical Paper",
+      "description": "A framework for safely integrating AI into enterprise operations with proper governance, audit trails, and human oversight mechanisms.",
+      "link": "#",
+      "tags": ["AI Governance", "AIOps", "Enterprise"]
+    }
+  ],
+
+  "academic": [
+    {
+      "id": "ai-biology",
+      "title": "AI Application for Biological Sciences Curriculum Development",
+      "institution": "Alcorn State University",
+      "role": "AI Project Student Assistantship Awardee — Research & Teaching Assistantship",
+      "description": "Research and teaching assistantship exploring applications of artificial intelligence in biological sciences curriculum development. Recognized with departmental AI Project Assistantship Award.",
+      "tags": ["AI", "Research", "Academia"]
+    }
+  ],
+
+  "patents": [
+  ],
+
+  "articles": [
+    {
+      "id": "critical-infra",
+      "title": "Software Platforms as Critical Infrastructure",
+      "outlet": "Medium",
+      "description": "Why reliability is now a public interest problem and how software platforms must evolve to meet this responsibility.",
+      "link": "https://medium.com/@raghu1990t/software-platforms-as-critical-infrastructure-why-reliability-is-now-a-public-interest-problem-27da1b5dfc1b",
+      "tags": ["Platform Engineering", "Reliability"]
+    },
+    {
+      "id": "platform-evolution",
+      "title": "The Evolution of Platform Engineering",
+      "outlet": "Medium",
+      "description": "How platform engineering has evolved from infrastructure automation to building Internal Developer Platforms that scale teams and reduce cognitive load.",
+      "link": "#",
+      "tags": ["Platform Engineering", "IDP"]
+    },
+    {
+      "id": "security-enable",
+      "title": "Security Should Enable, Not Block",
+      "outlet": "LinkedIn Newsletter",
+      "description": "Rethinking security's role in the development lifecycle. How DevSecOps can accelerate delivery instead of slowing it down.",
+      "link": "#",
+      "tags": ["DevSecOps", "Security Culture"]
+    },
+    {
+      "id": "ai-adoption",
+      "title": "Safe AI Adoption in Enterprise Operations",
+      "outlet": "LinkedIn Newsletter",
+      "description": "A practical guide to adopting AI-powered tools in enterprise environments while maintaining security, compliance, and human oversight.",
+      "link": "#",
+      "tags": ["AI Operations", "Enterprise", "Governance"]
+    }
+  ]
+}

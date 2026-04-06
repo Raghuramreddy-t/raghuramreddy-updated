@@ -1,0 +1,34 @@
+{
+  "site": {
+    "baseUrl": "https://raghuramreddy.tech",
+    "author": "Raghuramreddy Thummalapalli"
+  },
+  "posts": [
+    {
+      "id": "xops-beyond-devops-2025",
+      "title": "Why XOps Is the Next Step Beyond DevOps in 2025",
+      "description": "DevOps got us here — but it won’t take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.",
+      "url": "/pages/blog/xops-beyond-devops-2025.html",
+      "tags": ["XOps", "DevOps", "Platform Engineering", "DevSecOps", "Operating Model"],
+      "published": "2026-02-08",
+      "updated": "2026-02-08",
+      "version": "1.0.0",
+      "alsoPublished": {
+        "linkedin": "https://www.linkedin.com/posts/raghuramreddy-t-9237901b3_xops-devops-mlops-activity-7342718856102109184--scU",
+        "medium": ""
+      },
+      "changelog": [
+        {
+          "version": "1.0.0",
+          "date": "2026-02-08",
+          "changes": [
+            "Initial publication on portfolio",
+            "Added canonical URL + structured data",
+            "LinkedIn distribution link added"
+          ]
+        }
+      ],
+      "aiIndexText": "XOps is the next step beyond DevOps. It integrates platform engineering, security, reliability, data and AI into one operating loop. Focus: safe automation, measurable governance, reduced handoffs, faster delivery, security-by-default and feedback loops."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Platform core emblem">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="55%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity=".35"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="480" height="320" fill="#0b1222"/>
+  <circle cx="240" cy="160" r="120" fill="url(#glow)"/>
+  <circle cx="240" cy="160" r="88" fill="none" stroke="url(#g1)" stroke-width="2" opacity=".6"/>
+  <circle cx="240" cy="160" r="58" fill="none" stroke="url(#g1)" stroke-width="2" opacity=".85"/>
+  <path d="M240 94l56 32v64l-56 32-56-32v-64z" fill="none" stroke="url(#g1)" stroke-width="3"/>
+  <circle cx="240" cy="160" r="15" fill="url(#g1)"/>
+  <circle cx="240" cy="72" r="5" fill="#93c5fd"/>
+  <circle cx="320" cy="118" r="5" fill="#a78bfa"/>
+  <circle cx="320" cy="202" r="5" fill="#22d3ee"/>
+  <circle cx="240" cy="248" r="5" fill="#93c5fd"/>
+  <circle cx="160" cy="202" r="5" fill="#a78bfa"/>
+  <circle cx="160" cy="118" r="5" fill="#22d3ee"/>
+  <path d="M240 72v32M320 118l-28 16M320 202l-28-16M240 248v-32M160 202l28-16M160 118l28 16" stroke="#93c5fd" stroke-width="2" opacity=".65"/>
+</svg>
