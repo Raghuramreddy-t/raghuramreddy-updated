@@ -19,7 +19,8 @@ const PROJECTS_DATA = [
             'Automated rollback on failure detection',
             '90% reduction in upgrade cycle time - 8 hours to 45 minutes'
         ],
-        impact: '90% Faster Upgrades'
+        impact: '90% Faster Upgrades',
+        link: '#upgrade-factory-details'
     },
     {
         id: 'shield',
@@ -35,7 +36,8 @@ const PROJECTS_DATA = [
             'Automated JIRA ticket creation for critical findings',
             '80% reduction in vulnerability remediation time'
         ],
-        impact: '80% Faster Remediation'
+        impact: '80% Faster Remediation',
+        link: '#shield-details'
     },
     {
         id: 'toolchain',
@@ -51,7 +53,8 @@ const PROJECTS_DATA = [
             'Artifact versioning and provenance tracking',
             'Standardized toolchain for 50+ development teams'
         ],
-        impact: 'Zero Environment Drift'
+        impact: 'Zero Environment Drift',
+        link: '#toolchain-details'
     },
     {
         id: 'ehr-portal',
@@ -67,7 +70,8 @@ const PROJECTS_DATA = [
             'HIPAA-compliant audit logging and encryption',
             'Real-time appointment and record management'
         ],
-        impact: 'HIPAA Compliant'
+        impact: 'HIPAA Compliant',
+        link: '#ehr-details'
     },
     {
         id: 'secure-ehr',
@@ -83,7 +87,8 @@ const PROJECTS_DATA = [
             'OPA policy-as-code for regulatory enforcement',
             'SBOM generation, signing, and attestation'
         ],
-        impact: 'Continuous Compliance'
+        impact: 'Continuous Compliance',
+        link: '#secure-ehr-details'
     },
     {
         id: 'pharmacovigilance',
@@ -99,7 +104,8 @@ const PROJECTS_DATA = [
             'Automated causality assessment assistance',
             'Human-in-the-loop review workflow with audit trail'
         ],
-        impact: 'Signal Detection Automation'
+        impact: 'Signal Detection Automation',
+        link: 'pages/blog/ai-cicd-troubleshooter.html'
     }
 ];
 
@@ -204,6 +210,7 @@ const PROJECTS_DATA = [
                     <p>${project.description}</p>
                     <ul class="project-features">${featureList}</ul>
                     <div class="project-tech">${techTags}</div>
+                    ${project.link ? `<a href="${project.link}" class="project-link"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>` : ''}
                 </div>
             </div>`;
     }

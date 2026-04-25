@@ -25,6 +25,13 @@ Show real systems, real impact, and clear thinking.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RaghuRamReddy Thummalapalli | Enterprise Platform Engineering & DevSecOps Leader</title>
     <meta name="description" content="Enterprise platform engineering and DevSecOps leader specializing in secure software delivery at scale, AI-augmented operations, and critical infrastructure for regulated industries.">
+    <meta property="og:title" content="RaghuRamReddy | Platform Engineering &amp; DevSecOps Architect">
+    <meta property="og:description" content="Building enterprise delivery platforms that are secure by default, auditable by design, and scalable in practice.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raghuramreddy.tech">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RaghuRamReddy | Platform Engineering Leader">
+    <meta name="twitter:description" content="Enterprise platform engineering &amp; DevSecOps expertise.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,37 +45,15 @@ Show real systems, real impact, and clear thinking.
 </head>
 <body class="home-page">
 
-    <!-- WELCOME SPLASH -->
-    <div id="site-splash" class="splash-hidden" style="transition:none" aria-modal="true" role="dialog" aria-label="Welcome to you!">
-        <canvas id="splash-canvas" aria-hidden="true"></canvas>
-
-        <!-- Centred heading -->
-        <div class="splash-content">
-            <h1 class="splash-name" aria-label="Raghu welcomes you">
-                <span id="splash-tw-main"></span><span id="splash-tw-accent"></span><span id="splash-tw-dots"></span><span class="splash-tw-cur" aria-hidden="true">|</span>
-            </h1>
-        </div>
-
-        <!-- Bottom enter button -->
-        <button class="splash-music" id="splash-music" type="button" aria-pressed="false" aria-label="Play welcome voice">
-            Play Welcome Voice
-        </button>
-        <button class="splash-enter" id="splash-enter" aria-label="Enter portfolio">
-            Enter Portfolio
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-    </div>
-
     <div id="scroll-progress" aria-hidden="true"></div>
 
     <div class="bg-gradient"></div>
-    <div class="floating-orbs">
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+    <div class="floating-orbs" aria-hidden="true">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
         <div class="orb orb-3"></div>
     </div>
-    <canvas id="aurora-canvas" aria-hidden="true"></canvas>
-    <canvas id="particles-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -88,6 +73,7 @@ Show real systems, real impact, and clear thinking.
                 <a href="pages/future-systems.html" class="nav-link">Future Systems</a>
                 <a href="pages/writing.html" class="nav-link">Writing</a>
                 <a href="pages/about.html" class="nav-link">About</a>
+                <a href="resume.html" class="nav-link">Resume</a>
                 <a href="pages/contact.html" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
@@ -111,7 +97,6 @@ Show real systems, real impact, and clear thinking.
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <canvas id="hero-particles"></canvas>
         <div class="hero-content">
             <div class="hero-text-stack">
                 <h1 class="hero-line line-1 animate-slide-up">RaghuRamReddy</h1>
@@ -120,22 +105,14 @@ Show real systems, real impact, and clear thinking.
                     <span id="typewriter-text">Platform Engineering Lead</span><span id="typewriter-cursor"></span>
                 </div>
                 <p class="hero-line line-3 animate-slide-up delay-2">
-                    From CI/CD governance to AI-driven operations, I build enterprise platforms that reduce risk, increase delivery speed, and eliminate operational chaos.
+                    From CI/CD governance to AI-augmented operations, I build enterprise platforms that reduce risk, increase delivery speed, and scale team productivity.
                 </p>
-                <div class="hero-cta animate-slide-up delay-2">
-                    <a href="pages/operational-standards-library.html" class="btn btn-secondary">
-                        <span>Operational Standards Library</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
             </div>
 
             <div class="hero-stats animate-slide-up delay-2">
                 <div class="stat-item">
                     <span class="stat-number" data-count="120">120</span>
-                    <span class="stat-label">Systems Influenced</span>
+                    <span class="stat-label">Systems Delivered</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-count="100">100</span>
@@ -143,7 +120,7 @@ Show real systems, real impact, and clear thinking.
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-count="10">10</span>
-                    <span class="stat-label">Years Platform Exp</span>
+                    <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-item">
                     <span class="stat-number" data-count="15">15</span>
@@ -169,20 +146,36 @@ Show real systems, real impact, and clear thinking.
                 </div>
             </div>
         </div>
+        <div class="hero-tag-strip" aria-hidden="true">
+            <div class="hero-tag-strip-inner">
+                <div class="hero-tag-strip-track">
+                    <span class="hero-tag-chip">Platform Engineering</span>
+                    <span class="hero-tag-chip">CI/CD Governance</span>
+                    <span class="hero-tag-chip">DevSecOps</span>
+                    <span class="hero-tag-chip">Cloud Architecture</span>
+                    <span class="hero-tag-chip">Observability</span>
+                    <span class="hero-tag-chip">RAG + Knowledge Systems</span>
+                    <span class="hero-tag-chip">AI Ops Guardrails</span>
+                    <span class="hero-tag-chip">Policy-as-Code</span>
+                    <span class="hero-tag-chip">Incident Standards</span>
+                </div>
+                <div class="hero-tag-strip-track" aria-hidden="true">
+                    <span class="hero-tag-chip">Platform Engineering</span>
+                    <span class="hero-tag-chip">CI/CD Governance</span>
+                    <span class="hero-tag-chip">DevSecOps</span>
+                    <span class="hero-tag-chip">Cloud Architecture</span>
+                    <span class="hero-tag-chip">Observability</span>
+                    <span class="hero-tag-chip">RAG + Knowledge Systems</span>
+                    <span class="hero-tag-chip">AI Ops Guardrails</span>
+                    <span class="hero-tag-chip">Policy-as-Code</span>
+                    <span class="hero-tag-chip">Incident Standards</span>
+                </div>
+            </div>
+        </div>
         <div class="scroll-indicator animate-fade-in delay-4">
             <div class="scroll-line"></div>
             <span>Scroll to explore</span>
         </div>
-
-        <!-- Black Hole Portal Button -->
-        <a href="index.html?welcome=1" class="bh-portal-btn" aria-label="Enter the cosmos - revisit welcome screen" title="Enter the Cosmos">
-            <span class="bh-orbit bh-orbit-1"></span>
-            <span class="bh-orbit bh-orbit-2"></span>
-            <span class="bh-core">
-                <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor" opacity=".3"/></svg>
-            </span>
-            <span class="bh-label">Enter the Cosmos</span>
-        </a>
     </section>
     <hr class="gradient-divider">
 
@@ -200,7 +193,7 @@ Show real systems, real impact, and clear thinking.
                 <div class="spotlight-content">
                     <div class="spotlight-badge">Platform Engineering</div>
                     <h3>Enterprise-Scale Delivery Platforms</h3>
-                    <p>Designing and operating internal developer platforms that serve 5,000+ engineers across regulated industries. Built standardized CI/CD governance, release reliability, and software supply chain security controls &mdash; enabling repeatable, auditable deployments at national scale.</p>
+                    <p>Designing and operating internal developer platforms that serve 5,000+ engineers across regulated industries. Built standardized CI/CD governance, release reliability, and software supply chain security controls &mdash; enabling repeatable, auditable deployments across multiple organizations.</p>
                     <div class="spotlight-stats">
                         <div class="sstat"><span class="sstat-num">5K+</span><span class="sstat-label">Developers Served</span></div>
                         <div class="sstat"><span class="sstat-num">35+</span><span class="sstat-label">Teams Enabled</span></div>
@@ -467,7 +460,7 @@ Show real systems, real impact, and clear thinking.
                         </svg>
                     </div>
                     <h3>AI-Augmented Operations</h3>
-                    <p>Integrating AI/ML into platform operations for intelligent automation, predictive scaling, anomaly detection, and governed Copilot workflows.</p>
+                    <p>Integrating AI/ML into platform operations for intelligent automation, predictive scaling, anomaly detection, and governed assistant workflows.</p>
                     <div class="card-tags">
                         <span>MLOps</span>
                         <span>LLM Ops</span>
@@ -648,17 +641,6 @@ Show real systems, real impact, and clear thinking.
                 <p class="section-subtitle">Public documentation of expertise, research, and technical contributions</p>
             </div>
             <div class="evidence-grid">
-                <a href="pages/operational-standards-library.html" class="evidence-card" data-aos="fade-up">
-                    <div class="evidence-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"></path>
-                        </svg>
-                    </div>
-                    <h3>Operational Standards Library</h3>
-                    <p>PDFs, diagrams, and study packs</p>
-                    <span class="evidence-count">Resources</span>
-                </a>
                 <a href="pages/work.html#platforms" class="evidence-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="evidence-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -689,7 +671,7 @@ Show real systems, real impact, and clear thinking.
         <div class="container">
             <div class="motto-content" data-aos="zoom-in">
                 <blockquote class="motto-quote">
-                    Engineering platforms teams can trust.
+                    Engineering platforms that teams can trust.
                 </blockquote>
                 <p class="motto-explanation">
                     I design systems with three non-negotiables: <strong>scalability</strong> to grow without re-architecture, <strong>security</strong> to earn trust by default, and <strong>simplicity</strong> so teams can adopt and operate with confidence.
@@ -844,246 +826,6 @@ Show real systems, real impact, and clear thinking.
     <script src="assets/js/main.js"></script>
     <script src="assets/js/particles.js"></script>
     <script src="assets/js/aurora.js"></script>
-    <script src="assets/js/pages/splash-canvas.js"></script>
-    <script>
-    // Splash screen - show once per session
-    (function() {
-        var forceSplash = false;
-        try {
-            forceSplash = new URLSearchParams(window.location.search).get('welcome') === '1';
-        } catch (e) {}
-        var splash = document.getElementById('site-splash');
-        var btn    = document.getElementById('splash-enter');
-        var timerEl = document.getElementById('splash-timer');
-        var timerBar = document.getElementById('splash-progress-bar');
-        var musicBtn = document.getElementById('splash-music');
-        var evilEye = splash ? splash.querySelector('.splash-evil-eye') : null;
-        var evilIris = splash ? splash.querySelector('.evil-eye-iris') : null;
-        var splashBg = splash ? splash.querySelector('.splash-bg') : null;
-        var eyePupil = document.getElementById('evil-eye-pupil');
-        var controls = {
-            eyeColor: document.getElementById('eye-color'),
-            bgColor: document.getElementById('bg-color'),
-            intensity: document.getElementById('eye-intensity'),
-            pupilSize: document.getElementById('pupil-size'),
-            irisWidth: document.getElementById('iris-width'),
-            glowIntensity: document.getElementById('glow-intensity'),
-            scale: document.getElementById('eye-scale'),
-            noiseScale: document.getElementById('noise-scale'),
-            pupilFollow: document.getElementById('pupil-follow'),
-            flameSpeed: document.getElementById('flame-speed')
-        };
-        var pupilFollowFactor = 1;
-        var voicePlayed = false;
-        var dismissTimer = null;
-        var countdownTicker = null;
-        if (!splash) return;
-
-        // Decide immediately — before any paint — whether to show or skip
-        var shouldShow = forceSplash || !sessionStorage.getItem('splashSeen');
-        if (!shouldShow) {
-            // Already hidden (class + inline style set in HTML) — do nothing
-            return;
-        }
-        // Reveal splash: remove hidden class, then on next frame restore the
-        // CSS transition so the dismiss fade-out still works smoothly
-        splash.classList.remove('splash-hidden');
-        requestAnimationFrame(function () {
-            splash.style.transition = '';
-        });
-
-
-        function hexToRgb(hex) {
-            var h = (hex || '').replace('#', '');
-            if (h.length !== 6) return { r: 255, g: 111, b: 55 };
-            return {
-                r: parseInt(h.substring(0, 2), 16),
-                g: parseInt(h.substring(2, 4), 16),
-                b: parseInt(h.substring(4, 6), 16)
-            };
-        }
-
-        function clamp(v, min, max) {
-            return Math.max(min, Math.min(max, v));
-        }
-
-        function applyEvilEyeSettings() {
-            if (!evilEye || !controls.eyeColor || !controls.bgColor) return;
-            var eyeHex = controls.eyeColor.value || '#FF6F37';
-            var bgHex = controls.bgColor.value || '#060010';
-            var rgb = hexToRgb(eyeHex);
-            var intensity = parseFloat(controls.intensity.value || '1.5');
-            var pupilSize = parseFloat(controls.pupilSize.value || '0.6');
-            var irisWidth = parseFloat(controls.irisWidth.value || '0.25');
-            var glowIntensity = parseFloat(controls.glowIntensity.value || '0.35');
-            var scale = parseFloat(controls.scale.value || '0.8');
-            var noiseScale = parseFloat(controls.noiseScale.value || '1');
-            pupilFollowFactor = parseFloat(controls.pupilFollow.value || '1');
-            var flameSpeed = parseFloat(controls.flameSpeed.value || '1');
-
-            var innerAlpha = clamp(0.12 * intensity, 0.08, 0.6);
-            var centerAlpha = clamp(0.45 * intensity, 0.2, 0.95);
-            var borderAlpha = clamp(0.24 * intensity, 0.12, 0.8);
-            var glowAlpha = clamp(glowIntensity * intensity, 0.08, 1);
-            var irisPercent = clamp(34 + (irisWidth * 40), 24, 58);
-            var pupilPercent = clamp(8 + (pupilSize * 18), 10, 30);
-
-            evilEye.style.background = 'radial-gradient(ellipse at center, rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + centerAlpha + ') 0%, rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + innerAlpha + ') 26%, ' + bgHex + ' 62%), linear-gradient(135deg, rgba(12,14,35,0.95), rgba(18,14,42,0.95))';
-            evilEye.style.borderColor = 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + borderAlpha + ')';
-            evilEye.style.boxShadow = '0 0 ' + (38 + glowIntensity * 48) + 'px rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.22 * glowAlpha) + '), inset 0 0 ' + (34 + glowIntensity * 60) + 'px rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + (0.16 * glowAlpha) + ')';
-            evilEye.style.transform = 'scale(' + scale + ')';
-            evilEye.style.setProperty('--noise-scale', String(clamp(noiseScale, 0.5, 2)));
-            evilEye.style.animationDuration = (4.5 / clamp(flameSpeed, 0.5, 2.5)) + 's';
-
-            if (evilIris) {
-                evilIris.style.width = irisPercent + '%';
-                evilIris.style.background = 'radial-gradient(circle at 40% 40%, rgba(255,232,204,0.95) 0%, rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',0.95) 42%, rgba(70,22,20,0.8) 72%, #090510 100%)';
-            }
-            if (eyePupil) eyePupil.style.width = pupilPercent + '%';
-
-            if (splashBg) {
-                splashBg.style.background = 'radial-gradient(ellipse 90% 80% at 50% 40%, ' + bgHex + ' 0%, #08091a 60%, #050710 100%)';
-            }
-        }
-
-        Object.keys(controls).forEach(function(key) {
-            var input = controls[key];
-            if (input) input.addEventListener('input', applyEvilEyeSettings);
-        });
-        applyEvilEyeSettings();
-
-        // Typewriter for "Welcome to you!"
-        (function() {
-            var mainEl   = document.getElementById('splash-tw-main');
-            var accentEl = document.getElementById('splash-tw-accent');
-            var dotsEl   = document.getElementById('splash-tw-dots');
-            if (!mainEl || !accentEl) return;
-
-            var part1 = 'Raghu Welcomes';
-            var part2 = 'YOU';
-            var i1 = 0, i2 = 0;
-
-            function typePart1() {
-                mainEl.textContent = part1.slice(0, i1++);
-                if (i1 <= part1.length) setTimeout(typePart1, 120);
-                else setTimeout(typePart2, 400);
-            }
-            function typePart2() {
-                accentEl.textContent = part2.slice(0, i2++);
-                if (i2 <= part2.length) setTimeout(typePart2, 180);
-                else setTimeout(function() {
-                    if (!dotsEl) return;
-                    dotsEl.textContent = '...';
-                }, 350);
-            }
-            setTimeout(typePart1, 800);
-        })();
-
-        function updateVoiceButton() {
-            if (!musicBtn) return;
-            musicBtn.textContent = voicePlayed ? 'Replay Welcome Voice' : 'Play Welcome Voice';
-            musicBtn.setAttribute('aria-pressed', voicePlayed ? 'true' : 'false');
-        }
-
-        function playWelcomeVoice() {
-            if (!('speechSynthesis' in window)) {
-                updateVoiceButton();
-                return;
-            }
-            try { window.speechSynthesis.cancel(); } catch (e) {}
-            var utterance = new SpeechSynthesisUtterance('Raghu Welcomes You!');
-            // Slightly faster to match the typewriter pacing
-            utterance.rate = 1.08;
-            utterance.pitch = 1;
-            utterance.volume = 1;
-            voicePlayed = true;
-            updateVoiceButton();
-            window.speechSynthesis.speak(utterance);
-        }
-
-        document.body.classList.add('splash-open');
-        var secondsLeft = 120;
-        if (timerEl) timerEl.textContent = 'Entering in ' + secondsLeft + 's';
-        dismissTimer = setTimeout(dismiss, 120000);
-        countdownTicker = setInterval(function() {
-            secondsLeft -= 1;
-            if (timerEl && secondsLeft >= 0) timerEl.textContent = 'Entering in ' + secondsLeft + 's';
-            if (timerBar) timerBar.style.transform = 'scaleX(' + Math.max(0, secondsLeft / 120) + ')';
-            if (secondsLeft <= 0 && countdownTicker) {
-                clearInterval(countdownTicker);
-                countdownTicker = null;
-            }
-        }, 1000);
-        splash.addEventListener('click', dismiss, { once: true });
-
-        function dismiss() {
-            if (dismissTimer) {
-                clearTimeout(dismissTimer);
-                dismissTimer = null;
-            }
-            if (countdownTicker) {
-                clearInterval(countdownTicker);
-                countdownTicker = null;
-            }
-            try { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); } catch (e) {}
-            sessionStorage.setItem('splashSeen', '1');
-            splash.classList.add('splash-hidden');
-            document.body.classList.remove('splash-open');
-            if (forceSplash) {
-                var cleanUrl = new URL(window.location.href);
-                cleanUrl.searchParams.delete('welcome');
-                window.history.replaceState({}, '', cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
-                forceSplash = false;
-            }
-        }
-
-        if (btn) btn.addEventListener('click', dismiss);
-        if (musicBtn) {
-            musicBtn.addEventListener('click', function(e) {
-                if (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-                playWelcomeVoice();
-            });
-        }
-        updateVoiceButton();
-        // Auto-play voice once per session for new visitors.
-        // Always allow auto-play on explicit welcome redirect (?welcome=1).
-        var canAutoPlayVoice = forceSplash;
-        try {
-            if (!forceSplash && !sessionStorage.getItem('welcomeVoicePlayed')) {
-                canAutoPlayVoice = true;
-            }
-        } catch (e) {}
-        if (canAutoPlayVoice) {
-            setTimeout(playWelcomeVoice, 900);
-            try { sessionStorage.setItem('welcomeVoicePlayed', '1'); } catch (e) {}
-        }
-
-        if (eyePupil) {
-            splash.addEventListener('mousemove', function(e) {
-                var rect = splash.getBoundingClientRect();
-                var x = (e.clientX - rect.left) / rect.width - 0.5;
-                var y = (e.clientY - rect.top) / rect.height - 0.5;
-                var tx = Math.max(-1, Math.min(1, x * 2)) * 10 * pupilFollowFactor;
-                var ty = Math.max(-1, Math.min(1, y * 2)) * 6 * pupilFollowFactor;
-                eyePupil.style.transform = 'translate(' + tx + 'px,' + ty + 'px)';
-            });
-            splash.addEventListener('mouseleave', function() {
-                eyePupil.style.transform = 'translate(0,0)';
-            });
-        }
-
-        // Also dismiss on any keyboard press (accessibility)
-        document.addEventListener('keydown', function handler(e) {
-            if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
-                dismiss();
-                document.removeEventListener('keydown', handler);
-            }
-        });
-    })();
-    </script>
     <script src="assets/js/pages/ecosystem-data.js"></script>
     <script src="assets/js/pages/ecosystem-render.js"></script>
     <script src="assets/js/pages/terminal-hero.js"></script>

@@ -99,6 +99,17 @@ body {
 }
 
 /* Background Elements */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
+    z-index: 120;
+    transition: width 0.1s linear;
+}
+
 .bg-gradient {
     position: fixed;
     inset: 0;
@@ -152,6 +163,52 @@ body {
 @keyframes orbFloat {
     0%,100% { transform: translate3d(0,0,0) scale(1); }
     50% { transform: translate3d(18px,-14px,0) scale(1.03); }
+}
+
+/* Hero tag strip (inspired by reference) */
+.hero-tag-strip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(8, 13, 26, 0.45);
+    backdrop-filter: blur(14px);
+    overflow: hidden;
+    z-index: var(--z-base);
+}
+
+.hero-tag-strip-inner {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    animation: heroTagScroll 24s linear infinite;
+}
+
+.hero-tag-strip-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 22px;
+    white-space: nowrap;
+}
+
+.hero-tag-chip {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(148, 163, 184, 0.86);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+
+@keyframes heroTagScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* Particles Canvas */

@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work | RaghuRamReddy Thummalapalli - Platform Engineering Leader</title>
     <meta name="description" content="Projects, platforms, and measurable outcomes from platform engineering, DevSecOps, and AI-augmented operations.">
+    <meta property="og:title" content="Work | RaghuRamReddy Thummalapalli - Platform Engineering Leader">
+    <meta property="og:description" content="Projects, platforms, and measurable outcomes from platform engineering, DevSecOps, and AI-augmented operations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raghuramreddy.tech/pages/work.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -176,6 +181,7 @@
                 <a href="future-systems.html" class="nav-link">Future Systems</a>
                 <a href="writing.html" class="nav-link">Writing</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="../resume.html" class="nav-link">Resume</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
@@ -234,7 +240,7 @@
                         <div class="pfs-beam" aria-hidden="true"></div>
                         <div class="pfs-metrics">
                             <div class="pfs-metric"><strong>99.95%</strong><span>Pipeline Reliability</span></div>
-                            <div class="pfs-metric"><strong>47→11m</strong><span>Incident MTTR</span></div>
+                            <div class="pfs-metric"><strong>47m &rarr; 11m</strong><span>Incident MTTR</span></div>
                             <div class="pfs-metric"><strong>35+</strong><span>Teams Enabled</span></div>
                         </div>
                     </div>
@@ -386,7 +392,7 @@
                 <div class="principles-grid">
                     <div class="principle-card">
                         <div class="principle-number">01</div>
-                        <h3>Decision → Guardrail → Automation</h3>
+                        <h3>Decision &rarr; Guardrail &rarr; Automation</h3>
                         <p>Architecture is real only when it becomes a paved road: templates, policy checks, and measurable SLOs.</p>
                     </div>
                     <div class="principle-card">
@@ -442,7 +448,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
                         </div>
                         <h3>Migration Runbooks</h3>
-                        <p>VM → containers → enterprise container platform with preflight validation, staging gates, and rollback plans.</p>
+                        <p>VM &rarr; containers &rarr; enterprise container platform with preflight validation, staging gates, and rollback plans.</p>
                         <div class="card-tags"><span>Helm</span><span>pipeline automation</span><span>DR/HA</span></div>
                     </div>
                 </div>
@@ -641,6 +647,7 @@
                 <a href="applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
                 <a href="writing.html" class="footer-link">Writing</a>
                 <a href="about.html" class="footer-link">About</a>
+                <a href="../resume.html" class="nav-link">Resume</a>
                 <a href="contact.html" class="footer-link">Contact</a>
               </div>
             </div>
@@ -708,24 +715,72 @@
     (function () {
         var tabs = document.querySelectorAll('.work-tabs-bar .wtab[data-panel]');
         var panels = document.querySelectorAll('.work-panel');
+
+        function runStatCountersWithin(root) {
+            if (!root) return;
+            var els = root.querySelectorAll('.stat-num[data-count-to]');
+            if (!els.length) return;
+
+            els.forEach(function (el) {
+                if (el.dataset.counted === '1') return;
+
+                var target = parseInt(el.dataset.countTo, 10);
+                if (!Number.isFinite(target)) return;
+
+                el.dataset.counted = '1';
+
+                var suffix = el.dataset.suffix || '';
+                var prefix = el.dataset.prefix || '';
+                var frame = 0;
+                var total = 50;
+
+                var step = setInterval(function () {
+                    frame++;
+                    var val = Math.round(target * (frame / total));
+                    el.textContent = prefix + val + suffix;
+                    if (frame >= total) {
+                        el.textContent = prefix + target + suffix;
+                        clearInterval(step);
+                    }
+                }, 1600 / total);
+            });
+        }
+
+        function showPanel(target) {
+            tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+            panels.forEach(function (p) { p.style.display = 'none'; });
+
+            var activeTab = document.querySelector('.work-tabs-bar .wtab[data-panel="' + target + '"]');
+            if (activeTab) {
+                activeTab.classList.add('active');
+                activeTab.setAttribute('aria-selected', 'true');
+            }
+
+            var panel = document.getElementById('panel-' + target);
+            if (panel) panel.style.display = '';
+
+            // Panels can start hidden; ensure counters initialize after visibility change.
+            requestAnimationFrame(function () { runStatCountersWithin(panel); });
+        }
+
         tabs.forEach(function (tab) {
             tab.addEventListener('click', function () {
                 var target = this.dataset.panel;
                 if (!target) return;
-                tabs.forEach(function (t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-                panels.forEach(function (p) { p.style.display = 'none'; });
-                this.classList.add('active');
-                this.setAttribute('aria-selected','true');
-                var panel = document.getElementById('panel-' + target);
-                if (panel) panel.style.display = '';
+                showPanel(target);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
         var hash = window.location.hash.replace('#','');
+        var initial = 'projects';
         if (hash) {
-            var t = document.querySelector('.work-tabs-bar .wtab[data-panel="' + hash + '"]');
-            if (t) t.click();
+            var panelForHash = document.getElementById('panel-' + hash);
+            var tabForHash = document.querySelector('.work-tabs-bar .wtab[data-panel="' + hash + '"]');
+            if (panelForHash && tabForHash) initial = hash;
         }
+
+        // Ensure correct initial panel selection (supports deep links like #impact).
+        showPanel(initial);
     })();
     </script>
 </body>

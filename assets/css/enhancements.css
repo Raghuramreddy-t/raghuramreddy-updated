@@ -427,38 +427,7 @@
     line-height: 1.4;
 }
 
-/* ── Blog page ───────────────────────────── */
-.blog-search-container {
-  margin: 0 auto 2rem;
-  max-width: 680px;
-}
-
-.blog-search-wrapper {
-  position: relative;
-}
-
-.blog-search-input {
-  width: 100%;
-  padding: 12px 44px 12px 18px;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
-  font-size: 16px;
-  outline: none;
-}
-
-.blog-search-icon {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  color: var(--text-muted);
-  pointer-events: none;
-}
-
+/* Blog page */
 .blog-edit-note {
   margin-top: 10px;
   font-size: 13px;
@@ -747,7 +716,7 @@ body::after {
 
 /* ── 7b. Navbar glow + nav-link underline ── */
 .navbar.scrolled {
-    box-shadow: 0 1px 0 var(--glass-border), 0 4px 24px rgba(59, 130, 246, 0.07) !important;
+    box-shadow: 0 1px 0 var(--glass-border), 0 4px 24px rgba(59, 130, 246, 0.07);
 }
 .nav-link {
     position: relative;
@@ -772,6 +741,7 @@ body::after {
 .page-header.ph--impact     { background: radial-gradient(ellipse at 50% 0%, rgba(34,197,94,0.12),   transparent 70%); }
 .page-header.ph--projects   { background: radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.12),   transparent 70%); }
 .page-header.ph--platform   { background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.12),  transparent 70%); }
+.page-header.ph--standards  { background: radial-gradient(ellipse at 50% 0%, rgba(14,165,233,0.12),  transparent 70%); }
 .page-header.ph--ai         { background: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.12),  transparent 70%); }
 .page-header.ph--research   { background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.12),  transparent 70%); }
 .page-header.ph--media      { background: radial-gradient(ellipse at 50% 0%, rgba(236,72,153,0.12),  transparent 70%); }
@@ -789,7 +759,6 @@ body::after {
 .system-card,
 .evidence-card,
 .metric-tile,
-.cert-card,
 .impact-block,
 .sector-card,
 .principle-card,
@@ -808,7 +777,6 @@ body::after {
 .system-card:hover,
 .evidence-card:hover,
 .metric-tile:hover,
-.cert-card:hover,
 .impact-block:hover,
 .sector-card:hover,
 .principle-card:hover {
@@ -819,6 +787,26 @@ body::after {
         inset 0 1px 0 rgba(255,255,255,0.14),
         0 0 0 1px rgba(99,102,241,0.15),
         0 0 40px rgba(59,130,246,0.06) !important;
+}
+
+/* Cert cards: same visuals, but without !important (avoid cascade dead-ends). */
+.cert-card {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+.cert-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(99,102,241,0.35);
+    box-shadow:
+        0 24px 64px rgba(0,0,0,0.40),
+        inset 0 1px 0 rgba(255,255,255,0.14),
+        0 0 0 1px rgba(99,102,241,0.15),
+        0 0 40px rgba(59,130,246,0.06);
 }
 
 /* 2. PRINCIPLE CARDS */
@@ -1223,6 +1211,7 @@ body::after {
     .page-header.ph--impact     { background: radial-gradient(ellipse at 50% 0%, rgba(34,197,94,0.08),   transparent 70%); }
     .page-header.ph--projects   { background: radial-gradient(ellipse at 50% 0%, rgba(6,182,212,0.08),   transparent 70%); }
     .page-header.ph--platform   { background: radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.08),  transparent 70%); }
+    .page-header.ph--standards  { background: radial-gradient(ellipse at 50% 0%, rgba(14,165,233,0.08),  transparent 70%); }
     .page-header.ph--ai         { background: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.08),  transparent 70%); }
     .page-header.ph--research   { background: radial-gradient(ellipse at 50% 0%, rgba(245,158,11,0.08),  transparent 70%); }
     .page-header.ph--media      { background: radial-gradient(ellipse at 50% 0%, rgba(236,72,153,0.08),  transparent 70%); }
@@ -2003,14 +1992,14 @@ hr.gradient-divider {
 /* ============================================
    LIGHT MODE OVERRIDES for new sections
    ============================================ */
-[data-theme="light"] .about-impact-card {
-    background: #ffffff !important;
-    border-color: rgba(0,0,0,0.08) !important;
+html[data-theme="light"] .about-impact-card {
+    background: #ffffff;
+    border-color: rgba(0,0,0,0.08);
 }
-[data-theme="light"] .cert-card { background: #ffffff !important; }
-[data-theme="light"] .badge {
-    background: rgba(0,0,0,0.04) !important;
-    border-color: rgba(0,0,0,0.1) !important;
+html[data-theme="light"] .cert-card { background: #ffffff; }
+html[data-theme="light"] .badge {
+    background: rgba(0,0,0,0.04);
+    border-color: rgba(0,0,0,0.1);
 }
 
 /* ============================================
@@ -4050,59 +4039,59 @@ iframe {
    ============================================ */
 .navbar {
     background:
-      linear-gradient(120deg, rgba(15,23,42,0.72), rgba(30,41,59,0.62)) !important;
-    border-bottom: 1px solid rgba(99,102,241,0.22) !important;
-    backdrop-filter: blur(14px) saturate(145%) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(145%) !important;
-    box-shadow: 0 10px 34px rgba(2, 6, 23, 0.16) !important;
+      linear-gradient(120deg, rgba(15,23,42,0.72), rgba(30,41,59,0.62));
+    border-bottom: 1px solid rgba(99,102,241,0.22);
+    backdrop-filter: blur(14px) saturate(145%);
+    -webkit-backdrop-filter: blur(14px) saturate(145%);
+    box-shadow: 0 10px 34px rgba(2, 6, 23, 0.16);
 }
 
 .navbar.scrolled {
     background:
-      linear-gradient(120deg, rgba(15,23,42,0.86), rgba(30,41,59,0.82)) !important;
-    border-bottom-color: rgba(99,102,241,0.28) !important;
-    box-shadow: 0 14px 40px rgba(2, 6, 23, 0.22) !important;
+      linear-gradient(120deg, rgba(15,23,42,0.86), rgba(30,41,59,0.82));
+    border-bottom-color: rgba(99,102,241,0.28);
+    box-shadow: 0 14px 40px rgba(2, 6, 23, 0.22);
 }
 
 [data-theme="light"] .navbar {
     background:
-      linear-gradient(120deg, rgba(255,255,255,0.88), rgba(245,247,255,0.86)) !important;
-    border-bottom: 1px solid rgba(99,102,241,0.18) !important;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08) !important;
+      linear-gradient(120deg, rgba(255,255,255,0.88), rgba(245,247,255,0.86));
+    border-bottom: 1px solid rgba(99,102,241,0.18);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 [data-theme="light"] .navbar.scrolled {
     background:
-      linear-gradient(120deg, rgba(255,255,255,0.96), rgba(244,247,255,0.94)) !important;
+      linear-gradient(120deg, rgba(255,255,255,0.96), rgba(244,247,255,0.94));
 }
 
 .nav-link {
-    border: 1px solid transparent !important;
-    border-radius: 999px !important;
-    padding: 7px 12px !important;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 7px 12px;
 }
 
 .nav-link:hover {
-    border-color: rgba(99,102,241,0.32) !important;
-    background: rgba(99,102,241,0.12) !important;
-    color: var(--text-primary) !important;
+    border-color: rgba(99,102,241,0.32);
+    background: rgba(99,102,241,0.12);
+    color: var(--text-primary);
 }
 
 .nav-link.active {
-    color: #c7d2fe !important;
-    border-color: rgba(129,140,248,0.4) !important;
-    background: linear-gradient(120deg, rgba(59,130,246,0.18), rgba(139,92,246,0.2)) !important;
+    color: #c7d2fe;
+    border-color: rgba(129,140,248,0.4);
+    background: linear-gradient(120deg, rgba(59,130,246,0.18), rgba(139,92,246,0.2));
 }
 
 [data-theme="light"] .nav-link.active {
-    color: #1e1b4b !important;
-    border-color: rgba(99,102,241,0.28) !important;
-    background: linear-gradient(120deg, rgba(59,130,246,0.12), rgba(139,92,246,0.14)) !important;
+    color: #1e1b4b;
+    border-color: rgba(99,102,241,0.28);
+    background: linear-gradient(120deg, rgba(59,130,246,0.12), rgba(139,92,246,0.14));
 }
 
 .theme-toggle {
-    border: 1px solid rgba(99,102,241,0.24) !important;
-    background: rgba(99,102,241,0.12) !important;
+    border: 1px solid rgba(99,102,241,0.24);
+    background: rgba(99,102,241,0.12);
 }
 
 .ui-sound-toggle svg {
@@ -4308,7 +4297,7 @@ iframe {
 }
 
 .home-page .scroll-indicator {
-    bottom: 20px;
+    bottom: 78px;
 }
 
 .home-page .section {
