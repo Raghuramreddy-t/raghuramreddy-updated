@@ -422,7 +422,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 80px var(--container-padding);
+    padding: 80px var(--container-padding) 120px;
     max-width: var(--container-max);
     margin: 0 auto;
     position: relative;
@@ -539,6 +539,7 @@ body {
 .hero-cta {
     display: flex;
     gap: 16px;
+    margin-bottom: 48px;
 }
 
 /* Ecosystem Strip */
