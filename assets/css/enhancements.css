@@ -1218,6 +1218,49 @@ body::after {
     .page-header.ph--blog       { background: radial-gradient(ellipse at 50% 0%, rgba(20,184,166,0.08),  transparent 70%); }
     .page-header.ph--about      { background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.08),  transparent 70%); }
     .page-header.ph--contact    { background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.08),  transparent 70%); }
+
+    /* Hero tag chips */
+    .hero-tag-chip {
+        color: rgba(51,65,85,0.9) !important;
+        border: 1px solid rgba(99,102,241,0.25) !important;
+        background: rgba(99,102,241,0.08) !important;
+    }
+
+    /* Terminal/code components */
+    .term-title-label {
+        color: rgba(107,114,128,0.7) !important;
+    }
+
+    .term-output-line {
+        color: rgba(55,65,81,0.85) !important;
+    }
+
+    .term-hist-cmd {
+        color: rgba(30,41,59,0.9) !important;
+    }
+
+    /* Capability card text */
+    .capability-card p,
+    .capability-card h3 {
+        color: rgba(30,41,59,0.9) !important;
+    }
+
+    /* System card text */
+    .system-card h3,
+    .system-card p {
+        color: rgba(30,41,59,0.9) !important;
+    }
+
+    /* Evidence card text */
+    .evidence-card p {
+        color: rgba(30,41,59,0.85) !important;
+    }
+
+    /* Publication card text */
+    .publication-content p,
+    .publication-content h3 {
+        color: rgba(30,41,59,0.9) !important;
+    }
 }
 
 /* ── Hero Tabs (pill nav) ─────────────────── */
