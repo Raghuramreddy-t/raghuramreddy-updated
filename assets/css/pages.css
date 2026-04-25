@@ -1038,11 +1038,11 @@
     .principles-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .timeline::before {
         left: 20px;
     }
-    
+
     .timeline-item {
         width: 100%;
         left: 0 !important;
@@ -1050,16 +1050,16 @@
         padding-right: 0;
         text-align: left !important;
     }
-    
+
     .timeline-marker {
         left: 12px !important;
         right: auto !important;
     }
-    
+
     .certs-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .ai-capabilities {
         grid-template-columns: 1fr;
     }
@@ -1077,11 +1077,64 @@
     .profile-word-cloud span {
         font-size: 8px;
     }
+
+    /* Publication card responsive */
+    .publication-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 24px;
+    }
+
+    .publication-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .publication-content h3 {
+        font-size: 18px;
+    }
+
+    .publication-content p {
+        font-size: 14px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 480px) {
     .certs-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Publication card mobile */
+    .publication-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 20px;
+    }
+
+    .publication-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .publication-content h3 {
+        font-size: 16px;
+    }
+
+    .publication-content p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info h2 {
+        font-size: 24px;
     }
 
     .education-card {
