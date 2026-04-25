@@ -22,53 +22,114 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function renderMedia(items, downloadsContainer, visualsContainer) {
+    const downloadsFrag = document.createDocumentFragment();
+    const visualsFrag = document.createDocumentFragment();
+
     items.forEach((item, index) => {
         const card = createMediaCard(item, index);
-        
-        if (item.category === 'Downloads' && downloadsContainer) {
-            downloadsContainer.innerHTML += card;
-        } else if (item.category === 'Visuals' && visualsContainer) {
-            visualsContainer.innerHTML += card;
+        if (!card) return;
+
+        if (item.category === 'Downloads') {
+            downloadsFrag.appendChild(card);
+        } else if (item.category === 'Visuals') {
+            visualsFrag.appendChild(card);
         }
     });
+
+    if (downloadsContainer) downloadsContainer.appendChild(downloadsFrag);
+    if (visualsContainer) visualsContainer.appendChild(visualsFrag);
 }
 
 function createMediaCard(item, index) {
     const icon = getIconForType(item.type);
-    
-    // Different layout for Visuals vs Downloads based on existing HTML structure
+
+    const safeHref = (href) => {
+        const raw = String(href || '').trim();
+        if (!raw) return '#';
+        try {
+            const u = new URL(raw, window.location.origin);
+            const proto = (u.protocol || '').toLowerCase();
+            if (proto === 'http:' || proto === 'https:') return u.href;
+        } catch (_) {}
+        return '#';
+    };
+
+    // Different layout for Visuals vs Downloads based on existing HTML structure.
     if (item.category === 'Visuals') {
-        return `
-            <div class="publication-card">
-                <div class="publication-icon">
-                    ${icon}
-                </div>
-                <div class="publication-content">
-                    <h3>${item.title}</h3>
-                    <p>${item.description}</p>
-                    <a href="${item.link}" class="project-link">
-                        <span>View Diagram</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-                    </a>
-                </div>
-            </div>
-        `;
-    } else {
-        // Downloads layout
-        const tagsHtml = item.tags ? 
-            `<div class="card-tags">${item.tags.map(tag => `<span>${tag}</span>`).join('')}</div>` : '';
-            
-        return `
-            <div class="capability-card">
-                <div class="card-icon">
-                    ${icon}
-                </div>
-                <h3>${item.title}</h3>
-                <p>${item.description}</p>
-                ${tagsHtml}
-            </div>
-        `;
+        const card = document.createElement('div');
+        card.className = 'publication-card';
+
+        const iconWrap = document.createElement('div');
+        iconWrap.className = 'publication-icon';
+        // Icons are internal fixed SVG strings, not user-provided HTML.
+        iconWrap.innerHTML = icon;
+
+        const content = document.createElement('div');
+        content.className = 'publication-content';
+
+        const title = document.createElement('h3');
+        title.textContent = item.title || '';
+
+        const desc = document.createElement('p');
+        desc.textContent = item.description || '';
+
+        const link = document.createElement('a');
+        link.className = 'project-link';
+        link.href = safeHref(item.link);
+
+        const linkLabel = document.createElement('span');
+        linkLabel.textContent = 'View Diagram';
+        link.appendChild(linkLabel);
+
+        const arrow = document.createElement('svg');
+        arrow.setAttribute('viewBox', '0 0 24 24');
+        arrow.setAttribute('fill', 'none');
+        arrow.setAttribute('stroke', 'currentColor');
+        arrow.setAttribute('stroke-width', '2');
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.setAttribute('focusable', 'false');
+        arrow.innerHTML = '<path d="M5 12h14M12 5l7 7-7 7"></path>';
+        link.appendChild(arrow);
+
+        content.appendChild(title);
+        content.appendChild(desc);
+        content.appendChild(link);
+
+        card.appendChild(iconWrap);
+        card.appendChild(content);
+        return card;
     }
+
+    // Downloads layout.
+    const card = document.createElement('div');
+    card.className = 'capability-card';
+
+    const iconWrap = document.createElement('div');
+    iconWrap.className = 'card-icon';
+    iconWrap.innerHTML = icon;
+
+    const title = document.createElement('h3');
+    title.textContent = item.title || '';
+
+    const desc = document.createElement('p');
+    desc.textContent = item.description || '';
+
+    card.appendChild(iconWrap);
+    card.appendChild(title);
+    card.appendChild(desc);
+
+    if (Array.isArray(item.tags) && item.tags.length) {
+        const tags = document.createElement('div');
+        tags.className = 'card-tags';
+        item.tags.forEach((tag) => {
+            const s = document.createElement('span');
+            s.textContent = String(tag);
+            tags.appendChild(s);
+        });
+        card.appendChild(tags);
+    }
+
+    return card;
 }
 
 function getIconForType(type) {

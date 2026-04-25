@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog | RaghuRamReddy Thummalapalli</title>
     <meta name="description" content="Thoughts on Platform Engineering, DevSecOps, and the future of AI-augmented operations.">
+    <meta property="og:title" content="Blog | RaghuRamReddy Thummalapalli">
+    <meta property="og:description" content="Thoughts on Platform Engineering, DevSecOps, and the future of AI-augmented operations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raghuramreddy.tech/pages/blog.html">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -76,7 +81,7 @@
                 
                 <div class="publication-card"><div class="publication-content blog-card-content"><div class="project-tags blog-card-tags"><span>AI Ops</span><span>DevOps</span><span>Automation</span><span>12 min</span></div><h3>Building AI-Powered DevOps Troubleshooters for CI/CD Failures</h3><p>A deep-dive into architecture for advisory AI troubleshooters: ingestion, matching, confidence scoring, and human control.</p><div class="blog-card-actions"><a href="blog/ai-cicd-troubleshooter.html" class="project-link"><span>Read Article</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div></div>
                 <div class="publication-card"><div class="publication-content blog-card-content"><div class="project-tags blog-card-tags"><span>XOps</span><span>DevOps</span><span>Platform Engineering</span><span>AI Ops</span></div><h3>Why XOps Is the Next Step Beyond DevOps in 2025</h3><p>Why XOps is the practical evolution for secure, scalable, AI-augmented operations in enterprise platforms.</p><div class="blog-card-actions"><a href="blog/xops-beyond-devops-2025.html" class="project-link"><span>Read Article</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div></div>
-                <div class="publication-card"><div class="publication-content blog-card-content"><div class="project-tags blog-card-tags"><span>AI</span><span>LLM</span><span>LLM</span><span>GenAI</span></div><h3>LLM Sonnet 4.6 Is Here - Closing the Gap with Frontier Models</h3><p>LLM Sonnet 4.6 overview, capability improvements, and what the model shift means for practical AI engineering workflows.</p><div class="blog-card-actions"><a href="https://raghuramreddy-tech.medium.com/llm-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e" target="_blank" rel="noopener" class="project-link"><span>Read on Medium</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div></div>
+                <div class="publication-card"><div class="publication-content blog-card-content"><div class="project-tags blog-card-tags"><span>AI</span><span>LLM</span><span>GenAI</span></div><h3>LLM Sonnet 4.6 Is Here - Closing the Gap with Frontier Models</h3><p>LLM Sonnet 4.6 overview, capability improvements, and what the model shift means for practical AI engineering workflows.</p><div class="blog-card-actions"><a href="https://raghuramreddy-tech.medium.com/llm-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e" target="_blank" rel="noopener" class="project-link"><span>Read on Medium</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div></div>
                 <div class="publication-card"><div class="publication-content blog-card-content"><div class="project-tags blog-card-tags"><span>Platform Engineering</span><span>Reliability</span><span>Infrastructure</span></div><h3>Software Platforms as Critical Infrastructure: Why Reliability Is Now a Public Interest Problem</h3><p>How platform teams can treat reliability, governance, and resilience as infrastructure responsibilities.</p><div class="blog-card-actions"><a href="https://raghuramreddy-tech.medium.com/software-platforms-as-critical-infrastructure-why-reliability-is-now-a-public-interest-problem-27da1b5dfc1b" target="_blank" rel="noopener" class="project-link"><span>Read on Medium</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div></div>
             </div>
         </div>
@@ -165,18 +170,6 @@
 
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/aurora.js"></script>
-    <script>
-    (function() {
-        var input = document.getElementById('blog-search');
-        if (!input) return;
-        input.addEventListener('input', function() {
-            var q = this.value.toLowerCase().trim();
-            document.querySelectorAll('#blog-list .publication-card').forEach(function(card) {
-                card.style.display = (!q || card.textContent.toLowerCase().includes(q)) ? '' : 'none';
-            });
-        });
-    })();
-    </script>
 </body>
 </html>
 

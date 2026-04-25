@@ -7,7 +7,7 @@
     {
       "id": "xops-beyond-devops-2025",
       "title": "Why XOps Is the Next Step Beyond DevOps in 2025",
-      "description": "DevOps got us here — but it won't take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.",
+      "description": "DevOps got us here - but it won't take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.",
       "url": "blog/xops-beyond-devops-2025.html",
       "tags": ["XOps", "DevOps", "Platform Engineering", "AI Ops"],
       "published": "2026-02-08",
@@ -18,7 +18,7 @@
       "title": "LLM Sonnet 4.6 Is Here - Closing the Gap with Frontier Models",
       "description": "LLM Sonnet 4.6 overview, capability improvements, and what the model shift means for practical AI engineering workflows.",
       "url": "https://raghuramreddy-tech.medium.com/llm-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e",
-      "tags": ["AI", "LLM", "LLM", "GenAI"],
+      "tags": ["AI", "LLM", "GenAI"],
       "published": "2024-10-25",
       "version": "1.0.0"
     },

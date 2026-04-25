@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Portfolio site for RaghuRamReddy",
   "scripts": {
-    "start": "serve ."
-  },
-  "devDependencies": {
-    "serve": "^14.2.1"
+    "start": "python -m http.server 8080"
   }
 }
