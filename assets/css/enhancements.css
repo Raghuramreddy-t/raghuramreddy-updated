@@ -4216,15 +4216,22 @@ iframe {
 }
 
 [data-theme="light"] .btn-secondary {
-    background: #e0e7ff !important;
-    color: #3730a3 !important;
-    border: 1px solid #c7d2fe !important;
+    background: white !important;
+    color: #1e40af !important;
+    border: 2px solid #3b82f6 !important;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.12) !important;
 }
 
 [data-theme="light"] .btn-secondary:hover {
-    background: #c7d2fe !important;
-    color: #312e81 !important;
-    border-color: #a5b4fc !important;
+    background: #f0f9ff !important;
+    color: #1e3a8a !important;
+    border-color: #1e40af !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2) !important;
+}
+
+[data-theme="light"] .btn-secondary svg {
+    stroke: #1e40af;
+    color: #1e40af;
 }
 
 
