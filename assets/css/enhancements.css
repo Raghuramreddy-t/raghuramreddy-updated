@@ -4234,6 +4234,195 @@ iframe {
     color: #1e40af;
 }
 
+/* ── Comprehensive light mode text color fixes ──────────── */
+[data-theme="light"] {
+    --text-secondary: #1e293b !important;
+    --text-muted: #475569 !important;
+}
+
+/* Fix all elements that use these color variables */
+[data-theme="light"] .section-subtitle,
+[data-theme="light"] .section-tag,
+[data-theme="light"] .stat-label,
+[data-theme="light"] .card-tags span,
+[data-theme="light"] .eco-chip,
+[data-theme="light"] .form-label,
+[data-theme="light"] p.text-muted,
+[data-theme="light"] .text-secondary,
+[data-theme="light"] .text-muted,
+[data-theme="light"] small,
+[data-theme="light"] .subtitle,
+[data-theme="light"] .description,
+[data-theme="light"] .meta-info {
+    color: #1e293b !important;
+}
+
+/* Fix secondary text color */
+[data-theme="light"] .hero-line,
+[data-theme="light"] .typewriter-static,
+[data-theme="light"] a.nav-link,
+[data-theme="light"] .quick-nav-card p,
+[data-theme="light"] .spotlight-slide p,
+[data-theme="light"] .capability-card p {
+    color: #334155 !important;
+}
+
+/* Fix muted/light gray text */
+[data-theme="light"] .scroll-indicator span,
+[data-theme="light"] .sstat-label,
+[data-theme="light"] .breadcrumb,
+[data-theme="light"] .hint-text,
+[data-theme="light"] .form-hint {
+    color: #475569 !important;
+}
+
+/* Fix all SVG strokes in light mode */
+[data-theme="light"] svg {
+    stroke: #1e293b;
+}
+
+[data-theme="light"] .qnav-icon svg,
+[data-theme="light"] .card-icon svg {
+    stroke: #3b82f6;
+    color: #3b82f6;
+}
+
+/* ── Form element visibility in light mode ─────────────── */
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+    background: white !important;
+    color: #0f172a !important;
+    border: 1.5px solid #cbd5e1 !important;
+}
+
+[data-theme="light"] .form-group input::placeholder,
+[data-theme="light"] .form-group textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+[data-theme="light"] .form-group input:focus,
+[data-theme="light"] .form-group textarea:focus {
+    border-color: #3b82f6 !important;
+    background: white !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+[data-theme="light"] .form-group label {
+    color: #0f172a !important;
+}
+
+/* ── Link colors in light mode ────────────────────────── */
+[data-theme="light"] a,
+[data-theme="light"] a:visited {
+    color: #1e40af !important;
+}
+
+[data-theme="light"] a:hover {
+    color: #1e3a8a !important;
+}
+
+/* ── Badge and tag colors in light mode ────────────────── */
+[data-theme="light"] .badge,
+[data-theme="light"] .tag,
+[data-theme="light"] .eco-chip {
+    background: #eff6ff !important;
+    color: #1e40af !important;
+    border-color: #bfdbfe !important;
+}
+
+/* ── Section header text in light mode ──────────────────── */
+[data-theme="light"] .section-header h2,
+[data-theme="light"] .section-title {
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .section-header p,
+[data-theme="light"] .section-subtitle {
+    color: #475569 !important;
+}
+
+/* ── Command palette light mode ────────────────────────── */
+[data-theme="light"] .cmd-modal {
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="light"] .cmd-content {
+    background: white !important;
+    border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .cmd-header {
+    border-bottom-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .cmd-header input {
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .cmd-header svg {
+    color: #94a3b8 !important;
+}
+
+[data-theme="light"] .cmd-item {
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .cmd-item:hover {
+    background: #f8fafc !important;
+}
+
+[data-theme="light"] .cmd-item-tags {
+    color: #94a3b8 !important;
+}
+
+[data-theme="light"] .cmd-esc {
+    color: #94a3b8 !important;
+    border-color: #e2e8f0 !important;
+}
+
+/* ── AI widget light mode ─────────────────────────────── */
+[data-theme="light"] .ai-hero {
+    background: linear-gradient(135deg, #f0f9ff, #f3e8ff) !important;
+}
+
+[data-theme="light"] .ai-widget {
+    background: white !important;
+    border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .ai-msg {
+    color: #0f172a !important;
+}
+
+[data-theme="light"] .ai-msg.user {
+    background: #dbeafe !important;
+    color: #0c4a6e !important;
+}
+
+[data-theme="light"] .ai-foot {
+    background: #f8fafc !important;
+    border-top-color: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+/* ── Scrollbar styling in light mode ───────────────────── */
+[data-theme="light"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+    background: #f1f5f9 !important;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: #cbd5e1 !important;
+    border-radius: 4px;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8 !important;
+}
+
 
 /* ══════════════════════════════════════════════════════════
    JETON-INSPIRED ANIMATIONS — Wave 5
