@@ -29,8 +29,8 @@
     --font-mono: 'JetBrains Mono', monospace;
 
     /* Spacing */
-    --section-padding: 52px;
-    --container-max: 1280px;
+    --section-padding: 32px;
+    --container-max: 1180px;
     --container-padding: 24px;
 
     /* Transitions */
@@ -745,7 +745,7 @@ body {
 .section-header {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 28px;
+    margin: 0 auto 20px;
 }
 
 .section-tag {
