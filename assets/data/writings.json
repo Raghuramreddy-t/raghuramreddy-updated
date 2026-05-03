@@ -5,6 +5,15 @@
   },
   "posts": [
     {
+      "id": "rag-knowledge-systems",
+      "title": "RAG & Knowledge Systems Playground",
+      "description": "Understand RAG, vector embeddings, and AI agent architectures from first principles. Compare Simple Completion, RAG, MCP, and Agents in a live playground.",
+      "url": "blog/rag-knowledge-systems.html",
+      "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering"],
+      "published": "2026-05-03",
+      "version": "1.0.0"
+    },
+    {
       "id": "token-cost-comparator",
       "title": "The Token Ledger",
       "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
@@ -12,6 +21,15 @@
       "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Claude", "GPT"],
       "published": "2026-05-03",
       "version": "1.2.0"
+    },
+    {
+      "id": "token-cost-comparator-lab",
+      "title": "Ledger Lab",
+      "description": "Interactive playground: calculate token costs in real-time, compare Claude vs GPT-5.5 pricing, and estimate batch costs at scale.",
+      "url": "blog/token-cost-comparator.html#live-demo",
+      "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Interactive"],
+      "published": "2026-05-03",
+      "version": "1.0.0"
     },
     {
       "id": "xops-beyond-devops-2025",

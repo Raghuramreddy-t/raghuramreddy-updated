@@ -6,9 +6,11 @@
     <script>!function () { var t = localStorage.getItem("theme") || "dark"; document.documentElement.setAttribute("data-theme", t); document.documentElement.classList.add("no-transition"); requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.remove("no-transition"); }) }) }();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Token Ledger | Claude vs GPT-5.5 Cost Lab</title>
-    <meta name="description" content="A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.">
+    <meta name="description"
+        content="A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.">
     <meta property="og:title" content="The Token Ledger">
-    <meta property="og:description" content="A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.">
+    <meta property="og:description"
+        content="A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/token-cost-comparator.html">
     <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
@@ -17,7 +19,9 @@
     <link rel="canonical" href="https://raghuramreddy.tech/pages/blog/token-cost-comparator.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../assets/css/main.css?v=20260503">
     <link rel="stylesheet" href="../../assets/css/animations.css?v=20260503">
     <link rel="stylesheet" href="../../assets/css/pages.css?v=20260503">
@@ -25,7 +29,8 @@
     <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260503">
     <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260503">
     <link rel="stylesheet" href="../../assets/css/token-cost-comparator.css?v=20260503">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
 </head>
 
 <body>
@@ -58,7 +63,9 @@
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
                     <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="5"></circle>
-                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+                        </path>
                     </svg>
                     <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -88,10 +95,14 @@
             <section class="article-intro">
                 <h2>Why Token Economics Matter</h2>
                 <p>
-                    LLMs charge by the token, not the word or the request. If you're building at scale, token efficiency becomes a core part of your product architecture. Model choice alone can cut your LLM costs by 50â€“75%, but only if you understand how tokens work, how different providers tokenize differently, and which models make economic sense for which tasks.
+                    LLMs charge by the token, not the word or the request. If you're building at scale, token efficiency
+                    becomes a core part of your product architecture. Model choice alone can cut your LLM costs by
+                    50–75%, but only if you understand how tokens work, how different providers tokenize differently,
+                    and which models make economic sense for which tasks.
                 </p>
                 <p>
-                    This guide starts with the fundamentals â€” tokens, embeddings, tokenizers â€” then gives you a hands-on lab to compare Claude and GPT-5.5 costs for your own prompts and workloads.
+                    This guide starts with the fundamentals — tokens, embeddings, tokenizers — then gives you a hands-on
+                    lab to compare Claude and GPT-5.5 costs for your own prompts and workloads.
                 </p>
             </section>
 
@@ -99,20 +110,25 @@
             <section class="article-section">
                 <h2>What Are Tokens?</h2>
                 <p>
-                    LLMs don't read characters or words. They read <strong>tokens</strong> â€” subword units created by a tokenizer algorithm. You pay per token for input and output; everything else is free.
+                    LLMs don't read characters or words. They read <strong>tokens</strong> — subword units created by a
+                    tokenizer algorithm. You pay per token for input and output; everything else is free.
                 </p>
                 <p>
-                    English prose: 1 token â‰ˆ 4 characters. "Hello, world!" is 4 tokens. "Unbelievable" might be 1â€“2 tokens; "tokenization" is 3â€“4 tokens. Numbers split unpredictably: "2026" is 1 token, but "2026-05-03" is 4 tokens (hyphens, digits split). Code is much more token-dense because symbols, brackets, and special characters each become their own token or token sequence.
+                    English prose: 1 token × 4 characters. "Hello, world!" is 4 tokens. "Unbelievable" might be 1–2
+                    tokens; "tokenization" is 3–4 tokens. Numbers split unpredictably: "2026" is 1 token, but
+                    "2026-05-03" is 4 tokens (hyphens, digits split). Code is much more token-dense because symbols,
+                    brackets, and special characters each become their own token or token sequence.
                 </p>
                 <div class="article-callout">
                     <strong>Token density by content type (approx):</strong><br>
                     English prose: 25 tokens per 100 chars<br>
-                    Source code: 30â€“40 tokens per 100 chars<br>
-                    JSON/YAML: 35â€“45 tokens per 100 chars (quotes, colons, commas are expensive)<br>
-                    Chinese/Korean: 50â€“80 tokens per 100 chars
+                    Source code: 30–40 tokens per 100 chars<br>
+                    JSON/YAML: 35–45 tokens per 100 chars (quotes, colons, commas are expensive)<br>
+                    Chinese/Korean: 50–80 tokens per 100 chars
                 </div>
                 <p>
-                    The practical implication: if you're processing logs, code snippets, or API responses (which are often JSON), your token cost is significantly higher than raw English text. Plan accordingly.
+                    The practical implication: if you're processing logs, code snippets, or API responses (which are
+                    often JSON), your token cost is significantly higher than raw English text. Plan accordingly.
                 </p>
             </section>
 
@@ -120,16 +136,26 @@
             <section class="article-section">
                 <h2>What Are Embeddings?</h2>
                 <p>
-                    Once tokenized, each token is converted into an <strong>embedding</strong> â€” a numerical vector (a list of numbers) that captures the token's meaning in context. In modern models, each token becomes a 4,096-dimensional (or larger) vector. Embeddings capture semantic relationships: "cat" and "kitten" are close in embedding space; "cat" and "democracy" are distant.
+                    Once tokenized, each token is converted into an <strong>embedding</strong> — a numerical vector (a
+                    list of numbers) that captures the token's meaning in context. In modern models, each token becomes
+                    a 4,096-dimensional (or larger) vector. Embeddings capture semantic relationships: "cat" and
+                    "kitten" are close in embedding space; "cat" and "democracy" are distant.
                 </p>
                 <p>
-                    The <strong>context window</strong> is how many tokens the model can simultaneously process â€” it's the model's working memory. Each token in the context consumes one "slot." For example, Claude Opus 4.7 has a 200K token context window, which is huge. When you send a prompt of 50K input tokens, you've consumed 25% of the context window.
+                    The <strong>context window</strong> is how many tokens the model can simultaneously process — it's
+                    the model's working memory. Each token in the context consumes one "slot." For example, Claude Opus
+                    4.7 has a 200K token context window, which is huge. When you send a prompt of 50K input tokens,
+                    you've consumed 25% of the context window.
                 </p>
                 <p>
-                    The context window sets the cost ceiling for any single request: <code>Max Input Cost = Context Window Size Ã— Input Price per Token</code>. For Claude Opus: 200K tokens Ã— ($15 / 1M) = $3.00. You can't spend more than that on a single input without hitting the context limit.
+                    The context window sets the cost ceiling for any single request:
+                    <code>Max Input Cost = Context Window Size × Input Price per Token</code>. For Claude Opus: 200K
+                    tokens × ($15 / 1M) = $3.00. You can't spend more than that on a single input without hitting the
+                    context limit.
                 </p>
                 <p>
-                    Side note: embedding models (used for RAG â€” retrieval-augmented generation) have separate, much cheaper pricing. Don't confuse inference token costs with embedding costs.
+                    Side note: embedding models (used for RAG — retrieval-augmented generation) have separate, much
+                    cheaper pricing. Don't confuse inference token costs with embedding costs.
                 </p>
             </section>
 
@@ -137,52 +163,70 @@
             <section class="article-section">
                 <h2>How Tokenizers Work & Why They Matter</h2>
                 <p>
-                    Each provider uses a different tokenizer. GPT uses <strong>tiktoken</strong> â€” a Byte Pair Encoding (BPE) algorithm that starts with individual bytes and recursively merges the most common pairs into larger tokens. The final vocabulary is ~100K tokens. Claude uses its own proprietary tokenizer, also BPE-based but with different merge rules and vocabulary priorities.
+                    Each provider uses a different tokenizer. GPT uses <strong>tiktoken</strong> — a Byte Pair Encoding
+                    (BPE) algorithm that starts with individual bytes and recursively merges the most common pairs into
+                    larger tokens. The final vocabulary is ~100K tokens. Claude uses its own proprietary tokenizer, also
+                    BPE-based but with different merge rules and vocabulary priorities.
                 </p>
                 <p>
-                    Same English text = 5â€“10% different token count across providers. Example: "The quick brown fox jumps over the lazy dog" is 9 tokens in tiktoken, might be 8â€“10 in Claude's tokenizer depending on whitespace handling. This variance is real but small; the bigger factor is the price difference, not the token count.
+                    Same English text = 5–10% different token count across providers. Example: "The quick brown fox
+                    jumps over the lazy dog" is 9 tokens in tiktoken, might be 8–10 in Claude's tokenizer depending on
+                    whitespace handling. This variance is real but small; the bigger factor is the price difference, not
+                    the token count.
                 </p>
                 <div class="article-callout">
-                    <strong>Key insight:</strong> Don't compare raw token counts across providers. Always compare costs (tokens Ã— price per token). The lab below uses 1 token â‰ˆ 4 chars as a universal heuristic â€” actual token counts will differ by Â±10% from this estimate.
+                    <strong>Key insight:</strong> Don't compare raw token counts across providers. Always compare costs
+                    (tokens × price per token). The lab below uses 1 token × 4 chars as a universal heuristic — actual
+                    token counts will differ by ±10% from this estimate.
                 </div>
             </section>
 
             <!-- REMOVED: CLAUDE VS GPT SECTION (redundant with demo) -->
             <!-- The lab shows this comparison better than prose -->
 
-                <p>
-                    Both providers have a price tier strategy: cheap models for high-volume simple tasks, expensive models for complex reasoning. In April 2026, the landscape shifted with GPT-5.5's release.
-                </p>
-                <div class="example-box">
-                    <strong>Claude's approach:</strong> Haiku is 93Ã— cheaper than Opus. Sonnet is the "production sweet spot" â€” 5Ã— cheaper than Opus but still capable for most reasoning tasks.
-                </div>
-                <div class="example-box">
-                    <strong>OpenAI's approach (April 2026):</strong> GPT-5.5 mini is the new cost leader ($2.00 input). GPT-5.5 is balanced and competitive. GPT-5.5 Pro is the new flagship. Legacy models (GPT-4o, GPT-4 Turbo, GPT-4) are still available but deprecated in favor of the 5.5 series.
-                </div>
-                <p>
-                    The key economic insight: <strong>Claude Haiku ($0.80 input) is 2.5Ã— cheaper than GPT-5.5 mini ($2.00 input). But Opus ($15.00 input) costs 25% more than GPT-5.5 Pro ($12.00 input).</strong> Claude owns the ultra-cheap tier; OpenAI's 5.5 series is more competitive at mid-to-high tiers.
-                </p>
+            <p>
+                Both providers have a price tier strategy: cheap models for high-volume simple tasks, expensive models
+                for complex reasoning. In April 2026, the landscape shifted with GPT-5.5's release.
+            </p>
+            <div class="example-box">
+                <strong>Claude's approach:</strong> Haiku is 93× cheaper than Opus. Sonnet is the "production sweet
+                spot" — 5× cheaper than Opus but still capable for most reasoning tasks.
+            </div>
+            <div class="example-box">
+                <strong>OpenAI's approach (April 2026):</strong> GPT-5.5 mini is the new cost leader ($2.00 input).
+                GPT-5.5 is balanced and competitive. GPT-5.5 Pro is the new flagship. Legacy models (GPT-4o, GPT-4
+                Turbo, GPT-4) are still available but deprecated in favor of the 5.5 series.
+            </div>
+            <p>
+                The key economic insight: <strong>Claude Haiku ($0.80 input) is 2.5× cheaper than GPT-5.5 mini ($2.00
+                    input). But Opus ($15.00 input) costs 25% more than GPT-5.5 Pro ($12.00 input).</strong> Claude owns
+                the ultra-cheap tier; OpenAI's 5.5 series is more competitive at mid-to-high tiers.
+            </p>
             </section>
 
             <!-- THE COST FORMULA -->
             <section class="article-section">
                 <h2>The Token Cost Formula</h2>
                 <p>
-                    Cost is the sum of input and output token costs. Output tokens are typically more expensive than input tokens because the model must generate them token-by-token (autoregressive generation is serial and computation-heavy).
+                    Cost is the sum of input and output token costs. Output tokens are typically more expensive than
+                    input tokens because the model must generate them token-by-token (autoregressive generation is
+                    serial and computation-heavy).
                 </p>
                 <div class="code-block">
-                    Total Cost = (Input Tokens Ã— Input Price) + (Output Tokens Ã— Output Price)
+                    Total Cost = (Input Tokens × Input Price) + (Output Tokens × Output Price)
                 </div>
                 <p>
                     Example: Processing a 2000-token prompt with Claude Sonnet, expecting ~500 output tokens:
                 </p>
                 <div class="code-block">
-                    Input Cost:  2000 Ã— ($3.00 / 1M) = $0.0060<br>
-                    Output Cost: 500 Ã— ($15.00 / 1M) = $0.0075<br>
+                    Input Cost: 2000 × ($3.00 / 1M) = $0.0060<br>
+                    Output Cost: 500 × ($15.00 / 1M) = $0.0075<br>
                     Total: $0.0135 per request
                 </div>
                 <p>
-                    The ratio of output price to input price varies by provider and model tier. For Claude Sonnet, it's 5Ã—. For GPT-5.5 mini, it's 4Ã—. For Opus or GPT-5.5 Pro, it's also 4â€“5Ã—. The practical implication: output budget is precious. If you don't need 500 tokens of output, ask for 200.
+                    The ratio of output price to input price varies by provider and model tier. For Claude Sonnet, it's
+                    5×. For GPT-5.5 mini, it's 4×. For Opus or GPT-5.5 Pro, it's also 4–5×. The practical
+                    implication: output budget is precious. If you don't need 500 tokens of output, ask for 200.
                 </p>
             </section>
 
@@ -190,10 +234,11 @@
             <section class="article-section">
                 <h2>At Scale, Model Choice Multiplies</h2>
                 <p>
-                    Single-request costs are small. At scale, they compound. Process 100,000 documents monthly, and the model you pick determines your monthly bill.
+                    Single-request costs are small. At scale, they compound. Process 100,000 documents monthly, and the
+                    model you pick determines your monthly bill.
                 </p>
                 <div class="batch-example">
-                    <strong>Example: 100,000 documents Ã— 500 tokens each Ã— 10% output ratio</strong><br>
+                    <strong>Example: 100,000 documents × 500 tokens each × 10% output ratio</strong><br>
                     <br>
                     <strong>Claude Haiku:</strong> $60 total<br>
                     <strong>Claude Sonnet:</strong> $225 total<br>
@@ -202,7 +247,10 @@
                     <strong>GPT-5.5 Pro:</strong> $840 total
                 </div>
                 <p>
-                    The spread: Claude Haiku to Opus is a 18.75Ã— cost multiplier. GPT-5.5 mini to Pro is a 6Ã— multiplier. Annualized (monthly batches), that's $12,780/year (Claude range) or $8,400/year (GPT-5.5 range) in model choice cost. This is why model selection is a product engineering decision, not just an ops decision.
+                    The spread: Claude Haiku to Opus is a 18.75× cost multiplier. GPT-5.5 mini to Pro is a 6×
+                    multiplier. Annualized (monthly batches), that's $12,780/year (Claude range) or $8,400/year (GPT-5.5
+                    range) in model choice cost. This is why model selection is a product engineering decision, not just
+                    an ops decision.
                 </p>
             </section>
 
@@ -210,10 +258,17 @@
             <section class="article-section">
                 <h2>Cost Optimization Levers</h2>
                 <ul class="article-list">
-                    <li><strong>Model Routing:</strong> Not all requests need your most expensive model. Try Haiku/GPT-5.5 mini first; escalate to Sonnet/GPT-5.5 only if confidence is low. Your cheaper model solves 80% of tasks just fine.</li>
-                    <li><strong>Prompt Caching:</strong> If the same system prompt or context is reused across requests, enable prompt caching (both Claude and OpenAI support it). Cached tokens cost 90% less. For batch operations, caching can reduce costs by 30â€“50%.</li>
-                    <li><strong>Output Budget:</strong> You pay for every output token. Don't ask for 500 tokens if 100 will do. Constrain `max_tokens` to what you actually need.</li>
-                    <li><strong>Batch APIs:</strong> Both providers offer batch APIs (24-hour turnaround) with 50% discounts on input tokens. For non-urgent workloads, batching is nearly always more economical.</li>
+                    <li><strong>Model Routing:</strong> Not all requests need your most expensive model. Try
+                        Haiku/GPT-5.5 mini first; escalate to Sonnet/GPT-5.5 only if confidence is low. Your cheaper
+                        model solves 80% of tasks just fine.</li>
+                    <li><strong>Prompt Caching:</strong> If the same system prompt or context is reused across requests,
+                        enable prompt caching (both Claude and OpenAI support it). Cached tokens cost 90% less. For
+                        batch operations, caching can reduce costs by 30–50%.</li>
+                    <li><strong>Output Budget:</strong> You pay for every output token. Don't ask for 500 tokens if 100
+                        will do. Constrain `max_tokens` to what you actually need.</li>
+                    <li><strong>Batch APIs:</strong> Both providers offer batch APIs (24-hour turnaround) with 50%
+                        discounts on input tokens. For non-urgent workloads, batching is nearly always more economical.
+                    </li>
                 </ul>
             </section>
 
@@ -221,7 +276,9 @@
             <section class="tc-demo-section">
                 <h2>Ledger Lab</h2>
                 <p>
-                    Paste your text below. The lab calculates token count, then shows you real-time costs across Claude and GPT-5.5 models. Switch tabs to compare providers for the same input. Use the slider to estimate batch costs for scale.
+                    Paste your text below. The lab calculates token count, then shows you real-time costs across Claude
+                    and GPT-5.5 models. Switch tabs to compare providers for the same input. Use the slider to estimate
+                    batch costs for scale.
                 </p>
 
                 <!-- DEMO WRAPPER -->
@@ -231,7 +288,9 @@
                     <div class="tc-input-section">
                         <label for="tc-input" class="tc-label">Paste or type your text:</label>
                         <div class="tc-input-container">
-                            <textarea id="tc-input" class="tc-input-area" placeholder="Paste a document, API response, code, or any text. Token count updates in real-time." rows="6"></textarea>
+                            <textarea id="tc-input" class="tc-input-area"
+                                placeholder="Paste a document, API response, code, or any text. Token count updates in real-time."
+                                rows="6"></textarea>
                             <div class="tc-stats">
                                 <div class="tc-stat">
                                     <span class="tc-stat-label">Characters:</span>
@@ -266,7 +325,7 @@
                         <button class="tc-ptab" data-provider="gpt" aria-selected="false">
                             OpenAI GPT
                         </button>
-                        <span class="tc-tab-hint">Gemini Â· Grok Â· more coming soon</span>
+                        <span class="tc-tab-hint">Gemini · Grok · more coming soon</span>
                     </div>
 
                     <!-- CLAUDE PANEL -->
@@ -275,7 +334,7 @@
                             <div class="tc-model-card tc-haiku">
                                 <div class="tc-model-header">
                                     <h3>Haiku 4.5</h3>
-                                    <span class="tc-model-tier fast">Fast âš¡</span>
+                                    <span class="tc-model-tier fast">Fast ⚡</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$0.80 / 1M</code></div>
@@ -285,13 +344,14 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-claude-haiku">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: Classification, summarization, simple transformations</div>
+                                <div class="tc-use-case">Best for: Classification, summarization, simple transformations
+                                </div>
                             </div>
 
                             <div class="tc-model-card tc-sonnet">
                                 <div class="tc-model-header">
                                     <h3>Sonnet 4.6</h3>
-                                    <span class="tc-model-tier balanced">Balanced âš¡âš¡</span>
+                                    <span class="tc-model-tier balanced">Balanced ⚡⚡</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$3.00 / 1M</code></div>
@@ -301,13 +361,14 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-claude-sonnet">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: Production AI systems, reasoning + speed balance</div>
+                                <div class="tc-use-case">Best for: Production AI systems, reasoning + speed balance
+                                </div>
                             </div>
 
                             <div class="tc-model-card tc-opus">
                                 <div class="tc-model-header">
                                     <h3>Opus 4.7</h3>
-                                    <span class="tc-model-tier powerful">Powerful âš¡âš¡âš¡</span>
+                                    <span class="tc-model-tier powerful">Powerful ⚡⚡⚡</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$15.00 / 1M</code></div>
@@ -317,7 +378,8 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-claude-opus">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: Complex reasoning, research, advanced code generation</div>
+                                <div class="tc-use-case">Best for: Complex reasoning, research, advanced code generation
+                                </div>
                             </div>
                         </div>
 
@@ -341,12 +403,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td><strong>Haiku</strong></td><td id="tc-batch-claude-haiku-in">$0.00</td><td id="tc-batch-claude-haiku-out">$0.00</td><td id="tc-batch-claude-haiku-total" class="tc-total"><strong>$0.00</strong></td></tr>
-                                    <tr><td><strong>Sonnet</strong></td><td id="tc-batch-claude-sonnet-in">$0.00</td><td id="tc-batch-claude-sonnet-out">$0.00</td><td id="tc-batch-claude-sonnet-total" class="tc-total"><strong>$0.00</strong></td></tr>
-                                    <tr><td><strong>Opus</strong></td><td id="tc-batch-claude-opus-in">$0.00</td><td id="tc-batch-claude-opus-out">$0.00</td><td id="tc-batch-claude-opus-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr>
+                                        <td><strong>Haiku</strong></td>
+                                        <td id="tc-batch-claude-haiku-in">$0.00</td>
+                                        <td id="tc-batch-claude-haiku-out">$0.00</td>
+                                        <td id="tc-batch-claude-haiku-total" class="tc-total"><strong>$0.00</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sonnet</strong></td>
+                                        <td id="tc-batch-claude-sonnet-in">$0.00</td>
+                                        <td id="tc-batch-claude-sonnet-out">$0.00</td>
+                                        <td id="tc-batch-claude-sonnet-total" class="tc-total"><strong>$0.00</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Opus</strong></td>
+                                        <td id="tc-batch-claude-opus-in">$0.00</td>
+                                        <td id="tc-batch-claude-opus-out">$0.00</td>
+                                        <td id="tc-batch-claude-opus-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
                                 </tbody>
                             </table>
-                            <div class="tc-savings"><strong id="tc-savings-claude">Haiku saves $0.00 vs. Opus</strong></div>
+                            <div class="tc-savings"><strong id="tc-savings-claude">Haiku saves $0.00 vs. Opus</strong>
+                            </div>
                         </div>
                     </div>
 
@@ -356,7 +436,7 @@
                             <div class="tc-model-card tc-gpt55m">
                                 <div class="tc-model-header">
                                     <h3>GPT-5.5 mini</h3>
-                                    <span class="tc-model-tier fast">Fast âš¡</span>
+                                    <span class="tc-model-tier fast">Fast ⚡</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$2.00 / 1M</code></div>
@@ -366,13 +446,14 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-gpt-gpt55m">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: High-volume tasks, cost-sensitive workloads, fast inference</div>
+                                <div class="tc-use-case">Best for: High-volume tasks, cost-sensitive workloads, fast
+                                    inference</div>
                             </div>
 
                             <div class="tc-model-card tc-gpt55">
                                 <div class="tc-model-header">
                                     <h3>GPT-5.5</h3>
-                                    <span class="tc-model-tier balanced">Balanced âš¡âš¡</span>
+                                    <span class="tc-model-tier balanced">Balanced ⚡⚡</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$8.00 / 1M</code></div>
@@ -382,13 +463,14 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-gpt-gpt55">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: Production workloads, reasoning tasks, versatile reasoning</div>
+                                <div class="tc-use-case">Best for: Production workloads, reasoning tasks, versatile
+                                    reasoning</div>
                             </div>
 
                             <div class="tc-model-card tc-gpt55p">
                                 <div class="tc-model-header">
                                     <h3>GPT-5.5 Pro</h3>
-                                    <span class="tc-model-tier powerful">Powerful âš¡âš¡âš¡</span>
+                                    <span class="tc-model-tier powerful">Powerful ⚡⚡⚡</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$12.00 / 1M</code></div>
@@ -398,13 +480,14 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-gpt-gpt55p">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: Complex reasoning, research, advanced problem-solving</div>
+                                <div class="tc-use-case">Best for: Complex reasoning, research, advanced problem-solving
+                                </div>
                             </div>
 
                             <div class="tc-model-card tc-gpt4o">
                                 <div class="tc-model-header">
                                     <h3>GPT-4o (Legacy)</h3>
-                                    <span class="tc-model-tier balanced">Balanced âš¡âš¡</span>
+                                    <span class="tc-model-tier balanced">Balanced ⚡⚡</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$5.00 / 1M</code></div>
@@ -414,13 +497,14 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-gpt-gpt4o">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: Legacy systems still in production, maintained for compatibility</div>
+                                <div class="tc-use-case">Best for: Legacy systems still in production, maintained for
+                                    compatibility</div>
                             </div>
 
                             <div class="tc-model-card tc-gpt4t">
                                 <div class="tc-model-header">
                                     <h3>GPT-4 Turbo</h3>
-                                    <span class="tc-model-tier">Legacy âš¡âš¡</span>
+                                    <span class="tc-model-tier">Legacy ⚡⚡</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$10.00 / 1M</code></div>
@@ -430,13 +514,14 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-gpt-gpt4t">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: Deprecated, use GPT-5.5 instead for better cost/performance</div>
+                                <div class="tc-use-case">Best for: Deprecated, use GPT-5.5 instead for better
+                                    cost/performance</div>
                             </div>
 
                             <div class="tc-model-card tc-gpt4">
                                 <div class="tc-model-header">
                                     <h3>GPT-4</h3>
-                                    <span class="tc-model-tier">Legacy Flagship ðŸ†</span>
+                                    <span class="tc-model-tier">Legacy Flagship 🏆</span>
                                 </div>
                                 <div class="tc-pricing">
                                     <div class="tc-price-row"><span>Input:</span><code>$30.00 / 1M</code></div>
@@ -446,7 +531,8 @@
                                     <div class="tc-cost-label">Cost per Request</div>
                                     <div class="tc-cost-value" id="tc-cost-gpt-gpt4">$0.00</div>
                                 </div>
-                                <div class="tc-use-case">Best for: Expensive legacy flagship, use GPT-5.5 Pro for new projects</div>
+                                <div class="tc-use-case">Best for: Expensive legacy flagship, use GPT-5.5 Pro for new
+                                    projects</div>
                             </div>
                         </div>
 
@@ -454,7 +540,8 @@
                         <div class="tc-batch-section">
                             <h3>Batch Cost Estimator</h3>
                             <div class="tc-batch-controls">
-                                <p style="margin:0 0 12px 0; color:var(--text-secondary); font-size:13px;">Uses the same document count slider above.</p>
+                                <p style="margin:0 0 12px 0; color:var(--text-secondary); font-size:13px;">Uses the same
+                                    document count slider above.</p>
                             </div>
                             <table class="tc-batch-table">
                                 <thead>
@@ -466,20 +553,56 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td><strong>GPT-5.5 mini</strong></td><td id="tc-batch-gpt-gpt55m-in">$0.00</td><td id="tc-batch-gpt-gpt55m-out">$0.00</td><td id="tc-batch-gpt-gpt55m-total" class="tc-total"><strong>$0.00</strong></td></tr>
-                                    <tr><td><strong>GPT-5.5</strong></td><td id="tc-batch-gpt-gpt55-in">$0.00</td><td id="tc-batch-gpt-gpt55-out">$0.00</td><td id="tc-batch-gpt-gpt55-total" class="tc-total"><strong>$0.00</strong></td></tr>
-                                    <tr><td><strong>GPT-5.5 Pro</strong></td><td id="tc-batch-gpt-gpt55p-in">$0.00</td><td id="tc-batch-gpt-gpt55p-out">$0.00</td><td id="tc-batch-gpt-gpt55p-total" class="tc-total"><strong>$0.00</strong></td></tr>
-                                    <tr><td><strong>GPT-4o</strong></td><td id="tc-batch-gpt-gpt4o-in">$0.00</td><td id="tc-batch-gpt-gpt4o-out">$0.00</td><td id="tc-batch-gpt-gpt4o-total" class="tc-total"><strong>$0.00</strong></td></tr>
-                                    <tr><td><strong>GPT-4 Turbo</strong></td><td id="tc-batch-gpt-gpt4t-in">$0.00</td><td id="tc-batch-gpt-gpt4t-out">$0.00</td><td id="tc-batch-gpt-gpt4t-total" class="tc-total"><strong>$0.00</strong></td></tr>
-                                    <tr><td><strong>GPT-4</strong></td><td id="tc-batch-gpt-gpt4-in">$0.00</td><td id="tc-batch-gpt-gpt4-out">$0.00</td><td id="tc-batch-gpt-gpt4-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr>
+                                        <td><strong>GPT-5.5 mini</strong></td>
+                                        <td id="tc-batch-gpt-gpt55m-in">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt55m-out">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt55m-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>GPT-5.5</strong></td>
+                                        <td id="tc-batch-gpt-gpt55-in">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt55-out">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt55-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>GPT-5.5 Pro</strong></td>
+                                        <td id="tc-batch-gpt-gpt55p-in">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt55p-out">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt55p-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>GPT-4o</strong></td>
+                                        <td id="tc-batch-gpt-gpt4o-in">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt4o-out">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt4o-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>GPT-4 Turbo</strong></td>
+                                        <td id="tc-batch-gpt-gpt4t-in">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt4t-out">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt4t-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>GPT-4</strong></td>
+                                        <td id="tc-batch-gpt-gpt4-in">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt4-out">$0.00</td>
+                                        <td id="tc-batch-gpt-gpt4-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
                                 </tbody>
                             </table>
-                            <div class="tc-savings"><strong id="tc-savings-gpt">GPT-4o mini saves $0.00 vs. GPT-4</strong></div>
+                            <div class="tc-savings"><strong id="tc-savings-gpt">GPT-4o mini saves $0.00 vs.
+                                    GPT-4</strong></div>
                         </div>
                     </div>
 
                     <div class="tc-disclaimer">
-                        <strong>Disclaimer:</strong> Token counts are approximations (Â±10% variance). Pricing reflects public OpenAI and Anthropic API rates as of April 2026 â€” verify at <a href="https://openai.com/pricing" target="_blank" rel="noopener">openai.com/pricing</a> and <a href="https://anthropic.com/pricing" target="_blank" rel="noopener">anthropic.com/pricing</a>. Output ratios are estimates; actual costs depend on your prompt and use case.
+                        <strong>Disclaimer:</strong> Token counts are approximations (±10% variance). Pricing reflects
+                        public OpenAI and Anthropic API rates as of April 2026 — verify at <a
+                            href="https://openai.com/pricing" target="_blank" rel="noopener">openai.com/pricing</a> and
+                        <a href="https://anthropic.com/pricing" target="_blank"
+                            rel="noopener">anthropic.com/pricing</a>. Output ratios are estimates; actual costs depend
+                        on your prompt and use case.
                     </div>
 
                 </div>
@@ -489,7 +612,10 @@
             <section class="article-section">
                 <h2>Take-Away: Model Choice Is a Lever</h2>
                 <p>
-                    Tokens are the atomic unit of LLM economics. A 5Ã— difference in token costs between models becomes a 5Ã— difference in your AI infrastructure budget. Use the lab to estimate your own workload, then apply the four optimization levers (routing, caching, output budget, batch APIs) to squeeze more value out of every token. Tokens are cheap in absolute terms â€” but they add up fast at scale.
+                    Tokens are the atomic unit of LLM economics. A 5× difference in token costs between models becomes
+                    a 5× difference in your AI infrastructure budget. Use the lab to estimate your own workload, then
+                    apply the four optimization levers (routing, caching, output budget, batch APIs) to squeeze more
+                    value out of every token. Tokens are cheap in absolute terms — but they add up fast at scale.
                 </p>
             </section>
 
@@ -508,10 +634,12 @@
                         <span class="logo-text">RaghuRamReddy</span>
                     </a>
                     <p class="footer-tagline">Designing technology for human experience</p>
-                    <p class="footer-subline">Platform Engineering â€¢ DevSecOps â€¢ Automation â€¢ AI-assisted Operations</p>
+                    <p class="footer-subline">Platform Engineering • DevSecOps • Automation • AI-assisted Operations</p>
                     <div class="footer-social-row">
-                        <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
-                        <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+                        <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank"
+                            rel="noopener">GitHub</a>
+                        <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3"
+                            target="_blank" rel="noopener">LinkedIn</a>
                         <a class="social-pill" href="../contact.html">Contact</a>
                     </div>
                 </div>
@@ -532,7 +660,8 @@
                         <h4 class="footer-col-title">Explore</h4>
                         <div class="footer-links">
                             <a href="../future-systems.html" class="footer-link">Future Systems</a>
-                            <a href="../operational-standards-library.html" class="footer-link">Operational Standards</a>
+                            <a href="../operational-standards-library.html" class="footer-link">Operational
+                                Standards</a>
                         </div>
                     </div>
                 </div>
@@ -543,14 +672,27 @@
                         <p class="footer-connect-note">Fastest response on LinkedIn.</p>
                     </div>
                     <div class="footer-icon-grid">
-                        <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+                        <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener"
+                            aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path
+                                    d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22" />
+                            </svg>
                         </a>
-                        <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                        <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank"
+                            rel="noopener" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z" />
+                                <path d="M2 9h4v12H2z" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
                         </a>
                         <a class="icon-btn" href="../contact.html" aria-label="Contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path d="M4 4h16v16H4z" />
+                                <path d="M4 7l8 6 8-6" />
+                            </svg>
                         </a>
                     </div>
                     <a class="footer-cta" href="../contact.html">Let&apos;s talk â†’</a>
