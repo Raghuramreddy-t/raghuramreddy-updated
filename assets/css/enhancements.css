@@ -1111,7 +1111,7 @@ body::after {
     .sector-card,
     .principle-card,
     .footer-card {
-        background: rgba(255,255,255,0.75) !important;
+        background: rgba(255,255,255,0.88) !important;
         border: 1px solid rgba(0,0,0,0.08) !important;
         box-shadow: 0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9) !important;
     }
@@ -1219,24 +1219,17 @@ body::after {
     .page-header.ph--about      { background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.08),  transparent 70%); }
     .page-header.ph--contact    { background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.08),  transparent 70%); }
 
-    /* Hero tag chips */
-    .hero-tag-chip {
-        color: rgba(51,65,85,0.9) !important;
-        border: 1px solid rgba(99,102,241,0.25) !important;
-        background: rgba(99,102,241,0.08) !important;
-    }
-
     /* Terminal/code components */
     .term-title-label {
-        color: rgba(107,114,128,0.7) !important;
+        color: rgba(148, 163, 184, 0.5) !important;
     }
 
     .term-output-line {
-        color: rgba(55,65,81,0.85) !important;
+        color: rgba(148, 163, 184, 0.85) !important;
     }
 
     .term-hist-cmd {
-        color: rgba(30,41,59,0.9) !important;
+        color: #e2e8f0 !important;
     }
 
     /* Capability card text */
@@ -4236,8 +4229,8 @@ iframe {
 
 /* ── Comprehensive light mode text color fixes ──────────── */
 [data-theme="light"] {
-    --text-secondary: #1e293b !important;
-    --text-muted: #475569 !important;
+    --text-secondary: #334155 !important;
+    --text-muted: #64748b !important;
 }
 
 /* Fix all elements that use these color variables */
@@ -4262,7 +4255,6 @@ iframe {
 [data-theme="light"] .typewriter-static,
 [data-theme="light"] a.nav-link,
 [data-theme="light"] .quick-nav-card p,
-[data-theme="light"] .spotlight-slide p,
 [data-theme="light"] .capability-card p {
     color: #334155 !important;
 }
@@ -4273,12 +4265,7 @@ iframe {
 [data-theme="light"] .breadcrumb,
 [data-theme="light"] .hint-text,
 [data-theme="light"] .form-hint {
-    color: #475569 !important;
-}
-
-/* Fix all SVG strokes in light mode */
-[data-theme="light"] svg {
-    stroke: #1e293b;
+    color: #64748b !important;
 }
 
 [data-theme="light"] .qnav-icon svg,
@@ -4297,7 +4284,7 @@ iframe {
 
 [data-theme="light"] .form-group input::placeholder,
 [data-theme="light"] .form-group textarea::placeholder {
-    color: #94a3b8 !important;
+    color: #64748b !important;
 }
 
 [data-theme="light"] .form-group input:focus,
@@ -4360,7 +4347,7 @@ iframe {
 }
 
 [data-theme="light"] .cmd-header svg {
-    color: #94a3b8 !important;
+    color: #64748b !important;
 }
 
 [data-theme="light"] .cmd-item {
@@ -4372,11 +4359,11 @@ iframe {
 }
 
 [data-theme="light"] .cmd-item-tags {
-    color: #94a3b8 !important;
+    color: #64748b !important;
 }
 
 [data-theme="light"] .cmd-esc {
-    color: #94a3b8 !important;
+    color: #64748b !important;
     border-color: #e2e8f0 !important;
 }
 

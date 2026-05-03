@@ -57,13 +57,13 @@
     --bg-tertiary: #f1f5f9;
     --text-primary: #0f172a;
     --text-secondary: #475569;
-    --text-muted: #94a3b8;
+    --text-muted: #64748b;
     --border-color: #e2e8f0;
     --card-bg: #ffffff;
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --glass-bg: rgba(255, 255, 255, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-border: rgba(15, 23, 42, 0.08);
     --ai-accent: 92, 106, 196;
     --ai-accent-2: 120, 80, 255;
 }
@@ -204,6 +204,22 @@ body {
     background: rgba(255, 255, 255, 0.02);
     padding: 6px 10px;
     border-radius: 999px;
+}
+
+/* Keep the homepage skill ticker visually stable across themes. */
+.home-page .hero-tag-strip,
+[data-theme="light"] .home-page .hero-tag-strip {
+    border-top-color: rgba(255, 255, 255, 0.06) !important;
+    background: rgba(8, 13, 26, 0.45) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+}
+
+.home-page .hero-tag-chip,
+[data-theme="light"] .home-page .hero-tag-chip {
+    color: rgba(148, 163, 184, 0.86) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
 }
 
 @keyframes heroTagScroll {

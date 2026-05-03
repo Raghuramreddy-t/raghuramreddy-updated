@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
   <title>Why Secure-by-Design CI/CD Is No Longer Optional | RaghuRamReddy Thummalapalli</title>
-  <meta name="description" content="Security is not a step — it is a system property. How to build security into CI/CD pipelines so it can't be skipped." />
+  <meta name="description" content="Security is not a step â€” it is a system property. How to build security into CI/CD pipelines so it can't be skipped." />
   <link rel="canonical" href="https://raghuramreddy.tech/pages/blog/secure-by-design-ci-cd.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Why Secure-by-Design CI/CD Is No Longer Optional" />
-  <meta property="og:description" content="Security is not a step — it is a system property." />
+  <meta property="og:description" content="Security is not a step â€” it is a system property." />
   <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/secure-by-design-ci-cd.html">
   <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
   <meta property="og:image:alt" content="Secure-by-Design CI/CD Article">
@@ -18,12 +18,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/main.css" />
-  <link rel="stylesheet" href="../../assets/css/animations.css" />
-  <link rel="stylesheet" href="../../assets/css/pages.css" />
-  <link rel="stylesheet" href="../../assets/css/components.css" />
-  <link rel="stylesheet" href="../../assets/css/design-v2.css" />
-  <link rel="stylesheet" href="../../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../../assets/css/main.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/animations.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/pages.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/components.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260503" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -66,7 +66,7 @@
       <div class="page-header-content">
         <span class="page-tag">Knowledge Article</span>
         <h1 class="page-title">Why <span class="gradient-text">Secure-by-Design</span> CI/CD Is No Longer Optional</h1>
-        <p class="page-subtitle">Security is not a step — it is a system property.</p>
+        <p class="page-subtitle">Security is not a step â€” it is a system property.</p>
         <div class="card-tags" style="margin-top: 20px; justify-content: center;">
           <span>Mar 21, 2026</span><span>6 min read</span><span>DevSecOps</span><span>CI/CD Security</span>
         </div>
@@ -79,7 +79,7 @@
       <article class="article-body">
 
         <p>
-          For years, security was something that happened after the build. A separate team, a separate process, a gate that ran at the end of a release cycle. The pipeline finished its job — build, test, package — and then security took a look before anything went to production. This model worked when software shipped quarterly. It does not work when software ships daily.
+          For years, security was something that happened after the build. A separate team, a separate process, a gate that ran at the end of a release cycle. The pipeline finished its job â€” build, test, package â€” and then security took a look before anything went to production. This model worked when software shipped quarterly. It does not work when software ships daily.
         </p>
 
         <p>
@@ -88,10 +88,10 @@
 
         <hr style="margin: 40px 0; opacity: 0.15;" />
 
-        <h2>1. Problem — What Breaks at Scale</h2>
+        <h2>1. Problem â€” What Breaks at Scale</h2>
 
         <p>
-          The problem compounds at scale. A single team with a single pipeline might catch their own security issues through good engineering culture and careful reviews. Forty teams, each running their own pipelines, with different scan configurations, different policy gates, different dependency management approaches, and no centralized visibility — that's a threat surface that grows faster than the organization can audit it.
+          The problem compounds at scale. A single team with a single pipeline might catch their own security issues through good engineering culture and careful reviews. Forty teams, each running their own pipelines, with different scan configurations, different policy gates, different dependency management approaches, and no centralized visibility â€” that's a threat surface that grows faster than the organization can audit it.
         </p>
 
         <p>Three specific risks concentrate in uncontrolled pipeline environments:</p>
@@ -109,21 +109,21 @@
         <h2>2. Why Current Approaches Fail</h2>
 
         <p>
-          Shift-left security — adding security checks earlier in the development cycle — is directionally correct. The implementation, however, often means adding a SAST scanner as an optional step that teams can disable when it blocks a release, or configuring a dependency scanner that generates findings nobody has time to triage. Tools that don't block anything don't change behavior.
+          Shift-left security â€” adding security checks earlier in the development cycle â€” is directionally correct. The implementation, however, often means adding a SAST scanner as an optional step that teams can disable when it blocks a release, or configuring a dependency scanner that generates findings nobody has time to triage. Tools that don't block anything don't change behavior.
         </p>
 
         <p>
-          The deeper problem with retrofit security is that it treats security as additive rather than structural. You can add all the scanners you want to a pipeline that was designed without security in mind, and you'll generate findings. What you won't do is make the pipeline itself trustworthy — because trustworthiness comes from how the system is designed, not from what gets checked before the output leaves.
+          The deeper problem with retrofit security is that it treats security as additive rather than structural. You can add all the scanners you want to a pipeline that was designed without security in mind, and you'll generate findings. What you won't do is make the pipeline itself trustworthy â€” because trustworthiness comes from how the system is designed, not from what gets checked before the output leaves.
         </p>
 
         <h2>3. Architecture Thinking</h2>
 
         <p>
-          Secure-by-design means the pipeline can't produce an artifact that didn't pass the security requirements, because bypassing those requirements would require changing the pipeline itself — which is under separate version control and access control from the application code.
+          Secure-by-design means the pipeline can't produce an artifact that didn't pass the security requirements, because bypassing those requirements would require changing the pipeline itself â€” which is under separate version control and access control from the application code.
         </p>
 
         <p>
-          The architectural principle: separate the pipeline definition from the application code, apply strict access controls to both, and make the pipeline the only path from source to artifact. No manual builds. No bypass mechanisms except through a documented, audited exception process. The pipeline doesn't just run security checks — it is the security boundary.
+          The architectural principle: separate the pipeline definition from the application code, apply strict access controls to both, and make the pipeline the only path from source to artifact. No manual builds. No bypass mechanisms except through a documented, audited exception process. The pipeline doesn't just run security checks â€” it is the security boundary.
         </p>
 
         <p>
@@ -137,10 +137,10 @@
           <li>What provenance information is captured and signed at build time, and where is it stored?</li>
         </ul>
 
-        <h2>4. Solution Model — Embedded Security, Not Appended Security</h2>
+        <h2>4. Solution Model â€” Embedded Security, Not Appended Security</h2>
 
         <p>
-          <strong>Immutable build environments.</strong> Builds run in fresh, ephemeral containers launched from a signed base image. The build environment is identical every time — no accumulated state, no environment drift, no persistent compromised tooling. The image itself is produced by a separate hardened pipeline and stored in an internal registry with immutable tags.
+          <strong>Immutable build environments.</strong> Builds run in fresh, ephemeral containers launched from a signed base image. The build environment is identical every time â€” no accumulated state, no environment drift, no persistent compromised tooling. The image itself is produced by a separate hardened pipeline and stored in an internal registry with immutable tags.
         </p>
 
         <p>
@@ -152,7 +152,7 @@
         </p>
 
         <p>
-          <strong>Artifact provenance and signing.</strong> Every artifact that passes the pipeline is signed with a key held by the platform, and provenance metadata — source commit, build environment, scan results, approver identity — is captured in an attestation stored alongside the artifact. Deployment tooling verifies the signature before deploying. Unsigned artifacts don't deploy.
+          <strong>Artifact provenance and signing.</strong> Every artifact that passes the pipeline is signed with a key held by the platform, and provenance metadata â€” source commit, build environment, scan results, approver identity â€” is captured in an attestation stored alongside the artifact. Deployment tooling verifies the signature before deploying. Unsigned artifacts don't deploy.
         </p>
 
         <h2>5. Real-World Scenario</h2>
@@ -162,7 +162,7 @@
         </p>
 
         <p>
-          With a secure-by-design pipeline, the SCA scanner that runs on every build captures a software bill of materials (SBOM) for every artifact. The SBOM is stored as provenance metadata alongside the artifact. When the CVE is disclosed, a query against the SBOM database returns the complete list of affected artifacts, the services running them, and the pipeline runs that produced them — in minutes.
+          With a secure-by-design pipeline, the SCA scanner that runs on every build captures a software bill of materials (SBOM) for every artifact. The SBOM is stored as provenance metadata alongside the artifact. When the CVE is disclosed, a query against the SBOM database returns the complete list of affected artifacts, the services running them, and the pipeline runs that produced them â€” in minutes.
         </p>
 
         <p>
@@ -172,7 +172,7 @@
         <h2>6. Trade-offs</h2>
 
         <p>
-          <strong>Build times increase.</strong> Adding mandatory security gates to every build adds minutes. SCA scans on large dependency trees can be slow. Teams accustomed to 2-minute builds will push back on 8-minute builds. The answer is parallel execution where possible and caching where not — but security scanning cannot be the place where time is saved by skipping work.
+          <strong>Build times increase.</strong> Adding mandatory security gates to every build adds minutes. SCA scans on large dependency trees can be slow. Teams accustomed to 2-minute builds will push back on 8-minute builds. The answer is parallel execution where possible and caching where not â€” but security scanning cannot be the place where time is saved by skipping work.
         </p>
 
         <p>
@@ -180,13 +180,13 @@
         </p>
 
         <p>
-          <strong>Exception management becomes a new process.</strong> When the pipeline can't be bypassed, exceptions need a documented path. This creates process overhead — but it also creates an audit trail of every exception granted, which is useful for both security review and compliance.
+          <strong>Exception management becomes a new process.</strong> When the pipeline can't be bypassed, exceptions need a documented path. This creates process overhead â€” but it also creates an audit trail of every exception granted, which is useful for both security review and compliance.
         </p>
 
         <h2>7. Future Direction</h2>
 
         <p>
-          The next frontier in CI/CD security is behavioral analysis at the pipeline level. Static rules catch known-bad patterns; they don't catch novel supply chain attacks or insider threat scenarios. Anomaly detection on pipeline behavior — unusual network connections from build containers, unexpected access to secrets, dependency resolution patterns that deviate from baseline — can catch threats that rule-based systems miss.
+          The next frontier in CI/CD security is behavioral analysis at the pipeline level. Static rules catch known-bad patterns; they don't catch novel supply chain attacks or insider threat scenarios. Anomaly detection on pipeline behavior â€” unusual network connections from build containers, unexpected access to secrets, dependency resolution patterns that deviate from baseline â€” can catch threats that rule-based systems miss.
         </p>
 
         <p>
@@ -194,7 +194,7 @@
         </p>
 
         <div class="article-callout">
-          <strong>Final takeaway.</strong> If security can be skipped in your pipeline, it will eventually be skipped. The question isn't whether your teams intend to maintain security — it's whether the system makes security possible to skip. Secure-by-design means the answer is no.
+          <strong>Final takeaway.</strong> If security can be skipped in your pipeline, it will eventually be skipped. The question isn't whether your teams intend to maintain security â€” it's whether the system makes security possible to skip. Secure-by-design means the answer is no.
         </div>
 
         <hr style="margin: 40px 0; opacity: 0.15;" />
@@ -290,7 +290,7 @@
         </div>
       </div>
     </footer>
-  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/main.js?v=20260503"></script>
 </body>
 </html>
 

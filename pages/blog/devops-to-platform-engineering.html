@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
   <title>From DevOps to Platform Engineering | RaghuRamReddy Thummalapalli</title>
-  <meta name="description" content="Scaling teams requires scaling systems — not just automation. The case for platform engineering as the next step beyond DevOps." />
+  <meta name="description" content="Scaling teams requires scaling systems â€” not just automation. The case for platform engineering as the next step beyond DevOps." />
   <link rel="canonical" href="https://raghuramreddy.tech/pages/blog/devops-to-platform-engineering.html" />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="From DevOps to Platform Engineering" />
-  <meta property="og:description" content="Scaling teams requires scaling systems — not just automation." />
+  <meta property="og:description" content="Scaling teams requires scaling systems â€” not just automation." />
   <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/devops-to-platform-engineering.html">
   <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
   <meta property="og:image:alt" content="From DevOps to Platform Engineering">
@@ -18,12 +18,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/css/main.css" />
-  <link rel="stylesheet" href="../../assets/css/animations.css" />
-  <link rel="stylesheet" href="../../assets/css/pages.css" />
-  <link rel="stylesheet" href="../../assets/css/components.css" />
-  <link rel="stylesheet" href="../../assets/css/design-v2.css" />
-  <link rel="stylesheet" href="../../assets/css/enhancements.css" />
+  <link rel="stylesheet" href="../../assets/css/main.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/animations.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/pages.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/components.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260503" />
+  <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260503" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -66,7 +66,7 @@
       <div class="page-header-content">
         <span class="page-tag">Knowledge Article</span>
         <h1 class="page-title">From <span class="gradient-text">DevOps</span> to Platform Engineering</h1>
-        <p class="page-subtitle">Scaling teams requires scaling systems — not just automation.</p>
+        <p class="page-subtitle">Scaling teams requires scaling systems â€” not just automation.</p>
         <div class="card-tags" style="margin-top: 20px; justify-content: center;">
           <span>Mar 21, 2026</span><span>5 min read</span><span>Platform Engineering</span><span>DevOps</span>
         </div>
@@ -79,19 +79,19 @@
       <article class="article-body">
 
         <p>
-          DevOps improved the relationship between development and operations. It shortened feedback loops, reduced handoff friction, and made continuous delivery possible at team scale. These were real improvements. The problem is that DevOps as a practice hits a scaling ceiling — and when an organization crosses it, the practices that made DevOps successful start working against it.
+          DevOps improved the relationship between development and operations. It shortened feedback loops, reduced handoff friction, and made continuous delivery possible at team scale. These were real improvements. The problem is that DevOps as a practice hits a scaling ceiling â€” and when an organization crosses it, the practices that made DevOps successful start working against it.
         </p>
 
         <hr style="margin: 40px 0; opacity: 0.15;" />
 
-        <h2>1. Problem — What Breaks at Scale</h2>
+        <h2>1. Problem â€” What Breaks at Scale</h2>
 
         <p>
           When DevOps practices spread across 20, 30, or 50 teams in the same organization, a specific pattern emerges. Each team solves the same infrastructure problems independently. Every team builds some version of a CI/CD pipeline, a deployment process, a monitoring setup, a secrets management approach. The solutions are functionally similar but technically divergent. The cognitive work is duplicated dozens of times.
         </p>
 
         <p>
-          The symptom most engineering leaders notice first is velocity fragmentation. Some teams ship weekly. Others ship monthly, not because their code changes less but because their infrastructure work — keeping pipelines running, managing environments, handling dependency upgrades — consumes a disproportionate share of engineering time.
+          The symptom most engineering leaders notice first is velocity fragmentation. Some teams ship weekly. Others ship monthly, not because their code changes less but because their infrastructure work â€” keeping pipelines running, managing environments, handling dependency upgrades â€” consumes a disproportionate share of engineering time.
         </p>
 
         <p>
@@ -101,7 +101,7 @@
         <h2>2. Why Current Approaches Fail</h2>
 
         <p>
-          DevOps doesn't prescribe a specific organizational structure. Teams are encouraged to own their delivery end-to-end, which at small scale is exactly right. At large scale, end-to-end ownership without shared infrastructure becomes the source of the problem — not the solution to it.
+          DevOps doesn't prescribe a specific organizational structure. Teams are encouraged to own their delivery end-to-end, which at small scale is exactly right. At large scale, end-to-end ownership without shared infrastructure becomes the source of the problem â€” not the solution to it.
         </p>
 
         <p>
@@ -126,7 +126,7 @@
           This changes how platform improvements work. Instead of upgrading Kubernetes cluster by cluster, you upgrade the platform and the upgrade propagates. Instead of rolling out a new security policy team by team, you update the platform policy and it's enforced everywhere. The leverage shifts from linear (one change per team) to multiplicative (one change, every team benefits).
         </p>
 
-        <h2>4. Solution Model — The Internal Developer Platform</h2>
+        <h2>4. Solution Model â€” The Internal Developer Platform</h2>
 
         <p>
           The concrete output of platform engineering is an Internal Developer Platform (IDP): the set of services, tools, and interfaces that product teams use to build, deliver, and run their software.
@@ -143,11 +143,11 @@
         <h2>5. Real-World Scenario</h2>
 
         <p>
-          An organization of 35 product teams is spending an average of 8 hours per team per sprint on infrastructure-related work: pipeline maintenance, environment issues, dependency management, security remediation. That's 280 engineering hours per sprint — roughly 7 full-time engineers — absorbed by infrastructure work distributed across 35 teams.
+          An organization of 35 product teams is spending an average of 8 hours per team per sprint on infrastructure-related work: pipeline maintenance, environment issues, dependency management, security remediation. That's 280 engineering hours per sprint â€” roughly 7 full-time engineers â€” absorbed by infrastructure work distributed across 35 teams.
         </p>
 
         <p>
-          A dedicated platform team of 5 engineers centralizes that work. They build the golden paths, maintain the shared infrastructure, and handle platform upgrades centrally. The 35 product teams now spend closer to 2 hours per sprint on infrastructure work — mostly edge cases the platform doesn't yet handle. Total infrastructure hours: 10 (platform team) + 70 (product teams) = 80 hours per sprint, down from 280. The 5-engineer platform team effectively freed up the equivalent of roughly 5 engineers' worth of capacity across the organization.
+          A dedicated platform team of 5 engineers centralizes that work. They build the golden paths, maintain the shared infrastructure, and handle platform upgrades centrally. The 35 product teams now spend closer to 2 hours per sprint on infrastructure work â€” mostly edge cases the platform doesn't yet handle. Total infrastructure hours: 10 (platform team) + 70 (product teams) = 80 hours per sprint, down from 280. The 5-engineer platform team effectively freed up the equivalent of roughly 5 engineers' worth of capacity across the organization.
         </p>
 
         <h2>6. Trade-offs</h2>
@@ -161,13 +161,13 @@
         </p>
 
         <p>
-          <strong>Migration cost.</strong> Moving from team-owned infrastructure to platform-provided infrastructure requires a migration. Teams have years of accumulated configuration in their existing setups. The migration has to be gradual and supported — teams can't be expected to migrate on their own without the platform team's active involvement in the transition.
+          <strong>Migration cost.</strong> Moving from team-owned infrastructure to platform-provided infrastructure requires a migration. Teams have years of accumulated configuration in their existing setups. The migration has to be gradual and supported â€” teams can't be expected to migrate on their own without the platform team's active involvement in the transition.
         </p>
 
         <h2>7. Future Direction</h2>
 
         <p>
-          The next frontier for platform engineering is cognitive load reduction at the developer experience layer. The best platforms today handle the infrastructure complexity. The next generation will handle the complexity of the platform itself — intelligent defaults, automatic configuration, AI-assisted troubleshooting that guides developers to solutions without requiring them to understand the full platform stack.
+          The next frontier for platform engineering is cognitive load reduction at the developer experience layer. The best platforms today handle the infrastructure complexity. The next generation will handle the complexity of the platform itself â€” intelligent defaults, automatic configuration, AI-assisted troubleshooting that guides developers to solutions without requiring them to understand the full platform stack.
         </p>
 
         <p>
@@ -175,7 +175,7 @@
         </p>
 
         <div class="article-callout">
-          <strong>Final takeaway.</strong> DevOps is about enabling teams. Platform engineering is about enabling systems. If every team is solving the same infrastructure problems independently, you don't have a scalable engineering organization — you have a coordination problem that grows with headcount.
+          <strong>Final takeaway.</strong> DevOps is about enabling teams. Platform engineering is about enabling systems. If every team is solving the same infrastructure problems independently, you don't have a scalable engineering organization â€” you have a coordination problem that grows with headcount.
         </div>
 
         <hr style="margin: 40px 0; opacity: 0.15;" />
@@ -271,7 +271,7 @@
         </div>
       </div>
     </footer>
-  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/main.js?v=20260503"></script>
 </body>
 </html>
 

@@ -1,6 +1,6 @@
 /* ============================================
-   TOKEN COST COMPARATOR - Page-specific CSS
-   Claude vs GPT comparison with tabbed demos
+   THE TOKEN LEDGER - Page-specific CSS
+   Claude vs GPT cost lab with tabbed demos
    ============================================ */
 
 /* ============================================
@@ -978,5 +978,5 @@ html[data-theme="light"] .tc-ptab.active {
 }
 
 html[data-theme="light"] .tc-tab-hint {
-    color: #94a3b8;
+    color: #64748b;
 }
