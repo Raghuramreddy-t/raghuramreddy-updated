@@ -949,6 +949,55 @@ html[data-theme="light"] .tc-batch-table td.tc-total {
     color: #3b82f6;
 }
 
+/* ============================================
+   LEGACY MODEL STYLING
+   ============================================ */
+
+.tc-model-legacy {
+    opacity: 0.65;
+    border-color: var(--border-color);
+    position: relative;
+}
+
+.tc-model-legacy::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.02) 2px,
+        rgba(0, 0, 0, 0.02) 4px
+    );
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+.tc-legacy-badge {
+    display: inline-block;
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 6px;
+    letter-spacing: 0.5px;
+}
+
+.tc-model-legacy .tc-use-case {
+    color: #ef4444;
+    font-weight: 500;
+}
+
+/* ============================================
+   LIGHT MODE OVERRIDES
+   ============================================ */
+
 html[data-theme="light"] .tc-disclaimer {
     background: rgba(255, 152, 0, 0.08);
     border-left-color: #f59e0b;
@@ -957,6 +1006,15 @@ html[data-theme="light"] .tc-disclaimer {
 
 html[data-theme="light"] .tc-disclaimer strong {
     color: #0f172a;
+}
+
+html[data-theme="light"] .tc-model-legacy {
+    opacity: 0.65;
+}
+
+html[data-theme="light"] .tc-legacy-badge {
+    background: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
 }
 
 html[data-theme="light"] .tc-provider-tabs {

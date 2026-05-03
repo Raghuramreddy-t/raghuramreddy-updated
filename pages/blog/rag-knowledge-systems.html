@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <script>!function () { var t = localStorage.getItem("theme") || "dark"; document.documentElement.setAttribute("data-theme", t); document.documentElement.classList.add("no-transition"); requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.remove("no-transition"); }) }) }();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAG & Knowledge Systems Playground | Retrieval-Augmented Generation from First Principles</title>
-    <meta name="description" content="Understand RAG, vector embeddings, and AI agent architectures from first principles. Compare Simple Completion, RAG, MCP, and Agents in a live playground.">
-    <meta property="og:title" content="RAG & Knowledge Systems Playground">
-    <meta property="og:description" content="Learn retrieval-augmented generation, semantic search, and agent architectures — then compare architectures side-by-side in an interactive demo.">
+    <title>Grounded AI Systems | RAG, MCP, Agents, and Multi-Agent Search</title>
+    <meta name="description" content="A practical guide to grounded AI systems, showing how RAG, MCP, agents, and multi-agent search behave when the same question runs through each pattern.">
+    <meta property="og:title" content="Grounded AI Systems | RAG, MCP, Agents, and Multi-Agent Search">
+    <meta property="og:description" content="Learn the difference between RAG, MCP, agents, and multi-agent search through a compact side-by-side lab.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/rag-knowledge-systems.html">
     <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
@@ -57,8 +57,8 @@
         <div class="container">
             <div class="page-header-content">
                 <span class="page-tag animate-fade-in">AI Engineering</span>
-                <h1 class="page-title animate-slide-up">RAG & Knowledge Systems Playground<span class="gradient-text"></span></h1>
-                <p class="page-subtitle animate-slide-up delay-1">Understand RAG, vector search, and agent architectures from first principles — then compare them side-by-side in a live playground.</p>
+                <h1 class="page-title animate-slide-up">Grounded AI Systems<span class="gradient-text"></span></h1>
+                <p class="page-subtitle animate-slide-up delay-1">A simpler way to understand RAG, MCP, agents, and multi-agent search, with one compact lab to compare them side by side.</p>
             </div>
         </div>
     </header>
@@ -66,189 +66,97 @@
     <main class="section">
         <article class="article-body container">
             <section class="article-intro">
-                <h2>The Grounding Problem: LLMs Are Frozen in Time</h2>
-                <p>Large language models are trained on data up to a specific cutoff date. They don't know what happened yesterday, they can't access your internal documentation, and they will confidently make up facts when they don't know the answer. This is not a bug — it's a predictable output when the model has never seen that information in its training data. In production, this is called <strong>hallucination</strong>, and it's unacceptable for mission-critical systems.</p>
-                <p>The solution is to move knowledge out of the model's weights and into a <strong>retrieval system</strong>. Give the model access to your current, domain-specific information at inference time. This guide covers the architectures that do this: RAG (Retrieval-Augmented Generation), MCP (Model Context Protocol), and Agents. We'll start with the fundamentals, then build an interactive playground so you can see how each approach handles the same queries differently.</p>
+                <h2>Why this matters</h2>
+                <p>Base models are useful, but they do not know your latest internal docs, incidents, or operating standards. When they answer without real context, they can sound confident and still be wrong.</p>
+                <p>Grounding fixes that. Instead of asking the model to guess, you give it access to the right information at runtime. That is the core idea behind RAG, MCP, agents, and multi-agent systems.</p>
             </section>
 
             <section class="article-section">
-                <h2>What Is RAG?</h2>
-                <p>RAG stands for <strong>Retrieve → Augment → Generate</strong>. It's a three-stage pipeline:</p>
+                <h2>RAG in plain language</h2>
+                <p>RAG means <strong>Retrieve -> Augment -> Generate</strong>.</p>
                 <div class="workflow-steps">
-                    <div class="step-row"><span class="step-no">1</span><div class="step-content"><strong>Retrieve:</strong> User asks a question. A retrieval system (vector search, keyword matching, or hybrid) finds the most relevant documents or chunks from a knowledge base.</div></div>
-                    <div class="step-row"><span class="step-no">2</span><div class="step-content"><strong>Augment:</strong> The retrieved chunks are inserted into the prompt as context. The system prompt explicitly tells the model to answer only based on what's provided.</div></div>
-                    <div class="step-row"><span class="step-no">3</span><div class="step-content"><strong>Generate:</strong> The model generates a response based on the context. No hallucination — the answer is grounded in actual knowledge.</div></div>
+                    <div class="step-row"><span class="step-no">1</span><div class="step-content"><strong>Retrieve:</strong> find the most relevant documents or chunks.</div></div>
+                    <div class="step-row"><span class="step-no">2</span><div class="step-content"><strong>Augment:</strong> place that context into the prompt.</div></div>
+                    <div class="step-row"><span class="step-no">3</span><div class="step-content"><strong>Generate:</strong> answer using the retrieved context instead of guessing.</div></div>
                 </div>
-                <p>The key insight: <strong>move knowledge OUT of the model and INTO the retrieval system</strong>. Training-time knowledge is static and lives in the weights. Retrieval-time knowledge is dynamic, updatable, and auditable. You can change your knowledge base tomorrow without retraining the model.</p>
-                <p>RAG matters when you have: enterprise documentation, support knowledge bases, product catalogs, internal wikis, or any domain-specific information that the base model doesn't know.</p>
+                <p>The important shift is simple: move important knowledge out of the model and into a retrieval layer you can update, inspect, and improve.</p>
             </section>
 
             <section class="article-section">
-                <h2>Vector Embeddings & Semantic Search</h2>
-                <p>The retrieval system needs to understand meaning, not just keywords. This is where embeddings come in. An <strong>embedding</strong> is a high-dimensional vector (typically 1,000–4,000 dimensions) that represents the semantic meaning of a piece of text. Conceptually, it maps text to a space where similar meanings are close together.</p>
-                <p><strong>Semantic similarity example:</strong> "CI/CD pipeline failure" and "build process broke" share almost no words, but they mean the same thing. In embedding space, they're close neighbors. A keyword search would miss the second phrase; semantic search finds it.</p>
-                <p>The distance metric is usually <strong>cosine similarity</strong> — a measure of the angle between two vectors. Vectors pointing in similar directions (similar meanings) have high cosine similarity; orthogonal vectors (unrelated meanings) have low similarity.</p>
-                <div class="article-callout"><strong>Chunking matters:</strong> Before embedding, documents are split into chunks. Chunk size = retrieval granularity. A 50-token chunk gives fine-grained results; a 1,000-token chunk is coarse but captures more context. Your retrieval system will return whole chunks, so choose wisely.</div>
-                <p><strong>Cost note:</strong> Embedding text to create a knowledge base is cheap — around $0.001 per 1K tokens. The compute cost is at inference time (retrieving and re-ranking), not at indexing time. Build your knowledge base without worry.</p>
-            </section>
-
-            <section class="article-section">
-                <h2>Retrieval Strategies: From Simple to Hybrid</h2>
-                <p>Not all retrieval is the same. Different strategies have different tradeoffs:</p>
+                <h2>How retrieval changes the result</h2>
+                <p>Different systems retrieve and use context in different ways.</p>
                 <div class="depth-panel">
                     <div class="depth-cols">
-                        <div class="depth-card"><h3>Sparse Retrieval (BM25 / TF-IDF)</h3><p>Keyword matching. Fast, exact match required. Misses paraphrases and synonyms. Best for: highly structured, keyword-rich documents (legal contracts, logs).</p></div>
-                        <div class="depth-card"><h3>Dense Retrieval (Vector Search)</h3><p>Semantic matching. Handles synonyms and paraphrases. Misses exact keywords. Best for: conversational queries, domain-specific knowledge, anything conceptual.</p></div>
-                        <div class="depth-card"><h3>Hybrid (Sparse + Dense)</h3><p>Combine both using Reciprocal Rank Fusion (RRF) — merge keyword and semantic results. Expensive but strongest recall. Best for: production systems where accuracy matters.</p></div>
+                        <div class="depth-card"><h3>Simple Completion</h3><p>No retrieval at all. The model answers from general training.</p></div>
+                        <div class="depth-card"><h3>RAG</h3><p>Pulls relevant text first, then answers with that context in view.</p></div>
+                        <div class="depth-card"><h3>MCP</h3><p>Calls structured tools or APIs instead of relying only on documents.</p></div>
+                        <div class="depth-card"><h3>Agent</h3><p>Plans in steps, decides what to fetch, and keeps working until it can answer.</p></div>
+                        <div class="depth-card"><h3>Multi-Agent</h3><p>Splits the work across specialist roles such as retrieval, checking, and synthesis.</p></div>
                     </div>
                 </div>
-                <ul class="article-list">
-                    <li><strong>Re-ranking:</strong> Retrieve top-k results with one method, then use a cross-encoder to re-score and reorder. Improves precision without hurting recall.</li>
-                    <li><strong>Top-k vs Threshold:</strong> Top-k = "return the top 5 results." Threshold = "return all results with similarity > 0.7." Use threshold when result count is unpredictable; use top-k when you have a token budget.</li>
-                </ul>
+                <div class="article-callout"><strong>Practical rule:</strong> retrieval quality, chunking, and prompt clarity usually matter more than sounding clever.</div>
             </section>
 
             <section class="article-section">
-                <h2>Augmentation: Building the Grounded Prompt</h2>
-                <p>Once retrieved, chunks are injected into the prompt. The system prompt is crucial:</p>
-                <div class="example-box"><strong>Example system prompt:</strong><br>"You are a support agent. Answer ONLY based on the provided context. If the answer is not in the context, say 'I don't know.' Do not invent information."</div>
-                <p>This explicit instruction prevents hallucination. The model sees the answer in the context, so it doesn't need to invent it.</p>
-                <p><strong>Token budget math:</strong> If you retrieve 5 chunks × 500 tokens each = 2,500 context tokens, plus 200-token question plus 500-token expected response = 3,200 tokens per request. That's the cost ceiling for that request. Know your token budget before you design your retrieval strategy.</p>
-                <div class="article-callout"><strong>Why grounding reduces hallucination:</strong> The model doesn't need to guess. It reads the answer in the context. The only hallucination risk is if the context itself is wrong — so keep your knowledge base clean.</div>
-            </section>
+                <h2>Grounding Response Lab</h2>
+                <p>Ask one question and compare how five AI patterns respond when they work with different levels of context, tools, and coordination.</p>
 
-            <section class="article-section">
-                <h2>Beyond RAG: MCP, Agents, and Multi-Agents</h2>
-                <p>RAG is one-shot retrieval. The model answers based on what's retrieved before generation starts. But there are more sophisticated architectures:</p>
-                <div class="depth-panel">
-                    <div class="depth-cols">
-                        <div class="depth-card"><h3>RAG</h3><p><strong>One-shot retrieval before generation.</strong> Document-first. No iteration. Simple and fast. Trade-off: if the initial retrieval is wrong, the response will be wrong.</p></div>
-                        <div class="depth-card"><h3>MCP (Model Context Protocol)</h3><p><strong>Structured tool access.</strong> The model calls typed functions like search_kb(query, filters) or get_document(id), defined by a server contract. More structured than RAG, more predictable than agents.</p></div>
-                        <div class="depth-card"><h3>Agent</h3><p><strong>Autonomous reasoning.</strong> The model decides what tools to call, in what order, and whether to iterate. Can retrieve, reason, decide to retrieve more, synthesize. Handles uncertainty and multi-step planning.</p></div>
-                        <div class="depth-card"><h3>Multi-Agent</h3><p><strong>Specialized agents coordinate.</strong> Example: Research Agent finds docs, Fact-Checker Agent verifies claims, Synthesis Agent produces final output. Enables parallelism and specialization.</p></div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="article-section">
-                <h2>Choosing the Right Architecture</h2>
-                <p>Each architecture has a purpose. Choose based on task complexity:</p>
-                <table style="width:100%; margin:24px 0; border-collapse:collapse;"><thead><tr style="border-bottom:2px solid var(--border-color);"><th style="text-align:left; padding:12px 0; font-weight:600;">Need</th><th style="text-align:left; padding:12px 0; font-weight:600;">Right Architecture</th></tr></thead><tbody><tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 0;">General knowledge / creative tasks</td><td style="padding:12px 0;"><strong>Simple Completion</strong> — No retrieval, just the model</td></tr><tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 0;">Accurate answers from your docs</td><td style="padding:12px 0;"><strong>RAG</strong> — Fast, one-shot, predictable</td></tr><tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 0;">Structured APIs, exact data lookups</td><td style="padding:12px 0;"><strong>MCP</strong> — Typed functions, contract-based</td></tr><tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 0;">Multi-step reasoning, uncertainty</td><td style="padding:12px 0;"><strong>Agent</strong> — Autonomous iteration</td></tr><tr><td style="padding:12px 0;">Complex workflows, QA, specialization</td><td style="padding:12px 0;"><strong>Multi-Agent</strong> — Coordinated agents</td></tr></tbody></table>
-            </section>
-
-            <section class="article-section">
-                <h2>The Playground</h2>
-                <p>Below is an interactive demo. Type a question or click a preset query, then click Analyze to see how all four architecture modes handle the same question side-by-side.</p>
-
-                <div class="tc-wrap" id="live-demo">
-
-                    <!-- Input Section -->
-                    <div class="tc-input-section">
-                        <label for="rag-input" class="tc-label">Ask a question about our platform:</label>
-                        <div class="tc-input-container">
-                            <textarea id="rag-input" class="tc-input-area"
-                                placeholder="Ask about deployment success, incident response, CI/CD standards, or developer experience. Click a preset below or type your own."
-                                rows="3"></textarea>
+                <div class="tc-wrap rag-lab-shell" id="live-demo">
+                    <div class="rag-lab-topbar">
+                        <div class="rag-lab-copy">
+                            <span class="rag-lab-kicker">Live Lab</span>
+                            <label for="rag-input" class="tc-label rag-lab-label">Test any question</label>
+                            <p class="rag-lab-hint">Try an incident, delivery, reliability, or standards question and compare how each system answers it.</p>
                         </div>
-                        <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; align-items:center;">
-                            <button class="tc-ptab" data-query="q1" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">Deployment success rate?</button>
-                            <button class="tc-ptab" data-query="q2" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">P1 incident response?</button>
-                            <button class="tc-ptab" data-query="q3" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">CI/CD standards?</button>
-                            <button id="rag-analyze-btn" style="background:var(--accent-primary); color:var(--bg-primary); border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-size:14px; font-weight:600; margin-left:auto;">Analyze</button>
+                        <div class="rag-lab-search" role="search">
+                            <div class="tc-input-container rag-lab-search-box">
+                                <input id="rag-input" class="tc-input-area rag-lab-textarea" type="text" placeholder="Example: What should we check first when deployment failures spike?" />
+                            </div>
+                            <button id="rag-analyze-btn" class="rag-lab-run">Analyze</button>
                         </div>
                     </div>
 
-                    <!-- 2x2 Grid Layout -->
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:32px;">
-
-                        <!-- Simple Completion (Top Left) -->
-                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:12px; padding:24px;">
-                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
-                                <h3 style="margin:0; font-size:16px;">Simple Completion</h3>
-                                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:rgba(107, 114, 128, 0.5);"></span>
-                            </div>
-                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.4;">No retrieval. Answers from training data only. Risk of hallucination.</p>
-                            <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-bottom:12px; min-height:120px;">
-                                <div id="rag-simple-response" style="font-size:14px; line-height:1.6; color:var(--text-secondary);"></div>
-                            </div>
-                            <div style="display:flex; gap:12px; font-size:12px; flex-wrap:wrap;">
-                                <span>⏱️ 1s</span>
-                                <span>📄 0 docs</span>
-                                <span style="color:var(--accent-primary);">🔴 Low confidence</span>
-                            </div>
+                    <div class="rag-lab-compare-grid">
+                        <div class="rag-mini-card rag-mini-card--simple">
+                            <div class="rag-mini-head"><span>Simple</span><span>Base model</span></div>
+                            <div id="rag-simple-response" class="rag-mini-body"></div>
+                            <div class="rag-mini-meta"><span>~1s</span><span>Docs 0</span></div>
                         </div>
 
-                        <!-- RAG (Top Right) -->
-                        <div style="background:var(--bg-secondary); border:1px solid rgba(34, 197, 94, 0.3); border-radius:12px; padding:24px;">
-                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
-                                <h3 style="margin:0; font-size:16px;">RAG</h3>
-                                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:rgba(34, 197, 94, 0.6);"></span>
-                            </div>
-                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.4;">Retrieves relevant docs, augments prompt, generates grounded answer.</p>
-                            <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-bottom:12px; min-height:120px;">
-                                <div id="rag-rag-response" style="font-size:14px; line-height:1.6; color:var(--text-secondary);"></div>
-                            </div>
-                            <div style="background:rgba(34, 197, 94, 0.08); border:1px solid rgba(34, 197, 94, 0.2); border-radius:6px; padding:10px; margin-bottom:12px;">
-                                <strong style="font-size:11px; color:var(--text-secondary);">Sources:</strong>
-                                <div id="rag-rag-sources" style="margin-top:6px; font-size:12px;"></div>
-                            </div>
-                            <div style="display:flex; gap:12px; font-size:12px; flex-wrap:wrap;">
-                                <span>⏱️ 2.5s</span>
-                                <span id="rag-rag-count">📄 0 docs</span>
-                                <span style="color:var(--accent-primary);">🟢 High confidence</span>
-                            </div>
+                        <div class="rag-mini-card rag-mini-card--rag">
+                            <div class="rag-mini-head"><span>RAG</span><span>Retrieved</span></div>
+                            <div id="rag-rag-response" class="rag-mini-body"></div>
+                            <div class="rag-mini-meta"><span>~2.5s</span><span id="rag-rag-count">Docs 0</span></div>
+                            <div id="rag-rag-sources" class="rag-mini-sources"></div>
                         </div>
 
-                        <!-- MCP (Bottom Left) -->
-                        <div style="background:var(--bg-secondary); border:1px solid rgba(59, 130, 246, 0.3); border-radius:12px; padding:24px;">
-                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
-                                <h3 style="margin:0; font-size:16px;">MCP</h3>
-                                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:rgba(59, 130, 246, 0.6);"></span>
-                            </div>
-                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.4;">LLM calls typed functions to retrieve structured data. Contract-based.</p>
-                            <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-bottom:12px; min-height:120px;">
-                                <div id="rag-mcp-response" style="font-size:14px; line-height:1.6; color:var(--text-secondary);"></div>
-                            </div>
-                            <div style="background:rgba(59, 130, 246, 0.08); border:1px solid rgba(59, 130, 246, 0.2); border-radius:6px; padding:10px; margin-bottom:12px;">
-                                <strong style="font-size:11px; color:var(--text-secondary);">Tool calls:</strong>
-                                <div id="rag-mcp-sources" style="margin-top:6px; font-size:12px;"></div>
-                            </div>
-                            <div style="display:flex; gap:12px; font-size:12px; flex-wrap:wrap;">
-                                <span>⏱️ 2.8s</span>
-                                <span id="rag-mcp-count">📄 0 docs</span>
-                                <span style="color:var(--accent-primary);">🟢 High confidence</span>
-                            </div>
+                        <div class="rag-mini-card rag-mini-card--mcp">
+                            <div class="rag-mini-head"><span>MCP</span><span>Tool call</span></div>
+                            <div id="rag-mcp-response" class="rag-mini-body"></div>
+                            <div class="rag-mini-meta"><span>~2.8s</span><span id="rag-mcp-count">Docs 0</span></div>
+                            <div id="rag-mcp-sources" class="rag-mini-sources"></div>
                         </div>
 
-                        <!-- Agent (Bottom Right) -->
-                        <div style="background:var(--bg-secondary); border:1px solid rgba(168, 85, 247, 0.3); border-radius:12px; padding:24px;">
-                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
-                                <h3 style="margin:0; font-size:16px;">Agent</h3>
-                                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:rgba(168, 85, 247, 0.6);"></span>
-                            </div>
-                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.4;">Autonomous reasoning. Decides what to retrieve, when to iterate, how to synthesize.</p>
-                            <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-bottom:12px; min-height:120px;">
-                                <div id="rag-agent-response" style="font-size:14px; line-height:1.6; color:var(--text-secondary);"></div>
-                            </div>
-                            <div style="background:rgba(168, 85, 247, 0.08); border:1px solid rgba(168, 85, 247, 0.2); border-radius:6px; padding:10px; margin-bottom:12px;">
-                                <strong style="font-size:11px; color:var(--text-secondary);">Sources:</strong>
-                                <div id="rag-agent-sources" style="margin-top:6px; font-size:12px;"></div>
-                            </div>
-                            <div style="display:flex; gap:12px; font-size:12px; flex-wrap:wrap;">
-                                <span>⏱️ 3.2s</span>
-                                <span id="rag-agent-count">📄 0 docs</span>
-                                <span style="color:var(--accent-primary);">⭐ Very high confidence</span>
-                            </div>
+                        <div class="rag-mini-card rag-mini-card--agent">
+                            <div class="rag-mini-head"><span>Agent</span><span>Iterative</span></div>
+                            <div id="rag-agent-response" class="rag-mini-body"></div>
+                            <div class="rag-mini-meta"><span>~3.2s</span><span id="rag-agent-count">Docs 0</span></div>
+                            <div id="rag-agent-sources" class="rag-mini-sources"></div>
                         </div>
 
+                        <div class="rag-mini-card rag-mini-card--multi">
+                            <div class="rag-mini-head"><span>Multi-Agent</span><span>Coordinated agents</span></div>
+                            <div id="rag-multi-response" class="rag-mini-body"></div>
+                            <div class="rag-mini-meta"><span>~3.8s</span><span id="rag-multi-count">Docs 0</span></div>
+                            <div id="rag-multi-sources" class="rag-mini-sources"></div>
+                        </div>
                     </div>
-
                 </div>
             </section>
 
             <section class="article-section">
-                <h2>The Architecture You Choose Matters</h2>
-                <p>Grounding is the key to trustworthy enterprise AI. Don't rely on base models to know your business. RAG, MCP, Agents, and Multi-Agent systems are not mutually exclusive — they exist on a spectrum of complexity, cost, and autonomy. Start simple (RAG for most use cases), then upgrade only when you need it (agents for multi-step reasoning, multi-agents for complex workflows). The playground above is a simulation, but the patterns are real. Build your knowledge base, choose your architecture, and ground your AI in facts.</p>
+                <h2>The real takeaway</h2>
+                <p>Most teams should start with the simplest pattern that gives reliable answers. Use RAG when documents are enough. Use MCP when structured tools matter. Use agents or multi-agent systems only when the task truly needs planning, checking, or specialist roles.</p>
             </section>
         </article>
     </main>
@@ -260,7 +168,7 @@
                 <div class="footer-card footer-brand-card">
                     <a href="../../index.html" class="footer-logo"><span class="logo-icon">RRR</span><span class="logo-text">RaghuRamReddy</span></a>
                     <p class="footer-tagline">Designing technology for human experience</p>
-                    <p class="footer-subline">Platform Engineering • DevSecOps • Automation • AI-assisted Operations</p>
+                    <p class="footer-subline">Platform Engineering - DevSecOps - Automation - AI-assisted Operations</p>
                     <div class="footer-social-row">
                         <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
                         <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
@@ -278,7 +186,7 @@
                         <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
                         <a class="icon-btn" href="../contact.html" aria-label="Contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg></a>
                     </div>
-                    <a class="footer-cta" href="../contact.html">Let's talk →</a>
+                    <a class="footer-cta" href="../contact.html">Connect Professionally -></a>
                 </div>
                 <div class="footer-visual" aria-hidden="true"><span class="fv-orb fv-orb-1"></span><span class="fv-orb fv-orb-2"></span><span class="fv-line fv-line-1"></span><span class="fv-line fv-line-2"></span><span class="fv-dot fv-dot-1"></span><span class="fv-dot fv-dot-2"></span></div>
             </div>
@@ -295,24 +203,28 @@
                 q2: { text: 'How should we handle a P1 production incident?', docs: ['KB-005', 'KB-002'] },
                 q3: { text: 'What are our CI/CD pipeline standards?', docs: ['KB-002'] }
             };
+
             const RESPONSES = {
                 q1: {
-                    simple: { text: 'Deployment success rates typically range from 90-99% depending on team maturity, tooling, and infrastructure reliability. Rates vary significantly by industry and organization size. Best practices suggest aiming for 95%+ success rates in production environments.' },
-                    rag: { text: 'Based on the Q3 2025 Platform Health Report, our current deployment success rate is <strong>96.2%</strong>, which exceeds our target of 95%. This was achieved through our CI/CD standards and incident response procedures.' },
-                    mcp: { text: 'I called <code>search_kb("deployment success rate")</code> and found KB-003. Result: <strong>Deployment success rate: 96.2%</strong> (target: 95%). Mean time to recovery: 12 minutes.' },
-                    agent: { text: 'I retrieved the Q3 2025 Platform Health Report and cross-referenced it with CI/CD Standards. Current deployment success rate: <strong>96.2%</strong>, exceeding our target of 95%.' }
+                    simple: 'A healthy delivery platform usually targets something above 95%, but the model cannot know your real number without internal data.',
+                    rag: 'The Q3 2025 Platform Health Report shows a <strong>96.2% deployment success rate</strong>, above the 95% target.',
+                    mcp: 'Tool lookup returned KB-003. Current deployment success rate: <strong>96.2%</strong>. MTTR: <strong>12 minutes</strong>.',
+                    agent: 'The agent checked the platform health report, compared it to the target, and confirmed that delivery performance is above goal.',
+                    multi: 'A retrieval agent found KB-003, a verification agent checked the target threshold, and a synthesis agent concluded the platform is at <strong>96.2%</strong> success and currently healthy.'
                 },
                 q2: {
-                    simple: { text: 'When handling P1 incidents, typical best practices include establishing an incident commander, creating an incident war room, assigning roles, documenting the timeline, and conducting a post-incident review.' },
-                    rag: { text: 'According to our Incident Response Playbook, a P1 incident response follows: <strong>1) Page on-call immediately</strong> 2) Run incident.run gameday 3) Establish incident commander 4) Post mortem within 24 hours.' },
-                    mcp: { text: 'I called <code>search_kb("P1 incident response")</code> and found our Incident Response Playbook. Response procedure: <strong>Page on-call → Run incident.run gameday → Establish incident commander → 24-hour post mortem</strong>.' },
-                    agent: { text: 'I retrieved the Incident Response Playbook and cross-checked with CI/CD Standards. For P1 incidents: <strong>1) Page on-call immediately 2) Run incident.run gameday 3) Establish incident commander 4) Post mortem within 24 hours</strong>.' }
+                    simple: 'A typical P1 response includes paging the on-call engineer, assigning an incident lead, communicating status, and running a post-incident review.',
+                    rag: 'The Incident Response Playbook says to <strong>page on-call immediately</strong>, run the incident flow, establish an incident commander, and complete a postmortem within 24 hours.',
+                    mcp: 'Tool lookup returned the Incident Response Playbook. The defined sequence is: <strong>page on-call -> run incident flow -> establish incident commander -> 24-hour postmortem</strong>.',
+                    agent: 'The agent checked the incident playbook and related standards, then summarized the approved P1 response path step by step.',
+                    multi: 'A runbook agent pulled the playbook, a policy agent confirmed the escalation path, and a response agent summarized the approved P1 flow for action.'
                 },
                 q3: {
-                    simple: { text: 'CI/CD pipeline standards typically include automated testing (unit, integration, end-to-end), code review requirements, deployment approval workflows, and security scanning.' },
-                    rag: { text: 'Our CI/CD Pipeline Standards v2.0 requires all deployments to pass: <strong>security scanning, unit tests, integration tests, and smoke tests</strong>. We maintain a <strong>5-minute deployment target</strong>.' },
-                    mcp: { text: 'I called <code>search_kb("CI/CD standards")</code> and found CI/CD Pipeline Standards v2.0. Required pipeline: <strong>Security scanning → Unit tests → Integration tests → Smoke tests → Deploy (5-min target)</strong>.' },
-                    agent: { text: 'I retrieved CI/CD Pipeline Standards v2.0. The standardized pipeline includes: <strong>Security scanning, unit tests, integration tests, smoke tests</strong> with a <strong>5-minute deployment target</strong>.' }
+                    simple: 'CI/CD standards usually include tests, approvals, and some level of security scanning, but exact rules vary by team and platform.',
+                    rag: 'CI/CD Pipeline Standards v2.0 requires <strong>security scanning, unit tests, integration tests, and smoke tests</strong>, with a <strong>five-minute deployment target</strong>.',
+                    mcp: 'Tool lookup returned the CI/CD standard. Required flow: <strong>security scanning -> unit tests -> integration tests -> smoke tests -> deploy</strong>.',
+                    agent: 'The agent reviewed the standard and returned the enforced release path, including the mandatory checks before deployment.',
+                    multi: 'A standards agent retrieved the pipeline policy, a controls agent checked the required gates, and a summary agent produced the final CI/CD flow.'
                 }
             };
 
@@ -325,53 +237,88 @@
             };
 
             const input = document.getElementById('rag-input');
-            const presetBtns = document.querySelectorAll('.tc-ptab[data-query]');
             const analyzeBtn = document.getElementById('rag-analyze-btn');
 
-            let currentQuery = 'q1';
-
-            presetBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    currentQuery = btn.dataset.query;
-                    input.value = QUERIES[currentQuery].text;
-                });
-            });
-
-            analyzeBtn.addEventListener('click', render);
-
-            function render() {
-                if (!currentQuery) {
-                    currentQuery = 'q1';
+            function resolveQueryKey(value) {
+                const text = (value || '').toLowerCase();
+                if (text.includes('incident') || text.includes('p1') || text.includes('sev') || text.includes('outage') || text.includes('alert') || text.includes('root cause') || text.includes('rollback')) {
+                    return 'q2';
                 }
-                const q = QUERIES[currentQuery];
-                const r = RESPONSES[currentQuery];
-
-                // Simple
-                document.getElementById('rag-simple-response').innerHTML = r.simple.text;
-
-                // RAG
-                document.getElementById('rag-rag-response').innerHTML = r.rag.text;
-                document.getElementById('rag-rag-count').textContent = `📄 ${q.docs.length} doc${q.docs.length !== 1 ? 's' : ''}`;
-                document.getElementById('rag-rag-sources').innerHTML = q.docs.map(d =>
-                    `<div style="margin:4px 0; font-size:12px;"><strong>${d}</strong> ${docNames[d]}</div>`
-                ).join('');
-
-                // MCP
-                document.getElementById('rag-mcp-response').innerHTML = r.mcp.text;
-                document.getElementById('rag-mcp-count').textContent = `📄 ${q.docs.length} doc${q.docs.length !== 1 ? 's' : ''}`;
-                document.getElementById('rag-mcp-sources').innerHTML = q.docs.map(d =>
-                    `<div style="margin:4px 0; font-size:12px;"><code>get_document("${d}")</code></div>`
-                ).join('');
-
-                // Agent
-                document.getElementById('rag-agent-response').innerHTML = r.agent.text;
-                document.getElementById('rag-agent-count').textContent = `📄 ${q.docs.length} doc${q.docs.length !== 1 ? 's' : ''}`;
-                document.getElementById('rag-agent-sources').innerHTML = q.docs.map(d =>
-                    `<div style="margin:4px 0; font-size:12px;"><strong>${d}</strong> ${docNames[d]}</div>`
-                ).join('');
+                if (text.includes('ci/cd') || text.includes('pipeline') || text.includes('standard') || text.includes('policy') || text.includes('test') || text.includes('build') || text.includes('security gate')) {
+                    return 'q3';
+                }
+                if (text.includes('deploy') || text.includes('release') || text.includes('success rate') || text.includes('availability') || text.includes('reliability') || text.includes('health')) {
+                    return 'q1';
+                }
+                return 'generic';
             }
 
-            input.value = QUERIES.q1.text;
+            function buildGenericResponses(question) {
+                const safeQuestion = question || 'this engineering question';
+                return {
+                    docs: ['KB-001', 'KB-003'],
+                    simple: `A base model can offer general advice about <strong>${safeQuestion}</strong>, but it does not know your internal systems, standards, or recent operational history.`,
+                    rag: `A RAG workflow would retrieve internal references related to <strong>${safeQuestion}</strong> before answering, which usually makes the response more grounded and easier to verify.`,
+                    mcp: `An MCP workflow would call the right internal tools or APIs for <strong>${safeQuestion}</strong>, then answer using live or structured system data instead of only prose documents.`,
+                    agent: `An agent would break <strong>${safeQuestion}</strong> into steps, decide what evidence is missing, gather that context, and then return a more deliberate answer.`,
+                    multi: `A multi-agent system would assign <strong>${safeQuestion}</strong> across specialist roles such as retrieval, validation, and synthesis so the final answer is checked before it is presented.`
+                };
+            }
+
+            function getScenario(question) {
+                const key = resolveQueryKey(question);
+                if (key === 'generic') {
+                    return {
+                        docs: ['KB-001', 'KB-003'],
+                        responses: buildGenericResponses(question)
+                    };
+                }
+
+                return {
+                    docs: QUERIES[key].docs,
+                    responses: RESPONSES[key]
+                };
+            }
+
+            function sourceList(ids, formatter) {
+                return ids.map(id => formatter(id)).join('');
+            }
+
+            function render() {
+                const question = input.value.trim() || QUERIES.q1.text;
+                input.value = question;
+
+                const scenario = getScenario(question);
+                const docs = scenario.docs;
+                const r = scenario.responses;
+
+                document.getElementById('rag-simple-response').innerHTML = r.simple;
+
+                document.getElementById('rag-rag-response').innerHTML = r.rag;
+                document.getElementById('rag-rag-count').textContent = `Docs ${docs.length}`;
+                document.getElementById('rag-rag-sources').innerHTML = sourceList(docs, id => `<div class="rag-mini-source">${id} - ${docNames[id]}</div>`);
+
+                document.getElementById('rag-mcp-response').innerHTML = r.mcp;
+                document.getElementById('rag-mcp-count').textContent = `Docs ${docs.length}`;
+                document.getElementById('rag-mcp-sources').innerHTML = sourceList(docs, id => `<div class="rag-mini-source"><code>get_document("${id}")</code></div>`);
+
+                document.getElementById('rag-agent-response').innerHTML = r.agent;
+                document.getElementById('rag-agent-count').textContent = `Docs ${docs.length}`;
+                document.getElementById('rag-agent-sources').innerHTML = sourceList(docs, id => `<div class="rag-mini-source">${id} - ${docNames[id]}</div>`);
+
+                document.getElementById('rag-multi-response').innerHTML = r.multi;
+                document.getElementById('rag-multi-count').textContent = `Docs ${docs.length}`;
+                document.getElementById('rag-multi-sources').innerHTML = sourceList(docs, id => `<div class="rag-mini-source">${id} - checked by specialist agents</div>`);
+            }
+
+            analyzeBtn.addEventListener('click', render);
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    render();
+                }
+            });
+            render();
         })();
     </script>
 </body>
