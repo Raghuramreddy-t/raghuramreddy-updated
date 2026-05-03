@@ -138,68 +138,102 @@
 
             <section class="article-section">
                 <h2>The Playground</h2>
-                <p>Below is an interactive demo. Choose a query or type your own. Select an architecture mode (Simple, RAG, MCP, or Agent). Watch the system's response and see how each architecture retrieves, processes, and answers differently.</p>
+                <p>Below is an interactive demo. Type a question or click a preset query. Switch between architecture modes (Simple, RAG, MCP, Agent) to see how each approach handles the same question differently.</p>
 
-                <div class="ldemo-wrap" id="live-demo">
-                    <div class="ldemo-kb-section">
-                        <h3>Knowledge Base (5 documents)</h3>
-                        <div class="gov-grid">
-                            <div class="gov-card"><div class="gov-card-header">KB-001</div><div class="gov-card-title">Platform Engineering Charter</div><p>Team mission: Enable development teams with self-serve infrastructure, reduce toil, and drive deployment velocity.</p></div>
-                            <div class="gov-card"><div class="gov-card-header">KB-002</div><div class="gov-card-title">CI/CD Pipeline Standards v2.0</div><p>All deployments must pass: security scanning, unit tests, integration tests, and smoke tests. 5-minute deployment target.</p></div>
-                            <div class="gov-card"><div class="gov-card-header">KB-003</div><div class="gov-card-title">Q3 2025 Platform Health Report</div><p>Deployment success rate: 96.2% (target: 95%). Mean time to recovery (MTTR): 12 minutes. Incident count: 8 (down from 14 in Q2).</p></div>
-                            <div class="gov-card"><div class="gov-card-header">KB-004</div><div class="gov-card-title">Developer Experience Survey</div><p>94% of devs report faster deployment times. 87% report reduced friction in the CI/CD process. Top request: faster feedback loops.</p></div>
-                            <div class="gov-card"><div class="gov-card-header">KB-005</div><div class="gov-card-title">Incident Response Playbook</div><p>P1 incident: page on-call immediately. Run incident.run gameday. Establish incident commander. Post mortem within 24 hours.</p></div>
+                <div class="tc-wrap" id="live-demo">
+
+                    <!-- Input Section -->
+                    <div class="tc-input-section">
+                        <label for="rag-input" class="tc-label">Ask a question about our platform:</label>
+                        <div class="tc-input-container">
+                            <textarea id="rag-input" class="tc-input-area"
+                                placeholder="Ask about deployment success, incident response, CI/CD standards, or developer experience. Click a preset below or type your own."
+                                rows="3"></textarea>
                         </div>
-                    </div>
-
-                    <div class="ldemo-query">
-                        <label for="ldemo-input" style="display:block; margin-bottom:8px; font-weight:600; font-size:14px;">Ask a question:</label>
-                        <textarea id="ldemo-input" class="ldemo-input-area" placeholder="Type your question or use a preset below." rows="3"></textarea>
                         <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;">
-                            <button class="ldemo-preset-btn" data-query="q1">What is our current deployment success rate?</button>
-                            <button class="ldemo-preset-btn" data-query="q2">How should we handle a P1 production incident?</button>
-                            <button class="ldemo-preset-btn" data-query="q3">What are our CI/CD pipeline standards?</button>
+                            <button class="tc-ptab" data-query="q1" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">Deployment success rate?</button>
+                            <button class="tc-ptab" data-query="q2" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">P1 incident response?</button>
+                            <button class="tc-ptab" data-query="q3" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">CI/CD standards?</button>
                         </div>
                     </div>
 
-                    <div class="ldemo-mode-tabs">
-                        <button class="ldemo-tab active" data-mode="simple" aria-selected="true">Simple Completion</button>
-                        <button class="ldemo-tab" data-mode="rag" aria-selected="false">RAG</button>
-                        <button class="ldemo-tab" data-mode="mcp" aria-selected="false">MCP</button>
-                        <button class="ldemo-tab" data-mode="agent" aria-selected="false">Agent</button>
-                        <span class="ldemo-tab-hint">Multi-Agent · Agentic RAG · more coming soon</span>
+                    <!-- Architecture Mode Tabs -->
+                    <div class="tc-provider-tabs" style="margin-top:32px;">
+                        <button class="tc-ptab active" data-mode="simple" aria-selected="true">Simple Completion</button>
+                        <button class="tc-ptab" data-mode="rag" aria-selected="false">RAG</button>
+                        <button class="tc-ptab" data-mode="mcp" aria-selected="false">MCP</button>
+                        <button class="tc-ptab" data-mode="agent" aria-selected="false">Agent</button>
+                        <span class="tc-tab-hint">Multi-Agent · Agentic RAG · more coming soon</span>
                     </div>
 
-                    <div class="ldemo-mode-panel active" id="ldemo-panel-simple">
-                        <h3>Simple Completion</h3>
-                        <div class="ldemo-flow"><div class="arch-pipeline"><div class="arch-node">Query</div><div class="arch-arrow">→</div><div class="arch-node">LLM</div><div class="arch-arrow">→</div><div class="arch-node">Response</div></div></div>
-                        <div class="ldemo-grid"><div class="ldemo-card"><div class="ldemo-head"><span class="ldemo-dot bad"></span>Without Grounding</div><div class="ldemo-out" id="ldemo-simple-bad"></div></div></div>
-                        <div class="demo-metrics"><span class="metric-chip">Latency: ~1s</span><span class="metric-chip">Retrieved: 0 docs</span><span class="metric-chip">Confidence: Low</span></div>
+                    <!-- Simple Mode -->
+                    <div class="tc-provider-panel active" id="rag-panel-simple">
+                        <h3 style="margin-bottom:16px;">Simple Completion</h3>
+                        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;"><strong>No retrieval. Model answers from training data only. Risk: hallucination.</strong></p>
+                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:20px; margin-bottom:16px;">
+                            <div id="rag-simple-response" style="font-size:15px; line-height:1.6; color:var(--text-secondary);"></div>
+                        </div>
+                        <div style="display:flex; gap:16px; font-size:14px;">
+                            <span>Latency: ~1s</span>
+                            <span>Docs retrieved: 0</span>
+                            <span style="color:var(--accent-primary);">Confidence: Low ⚠️</span>
+                        </div>
                     </div>
 
-                    <div class="ldemo-mode-panel" id="ldemo-panel-rag">
-                        <h3>RAG (Retrieval-Augmented Generation)</h3>
-                        <div class="ldemo-flow"><div class="arch-pipeline"><div class="arch-node small">Query</div><div class="arch-arrow">→</div><div class="arch-node small">Embed</div><div class="arch-arrow">→</div><div class="arch-node small">Search</div><div class="arch-arrow">→</div><div class="arch-node small">Retrieve</div></div><div class="arch-pipeline" style="margin-top:8px;"><div class="arch-node small">Augment</div><div class="arch-arrow">→</div><div class="arch-node small">LLM</div><div class="arch-arrow">→</div><div class="arch-node small">Response</div></div></div>
-                        <div class="ldemo-grid"><div class="ldemo-card"><div class="ldemo-head"><span class="ldemo-dot good"></span>Grounded Response</div><div class="ldemo-out" id="ldemo-rag-good"></div></div></div>
-                        <div class="demo-metrics"><span class="metric-chip">Latency: ~2.5s</span><span class="metric-chip" id="ldemo-rag-chunks">Retrieved: 0 docs</span><span class="metric-chip">Confidence: High</span></div>
-                        <div class="ldemo-sources"><strong>Retrieved Sources:</strong><div id="ldemo-rag-sources" style="margin-top:6px;"></div></div>
+                    <!-- RAG Mode -->
+                    <div class="tc-provider-panel" id="rag-panel-rag">
+                        <h3 style="margin-bottom:16px;">RAG (Retrieval-Augmented Generation)</h3>
+                        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;"><strong>Retrieves relevant docs, augments prompt, LLM generates grounded answer.</strong></p>
+                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:20px; margin-bottom:16px;">
+                            <div id="rag-rag-response" style="font-size:15px; line-height:1.6; color:var(--text-secondary);"></div>
+                        </div>
+                        <div style="background:rgba(34, 197, 94, 0.08); border:1px solid rgba(34, 197, 94, 0.3); border-radius:8px; padding:12px; margin-bottom:16px;">
+                            <strong style="font-size:13px; color:var(--text-secondary);">Sources retrieved:</strong>
+                            <div id="rag-rag-sources" style="margin-top:8px; font-size:13px;"></div>
+                        </div>
+                        <div style="display:flex; gap:16px; font-size:14px;">
+                            <span>Latency: ~2.5s</span>
+                            <span id="rag-rag-count">Docs retrieved: 0</span>
+                            <span style="color:var(--accent-primary);">Confidence: High ✓</span>
+                        </div>
                     </div>
 
-                    <div class="ldemo-mode-panel" id="ldemo-panel-mcp">
-                        <h3>MCP (Model Context Protocol)</h3>
-                        <div class="ldemo-flow"><div class="arch-pipeline"><div class="arch-node small">Query</div><div class="arch-arrow">→</div><div class="arch-node small">LLM</div><div class="arch-arrow">→</div><div class="arch-node small">Tool Call</div></div><div class="arch-pipeline" style="margin-top:8px;"><div class="arch-node small">Server</div><div class="arch-arrow">→</div><div class="arch-node small">Results</div><div class="arch-arrow">→</div><div class="arch-node small">LLM</div><div class="arch-arrow">→</div><div class="arch-node small">Response</div></div></div>
-                        <div class="ldemo-grid"><div class="ldemo-card"><div class="ldemo-head"><span class="ldemo-dot good"></span>Grounded Response</div><div class="ldemo-out" id="ldemo-mcp-good"></div></div></div>
-                        <div class="demo-metrics"><span class="metric-chip">Latency: ~2.8s</span><span class="metric-chip" id="ldemo-mcp-chunks">Retrieved: 0 docs</span><span class="metric-chip">Confidence: High</span></div>
-                        <div class="ldemo-sources"><strong>Tool Calls:</strong><div id="ldemo-mcp-sources" style="margin-top:6px;"></div></div>
+                    <!-- MCP Mode -->
+                    <div class="tc-provider-panel" id="rag-panel-mcp">
+                        <h3 style="margin-bottom:16px;">MCP (Model Context Protocol)</h3>
+                        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;"><strong>LLM calls typed functions to retrieve structured data. Predictable, contract-based.</strong></p>
+                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:20px; margin-bottom:16px;">
+                            <div id="rag-mcp-response" style="font-size:15px; line-height:1.6; color:var(--text-secondary);"></div>
+                        </div>
+                        <div style="background:rgba(59, 130, 246, 0.08); border:1px solid rgba(59, 130, 246, 0.3); border-radius:8px; padding:12px; margin-bottom:16px;">
+                            <strong style="font-size:13px; color:var(--text-secondary);">Tool calls made:</strong>
+                            <div id="rag-mcp-sources" style="margin-top:8px; font-size:13px;"></div>
+                        </div>
+                        <div style="display:flex; gap:16px; font-size:14px;">
+                            <span>Latency: ~2.8s</span>
+                            <span id="rag-mcp-count">Docs retrieved: 0</span>
+                            <span style="color:var(--accent-primary);">Confidence: High ✓</span>
+                        </div>
                     </div>
 
-                    <div class="ldemo-mode-panel" id="ldemo-panel-agent">
-                        <h3>Agent (Autonomous Reasoning)</h3>
-                        <div class="ldemo-flow"><div class="arch-pipeline"><div class="arch-node small">Query</div><div class="arch-arrow">→</div><div class="arch-node small">Plan</div><div class="arch-arrow">→</div><div class="arch-node small">Retrieve</div><div class="arch-arrow">→</div><div class="arch-node small">Reason</div></div><div class="arch-pipeline" style="margin-top:8px;"><div class="arch-node small">Retrieve More?</div><div class="arch-arrow">→</div><div class="arch-node small">Synthesize</div><div class="arch-arrow">→</div><div class="arch-node small">Response</div></div></div>
-                        <div class="ldemo-grid"><div class="ldemo-card"><div class="ldemo-head"><span class="ldemo-dot good"></span>Grounded Response</div><div class="ldemo-out" id="ldemo-agent-good"></div></div></div>
-                        <div class="demo-metrics"><span class="metric-chip">Latency: ~3.2s</span><span class="metric-chip" id="ldemo-agent-chunks">Retrieved: 0 docs</span><span class="metric-chip">Confidence: Very High</span></div>
-                        <div class="ldemo-sources"><strong>Retrieved Sources:</strong><div id="ldemo-agent-sources" style="margin-top:6px;"></div></div>
+                    <!-- Agent Mode -->
+                    <div class="tc-provider-panel" id="rag-panel-agent">
+                        <h3 style="margin-bottom:16px;">Agent (Autonomous Reasoning)</h3>
+                        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;"><strong>LLM decides what to retrieve, when to iterate, how to synthesize. Handles uncertainty.</strong></p>
+                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:20px; margin-bottom:16px;">
+                            <div id="rag-agent-response" style="font-size:15px; line-height:1.6; color:var(--text-secondary);"></div>
+                        </div>
+                        <div style="background:rgba(168, 85, 247, 0.08); border:1px solid rgba(168, 85, 247, 0.3); border-radius:8px; padding:12px; margin-bottom:16px;">
+                            <strong style="font-size:13px; color:var(--text-secondary);">Sources consulted:</strong>
+                            <div id="rag-agent-sources" style="margin-top:8px; font-size:13px;"></div>
+                        </div>
+                        <div style="display:flex; gap:16px; font-size:14px;">
+                            <span>Latency: ~3.2s</span>
+                            <span id="rag-agent-count">Docs retrieved: 0</span>
+                            <span style="color:var(--accent-primary);">Confidence: Very High ✓✓</span>
+                        </div>
                     </div>
+
                 </div>
             </section>
 
@@ -247,17 +281,103 @@
     <script src="../../assets/js/aurora.js"></script>
     <script>
         (() => {
-            const QUERIES = { q1: { text: 'What is our current deployment success rate?', docs: ['KB-003'] }, q2: { text: 'How should we handle a P1 production incident?', docs: ['KB-005', 'KB-002'] }, q3: { text: 'What are our CI/CD pipeline standards?', docs: ['KB-002'] } };
-            const RESPONSES = { q1: { simple: { bad: 'Deployment success rates typically range from 90-99% depending on team maturity, tooling, and infrastructure reliability. Rates vary significantly by industry and organization size. Best practices suggest aiming for 95%+ success rates in production environments. Many teams use automated testing and monitoring to maintain high deployment success.' }, rag: { good: 'Based on the Q3 2025 Platform Health Report, our current deployment success rate is <strong>96.2%</strong>, which exceeds our target of 95%. This was achieved through our CI/CD standards and incident response procedures. The report shows an improvement trend: we had 8 incidents in Q3 compared to 14 in Q2.' }, mcp: { good: 'I called <code>search_kb("deployment success rate")</code> and found KB-003 (Q3 2025 Platform Health Report). The result confirms: <strong>Deployment success rate: 96.2%</strong> (target: 95%). Mean time to recovery: 12 minutes. This is grounded in the actual platform metrics document.' }, agent: { good: 'I retrieved the Q3 2025 Platform Health Report (KB-003) and cross-referenced it with our CI/CD Standards (KB-002). Our current deployment success rate is <strong>96.2%</strong>, which exceeds our target of 95%. The success is driven by our pipeline standards (security scanning, unit tests, integration tests, smoke tests) with a 5-minute deployment target.' } }, q2: { simple: { bad: 'When handling P1 incidents, typical best practices include establishing an incident commander, creating an incident war room, assigning roles (commander, comms lead, technical lead), documenting the incident timeline, and conducting a post-incident review. Escalation procedures vary by organization. Response time targets are typically 15-30 minutes for critical incidents.' }, rag: { good: 'According to our Incident Response Playbook (KB-005), a P1 incident response follows these steps: <strong>1) Page on-call immediately</strong> 2) Run incident.run gameday 3) Establish incident commander 4) Post mortem within 24 hours. The playbook ensures consistent, rapid response to production incidents.' }, mcp: { good: 'I called <code>search_kb("P1 incident response")</code> and found our Incident Response Playbook (KB-005). Response procedure: <strong>Page on-call immediately → Run incident.run gameday → Establish incident commander → 24-hour post mortem</strong>. This is our formal escalation process for P1 incidents.' }, agent: { good: 'I retrieved our Incident Response Playbook (KB-005) and cross-checked with CI/CD Standards (KB-002) to understand our incident context. For P1 incidents: <strong>1) Page on-call immediately 2) Run incident.run gameday 3) Establish incident commander 4) Post mortem within 24 hours</strong>. Our target mean time to recovery is 12 minutes based on Q3 2025 performance metrics.' } }, q3: { simple: { bad: 'CI/CD pipeline standards typically include automated testing (unit, integration, end-to-end), code review requirements, deployment approval workflows, and automated rollback capabilities. Many teams mandate security scanning, performance testing, and compliance checks. Standard targets are 5-15 minute deployment times with 99%+ success rates.' }, rag: { good: 'Our CI/CD Pipeline Standards v2.0 (KB-002) requires all deployments to pass: <strong>security scanning, unit tests, integration tests, and smoke tests</strong>. We maintain a <strong>5-minute deployment target</strong>. Every change must go through this standardized pipeline before reaching production.' }, mcp: { good: 'I called <code>search_kb("CI/CD standards")</code> and found our CI/CD Pipeline Standards v2.0 (KB-002). Required pipeline stages: <strong>Security scanning → Unit tests → Integration tests → Smoke tests → Deploy (5-min target)</strong>. This is our formal deployment process governance.' }, agent: { good: 'I retrieved our CI/CD Pipeline Standards v2.0 (KB-002) which governs all deployments. The standardized pipeline includes: <strong>Security scanning, unit tests, integration tests, smoke tests</strong> with a <strong>5-minute deployment target</strong>. These standards directly contribute to our 96.2% deployment success rate (Q3 2025 metrics from KB-003).' } } };
-            const input = document.getElementById('ldemo-input');
-            const presetBtns = document.querySelectorAll('.ldemo-preset-btn');
-            const tabs = document.querySelectorAll('.ldemo-tab');
-            const panels = document.querySelectorAll('.ldemo-mode-panel');
-            let currentQuery = 'q1', currentMode = 'simple';
-            presetBtns.forEach(btn => { btn.addEventListener('click', () => { currentQuery = btn.dataset.query; input.value = QUERIES[currentQuery].text; render(); }); });
-            tabs.forEach(tab => { tab.addEventListener('click', () => { currentMode = tab.dataset.mode; tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); }); tab.classList.add('active'); tab.setAttribute('aria-selected', 'true'); panels.forEach(p => p.classList.remove('active')); document.getElementById(`ldemo-panel-${currentMode}`).classList.add('active'); render(); }); });
-            input.addEventListener('input', () => { currentQuery = null; render(); });
-            function render() { if (!currentQuery) return; const q = QUERIES[currentQuery], r = RESPONSES[currentQuery]; const docNames = { 'KB-001': 'Platform Engineering Charter', 'KB-002': 'CI/CD Pipeline Standards v2.0', 'KB-003': 'Q3 2025 Platform Health Report', 'KB-004': 'Developer Experience Survey', 'KB-005': 'Incident Response Playbook' }; if (currentMode === 'simple') { document.getElementById('ldemo-simple-bad').innerHTML = r.simple.bad; } else if (currentMode === 'rag') { document.getElementById('ldemo-rag-good').innerHTML = r.rag.good; document.getElementById('ldemo-rag-chunks').textContent = `Retrieved: ${q.docs.length} doc(s)`; document.getElementById('ldemo-rag-sources').innerHTML = q.docs.map(d => `<span class="ldemo-src">${d}: ${docNames[d]}</span>`).join(''); } else if (currentMode === 'mcp') { document.getElementById('ldemo-mcp-good').innerHTML = r.mcp.good; document.getElementById('ldemo-mcp-chunks').textContent = `Retrieved: ${q.docs.length} doc(s)`; document.getElementById('ldemo-mcp-sources').innerHTML = q.docs.map(d => `<span class="ldemo-src"><code>get_document("${d}")</code> → ${docNames[d]}</span>`).join(''); } else if (currentMode === 'agent') { document.getElementById('ldemo-agent-good').innerHTML = r.agent.good; document.getElementById('ldemo-agent-chunks').textContent = `Retrieved: ${q.docs.length} doc(s)`; document.getElementById('ldemo-agent-sources').innerHTML = q.docs.map(d => `<span class="ldemo-src">${d}: ${docNames[d]}</span>`).join(''); } }
+            const QUERIES = {
+                q1: { text: 'What is our current deployment success rate?', docs: ['KB-003'] },
+                q2: { text: 'How should we handle a P1 production incident?', docs: ['KB-005', 'KB-002'] },
+                q3: { text: 'What are our CI/CD pipeline standards?', docs: ['KB-002'] }
+            };
+            const RESPONSES = {
+                q1: {
+                    simple: { text: 'Deployment success rates typically range from 90-99% depending on team maturity, tooling, and infrastructure reliability. Rates vary significantly by industry and organization size. Best practices suggest aiming for 95%+ success rates in production environments.' },
+                    rag: { text: 'Based on the Q3 2025 Platform Health Report, our current deployment success rate is <strong>96.2%</strong>, which exceeds our target of 95%. This was achieved through our CI/CD standards and incident response procedures.' },
+                    mcp: { text: 'I called <code>search_kb("deployment success rate")</code> and found KB-003. Result: <strong>Deployment success rate: 96.2%</strong> (target: 95%). Mean time to recovery: 12 minutes.' },
+                    agent: { text: 'I retrieved the Q3 2025 Platform Health Report and cross-referenced it with CI/CD Standards. Current deployment success rate: <strong>96.2%</strong>, exceeding our target of 95%.' }
+                },
+                q2: {
+                    simple: { text: 'When handling P1 incidents, typical best practices include establishing an incident commander, creating an incident war room, assigning roles, documenting the timeline, and conducting a post-incident review.' },
+                    rag: { text: 'According to our Incident Response Playbook, a P1 incident response follows: <strong>1) Page on-call immediately</strong> 2) Run incident.run gameday 3) Establish incident commander 4) Post mortem within 24 hours.' },
+                    mcp: { text: 'I called <code>search_kb("P1 incident response")</code> and found our Incident Response Playbook. Response procedure: <strong>Page on-call → Run incident.run gameday → Establish incident commander → 24-hour post mortem</strong>.' },
+                    agent: { text: 'I retrieved the Incident Response Playbook and cross-checked with CI/CD Standards. For P1 incidents: <strong>1) Page on-call immediately 2) Run incident.run gameday 3) Establish incident commander 4) Post mortem within 24 hours</strong>.' }
+                },
+                q3: {
+                    simple: { text: 'CI/CD pipeline standards typically include automated testing (unit, integration, end-to-end), code review requirements, deployment approval workflows, and security scanning.' },
+                    rag: { text: 'Our CI/CD Pipeline Standards v2.0 requires all deployments to pass: <strong>security scanning, unit tests, integration tests, and smoke tests</strong>. We maintain a <strong>5-minute deployment target</strong>.' },
+                    mcp: { text: 'I called <code>search_kb("CI/CD standards")</code> and found CI/CD Pipeline Standards v2.0. Required pipeline: <strong>Security scanning → Unit tests → Integration tests → Smoke tests → Deploy (5-min target)</strong>.' },
+                    agent: { text: 'I retrieved CI/CD Pipeline Standards v2.0. The standardized pipeline includes: <strong>Security scanning, unit tests, integration tests, smoke tests</strong> with a <strong>5-minute deployment target</strong>.' }
+                }
+            };
+
+            const docNames = {
+                'KB-001': 'Platform Engineering Charter',
+                'KB-002': 'CI/CD Pipeline Standards v2.0',
+                'KB-003': 'Q3 2025 Platform Health Report',
+                'KB-004': 'Developer Experience Survey',
+                'KB-005': 'Incident Response Playbook'
+            };
+
+            const input = document.getElementById('rag-input');
+            const presetBtns = document.querySelectorAll('.tc-ptab[data-query]');
+            const modeTabs = document.querySelectorAll('.tc-ptab[data-mode]');
+            const panels = document.querySelectorAll('.tc-provider-panel');
+
+            let currentQuery = 'q1';
+            let currentMode = 'simple';
+
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentQuery = btn.dataset.query;
+                    input.value = QUERIES[currentQuery].text;
+                    render();
+                });
+            });
+
+            modeTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    currentMode = tab.dataset.mode;
+                    modeTabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false');
+                    });
+                    tab.classList.add('active');
+                    tab.setAttribute('aria-selected', 'true');
+                    panels.forEach(p => p.classList.remove('active'));
+                    document.getElementById(`rag-panel-${currentMode}`).classList.add('active');
+                    render();
+                });
+            });
+
+            input.addEventListener('input', () => {
+                currentQuery = null;
+            });
+
+            function render() {
+                if (!currentQuery) return;
+                const q = QUERIES[currentQuery];
+                const r = RESPONSES[currentQuery];
+
+                if (currentMode === 'simple') {
+                    document.getElementById('rag-simple-response').innerHTML = r.simple.text;
+                } else if (currentMode === 'rag') {
+                    document.getElementById('rag-rag-response').innerHTML = r.rag.text;
+                    document.getElementById('rag-rag-count').textContent = `Docs retrieved: ${q.docs.length}`;
+                    document.getElementById('rag-rag-sources').innerHTML = q.docs.map(d =>
+                        `<div style="margin:4px 0; font-size:13px;"><strong>${d}:</strong> ${docNames[d]}</div>`
+                    ).join('');
+                } else if (currentMode === 'mcp') {
+                    document.getElementById('rag-mcp-response').innerHTML = r.mcp.text;
+                    document.getElementById('rag-mcp-count').textContent = `Docs retrieved: ${q.docs.length}`;
+                    document.getElementById('rag-mcp-sources').innerHTML = q.docs.map(d =>
+                        `<div style="margin:4px 0; font-size:13px;"><code>get_document("${d}")</code> → ${docNames[d]}</div>`
+                    ).join('');
+                } else if (currentMode === 'agent') {
+                    document.getElementById('rag-agent-response').innerHTML = r.agent.text;
+                    document.getElementById('rag-agent-count').textContent = `Docs retrieved: ${q.docs.length}`;
+                    document.getElementById('rag-agent-sources').innerHTML = q.docs.map(d =>
+                        `<div style="margin:4px 0; font-size:13px;"><strong>${d}:</strong> ${docNames[d]}</div>`
+                    ).join('');
+                }
+            }
+
             input.value = QUERIES.q1.text;
             render();
         })();
