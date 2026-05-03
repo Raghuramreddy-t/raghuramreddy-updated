@@ -372,9 +372,26 @@
    PROVIDER TABS
    ============================================ */
 
+.article-list {
+    margin: 16px 0 16px 28px;
+    list-style: disc;
+}
+
+.article-list li {
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.article-list strong {
+    color: var(--text-primary);
+}
+
 .tc-provider-tabs {
     display: flex;
     gap: 12px;
+    align-items: center;
     padding: 16px 0;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 24px;
@@ -400,6 +417,13 @@
 .tc-ptab.active {
     color: var(--accent-primary);
     border-bottom-color: var(--accent-primary);
+}
+
+.tc-tab-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-left: auto;
+    font-style: italic;
 }
 
 .tc-provider-panel {
@@ -951,4 +975,8 @@ html[data-theme="light"] .tc-ptab:hover {
 html[data-theme="light"] .tc-ptab.active {
     color: #3b82f6;
     border-bottom-color: #3b82f6;
+}
+
+html[data-theme="light"] .tc-tab-hint {
+    color: #94a3b8;
 }
