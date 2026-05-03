@@ -5,15 +5,6 @@
   },
   "posts": [
     {
-      "id": "rag-knowledge-systems",
-      "title": "RAG & Knowledge Systems Playground",
-      "description": "Understand RAG, vector embeddings, and AI agent architectures from first principles. Compare Simple Completion, RAG, MCP, and Agents in a live playground.",
-      "url": "blog/rag-knowledge-systems.html",
-      "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering"],
-      "published": "2026-05-03",
-      "version": "1.0.0"
-    },
-    {
       "id": "token-cost-comparator",
       "title": "The Token Ledger",
       "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
