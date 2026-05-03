@@ -6,10 +6,19 @@
   "posts": [
     {
       "id": "rag-knowledge-systems",
-      "title": "RAG & Knowledge Systems Playground",
-      "description": "Understand RAG, vector embeddings, and AI agent architectures from first principles. Compare Simple Completion, RAG, MCP, and Agents in a live playground.",
+      "title": "Grounded AI Systems",
+      "description": "Comprehensive guide to grounding knowledge in AI systems. Learn RAG, vector embeddings, MCP, agents, and multi-agent architectures. Includes hallucination problems, retrieval strategies, real-world considerations, and when to use each pattern.",
       "url": "blog/rag-knowledge-systems.html",
-      "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering"],
+      "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering", "Grounding"],
+      "published": "2026-05-03",
+      "version": "1.0.0"
+    },
+    {
+      "id": "grounded-ai-lab",
+      "title": "Grounded AI Systems Lab",
+      "description": "Interactive playground: Ask any question and compare how Simple Completion, RAG, MCP, Agent, and Multi-Agent systems respond. See the difference between hallucination and grounded answers.",
+      "url": "blog/rag-knowledge-systems.html#live-demo",
+      "tags": ["RAG", "Interactive Lab", "AI Patterns", "Demo"],
       "published": "2026-05-03",
       "version": "1.0.0"
     },

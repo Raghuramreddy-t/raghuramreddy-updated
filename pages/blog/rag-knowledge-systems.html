@@ -66,36 +66,139 @@
     <main class="section">
         <article class="article-body container">
             <section class="article-intro">
-                <h2>Why this matters</h2>
-                <p>Base models are useful, but they do not know your latest internal docs, incidents, or operating standards. When they answer without real context, they can sound confident and still be wrong.</p>
-                <p>Grounding fixes that. Instead of asking the model to guess, you give it access to the right information at runtime. That is the core idea behind RAG, MCP, agents, and multi-agent systems.</p>
+                <h2>The Hallucination Problem</h2>
+                <p>Large language models are trained on data up to a specific cutoff date. They have never seen your internal documentation, your current operational status, or your team's real standards. When you ask them a question they cannot answer from their training data, they don't say "I don't know." Instead, they hallucinate — they confidently fabricate plausible-sounding answers.</p>
+                <p>In production systems, hallucination is unacceptable. A model that confidently tells you "your deployment success rate is 92%" when it's actually 96.2%, or that "the P1 incident response is to wait 24 hours" when your actual standard is immediate escalation — these errors cascade into operational chaos.</p>
+                <p><strong>Grounding</strong> is the fix. Instead of asking the model to guess from its frozen training data, you give it access to the right information at runtime. The model reads the answer instead of inventing it. This is the core idea behind RAG, MCP, agents, and multi-agent systems.</p>
             </section>
 
             <section class="article-section">
-                <h2>RAG in plain language</h2>
-                <p>RAG means <strong>Retrieve -> Augment -> Generate</strong>.</p>
-                <div class="workflow-steps">
-                    <div class="step-row"><span class="step-no">1</span><div class="step-content"><strong>Retrieve:</strong> find the most relevant documents or chunks.</div></div>
-                    <div class="step-row"><span class="step-no">2</span><div class="step-content"><strong>Augment:</strong> place that context into the prompt.</div></div>
-                    <div class="step-row"><span class="step-no">3</span><div class="step-content"><strong>Generate:</strong> answer using the retrieved context instead of guessing.</div></div>
+                <h2>Simple Completion: The Baseline</h2>
+                <p>A simple completion is what you get when you ask a base model a question with no context. The model draws entirely from its training data.</p>
+                <div class="example-box">
+                    <strong>Example:</strong> "What is our deployment success rate?" → Model answers: "Deployment success rates vary by team maturity. A healthy platform targets 95% or higher. Rates typically range from 85–99% depending on tooling and team experience."
                 </div>
-                <p>The important shift is simple: move important knowledge out of the model and into a retrieval layer you can update, inspect, and improve.</p>
+                <p>This answer is generic, reasonable, and completely wrong for your organization. It's also confident — the model sounds authoritative because it is describing a pattern it learned. But it has zero knowledge of your actual metrics.</p>
+                <p><strong>When to use Simple Completion:</strong> Brainstorming, creative writing, general knowledge questions where accuracy against your internal state doesn't matter.</p>
             </section>
 
             <section class="article-section">
-                <h2>How retrieval changes the result</h2>
-                <p>Different systems retrieve and use context in different ways.</p>
+                <h2>RAG: Retrieval-Augmented Generation</h2>
+                <p>RAG (Retrieval-Augmented Generation) moves your knowledge out of the model's training weights and into a retrieval system. The workflow is three steps: <strong>Retrieve → Augment → Generate</strong>.</p>
+                <div class="workflow-steps">
+                    <div class="step-row"><span class="step-no">1</span><div class="step-content"><strong>Retrieve:</strong> A vector search or keyword search finds the most relevant documents or chunks from your knowledge base. Example: your platform health report, incident runbook, or CI/CD standards.</div></div>
+                    <div class="step-row"><span class="step-no">2</span><div class="step-content"><strong>Augment:</strong> The retrieved chunks are inserted into the prompt as context. The system prompt explicitly tells the model: "Answer ONLY based on the provided context. If the answer is not in the context, say you don't know."</div></div>
+                    <div class="step-row"><span class="step-no">3</span><div class="step-content"><strong>Generate:</strong> The model generates a response based on the context. No hallucination — the answer is grounded in actual knowledge.</div></div>
+                </div>
+                <div class="example-box">
+                    <strong>Same question with RAG:</strong> "What is our deployment success rate?" → Retrieval finds Q3 2025 Platform Health Report → Model answers: "Based on your Q3 2025 Platform Health Report, your deployment success rate is 96.2%, which exceeds your target of 95%. You had 8 incidents this quarter, down from 14 in Q2."
+                </div>
+                <p>Notice the difference: specific numbers, source attribution, context that matters to your business.</p>
+                <p><strong>Key insight:</strong> The retrieval quality determines everything. If your search finds the wrong documents, the model will answer based on wrong context. Good RAG requires: proper chunking, semantic embeddings, and careful prompt engineering.</p>
+                <p><strong>Cost:</strong> RAG systems cost slightly more per request (retrieval + embedding overhead), but prevent expensive downstream mistakes from hallucinated answers.</p>
+                <p><strong>When to use RAG:</strong> Most enterprise use cases. Document QA, support chatbots, operational intelligence (current metrics, standards, playbooks), knowledge bases that change frequently.</p>
+            </section>
+
+            <section class="article-section">
+                <h2>Vector Embeddings & Semantic Search</h2>
+                <p>RAG relies on semantic search, which requires understanding meaning, not just keywords. This is where embeddings come in.</p>
+                <p>An <strong>embedding</strong> is a high-dimensional vector (typically 1,000–4,000 dimensions) that represents the semantic meaning of text. Conceptually, embeddings map similar meanings to nearby locations in vector space. "Deployment success rate" and "build reliability percentage" are semantically close — they're neighbors in embedding space even though they share no words.</p>
+                <p><strong>Cosine similarity</strong> is the standard distance metric. It measures the angle between two vectors. Vectors pointing in similar directions (similar meanings) score high; orthogonal vectors (unrelated meanings) score low.</p>
+                <p><strong>Chunking matters:</strong> Documents are split into chunks before embedding. A 50-token chunk gives fine-grained retrieval; a 1,000-token chunk captures more context but is coarser. Choose chunk size based on your retrieval granularity needs.</p>
+                <p><strong>Embedding cost is trivial:</strong> Creating a knowledge base costs ~$0.001 per 1K tokens. The compute cost is at inference time (retrieving, re-ranking, LLM generation), not indexing.</p>
+            </section>
+
+            <section class="article-section">
+                <h2>Retrieval Strategies: Sparse, Dense, and Hybrid</h2>
+                <p>Not all retrieval is the same. Each strategy has trade-offs.</p>
                 <div class="depth-panel">
                     <div class="depth-cols">
-                        <div class="depth-card"><h3>Simple Completion</h3><p>No retrieval at all. The model answers from general training.</p></div>
-                        <div class="depth-card"><h3>RAG</h3><p>Pulls relevant text first, then answers with that context in view.</p></div>
-                        <div class="depth-card"><h3>MCP</h3><p>Calls structured tools or APIs instead of relying only on documents.</p></div>
-                        <div class="depth-card"><h3>Agent</h3><p>Plans in steps, decides what to fetch, and keeps working until it can answer.</p></div>
-                        <div class="depth-card"><h3>Multi-Agent</h3><p>Splits the work across specialist roles such as retrieval, checking, and synthesis.</p></div>
+                        <div class="depth-card"><h3>Sparse Retrieval (BM25 / TF-IDF)</h3><p><strong>Keyword matching.</strong> Fast, requires exact word matches. Misses paraphrases. Best for: structured, keyword-rich documents (logs, contracts, APIs).</p></div>
+                        <div class="depth-card"><h3>Dense Retrieval (Vector Search)</h3><p><strong>Semantic matching.</strong> Handles synonyms and paraphrases. Can miss exact keywords. Best for: conversational, conceptual queries (troubleshooting, how-to questions).</p></div>
+                        <div class="depth-card"><h3>Hybrid (Sparse + Dense)</h3><p><strong>Combine both.</strong> Use Reciprocal Rank Fusion (RRF) to merge keyword and semantic results. Strongest recall. Best for: production systems where accuracy is non-negotiable.</p></div>
                     </div>
                 </div>
-                <div class="article-callout"><strong>Practical rule:</strong> retrieval quality, chunking, and prompt clarity usually matter more than sounding clever.</div>
+                <p><strong>Re-ranking:</strong> Retrieve top-k results with one method, then use a cross-encoder to re-score and reorder. Improves precision without hurting recall.</p>
+                <p><strong>Top-k vs Threshold:</strong> Top-k = "return the top 5 results." Threshold = "return all results with similarity > 0.7." Use threshold when result count is unpredictable; use top-k when you have a token budget.</p>
             </section>
+
+            <section class="article-section">
+                <h2>Beyond RAG: MCP, Agents, and Multi-Agents</h2>
+                <p>RAG works well for document-based questions. But what if you need to call APIs, combine multiple sources, or make decisions about what to retrieve? That's where the other patterns come in.</p>
+
+                <div class="depth-panel">
+                    <div class="depth-cols">
+                        <div class="depth-card">
+                            <h3>MCP (Model Context Protocol)</h3>
+                            <p><strong>Structured tool access.</strong> Instead of retrieving text, the model calls typed functions like <code>search_kb(query, filters)</code> or <code>get_metric(name)</code> defined by a server contract. More predictable than RAG, more structured than agents.</p>
+                            <p><strong>Example:</strong> "What is our deployment success rate?" → Model calls <code>get_metric("deployment_success_rate")</code> → Returns exact current value from your monitoring system.</p>
+                        </div>
+                        <div class="depth-card">
+                            <h3>Agent</h3>
+                            <p><strong>Autonomous reasoning with iteration.</strong> The model decides what tools to call, in what order, and whether to iterate. Can retrieve, reason, decide to retrieve more, synthesize. Handles uncertainty and multi-step problems.</p>
+                            <p><strong>Example:</strong> "Why did deployments slow down?" → Agent retrieves health metrics, sees increase in test failures, retrieves recent CI/CD changes, finds the culprit, synthesizes explanation with evidence.</p>
+                        </div>
+                        <div class="depth-card">
+                            <h3>Multi-Agent</h3>
+                            <p><strong>Coordinated specialist agents.</strong> Assign parts of the problem to different agents. Example: Research Agent finds relevant docs, Fact-Checker Agent verifies claims, Synthesis Agent produces final answer. Enables parallelism and specialization.</p>
+                            <p><strong>Example:</strong> For a compliance question, Retrieval Agent finds policy docs, Policy Agent interprets them, Audit Agent checks consistency, Response Agent formats the answer.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>Choosing the Right Architecture</h2>
+                <p>Each pattern exists on a spectrum of complexity, cost, and autonomy. Choose based on your problem:</p>
+                <table style="width:100%; margin:24px 0; border-collapse:collapse;">
+                    <thead>
+                        <tr style="border-bottom:2px solid var(--border-color);">
+                            <th style="text-align:left; padding:12px 0; font-weight:600;">Problem Type</th>
+                            <th style="text-align:left; padding:12px 0; font-weight:600;">Best Pattern</th>
+                            <th style="text-align:left; padding:12px 0; font-weight:600;">Why</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid var(--border-color);">
+                            <td style="padding:12px 0;">Creative writing, brainstorming</td>
+                            <td style="padding:12px 0;"><strong>Simple Completion</strong></td>
+                            <td style="padding:12px 0;">No grounding needed; model creativity is the feature</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid var(--border-color);">
+                            <td style="padding:12px 0;">Document QA, support tickets, how-to questions</td>
+                            <td style="padding:12px 0;"><strong>RAG</strong></td>
+                            <td style="padding:12px 0;">Fast, predictable, handles document-based knowledge well</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid var(--border-color);">
+                            <td style="padding:12px 0;">Exact data lookups, API calls, current metrics</td>
+                            <td style="padding:12px 0;"><strong>MCP</strong></td>
+                            <td style="padding:12px 0;">Structured, typed, guarantees you get fresh data not stale docs</td>
+                        </tr>
+                        <tr style="border-bottom:1px solid var(--border-color);">
+                            <td style="padding:12px 0;">Multi-step reasoning, troubleshooting, why questions</td>
+                            <td style="padding:12px 0;"><strong>Agent</strong></td>
+                            <td style="padding:12px 0;">Can iterate, decide what to fetch, handle uncertainty</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:12px 0;">Complex workflows, compliance checks, fact verification</td>
+                            <td style="padding:12px 0;"><strong>Multi-Agent</strong></td>
+                            <td style="padding:12px 0;">Specialist roles provide checks and balances; harder to fool</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="article-section">
+                <h2>Real-World Considerations</h2>
+                <p><strong>Token budget:</strong> If you retrieve 5 chunks × 500 tokens each = 2,500 context tokens, plus your question and expected response, you're burning 3,000+ tokens per request. Know your budget before choosing retrieval strategy.</p>
+                <p><strong>Latency:</strong> RAG adds retrieval overhead (typically +100–500ms). MCP adds tool call latency. Agents iterate, so they're slower. Simple completion is fastest but hallucinated.</p>
+                <p><strong>Reliability:</strong> Your grounding is only as good as your source data. Corrupted docs, outdated metrics, or wrong API responses propagate directly to bad answers. Invest in source quality.</p>
+                <p><strong>Auditability:</strong> Grounded systems are auditable — you can see what context the model read. Simple completions and hallucinations are black boxes. For mission-critical decisions, auditability matters.</p>
+            </section>
+
+            <section class="article-section">
+                <h2>Grounding Response Lab</h2>
+                <p>Below, ask any question and compare how all five patterns respond. Notice how Simple answers sound confident but generic. RAG grounds in specific docs. MCP calls structured tools. Agents iterate and reason. Multi-Agent adds verification.</p>
 
             <section class="article-section">
                 <h2>Grounding Response Lab</h2>
@@ -206,25 +309,25 @@
 
             const RESPONSES = {
                 q1: {
-                    simple: 'A healthy delivery platform usually targets something above 95%, but the model cannot know your real number without internal data.',
-                    rag: 'The Q3 2025 Platform Health Report shows a <strong>96.2% deployment success rate</strong>, above the 95% target.',
-                    mcp: 'Tool lookup returned KB-003. Current deployment success rate: <strong>96.2%</strong>. MTTR: <strong>12 minutes</strong>.',
-                    agent: 'The agent checked the platform health report, compared it to the target, and confirmed that delivery performance is above goal.',
-                    multi: 'A retrieval agent found KB-003, a verification agent checked the target threshold, and a synthesis agent concluded the platform is at <strong>96.2%</strong> success and currently healthy.'
+                    simple: '<span class="rag-hallucination">Deployment success rates vary widely by industry, typically 85–98% depending on maturity level, tooling quality, and team experience. A well-run platform might achieve 95%, but I cannot know your specific metrics.</span>',
+                    rag: '<strong>96.2% deployment success rate</strong> (Q3 2025 Platform Health Report). Target was 95%, so we\'re exceeding goals. MTTR is 12 minutes. Only 8 incidents in Q3 vs 14 in Q2.',
+                    mcp: 'Tool call: <code>search_kb("deployment success rate")</code> → <strong>96.2%</strong> from KB-003. Mean time to recovery: <strong>12 min</strong>. Incident trend: ↓ 8 this quarter.',
+                    agent: 'Agent strategy: Pulled Q3 health report, cross-referenced with CI/CD standards to understand what drives success, confirmed we exceed 95% target. <strong>Status: Healthy</strong>.',
+                    multi: 'Retrieval agent found KB-003 metrics. Verification agent checked against policy (KB-002). Synthesis agent: <strong>96.2% success</strong>, trending well, 12-min MTTR.'
                 },
                 q2: {
-                    simple: 'A typical P1 response includes paging the on-call engineer, assigning an incident lead, communicating status, and running a post-incident review.',
-                    rag: 'The Incident Response Playbook says to <strong>page on-call immediately</strong>, run the incident flow, establish an incident commander, and complete a postmortem within 24 hours.',
-                    mcp: 'Tool lookup returned the Incident Response Playbook. The defined sequence is: <strong>page on-call -> run incident flow -> establish incident commander -> 24-hour postmortem</strong>.',
-                    agent: 'The agent checked the incident playbook and related standards, then summarized the approved P1 response path step by step.',
-                    multi: 'A runbook agent pulled the playbook, a policy agent confirmed the escalation path, and a response agent summarized the approved P1 flow for action.'
+                    simple: '<span class="rag-hallucination">For critical production incidents, best practice is to notify the on-call team, establish clear communication channels, assign a lead, and document what happened. Most teams do a post-mortems within days.</span>',
+                    rag: '<strong>P1 Incident Response (from playbook):</strong> 1) Page on-call immediately 2) Run incident.run gameday 3) Establish incident commander 4) Post-mortem within 24 hours. No deviations.',
+                    mcp: 'Tool call: <code>get_document("P1 incident response")</code> → <strong>Sequence:</strong> page on-call → gameday flow → IC assignment → 24h post-mortem. Mandatory steps.',
+                    agent: 'Agent checked incident playbook (KB-005), confirmed alignment with CI/CD standards (KB-002). Approved flow: <strong>immediate escalation + structured response + 24h review</strong>.',
+                    multi: 'Runbook agent retrieved playbook. Policy agent verified governance (no shortcuts). Response agent formatted: <strong>page → gameday → IC → review</strong>. Ready to execute.'
                 },
                 q3: {
-                    simple: 'CI/CD standards usually include tests, approvals, and some level of security scanning, but exact rules vary by team and platform.',
-                    rag: 'CI/CD Pipeline Standards v2.0 requires <strong>security scanning, unit tests, integration tests, and smoke tests</strong>, with a <strong>five-minute deployment target</strong>.',
-                    mcp: 'Tool lookup returned the CI/CD standard. Required flow: <strong>security scanning -> unit tests -> integration tests -> smoke tests -> deploy</strong>.',
-                    agent: 'The agent reviewed the standard and returned the enforced release path, including the mandatory checks before deployment.',
-                    multi: 'A standards agent retrieved the pipeline policy, a controls agent checked the required gates, and a summary agent produced the final CI/CD flow.'
+                    simple: '<span class="rag-hallucination">Modern CI/CD pipelines typically include automated testing, code review gates, and some security checks. The exact requirements vary by team size and risk profile, but are generally quite flexible.</span>',
+                    rag: '<strong>CI/CD Pipeline Standards v2.0 (mandatory):</strong> security scanning → unit tests → integration tests → smoke tests → deploy. <strong>5-minute deployment target</strong>. No exceptions.',
+                    mcp: 'Tool call: <code>get_document("CI/CD standards")</code> → <strong>Required gates:</strong> security scan, unit test, integration test, smoke test. <strong>Deploy time: ≤5 min</strong>.',
+                    agent: 'Agent retrieved standards (KB-002), verified against health metrics (KB-003). Pipeline enforces <strong>4 mandatory gates + 5-min SLA</strong>. Deviations auto-block.',
+                    multi: 'Standards agent retrieved policy. Controls agent verified enforcement (auto-block on fail). Audit agent confirmed: <strong>4/4 gates active, no waivers</strong>. Compliant.'
                 }
             };
 
@@ -285,8 +388,8 @@
             }
 
             function render() {
-                const question = input.value.trim() || QUERIES.q1.text;
-                input.value = question;
+                const question = input.value.trim();
+                if (!question) return;
 
                 const scenario = getScenario(question);
                 const docs = scenario.docs;
@@ -311,14 +414,19 @@
                 document.getElementById('rag-multi-sources').innerHTML = sourceList(docs, id => `<div class="rag-mini-source">${id} - checked by specialist agents</div>`);
             }
 
-            analyzeBtn.addEventListener('click', render);
+            analyzeBtn.addEventListener('click', () => {
+                analyzeBtn.style.opacity = '0.7';
+                setTimeout(() => {
+                    render();
+                    analyzeBtn.style.opacity = '1';
+                }, 80);
+            });
             input.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     event.preventDefault();
-                    render();
+                    analyzeBtn.click();
                 }
             });
-            render();
         })();
     </script>
 </body>
