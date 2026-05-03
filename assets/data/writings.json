@@ -6,12 +6,12 @@
   "posts": [
     {
       "id": "token-cost-comparator",
-      "title": "Token Cost Comparator 2026: Claude vs GPT-5.5 Cost Analysis",
-      "description": "Compare token costs across Claude (Haiku, Sonnet, Opus) and OpenAI GPT-5.5 models with April 2026 pricing. Interactive demo with batch processing estimator for enterprise-scale LLM budget planning.",
+      "title": "Token Cost Comparator & Tokenizer Playground",
+      "description": "Understand tokens, embeddings, and tokenizers from first principles. Then compare Claude and GPT-5.5 costs side-by-side with a live interactive playground.",
       "url": "blog/token-cost-comparator.html",
-      "tags": ["Claude API", "GPT-5.5", "Cost Optimization", "Enterprise LLM", "Token Economics"],
+      "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Claude", "GPT"],
       "published": "2026-05-03",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "xops-beyond-devops-2025",
