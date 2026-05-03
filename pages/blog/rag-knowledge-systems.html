@@ -310,25 +310,25 @@
 
             const RESPONSES = {
                 q1: {
-                    simple: '<span class="rag-hallucination">Deployment success rates vary widely by industry, typically 85–98% depending on maturity level, tooling quality, and team experience. A well-run platform might achieve 95%, but I cannot know your specific metrics.</span>',
-                    rag: '<strong>96.2% deployment success rate</strong> (Q3 2025 Platform Health Report). Target was 95%, so we\'re exceeding goals. MTTR is 12 minutes. Only 8 incidents in Q3 vs 14 in Q2.',
-                    mcp: 'Tool call: <code>search_kb("deployment success rate")</code> → <strong>96.2%</strong> from KB-003. Mean time to recovery: <strong>12 min</strong>. Incident trend: ↓ 8 this quarter.',
-                    agent: 'Agent strategy: Pulled Q3 health report, cross-referenced with CI/CD standards to understand what drives success, confirmed we exceed 95% target. <strong>Status: Healthy</strong>.',
-                    multi: 'Retrieval agent found KB-003 metrics. Verification agent checked against policy (KB-002). Synthesis agent: <strong>96.2% success</strong>, trending well, 12-min MTTR.'
+                    simple: '<span class="rag-hallucination">❌ Generic guess: "Deployment success rates typically range from 85–99% depending on team maturity and tooling." — This sounds reasonable but is completely made up. No actual data about your org.</span>',
+                    rag: '📊 <strong>96.2% deployment success</strong> (from Q3 2025 Platform Health Report). <strong>Target: 95%</strong> ✓ Exceeding. <strong>MTTR:</strong> 12 min. <strong>Trend:</strong> 8 incidents Q3 vs 14 Q2 (43% improvement).',
+                    mcp: '🔧 <code>get_metric("deployment_success_rate")</code> → <code>kb_search("health report")</code><br/>Result: <strong>96.2%</strong> | Status: <strong>Healthy</strong> | MTTR: <strong>12m</strong> | Trend: <strong>↓ 43%</strong>',
+                    agent: '🧠 Agent reasoning: Retrieved health metrics → analyzed against CI/CD standards → confirmed we exceed SLA → checked Q2 vs Q3 trend → identified root causes of improvement. <strong>Verdict: Excellent health.</strong>',
+                    multi: '✅ Retrieval Agent: KB-003 (metrics). Fact-Check Agent: Verified against KB-002 (policy). Synthesis Agent: <strong>96.2% success, trending +43%, within SLA, risk-low.</strong>'
                 },
                 q2: {
-                    simple: '<span class="rag-hallucination">For critical production incidents, best practice is to notify the on-call team, establish clear communication channels, assign a lead, and document what happened. Most teams do a post-mortems within days.</span>',
-                    rag: '<strong>P1 Incident Response (from playbook):</strong> 1) Page on-call immediately 2) Run incident.run gameday 3) Establish incident commander 4) Post-mortem within 24 hours. No deviations.',
-                    mcp: 'Tool call: <code>get_document("P1 incident response")</code> → <strong>Sequence:</strong> page on-call → gameday flow → IC assignment → 24h post-mortem. Mandatory steps.',
-                    agent: 'Agent checked incident playbook (KB-005), confirmed alignment with CI/CD standards (KB-002). Approved flow: <strong>immediate escalation + structured response + 24h review</strong>.',
-                    multi: 'Runbook agent retrieved playbook. Policy agent verified governance (no shortcuts). Response agent formatted: <strong>page → gameday → IC → review</strong>. Ready to execute.'
+                    simple: '<span class="rag-hallucination">❌ Generic guess: "For P1 incidents, notify the team, establish communication, assign a lead, and document it." — Vague. Could mean anything. No specific sequence.</span>',
+                    rag: '📋 <strong>P1 Incident Response (Incident Response Playbook):</strong><br/>1) <strong>Page on-call immediately</strong> (max 2 min)<br/>2) <strong>Run incident.run gameday</strong> (structured war room)<br/>3) <strong>Assign incident commander</strong> (clear ownership)<br/>4) <strong>Post-mortem within 24 hours</strong> (mandatory, no exceptions)',
+                    mcp: '🔧 <code>get_runbook("P1_response")</code> → <code>verify_policy("incident_sla")</code><br/>Sequence: <strong>Page → Gameday → IC → 24h Review</strong> | Escalation: <strong>Immediate</strong> | Duration: <strong>Mandatory</strong>',
+                    agent: '🧠 Agent checked: Runbook (KB-005) → verified against standards (KB-002) → confirmed alignment → identified critical path → approved execution flow. <strong>Ready: Immediate escalation + structured response.</strong>',
+                    multi: '✅ Runbook Agent: Retrieved playbook. Policy Agent: Verified no shortcuts allowed. Exec Agent: <strong>Page → Run gameday → Assign IC → 24h post-mortem. Critical path confirmed.</strong>'
                 },
                 q3: {
-                    simple: '<span class="rag-hallucination">Modern CI/CD pipelines typically include automated testing, code review gates, and some security checks. The exact requirements vary by team size and risk profile, but are generally quite flexible.</span>',
-                    rag: '<strong>CI/CD Pipeline Standards v2.0 (mandatory):</strong> security scanning → unit tests → integration tests → smoke tests → deploy. <strong>5-minute deployment target</strong>. No exceptions.',
-                    mcp: 'Tool call: <code>get_document("CI/CD standards")</code> → <strong>Required gates:</strong> security scan, unit test, integration test, smoke test. <strong>Deploy time: ≤5 min</strong>.',
-                    agent: 'Agent retrieved standards (KB-002), verified against health metrics (KB-003). Pipeline enforces <strong>4 mandatory gates + 5-min SLA</strong>. Deviations auto-block.',
-                    multi: 'Standards agent retrieved policy. Controls agent verified enforcement (auto-block on fail). Audit agent confirmed: <strong>4/4 gates active, no waivers</strong>. Compliant.'
+                    simple: '<span class="rag-hallucination">❌ Generic guess: "CI/CD pipelines typically include testing and security checks, but exact requirements vary by team size." — Suggests flexibility. Wrong for your org.</span>',
+                    rag: '📋 <strong>CI/CD Pipeline Standards v2.0 (Mandatory):</strong><br/>✓ Security scanning (SAST + SCA)<br/>✓ Unit tests (≥80% coverage)<br/>✓ Integration tests (all services)<br/>✓ Smoke tests (prod endpoints)<br/>✓ Deploy (≤5 min SLA) — <strong>Zero deviations allowed.</strong>',
+                    mcp: '🔧 <code>get_policy("cicd_gates")</code> → <code>enforce_rules("all_4_mandatory")</code><br/>Gates: <strong>Sec Scan → Unit → Integration → Smoke → Deploy</strong> | SLA: <strong>≤5 min</strong> | Deviations: <strong>Auto-blocked</strong>',
+                    agent: '🧠 Agent retrieved: Standards (KB-002) → verified enforcement against health metrics (KB-003) → confirmed all 4 gates active → checked deviation history → identified auto-block rules. <strong>Compliant + Enforced.</strong>',
+                    multi: '✅ Standards Agent: Retrieved policy. Enforcement Agent: Confirmed all 4/4 gates active, no waivers. Audit Agent: <strong>100% compliant, auto-blocking enabled, zero recent overrides.</strong>'
                 }
             };
 
