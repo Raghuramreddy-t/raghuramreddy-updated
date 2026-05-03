@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a2e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative accent circles -->
+  <circle cx="1000" cy="100" r="150" fill="url(#accentGradient)" opacity="0.1"/>
+  <circle cx="200" cy="500" r="200" fill="url(#accentGradient)" opacity="0.1"/>
+
+  <!-- Main content area -->
+  <g transform="translate(100, 100)">
+    <!-- Logo Icon -->
+    <rect x="0" y="0" width="120" height="120" rx="20" fill="url(#accentGradient)" opacity="0.2" stroke="url(#accentGradient)" stroke-width="2"/>
+    <text x="60" y="80" font-size="70" font-weight="bold" fill="url(#accentGradient)" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">RRR</text>
+
+    <!-- Main text -->
+    <text x="250" y="45" font-size="56" font-weight="700" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif">RaghuRamReddy</text>
+    <text x="250" y="90" font-size="32" fill="#00d9ff" font-family="system-ui, -apple-system, sans-serif">Platform Engineering</text>
+    <text x="250" y="125" font-size="32" fill="#6366f1" font-family="system-ui, -apple-system, sans-serif">&amp; DevSecOps Leader</text>
+
+    <!-- Tagline -->
+    <text x="250" y="170" font-size="18" fill="#888888" font-family="system-ui, -apple-system, sans-serif">Designing technology for human experience</text>
+  </g>
+
+  <!-- Decorative line -->
+  <line x1="100" y1="280" x2="1100" y2="280" stroke="url(#accentGradient)" stroke-width="2" opacity="0.3"/>
+
+  <!-- Bottom section with tags -->
+  <g transform="translate(100, 320)">
+    <text x="0" y="0" font-size="20" fill="#888888" font-family="system-ui, -apple-system, sans-serif">Enterprise Solutions:</text>
+
+    <!-- Tags/Pills -->
+    <g transform="translate(0, 40)">
+      <!-- Tag 1 -->
+      <rect x="0" y="0" width="140" height="40" rx="20" fill="none" stroke="url(#accentGradient)" stroke-width="1.5" opacity="0.6"/>
+      <text x="70" y="25" font-size="14" fill="#00d9ff" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">Platform Eng</text>
+
+      <!-- Tag 2 -->
+      <rect x="160" y="0" width="140" height="40" rx="20" fill="none" stroke="url(#accentGradient)" stroke-width="1.5" opacity="0.6"/>
+      <text x="230" y="25" font-size="14" fill="#6366f1" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">DevSecOps</text>
+
+      <!-- Tag 3 -->
+      <rect x="320" y="0" width="140" height="40" rx="20" fill="none" stroke="url(#accentGradient)" stroke-width="1.5" opacity="0.6"/>
+      <text x="390" y="25" font-size="14" fill="#00d9ff" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">Cloud Native</text>
+
+      <!-- Tag 4 -->
+      <rect x="480" y="0" width="140" height="40" rx="20" fill="none" stroke="url(#accentGradient)" stroke-width="1.5" opacity="0.6"/>
+      <text x="550" y="25" font-size="14" fill="#6366f1" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">AI Operations</text>
+    </g>
+  </g>
+
+  <!-- URL at bottom -->
+  <text x="600" y="595" font-size="16" fill="#666666" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">raghuramreddy.tech</text>
+</svg>
