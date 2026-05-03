@@ -1,1075 +1,266 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>!function () { var t = localStorage.getItem("theme") || "dark"; document.documentElement.setAttribute("data-theme", t); document.documentElement.classList.add("no-transition"); requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.remove("no-transition"); }) }) }();</script>
-  <title>RAG &amp; Knowledge Systems: Why Most AI Fails Without Grounding | RaghuRamReddy Thummalapalli</title>
-  <meta name="description"
-    content="Why retrieval-augmented generation and enterprise knowledge systems are required for trustworthy AI in production operations." />
-  <meta property="og:title" content="RAG &amp; Knowledge Systems: Why Most AI Fails Without Grounding">
-  <meta property="og:description" content="Why retrieval-augmented generation and enterprise knowledge systems are required for trustworthy AI in production operations.">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/rag-knowledge-systems.html">
-  <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
-  <meta property="og:image:alt" content="RAG &amp; Knowledge Systems Article">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
-  <link rel="canonical" href="https://raghuramreddy.tech/pages/blog/rag-knowledge-systems.html">
-  <link rel="stylesheet" href="../../assets/css/main.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/animations.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/pages.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/components.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/rag-knowledge-systems.css?v=20260503">
+    <meta charset="UTF-8">
+    <script>!function () { var t = localStorage.getItem("theme") || "dark"; document.documentElement.setAttribute("data-theme", t); document.documentElement.classList.add("no-transition"); requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.remove("no-transition"); }) }) }();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG & Knowledge Systems Playground | Retrieval-Augmented Generation from First Principles</title>
+    <meta name="description" content="Understand RAG, vector embeddings, and AI agent architectures from first principles. Compare Simple Completion, RAG, MCP, and Agents in a live playground.">
+    <meta property="og:title" content="RAG & Knowledge Systems Playground">
+    <meta property="og:description" content="Learn retrieval-augmented generation, semantic search, and agent architectures — then compare architectures side-by-side in an interactive demo.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/rag-knowledge-systems.html">
+    <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
+    <link rel="canonical" href="https://raghuramreddy.tech/pages/blog/rag-knowledge-systems.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/design-v2.css">
+    <link rel="stylesheet" href="../../assets/css/enhancements.css">
+    <link rel="stylesheet" href="../../assets/css/rag-knowledge-systems.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
 </head>
-
 <body>
-  <div class="bg-gradient"></div>
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+    <canvas id="aurora-canvas" aria-hidden="true"></canvas>
 
-  <canvas id="aurora-canvas" aria-hidden="true"></canvas>
-  <div class="floating-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-  <nav class="navbar scrolled" id="navbar">
-    <div class="nav-container"><a href="../../index.html" class="nav-logo"><span class="logo-icon">RRR</span><span
-          class="logo-text">RaghuRamReddy</span></a>
-      <div class="nav-menu" id="nav-menu"><a href="../../index.html" class="nav-link">Home</a><a href="../work.html"
-          class="nav-link">Work &amp; Impact</a><a href="../applied-ai-systems.html" class="nav-link">Applied AI
-          Systems</a><a href="../future-systems.html" class="nav-link">Future Systems</a><a href="../writing.html"
-          class="nav-link">Writing</a><a href="../contact.html"
-          class="nav-link">Contact</a></div>
-      <div class="nav-actions"><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><svg
-            class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="5"></circle>
-            <path
-              d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
-            </path>
-          </svg><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg></button><button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </nav>
-
-  <header class="page-header ph--ai">
-    <div class="container">
-      <div class="page-header-content"><span class="page-tag">Knowledge Article</span>
-        <h1 class="page-title"><span class="title-line nowrap rb-shiny-text">RAG &amp; Knowledge Systems</span><span
-            class="title-line gradient-text rb-shiny-text">Why Most AI Fails Without Grounding</span></h1>
-        <p class="page-subtitle">Strong models are not enough. Reliable AI needs a governed knowledge layer.</p>
-        <div class="card-tags" style="margin-top:20px;justify-content:center;"><span>Apr 05, 2026</span><span>8 min
-            read</span><span>RAG</span><span>Enterprise AI</span></div>
-      </div>
-    </div>
-  </header>
-
-  <main class="section">
-    <div class="container" style="max-width:880px;">
-      <article class="article-body">
-        <section class="article-map">
-          <h2>How to Read This Article</h2>
-          <p>Use this as a system brief, not just a long read. Start with the path that matches what you want to understand first.</p>
-          <div class="article-map-links">
-            <a href="#rag-understanding"><strong>Why grounding matters</strong><span>The production problem the system is solving.</span></a>
-            <a href="#live-demo"><strong>Approach comparison</strong><span>Simple completion, RAG, MCP, and agents side by side.</span></a>
-            <a href="#rag-practice"><strong>Implementation flow</strong><span>How retrieval, tools, policy, and approvals fit together.</span></a>
-            <a href="#rag-architecture"><strong>Architecture view</strong><span>The system shape behind a trustworthy assistant.</span></a>
-            <a href="#rag-governance"><strong>Governance layer</strong><span>Why sources, scope, and approvals matter.</span></a>
-            <a href="#rag-conclusion"><strong>Takeaways</strong><span>The shortest version of what this article is proving.</span></a>
-          </div>
-        </section>
-
-        <section class="system-banner reveal-up interactive" aria-label="System summary">
-          <div class="sb-grid">
-            <div class="sb-block">
-              <div class="sb-label">System Type</div>
-              <ul>
-                <li>RAG-based AI Knowledge System</li>
-              </ul>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo"><span class="logo-icon">RRR</span><div class="logo-stack"><span class="logo-name">RaghuRamReddy</span><span class="logo-tagline">Designing technology for human experience</span></div></a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="../work.html" class="nav-link">Work &amp; Impact</a>
+                <a href="../applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
+                <a href="../future-systems.html" class="nav-link">Future Systems</a>
+                <a href="../writing.html" class="nav-link active">Writing</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
             </div>
-            <div class="sb-block">
-              <div class="sb-label">Core Capabilities</div>
-              <ul>
-                <li>Retrieval + Context Injection</li>
-                <li>Source-grounded responses</li>
-                <li>Enterprise knowledge alignment</li>
-              </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
             </div>
-            <div class="sb-block">
-              <div class="sb-label">Stack</div>
-              <ul>
-                <li>Embeddings</li>
-                <li>Vector DB</li>
-                <li>LLM</li>
-                <li>Knowledge Sources</li>
-              </ul>
-            </div>
-            <div class="sb-block">
-              <div class="sb-label">Outcome</div>
-              <ul>
-                <li>Reduced hallucination</li>
-                <li>High-trust outputs</li>
-                <li>Auditability</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <p>
-          Most AI systems fail in production not because the model is weak, but because the system is <strong>not
-            grounded</strong>.
-          A base model can sound right while being wrong on the details that matter: your current deployment state, your
-          change policy, your runbooks, and the failure patterns your teams have seen before.
-        </p>
-
-        <div class="article-callout">
-          <strong>Key insight:</strong> grounding is a <em>system property</em>. RAG is the knowledge grounding layer,
-          MCP is the live-truth layer,
-          and agents provide controlled execution with explicit approvals.
         </div>
+    </nav>
 
-        <section class="understanding-block reveal-up interactive" id="rag-understanding">
-          <h2>System Understanding</h2>
-          <p>
-            In real on-call work, the question is rarely â€œwhat is CI/CD?â€ It is â€œwhat changed, what is failing
-            <em>right now</em>, and what is the smallest safe move we can make?â€
-            An ungrounded assistant cannot answer that reliably because it has no evidence and no live state.
-            A grounded assistant behaves like an engineer: it pulls the relevant standard/runbook text, checks signals,
-            and recommends a bounded action with a rollback-aware plan.
-          </p>
-          <p>
-            In real on-call work, the question is rarely "what is CI/CD?" It is "what changed, what is failing
-            <em>right now</em>, and what is the smallest safe move we can make?" A grounded assistant earns trust by pulling the
-            relevant standard or runbook text, checking live signals, and recommending a bounded action with a rollback-aware plan.
-          </p>
-          <div class="example-box" style="margin-top:10px;">
-            <b>Explore in this portfolio:</b>
-            <a href="../operational-standards-library.html">Operational Standards Library</a> (approved knowledge
-            layer),
-            <a href="../applied-ai-systems.html">Applied AI Systems</a> (how the AI layer fits),
-            <a href="../work.html">Work &amp; Impact</a> (system outcomes),
-            <a href="ci-cd-failures-at-scale.html">CI/CD Failures at Scale</a> (failure patterns).
-          </div>
-        </section>
-
-        <h2>Grounding Demo: Simple vs RAG vs MCP vs Agents</h2>
-        <p>
-          This is a lightweight, client-side simulation of four AI system designs responding to the same production
-          question.
-          It is intentionally simple. The point is to show the <strong>shape of reliability</strong>: evidence (RAG),
-          live truth (tools/MCP), and controlled execution (agents with guardrails).
-        </p>
-
-        <section class="understanding-block reveal-up interactive">
-          <h2>When to Use Each Approach</h2>
-          <div class="gov-grid">
-            <div class="gov-card"><b>Simple completion</b><br />Good for brainstorming and drafting. Unsafe for
-              operations: no citations, no state, no guardrails.</div>
-            <div class="gov-card"><b>RAG</b><br />Best for "what do <em>our</em> standards/runbooks say?" with citations
-              you can verify quickly.</div>
-            <div class="gov-card"><b>MCP (tools)</b><br />Best for "what is true <em>right now</em>?": deployments,
-              alerts, pipeline runs, configs. Read-only by default.</div>
-            <div class="gov-card"><b>Agents</b><br />Best for multi-step workflows: gather evidence, verify state,
-              propose the smallest safe action, and stop for approval before writes.</div>
-          </div>
-        </section>
-        <div class="ldemo-wrap" id="live-demo">
-          <div class="ldemo-query">
-            <input id="ldemo-query" type="text" placeholder="e.g. cicd deployment failed in production" />
-            <button type="button" id="ldemo-run" class="btn btn-primary"><span>Analyze</span></button>
-          </div>
-          <div class="ldemo-grid">
-            <div class="ldemo-card tilt-card">
-              <div class="ldemo-head"><span><span class="ldemo-dot bad"></span> Simple
-                  Completion</span><span>terminal://llm</span></div>
-              <div id="ldemo-bad-out" class="ldemo-out">
-                <div id="ldemo-bad-status" class="ldemo-status">status: idle</div>
-                <div>$ query: <span class="term-prompt">waiting_input</span></div>
-                <div>$ mode: base_inference</div>
-                <div>$ answer: Enter a query to simulate a non-grounded response...</div>
-              </div>
+    <header class="page-header ph--blog">
+        <div class="container">
+            <div class="page-header-content">
+                <span class="page-tag animate-fade-in">AI Engineering</span>
+                <h1 class="page-title animate-slide-up">RAG & Knowledge Systems Playground<span class="gradient-text"></span></h1>
+                <p class="page-subtitle animate-slide-up delay-1">Understand RAG, vector search, and agent architectures from first principles — then compare them side-by-side in a live playground.</p>
             </div>
-            <div class="ldemo-card good tilt-card">
-              <div class="ldemo-head"><span><span class="ldemo-dot good"></span> RAG (Knowledge
-                  Grounding)</span><span>terminal://rag</span></div>
-              <div id="ldemo-good-out" class="ldemo-out">
-                <div id="ldemo-good-status" class="ldemo-status">status: idle</div>
-                <div>$ query: <span class="term-prompt">waiting_input</span></div>
-                <div>$ stage: query -> embedding -> retrieval -> context -> response</div>
-                <div>$ answer: Awaiting retrieval...</div>
-              </div>
-              <div class="demo-metrics">
-                <div class="metric-chip"><b>Confidence Score:</b> <span id="ldemo-confidence">0%</span></div>
-                <div class="metric-chip"><b>Source Relevance:</b> <span id="ldemo-relevance">0.00</span></div>
-              </div>
-              <div class="explain-box"><b>Why this answer:</b> <span id="ldemo-explain">Waiting for retrieval and
-                  evidence ranking.</span></div>
-              <div id="ldemo-sources" class="ldemo-sources">
-                <div class="ldemo-src">CI_CD_Runbook_v5.md - Build and deploy failure handling</div>
-                <div class="ldemo-src">DevOps_Incident_DB_2026.csv - RCA patterns and mitigations</div>
-                <div class="ldemo-src">Platform_SRE_Standards.pdf - Rollback and recovery policies</div>
-              </div>
-            </div>
-            <div class="ldemo-card good tilt-card">
-              <div class="ldemo-head"><span><span class="ldemo-dot good"></span> MCP (Tool
-                  Grounding)</span><span>terminal://mcp</span></div>
-              <div id="ldemo-mcp-out" class="ldemo-out">
-                <div id="ldemo-mcp-status" class="ldemo-status">status: idle</div>
-                <div>$ query: <span class="term-prompt">waiting_input</span></div>
-                <div>$ tools: get_deployments, get_recent_alerts, get_pipeline_runs</div>
-                <div>$ answer: Awaiting tool reads...</div>
-              </div>
-            </div>
-            <div class="ldemo-card good tilt-card">
-              <div class="ldemo-head"><span><span class="ldemo-dot good"></span> Agent (Plan +
-                  Guardrails)</span><span>terminal://agent</span></div>
-              <div id="ldemo-agent-out" class="ldemo-out">
-                <div id="ldemo-agent-status" class="ldemo-status">status: idle</div>
-                <div>$ query: <span class="term-prompt">waiting_input</span></div>
-                <div>$ loop: plan -> evidence -> tools -> recommendation -> approval</div>
-                <div>$ answer: Awaiting plan...</div>
-              </div>
-            </div>
-          </div>
         </div>
+    </header>
 
-        <section class="understanding-block example-output" id="example-output-block">
-          <h2>Example Output</h2>
-          <pre style="font-size:13px; line-height:1.6;" id="example-output-pre"></pre>
-        </section>
+    <main class="section">
+        <article class="article-body container">
+            <section class="article-intro">
+                <h2>The Grounding Problem: LLMs Are Frozen in Time</h2>
+                <p>Large language models are trained on data up to a specific cutoff date. They don't know what happened yesterday, they can't access your internal documentation, and they will confidently make up facts when they don't know the answer. This is not a bug — it's a predictable output when the model has never seen that information in its training data. In production, this is called <strong>hallucination</strong>, and it's unacceptable for mission-critical systems.</p>
+                <p>The solution is to move knowledge out of the model's weights and into a <strong>retrieval system</strong>. Give the model access to your current, domain-specific information at inference time. This guide covers the architectures that do this: RAG (Retrieval-Augmented Generation), MCP (Model Context Protocol), and Agents. We'll start with the fundamentals, then build an interactive playground so you can see how each approach handles the same queries differently.</p>
+            </section>
 
-        <section class="understanding-block reveal-up interactive" id="rag-practice">
-          <h2>How This Works in Practice</h2>
-          <div class="workflow-steps">
-            <div class="step-row">
-              <div class="step-no">1</div>
-              <p>Classify the request (advice vs evidence vs live troubleshooting vs action) and set risk boundaries.
-              </p>
-            </div>
-            <div class="step-row">
-              <div class="step-no">2</div>
-              <p>Retrieve relevant snippets from <em>approved</em> sources (runbooks, standards, postmortems) using
-                embeddings.</p>
-            </div>
-            <div class="step-row">
-              <div class="step-no">3</div>
-              <p>Rerank and filter by relevance, freshness, and policy (environment scope, service ownership, change
-                windows).</p>
-            </div>
-            <div class="step-row">
-              <div class="step-no">4</div>
-              <p>Build the prompt with citations (what was retrieved and why) so humans can verify quickly.</p>
-            </div>
-            <div class="step-row">
-              <div class="step-no">5</div>
-              <p>If needed, read live truth via tools (MCP) and only then propose a bounded plan with an approval gate.
-              </p>
-            </div>
-          </div>
-          <div class="tools-row">
-            <span class="tool-chip">Embedding Layer</span>
-            <span class="tool-chip">Vector Retrieval</span>
-            <span class="tool-chip">Reranking</span>
-            <span class="tool-chip">Context Builder</span>
-            <span class="tool-chip">LLM Response</span>
-            <span class="tool-chip">Source Traceability</span>
-          </div>
-          <div class="example-box">
-            <b>Example:</b> When a CI/CD deployment fails, the system pulls the relevant gating/rollback standard and
-            the closest failure pattern,
-            verifies live pipeline and deployment state via tools, then recommends the smallest safe action with
-            explicit "stop and approve" points.
-          </div>
-        </section>
-
-        <section class="understanding-block" id="rag-architecture">
-          <h2>System Architecture</h2>
-          <p>
-            A reliable on-call assistant is not a single model. It is a small system that pulls evidence (RAG), reads
-            live truth (tools/MCP), enforces policy constraints, and plans actions with explicit approval gates.
-          </p>
-          <figure class="arch-figure arch-blueprint reveal-up interactive" aria-label="Grounded AI system architecture diagram">
-            <div class="arch-legend" aria-hidden="true">
-              <span class="arch-pill agent"><span class="arch-swatch"></span>Control plane</span>
-              <span class="arch-pill mcp"><span class="arch-swatch"></span>Live tools</span>
-              <span class="arch-pill rag"><span class="arch-swatch"></span>Knowledge</span>
-            </div>
-
-            <div class="arch-pipeline" role="img" aria-label="Request moves through intake, risk routing, grounding, guarded planning, and evidence-backed output">
-              <div class="arch-node arch-node-input">
-                <span class="arch-node-kicker">01 Intake</span>
-                <strong>Question</strong>
-                <small>Deployment, outage, audit finding, or policy request</small>
-              </div>
-              <div class="arch-arrow" aria-hidden="true"></div>
-              <div class="arch-node arch-node-router">
-                <span class="arch-node-kicker">02 Router</span>
-                <strong>Classify Risk</strong>
-                <small>Advice, evidence lookup, live diagnosis, or action proposal</small>
-              </div>
-              <div class="arch-arrow" aria-hidden="true"></div>
-              <div class="arch-node arch-node-output">
-                <span class="arch-node-kicker">06 Output</span>
-                <strong>Answer Package</strong>
-                <small>Recommendation, citations, confidence, audit trail</small>
-              </div>
-            </div>
-
-            <div class="arch-layers">
-              <section class="arch-layer agent">
-                <div class="arch-layer-head">
-                  <span>03 Control Plane</span>
-                  <b>Agent loop</b>
+            <section class="article-section">
+                <h2>What Is RAG?</h2>
+                <p>RAG stands for <strong>Retrieve → Augment → Generate</strong>. It's a three-stage pipeline:</p>
+                <div class="workflow-steps">
+                    <div class="step-row"><span class="step-no">1</span><div class="step-content"><strong>Retrieve:</strong> User asks a question. A retrieval system (vector search, keyword matching, or hybrid) finds the most relevant documents or chunks from a knowledge base.</div></div>
+                    <div class="step-row"><span class="step-no">2</span><div class="step-content"><strong>Augment:</strong> The retrieved chunks are inserted into the prompt as context. The system prompt explicitly tells the model to answer only based on what's provided.</div></div>
+                    <div class="step-row"><span class="step-no">3</span><div class="step-content"><strong>Generate:</strong> The model generates a response based on the context. No hallucination — the answer is grounded in actual knowledge.</div></div>
                 </div>
-                <ul>
-                  <li>Plans the smallest safe next step</li>
-                  <li>Verifies retrieved evidence against live state</li>
-                  <li>Stops before write actions and asks for approval</li>
-                </ul>
-              </section>
+                <p>The key insight: <strong>move knowledge OUT of the model and INTO the retrieval system</strong>. Training-time knowledge is static and lives in the weights. Retrieval-time knowledge is dynamic, updatable, and auditable. You can change your knowledge base tomorrow without retraining the model.</p>
+                <p>RAG matters when you have: enterprise documentation, support knowledge bases, product catalogs, internal wikis, or any domain-specific information that the base model doesn't know.</p>
+            </section>
 
-              <section class="arch-layer mcp">
-                <div class="arch-layer-head">
-                  <span>04 Live Truth Plane</span>
-                  <b>MCP / tool reads</b>
+            <section class="article-section">
+                <h2>Vector Embeddings & Semantic Search</h2>
+                <p>The retrieval system needs to understand meaning, not just keywords. This is where embeddings come in. An <strong>embedding</strong> is a high-dimensional vector (typically 1,000–4,000 dimensions) that represents the semantic meaning of a piece of text. Conceptually, it maps text to a space where similar meanings are close together.</p>
+                <p><strong>Semantic similarity example:</strong> "CI/CD pipeline failure" and "build process broke" share almost no words, but they mean the same thing. In embedding space, they're close neighbors. A keyword search would miss the second phrase; semantic search finds it.</p>
+                <p>The distance metric is usually <strong>cosine similarity</strong> — a measure of the angle between two vectors. Vectors pointing in similar directions (similar meanings) have high cosine similarity; orthogonal vectors (unrelated meanings) have low similarity.</p>
+                <div class="article-callout"><strong>Chunking matters:</strong> Before embedding, documents are split into chunks. Chunk size = retrieval granularity. A 50-token chunk gives fine-grained results; a 1,000-token chunk is coarse but captures more context. Your retrieval system will return whole chunks, so choose wisely.</div>
+                <p><strong>Cost note:</strong> Embedding text to create a knowledge base is cheap — around $0.001 per 1K tokens. The compute cost is at inference time (retrieving and re-ranking), not at indexing time. Build your knowledge base without worry.</p>
+            </section>
+
+            <section class="article-section">
+                <h2>Retrieval Strategies: From Simple to Hybrid</h2>
+                <p>Not all retrieval is the same. Different strategies have different tradeoffs:</p>
+                <div class="depth-panel">
+                    <div class="depth-cols">
+                        <div class="depth-card"><h3>Sparse Retrieval (BM25 / TF-IDF)</h3><p>Keyword matching. Fast, exact match required. Misses paraphrases and synonyms. Best for: highly structured, keyword-rich documents (legal contracts, logs).</p></div>
+                        <div class="depth-card"><h3>Dense Retrieval (Vector Search)</h3><p>Semantic matching. Handles synonyms and paraphrases. Misses exact keywords. Best for: conversational queries, domain-specific knowledge, anything conceptual.</p></div>
+                        <div class="depth-card"><h3>Hybrid (Sparse + Dense)</h3><p>Combine both using Reciprocal Rank Fusion (RRF) — merge keyword and semantic results. Expensive but strongest recall. Best for: production systems where accuracy matters.</p></div>
+                    </div>
                 </div>
-                <ul>
-                  <li>Reads deployments, alerts, incidents, and pipeline runs</li>
-                  <li>Uses least-privilege, read-only access by default</li>
-                  <li>Separates observation from remediation</li>
+                <ul class="article-list">
+                    <li><strong>Re-ranking:</strong> Retrieve top-k results with one method, then use a cross-encoder to re-score and reorder. Improves precision without hurting recall.</li>
+                    <li><strong>Top-k vs Threshold:</strong> Top-k = "return the top 5 results." Threshold = "return all results with similarity > 0.7." Use threshold when result count is unpredictable; use top-k when you have a token budget.</li>
                 </ul>
-              </section>
+            </section>
 
-              <section class="arch-layer rag">
-                <div class="arch-layer-head">
-                  <span>05 Knowledge Plane</span>
-                  <b>RAG retrieval</b>
+            <section class="article-section">
+                <h2>Augmentation: Building the Grounded Prompt</h2>
+                <p>Once retrieved, chunks are injected into the prompt. The system prompt is crucial:</p>
+                <div class="example-box"><strong>Example system prompt:</strong><br>"You are a support agent. Answer ONLY based on the provided context. If the answer is not in the context, say 'I don't know.' Do not invent information."</div>
+                <p>This explicit instruction prevents hallucination. The model sees the answer in the context, so it doesn't need to invent it.</p>
+                <p><strong>Token budget math:</strong> If you retrieve 5 chunks × 500 tokens each = 2,500 context tokens, plus 200-token question plus 500-token expected response = 3,200 tokens per request. That's the cost ceiling for that request. Know your token budget before you design your retrieval strategy.</p>
+                <div class="article-callout"><strong>Why grounding reduces hallucination:</strong> The model doesn't need to guess. It reads the answer in the context. The only hallucination risk is if the context itself is wrong — so keep your knowledge base clean.</div>
+            </section>
+
+            <section class="article-section">
+                <h2>Beyond RAG: MCP, Agents, and Multi-Agents</h2>
+                <p>RAG is one-shot retrieval. The model answers based on what's retrieved before generation starts. But there are more sophisticated architectures:</p>
+                <div class="depth-panel">
+                    <div class="depth-cols">
+                        <div class="depth-card"><h3>RAG</h3><p><strong>One-shot retrieval before generation.</strong> Document-first. No iteration. Simple and fast. Trade-off: if the initial retrieval is wrong, the response will be wrong.</p></div>
+                        <div class="depth-card"><h3>MCP (Model Context Protocol)</h3><p><strong>Structured tool access.</strong> The model calls typed functions like search_kb(query, filters) or get_document(id), defined by a server contract. More structured than RAG, more predictable than agents.</p></div>
+                        <div class="depth-card"><h3>Agent</h3><p><strong>Autonomous reasoning.</strong> The model decides what tools to call, in what order, and whether to iterate. Can retrieve, reason, decide to retrieve more, synthesize. Handles uncertainty and multi-step planning.</p></div>
+                        <div class="depth-card"><h3>Multi-Agent</h3><p><strong>Specialized agents coordinate.</strong> Example: Research Agent finds docs, Fact-Checker Agent verifies claims, Synthesis Agent produces final output. Enables parallelism and specialization.</p></div>
+                    </div>
                 </div>
-                <ul>
-                  <li>Searches runbooks, standards, prior incidents, and policies</li>
-                  <li>Reranks by relevance, freshness, ownership, and environment</li>
-                  <li>Returns cited snippets that humans can verify</li>
-                </ul>
-              </section>
+            </section>
+
+            <section class="article-section">
+                <h2>Choosing the Right Architecture</h2>
+                <p>Each architecture has a purpose. Choose based on task complexity:</p>
+                <table style="width:100%; margin:24px 0; border-collapse:collapse;"><thead><tr style="border-bottom:2px solid var(--border-color);"><th style="text-align:left; padding:12px 0; font-weight:600;">Need</th><th style="text-align:left; padding:12px 0; font-weight:600;">Right Architecture</th></tr></thead><tbody><tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 0;">General knowledge / creative tasks</td><td style="padding:12px 0;"><strong>Simple Completion</strong> — No retrieval, just the model</td></tr><tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 0;">Accurate answers from your docs</td><td style="padding:12px 0;"><strong>RAG</strong> — Fast, one-shot, predictable</td></tr><tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 0;">Structured APIs, exact data lookups</td><td style="padding:12px 0;"><strong>MCP</strong> — Typed functions, contract-based</td></tr><tr style="border-bottom:1px solid var(--border-color);"><td style="padding:12px 0;">Multi-step reasoning, uncertainty</td><td style="padding:12px 0;"><strong>Agent</strong> — Autonomous iteration</td></tr><tr><td style="padding:12px 0;">Complex workflows, QA, specialization</td><td style="padding:12px 0;"><strong>Multi-Agent</strong> — Coordinated agents</td></tr></tbody></table>
+            </section>
+
+            <section class="article-section">
+                <h2>The Playground</h2>
+                <p>Below is an interactive demo. Choose a query or type your own. Select an architecture mode (Simple, RAG, MCP, or Agent). Watch the system's response and see how each architecture retrieves, processes, and answers differently.</p>
+
+                <div class="ldemo-wrap" id="live-demo">
+                    <div class="ldemo-kb-section">
+                        <h3>Knowledge Base (5 documents)</h3>
+                        <div class="gov-grid">
+                            <div class="gov-card"><div class="gov-card-header">KB-001</div><div class="gov-card-title">Platform Engineering Charter</div><p>Team mission: Enable development teams with self-serve infrastructure, reduce toil, and drive deployment velocity.</p></div>
+                            <div class="gov-card"><div class="gov-card-header">KB-002</div><div class="gov-card-title">CI/CD Pipeline Standards v2.0</div><p>All deployments must pass: security scanning, unit tests, integration tests, and smoke tests. 5-minute deployment target.</p></div>
+                            <div class="gov-card"><div class="gov-card-header">KB-003</div><div class="gov-card-title">Q3 2025 Platform Health Report</div><p>Deployment success rate: 96.2% (target: 95%). Mean time to recovery (MTTR): 12 minutes. Incident count: 8 (down from 14 in Q2).</p></div>
+                            <div class="gov-card"><div class="gov-card-header">KB-004</div><div class="gov-card-title">Developer Experience Survey</div><p>94% of devs report faster deployment times. 87% report reduced friction in the CI/CD process. Top request: faster feedback loops.</p></div>
+                            <div class="gov-card"><div class="gov-card-header">KB-005</div><div class="gov-card-title">Incident Response Playbook</div><p>P1 incident: page on-call immediately. Run incident.run gameday. Establish incident commander. Post mortem within 24 hours.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="ldemo-query">
+                        <label for="ldemo-input" style="display:block; margin-bottom:8px; font-weight:600; font-size:14px;">Ask a question:</label>
+                        <textarea id="ldemo-input" class="ldemo-input-area" placeholder="Type your question or use a preset below." rows="3"></textarea>
+                        <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;">
+                            <button class="ldemo-preset-btn" data-query="q1">What is our current deployment success rate?</button>
+                            <button class="ldemo-preset-btn" data-query="q2">How should we handle a P1 production incident?</button>
+                            <button class="ldemo-preset-btn" data-query="q3">What are our CI/CD pipeline standards?</button>
+                        </div>
+                    </div>
+
+                    <div class="ldemo-mode-tabs">
+                        <button class="ldemo-tab active" data-mode="simple" aria-selected="true">Simple Completion</button>
+                        <button class="ldemo-tab" data-mode="rag" aria-selected="false">RAG</button>
+                        <button class="ldemo-tab" data-mode="mcp" aria-selected="false">MCP</button>
+                        <button class="ldemo-tab" data-mode="agent" aria-selected="false">Agent</button>
+                        <span class="ldemo-tab-hint">Multi-Agent · Agentic RAG · more coming soon</span>
+                    </div>
+
+                    <div class="ldemo-mode-panel active" id="ldemo-panel-simple">
+                        <h3>Simple Completion</h3>
+                        <div class="ldemo-flow"><div class="arch-pipeline"><div class="arch-node">Query</div><div class="arch-arrow">→</div><div class="arch-node">LLM</div><div class="arch-arrow">→</div><div class="arch-node">Response</div></div></div>
+                        <div class="ldemo-grid"><div class="ldemo-card"><div class="ldemo-head"><span class="ldemo-dot bad"></span>Without Grounding</div><div class="ldemo-out" id="ldemo-simple-bad"></div></div></div>
+                        <div class="demo-metrics"><span class="metric-chip">Latency: ~1s</span><span class="metric-chip">Retrieved: 0 docs</span><span class="metric-chip">Confidence: Low</span></div>
+                    </div>
+
+                    <div class="ldemo-mode-panel" id="ldemo-panel-rag">
+                        <h3>RAG (Retrieval-Augmented Generation)</h3>
+                        <div class="ldemo-flow"><div class="arch-pipeline"><div class="arch-node small">Query</div><div class="arch-arrow">→</div><div class="arch-node small">Embed</div><div class="arch-arrow">→</div><div class="arch-node small">Search</div><div class="arch-arrow">→</div><div class="arch-node small">Retrieve</div></div><div class="arch-pipeline" style="margin-top:8px;"><div class="arch-node small">Augment</div><div class="arch-arrow">→</div><div class="arch-node small">LLM</div><div class="arch-arrow">→</div><div class="arch-node small">Response</div></div></div>
+                        <div class="ldemo-grid"><div class="ldemo-card"><div class="ldemo-head"><span class="ldemo-dot good"></span>Grounded Response</div><div class="ldemo-out" id="ldemo-rag-good"></div></div></div>
+                        <div class="demo-metrics"><span class="metric-chip">Latency: ~2.5s</span><span class="metric-chip" id="ldemo-rag-chunks">Retrieved: 0 docs</span><span class="metric-chip">Confidence: High</span></div>
+                        <div class="ldemo-sources"><strong>Retrieved Sources:</strong><div id="ldemo-rag-sources" style="margin-top:6px;"></div></div>
+                    </div>
+
+                    <div class="ldemo-mode-panel" id="ldemo-panel-mcp">
+                        <h3>MCP (Model Context Protocol)</h3>
+                        <div class="ldemo-flow"><div class="arch-pipeline"><div class="arch-node small">Query</div><div class="arch-arrow">→</div><div class="arch-node small">LLM</div><div class="arch-arrow">→</div><div class="arch-node small">Tool Call</div></div><div class="arch-pipeline" style="margin-top:8px;"><div class="arch-node small">Server</div><div class="arch-arrow">→</div><div class="arch-node small">Results</div><div class="arch-arrow">→</div><div class="arch-node small">LLM</div><div class="arch-arrow">→</div><div class="arch-node small">Response</div></div></div>
+                        <div class="ldemo-grid"><div class="ldemo-card"><div class="ldemo-head"><span class="ldemo-dot good"></span>Grounded Response</div><div class="ldemo-out" id="ldemo-mcp-good"></div></div></div>
+                        <div class="demo-metrics"><span class="metric-chip">Latency: ~2.8s</span><span class="metric-chip" id="ldemo-mcp-chunks">Retrieved: 0 docs</span><span class="metric-chip">Confidence: High</span></div>
+                        <div class="ldemo-sources"><strong>Tool Calls:</strong><div id="ldemo-mcp-sources" style="margin-top:6px;"></div></div>
+                    </div>
+
+                    <div class="ldemo-mode-panel" id="ldemo-panel-agent">
+                        <h3>Agent (Autonomous Reasoning)</h3>
+                        <div class="ldemo-flow"><div class="arch-pipeline"><div class="arch-node small">Query</div><div class="arch-arrow">→</div><div class="arch-node small">Plan</div><div class="arch-arrow">→</div><div class="arch-node small">Retrieve</div><div class="arch-arrow">→</div><div class="arch-node small">Reason</div></div><div class="arch-pipeline" style="margin-top:8px;"><div class="arch-node small">Retrieve More?</div><div class="arch-arrow">→</div><div class="arch-node small">Synthesize</div><div class="arch-arrow">→</div><div class="arch-node small">Response</div></div></div>
+                        <div class="ldemo-grid"><div class="ldemo-card"><div class="ldemo-head"><span class="ldemo-dot good"></span>Grounded Response</div><div class="ldemo-out" id="ldemo-agent-good"></div></div></div>
+                        <div class="demo-metrics"><span class="metric-chip">Latency: ~3.2s</span><span class="metric-chip" id="ldemo-agent-chunks">Retrieved: 0 docs</span><span class="metric-chip">Confidence: Very High</span></div>
+                        <div class="ldemo-sources"><strong>Retrieved Sources:</strong><div id="ldemo-agent-sources" style="margin-top:6px;"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <h2>The Architecture You Choose Matters</h2>
+                <p>Grounding is the key to trustworthy enterprise AI. Don't rely on base models to know your business. RAG, MCP, Agents, and Multi-Agent systems are not mutually exclusive — they exist on a spectrum of complexity, cost, and autonomy. Start simple (RAG for most use cases), then upgrade only when you need it (agents for multi-step reasoning, multi-agents for complex workflows). The playground above is a simulation, but the patterns are real. Build your knowledge base, choose your architecture, and ground your AI in facts.</p>
+            </section>
+        </article>
+    </main>
+
+    <div class="footer-divider"></div>
+    <footer class="footer footer--pro">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-card footer-brand-card">
+                    <a href="../../index.html" class="footer-logo"><span class="logo-icon">RRR</span><span class="logo-text">RaghuRamReddy</span></a>
+                    <p class="footer-tagline">Designing technology for human experience</p>
+                    <p class="footer-subline">Platform Engineering • DevSecOps • Automation • AI-assisted Operations</p>
+                    <div class="footer-social-row">
+                        <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+                        <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+                        <a class="social-pill" href="../contact.html">Contact</a>
+                    </div>
+                </div>
+                <div class="footer-links-col">
+                    <div class="footer-col"><h4 class="footer-col-title">Navigation</h4><div class="footer-links"><a href="../../index.html" class="footer-link">Home</a><a href="../work.html" class="footer-link">Work &amp; Impact</a><a href="../applied-ai-systems.html" class="footer-link">Applied AI Systems</a><a href="../writing.html" class="footer-link">Writing</a><a href="../about.html" class="footer-link">About</a><a href="../contact.html" class="footer-link">Contact</a></div></div>
+                    <div class="footer-col"><h4 class="footer-col-title">Explore</h4><div class="footer-links"><a href="../future-systems.html" class="footer-link">Future Systems</a><a href="../operational-standards-library.html" class="footer-link">Operational Standards</a></div></div>
+                </div>
+                <div class="footer-card footer-connect-card">
+                    <div class="footer-connect-header"><h4 class="footer-col-title">Connect</h4><p class="footer-connect-note">Fastest response on LinkedIn.</p></div>
+                    <div class="footer-icon-grid">
+                        <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg></a>
+                        <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a class="icon-btn" href="../contact.html" aria-label="Contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg></a>
+                    </div>
+                    <a class="footer-cta" href="../contact.html">Let's talk →</a>
+                </div>
+                <div class="footer-visual" aria-hidden="true"><span class="fv-orb fv-orb-1"></span><span class="fv-orb fv-orb-2"></span><span class="fv-line fv-line-1"></span><span class="fv-line fv-line-2"></span><span class="fv-dot fv-dot-1"></span><span class="fv-dot fv-dot-2"></span></div>
             </div>
-
-            <div class="arch-guardrails">
-              <div><b>Policy gate</b><span>Blocks unsafe advice and out-of-scope actions.</span></div>
-              <div><b>Human approval</b><span>Required before any production write path.</span></div>
-              <div><b>Audit record</b><span>Stores sources, tool reads, reasoning summary, and decision.</span></div>
-            </div>
-
-            <figcaption class="arch-caption">
-              This architecture separates knowledge, live system state, reasoning, and action approval so the assistant
-              can be useful without becoming an uncontrolled production actor.
-            </figcaption>
-          </figure>
-
-          <figure class="arch-figure arch-legacy" aria-hidden="true">
-            <div class="arch-legend" aria-hidden="true">
-              <span class="arch-pill agent"><span class="arch-swatch"></span>Agents</span>
-              <span class="arch-pill mcp"><span class="arch-swatch"></span>Tools (MCP)</span>
-              <span class="arch-pill rag"><span class="arch-swatch"></span>Knowledge (RAG)</span>
-            </div>
-
-            <svg class="arch-svg" viewBox="0 0 960 420" role="img" aria-label="Flow: question, routing, grounding via RAG and tools, agent guardrails and approvals, and evidence-backed output">
-              <defs>
-                <linearGradient id="archStroke" x1="0" x2="1">
-                  <stop offset="0" stop-color="var(--arch-agent)" />
-                  <stop offset="0.5" stop-color="var(--arch-mcp)" />
-                  <stop offset="1" stop-color="var(--arch-rag)" />
-                </linearGradient>
-                <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="6" result="blur" />
-                  <feColorMatrix in="blur" type="matrix" values="
-                    1 0 0 0 0
-                    0 1 0 0 0
-                    0 0 1 0 0
-                    0 0 0 0.35 0" result="colored" />
-                  <feMerge>
-                    <feMergeNode in="colored" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--arch-ink-soft)" />
-                </marker>
-              </defs>
-
-              <rect x="18" y="18" width="924" height="384" rx="26" ry="26" fill="var(--arch-panel)" stroke="var(--arch-border)" />
-
-              <g opacity="0.6">
-                <path d="M 40 86 H 920" stroke="var(--arch-border)" />
-                <path d="M 40 196 H 920" stroke="var(--arch-border)" />
-                <path d="M 40 306 H 920" stroke="var(--arch-border)" />
-              </g>
-
-              <g font-family="var(--font-mono)" font-size="12" fill="var(--arch-ink-soft)" opacity="0.9">
-                <text x="44" y="64">AGENT LOOP</text>
-                <text x="44" y="174">TOOLS (MCP)</text>
-                <text x="44" y="284">KNOWLEDGE (RAG)</text>
-              </g>
-
-              <g filter="url(#softGlow)">
-                <rect x="54" y="210" width="168" height="78" rx="16" fill="var(--arch-card)" stroke="var(--arch-border)" />
-                <text x="70" y="240" font-size="14" fill="var(--arch-ink)" font-weight="700">On-call question</text>
-                <text x="70" y="262" font-size="12" fill="var(--arch-ink-soft)">deployment, outage, finding</text>
-
-                <rect x="254" y="210" width="190" height="78" rx="16" fill="var(--arch-card)" stroke="var(--arch-border)" />
-                <text x="270" y="240" font-size="14" fill="var(--arch-ink)" font-weight="700">Route + risk</text>
-                <text x="270" y="262" font-size="12" fill="var(--arch-ink-soft)">advice â€¢ evidence â€¢ action</text>
-
-                <rect x="486" y="108" width="222" height="84" rx="18" fill="var(--arch-card)" stroke="var(--arch-agent)" />
-                <text x="504" y="138" font-size="14" fill="var(--arch-ink)" font-weight="700">Agent control</text>
-                <text x="504" y="160" font-size="12" fill="var(--arch-ink-soft)">plan â†’ verify â†’ propose</text>
-                <text x="504" y="180" font-size="12" fill="var(--arch-ink-soft)">writes require approval</text>
-
-                <rect x="486" y="218" width="222" height="76" rx="18" fill="var(--arch-card)" stroke="var(--arch-mcp)" />
-                <text x="504" y="248" font-size="14" fill="var(--arch-ink)" font-weight="700">Tool reads (MCP)</text>
-                <text x="504" y="270" font-size="12" fill="var(--arch-ink-soft)">deployments â€¢ alerts â€¢ pipelines</text>
-
-                <rect x="486" y="328" width="222" height="76" rx="18" fill="var(--arch-card)" stroke="var(--arch-rag)" />
-                <text x="504" y="358" font-size="14" fill="var(--arch-ink)" font-weight="700">RAG retrieval</text>
-                <text x="504" y="380" font-size="12" fill="var(--arch-ink-soft)">runbooks â€¢ standards â€¢ incidents</text>
-
-                <rect x="738" y="210" width="168" height="78" rx="16" fill="var(--arch-card)" stroke="url(#archStroke)" />
-                <text x="754" y="240" font-size="14" fill="var(--arch-ink)" font-weight="700">Output</text>
-                <text x="754" y="262" font-size="12" fill="var(--arch-ink-soft)">answer + evidence + audit</text>
-              </g>
-
-              <g stroke="var(--arch-ink-soft)" stroke-width="2" fill="none" marker-end="url(#arrow)" opacity="0.9">
-                <path d="M 222 249 H 254" />
-                <path d="M 444 249 H 486" />
-                <path d="M 349 210 C 380 180, 430 168, 486 150" />
-                <path d="M 349 288 C 380 318, 430 332, 486 366" />
-                <path d="M 708 150 C 734 160, 750 178, 760 210" />
-              </g>
-            </svg>
-
-            <figcaption class="arch-caption">
-              Evidence (RAG) and live state (tools) feed an agent loop that plans and stops at explicit approval gates
-              before any write action.
-            </figcaption>
-          </figure>
-        </section>
-
-        <details class="depth-panel reveal-up interactive">
-          <summary>Deep Dive: How This System Actually Works</summary>
-          <div class="depth-content">
-            <div class="depth-cols">
-              <div class="depth-card">
-                <h4>Query Flow</h4>
-                <ol>
-                  <li>Classify the request (advice vs evidence vs live troubleshooting vs action).</li>
-                  <li>Retrieve relevant runbook sections and standards with citations (RAG).</li>
-                  <li>Read current deployments, alerts, and pipeline runs via tools (MCP).</li>
-                  <li>Synthesize a recommendation under policy constraints (change window, blast radius, security).</li>
-                  <li>If a write action is needed: request approval, then execute and record an audit trail.</li>
-                </ol>
-              </div>
-              <div class="depth-card">
-                <h4>Failure Modes</h4>
-                <ul>
-                  <li>No retrieval hit.</li>
-                  <li>Stale knowledge.</li>
-                  <li>Irrelevant context selection.</li>
-                  <li>Tool-state mismatch (reading the wrong service/environment).</li>
-                  <li>Unsafe write scopes without approvals.</li>
-                </ul>
-              </div>
-              <div class="depth-card">
-                <h4>Mitigation</h4>
-                <ul>
-                  <li>Top-k tuning per query type.</li>
-                  <li>Reranking by semantic + recency score.</li>
-                  <li>Source filtering and governance policy checks.</li>
-                  <li>Read-only tools by default; explicit approval gates for writes.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <p style="color:#8b949e; font-size:14px;">
-          RAG is not "making the model smarter." It is forcing the system to answer from governed sources, with evidence
-          you can inspect.
-        </p>
-
-        <h2>Core Components of RAG Systems</h2>
-
-        <ul>
-          <li><strong>Source registry:</strong> what content is allowed (runbooks, standards, postmortems) and what is
-            explicitly excluded</li>
-          <li><strong>Ingestion pipeline:</strong> chunking strategy, metadata (service/env/owner), freshness
-            timestamps, and deduping</li>
-          <li><strong>Embedding + index:</strong> vector search with filters (service/env/tenant) and per-query top-k
-            tuning</li>
-          <li><strong>Reranker:</strong> semantic relevance plus recency and policy scoring to avoid plausible-but-wrong
-            snippets</li>
-          <li><strong>Context builder:</strong> builds a bounded prompt with citations and "unknowns" called out</li>
-          <li><strong>Answerer:</strong> generates a recommendation constrained by the retrieved evidence</li>
-          <li><strong>Evaluation:</strong> golden questions, regression tests, and alerting for retrieval drift</li>
-        </ul>
-
-        <section class="understanding-block" id="rag-governance">
-          <h2>RAG as a Governance Layer</h2>
-          <div class="gov-grid">
-            <div class="gov-card"><b>Source allowlist</b><br />Only approved sources participate in answers. "Unknown"
-              is a valid output.</div>
-            <div class="gov-card"><b>Traceability</b><br />Citations and metadata (service/env/version) make review and
-              audit practical.</div>
-            <div class="gov-card"><b>Quality gates</b><br />Freshness, owner tags, and reranking reduce weak matches and
-              stale guidance.</div>
-            <div class="gov-card"><b>Safety boundaries</b><br />Tools are read-first. Writes require approvals,
-              blast-radius limits, and rollback plans.</div>
-          </div>
-          <pre style="font-size:12px; margin-top:10px;">
-if doc.source not in approved_sources: skip
-if doc.service not in request.scope: skip
-if doc.freshness_score < threshold: skip
-if request.is_write_action: require_approval()
-    </pre>
-        </section>
-
-        <h2>Why RAG Matters in Enterprise Systems</h2>
-
-        <p>
-          Enterprise environments require AI systems that are not only intelligent - but also reliable, auditable, and
-          explainable.
-        </p>
-
-        <ul>
-          <li>It prevents "confident guessing" by forcing answers to come from the knowledge layer.</li>
-          <li>It makes review fast: citations let an on-call engineer validate in seconds.</li>
-          <li>It enables governance: data boundaries, environment scoping, and auditability are first-class.</li>
-          <li>It improves operations: better triage quality, fewer false actions, and clearer escalation points.</li>
-        </ul>
-
-        <div class="article-callout">
-          <strong>Important:</strong> RAG is not just improving answers - it is enforcing where answers come from.
+            <div class="footer-bottom footer-bottom--pro"><p>&copy; 2025 RaghuRamReddy Thummalapalli. All rights reserved.</p></div>
         </div>
+    </footer>
 
-        <section class="prod-thinking reveal-up interactive">
-          <h2>What This Means in Real Systems</h2>
-          <div class="prod-grid">
-            <div class="prod-card">
-              <h4>Where This Breaks</h4>
-              <p>Failures happen when retrieval returns the wrong chunk, context is stale, or scoping is missing (wrong
-                service/env).</p>
-            </div>
-            <div class="prod-card">
-              <h4>Why Naive RAG Fails</h4>
-              <p>Naive "top-k + stuff it in the prompt" produces plausible text that can still be operationally wrong.
-              </p>
-            </div>
-            <div class="prod-card">
-              <h4>Governance Layer Needed</h4>
-              <p>Trusted systems need allowlists, policy filters, evaluation, and explicit approval gates for any write
-                action.</p>
-            </div>
-          </div>
-        </section>
-
-        <section class="signal-section reveal-up interactive">
-          <h2>What This Demonstrates</h2>
-          <div class="impact-summary">
-            <div class="impact-note">
-              <h3>Portfolio Signal</h3>
-              <p>
-                This article is intentionally system-shaped: not "prompt tips," but an architecture that combines
-                knowledge grounding (RAG),
-                live truth (MCP/tool reads), and controlled execution (agents). That is what makes AI usable in
-                production operations.
-              </p>
-            </div>
-            <div class="impact-note">
-              <h3>Engineering Signals</h3>
-              <ul>
-                <li>System design thinking</li>
-                <li>Reliability and governance first</li>
-                <li>Production-first mindset</li>
-                <li>Platform engineering alignment</li>
-              </ul>
-            </div>
-          </div>
-          <div class="example-box" style="margin-top:10px;">
-            <b>Related reading:</b>
-            <a href="ai-cicd-troubleshooter.html">AI CI/CD Troubleshooter</a>,
-            <a href="secure-by-design-ci-cd.html">Secure-by-Design CI/CD</a>,
-            <a href="devops-to-platform-engineering.html">DevOps to Platform Engineering</a>.
-          </div>
-        </section>
-
-        <h2 id="rag-conclusion">Conclusion</h2>
-
-        <p>
-          Bigger models do not fix missing context. Production AI needs a grounded knowledge system, tool access to live
-          truth, and guardrails that
-          make unsafe actions hard. When you build those layers, AI stops being a guess engine and starts behaving like
-          a reliable teammate.
-        </p>
-
-        <div class="article-callout">
-          <strong>Final thought:</strong> if you want trustworthy AI, design for <em>evidence</em>, <em>state</em>, and
-          <em>control</em>.
-        </div>
-
-      </article>
-    </div>
-  </main>
-
-  <div class="footer-divider"></div>
-
-  <footer class="footer footer--pro">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-card footer-brand-card">
-          <a href="../../index.html" class="footer-logo">
-            <span class="logo-icon">RRR</span>
-            <span class="logo-text">RaghuRamReddy</span>
-          </a>
-
-          <p class="footer-tagline">Designing technology for human experience</p>
-          <p class="footer-subline">Platform Engineering &bull; DevSecOps &bull; Automation &bull; AI-assisted
-            Operations</p>
-
-          <div class="footer-social-row">
-            <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
-            <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank"
-              rel="noopener">LinkedIn</a>
-            <a class="social-pill" href="../contact.html">Contact</a>
-          </div>
-        </div>
-
-        <div class="footer-links-col">
-          <div class="footer-col">
-            <h4 class="footer-col-title">Navigation</h4>
-            <div class="footer-links">
-              <a href="../../index.html" class="footer-link">Home</a>
-              <a href="../work.html" class="footer-link">Work &amp; Impact</a>
-              <a href="../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
-              <a href="../writing.html" class="footer-link">Writing</a>
-              <a href="../about.html" class="footer-link">About</a>
-              <a href="../contact.html" class="footer-link">Contact</a>
-            </div>
-          </div>
-
-          <div class="footer-col">
-            <h4 class="footer-col-title">Explore</h4>
-            <div class="footer-links">
-              <a href="../future-systems.html" class="footer-link">Future Systems</a>
-              <a href="../operational-standards-library.html" class="footer-link">Operational Standards Library</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-card footer-connect-card">
-        <div class="footer-connect-header">
-          <h4 class="footer-col-title">Connect</h4>
-          <p class="footer-connect-note">Fastest response on LinkedIn.</p>
-        </div>
-
-        <div class="footer-icon-grid">
-          <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener"
-            aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path
-                d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22" />
-            </svg>
-          </a>
-          <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank"
-            rel="noopener" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z" />
-              <path d="M2 9h4v12H2z" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-          </a>
-          <a class="icon-btn" href="../contact.html" aria-label="Contact">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M4 4h16v16H4z" />
-              <path d="M4 7l8 6 8-6" />
-            </svg>
-          </a>
-        </div>
-
-        <a class="footer-cta" href="../contact.html">Let&apos;s talk &rarr;</a>
-      </div>
-
-      <div class="footer-visual" aria-hidden="true">
-        <span class="fv-orb fv-orb-1"></span>
-        <span class="fv-orb fv-orb-2"></span>
-        <span class="fv-line fv-line-1"></span>
-        <span class="fv-line fv-line-2"></span>
-        <span class="fv-dot fv-dot-1"></span>
-        <span class="fv-dot fv-dot-2"></span>
-      </div>
-    </div>
-
-    <div class="footer-bottom footer-bottom--pro">
-      <p>&copy; 2025 RaghuRamReddy Thummalapalli. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="../../assets/js/main.js?v=20260503"></script>
-  <script src="../../assets/js/aurora.js?v=20260503"></script>
-  <script>
-    (function () {
-      const liveBtn = document.getElementById('ldemo-run');
-      const liveInput = document.getElementById('ldemo-query');
-      const badStatus = document.getElementById('ldemo-bad-status');
-      const goodStatus = document.getElementById('ldemo-good-status');
-      const mcpStatus = document.getElementById('ldemo-mcp-status');
-      const agentStatus = document.getElementById('ldemo-agent-status');
-      const badOut = document.getElementById('ldemo-bad-out');
-      const goodOut = document.getElementById('ldemo-good-out');
-      const mcpOut = document.getElementById('ldemo-mcp-out');
-      const agentOut = document.getElementById('ldemo-agent-out');
-      const src = document.getElementById('ldemo-sources');
-      const confidenceEl = document.getElementById('ldemo-confidence');
-      const relevanceEl = document.getElementById('ldemo-relevance');
-      const explainEl = document.getElementById('ldemo-explain');
-      const exampleBlock = document.getElementById('example-output-block');
-      const examplePre = document.getElementById('example-output-pre');
-
-      const crawlTargets = [
-        '/index.html',
-        '/pages/work.html',
-        '/pages/applied-ai-systems.html',
-        '/pages/writing.html',
-        '/pages/operational-standards-library.html',
-        '/pages/blog/ai-cicd-troubleshooter.html',
-        '/pages/blog/ci-cd-failures-at-scale.html',
-        '/pages/blog/devops-to-platform-engineering.html',
-        '/pages/blog/secure-by-design-ci-cd.html',
-        '/pages/blog/toolchain-modernization.html',
-        '/pages/blog/rag-knowledge-systems.html'
-      ];
-      let crawlCache = null;
-
-      function tokenize(text) {
-        return (text || '').toLowerCase().match(/[a-z0-9]+/g) || [];
-      }
-
-      function extractText(html) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        // Prefer meaningful content containers over full-page chrome.
-        const primary = doc.querySelector('main') || doc.querySelector('article');
-        if (primary && primary.textContent) {
-          return primary.textContent.replace(/\s+/g, ' ').trim();
-        }
-
-        // Fallback: remove common chrome blocks before reading text.
-        const bodyClone = doc.body ? doc.body.cloneNode(true) : null;
-        if (!bodyClone) return '';
-        bodyClone.querySelectorAll('nav, header, footer, script, style, noscript').forEach(function (el) { el.remove(); });
-        return (bodyClone.textContent || '').replace(/\s+/g, ' ').trim();
-      }
-
-      function pickSnippet(text, queryTokens) {
-        const lowered = text.toLowerCase();
-        let idx = -1;
-        queryTokens.forEach(function (t) {
-          const i = lowered.indexOf(t);
-          if (idx === -1 || (i !== -1 && i < idx)) idx = i;
-        });
-        if (idx === -1) idx = 0;
-        const roughStart = Math.max(0, idx - 180);
-        const roughEnd = Math.min(text.length, idx + 280);
-
-        // Expand to nearest sentence boundaries when possible.
-        let start = text.lastIndexOf('.', roughStart);
-        let qmark = text.lastIndexOf('?', roughStart);
-        let exmark = text.lastIndexOf('!', roughStart);
-        start = Math.max(start, qmark, exmark);
-        start = start === -1 ? roughStart : start + 1;
-
-        let endCandidates = [
-          text.indexOf('.', roughEnd),
-          text.indexOf('?', roughEnd),
-          text.indexOf('!', roughEnd)
-        ].filter(function (x) { return x !== -1; });
-        let end = endCandidates.length ? Math.min.apply(null, endCandidates) + 1 : roughEnd;
-
-        let snippet = text.slice(start, end).replace(/\s+/g, ' ').trim();
-
-        // Ensure we do not start mid-word.
-        snippet = snippet.replace(/^[^a-zA-Z0-9]+/, '');
-        if (snippet.length > 360) snippet = snippet.slice(0, 357).trim() + '...';
-        return snippet;
-      }
-
-      async function buildCrawlCache() {
-        if (crawlCache) return crawlCache;
-        const docs = [];
-
-        // Handle both relative and absolute paths
-        const basePath = window.location.pathname.includes('/pages/') ? '../..' : '.';
-
-        await Promise.all(crawlTargets.map(async function (url) {
-          try {
-            // Construct full URL
-            const fullUrl = url.startsWith('/') ? basePath + url : url;
-            const res = await fetch(fullUrl, { cache: 'no-store' });
-            if (!res.ok) return;
-            const html = await res.text();
-            const text = extractText(html);
-            docs.push({ url: url, text: text, tokens: tokenize(text) });
-          } catch (_) { }
-        }));
-        crawlCache = docs;
-        return crawlCache;
-      }
-
-      async function queryCrawledPortfolio(query) {
-        const docs = await buildCrawlCache();
-        const qTokens = tokenize(query);
-        if (!qTokens.length) {
-          return { answer: 'Please type a question to retrieve related portfolio information.', confidence: '0%', relevance: '0.00', explain: 'No query terms provided.', sources: [] };
-        }
-
-        const scored = docs.map(function (d) {
-          let score = 0;
-          qTokens.forEach(function (t) {
-            const matches = d.tokens.filter(function (x) { return x === t; }).length;
-            score += matches;
-          });
-          return { doc: d, score: score };
-        }).filter(function (x) { return x.score > 0; }).sort(function (a, b) { return b.score - a.score; });
-
-        if (!scored.length) {
-          return {
-            answer: 'No strong match found in current portfolio pages for "' + query + '". Try more specific terms like CI/CD, Kubernetes, DevSecOps, RAG, or incident response.',
-            confidence: '68%',
-            relevance: '0.61',
-            explain: 'Crawled portfolio pages but no high-similarity document match for this query.',
-            sources: []
-          };
-        }
-
-        const top = scored.slice(0, 3);
-        const topDoc = top[0].doc;
-        const snippet = pickSnippet(topDoc.text, qTokens);
-        const total = scored.reduce(function (a, b) { return a + b.score; }, 0);
-        const rel = Math.min(0.99, top[0].score / Math.max(1, total) + 0.55);
-        const conf = Math.min(98, 72 + top[0].score * 2);
-
-        return {
-          answer: 'Based on related portfolio content: ' + snippet,
-          confidence: conf + '%',
-          relevance: rel.toFixed(2),
-          explain: 'Answer synthesized from top matching portfolio pages ranked by query term relevance.',
-          sources: top.map(function (x) { return x.doc.url; })
-        };
-      }
-
-      function escapeHtml(value) {
-        return String(value == null ? '' : value)
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#39;');
-      }
-
-      async function runLiveComparison() {
-        const q = (liveInput.value || '').trim() || 'cicd deployment failed';
-        const safeQ = escapeHtml(q);
-        const dots = '<span class="thinking"><span></span><span></span><span></span></span>';
-
-        badStatus.textContent = 'status: inferencing (no evidence)';
-        badStatus.className = 'ldemo-status warn';
-        goodStatus.textContent = 'status: running retrieval pipeline';
-        goodStatus.className = 'ldemo-status';
-        if (mcpStatus) {
-          mcpStatus.textContent = 'status: reading live state (tools)';
-          mcpStatus.className = 'ldemo-status';
-        }
-        if (agentStatus) {
-          agentStatus.textContent = 'status: planning and collecting evidence';
-          agentStatus.className = 'ldemo-status';
-        }
-        confidenceEl.textContent = '--';
-        relevanceEl.textContent = '--';
-        explainEl.textContent = 'Retrieving and ranking sources...';
-        src.classList.remove('show');
-        if (exampleBlock) exampleBlock.classList.remove('show');
-
-        badOut.innerHTML =
-          '<div class="ldemo-status warn">status: inferencing (no retrieval)</div>' +
-          '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-          '<div>$ stage: direct model completion</div>' +
-          '<div>$ answer: Thinking ' + dots + '</div>';
-
-        goodOut.innerHTML =
-          '<div class="ldemo-status">status: query -> embedding -> retrieval</div>' +
-          '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-          '<div>$ stage: embedding -> retrieval -> context</div>' +
-          '<div>$ answer: Searching vector index ' + dots + '</div>';
-
-        if (mcpOut) {
-          mcpOut.innerHTML =
-            '<div class="ldemo-status">status: reading live state (tools)</div>' +
-            '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-            '<div>$ tool: get_pipeline_runs(service=payments-api)</div>' +
-            '<div>$ tool: get_deployments(service=payments-api)</div>' +
-            '<div>$ tool: get_recent_alerts(service=payments-api)</div>' +
-            '<div>$ answer: Collecting signals ' + dots + '</div>';
-        }
-
-        if (agentOut) {
-          agentOut.innerHTML =
-            '<div class="ldemo-status">status: planning and collecting evidence</div>' +
-            '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-            '<div>$ plan: define hypothesis -> gather evidence -> propose safe actions</div>' +
-            '<div>$ answer: Building plan ' + dots + '</div>';
-        }
-
-        try {
-          const data = await queryCrawledPortfolio(q);
-          const answer = data.answer || 'No answer returned.';
-          const safeAnswer = escapeHtml(answer);
-          const conf = data.confidence || 'N/A';
-          const rel = data.relevance || 'N/A';
-          const s1 = (data.sources && data.sources[0]) || 'Matched_Page_1';
-          const s2 = (data.sources && data.sources[1]) || 'Matched_Page_2';
-          const s3 = (data.sources && data.sources[2]) || 'Matched_Page_3';
-          const safeS1 = escapeHtml(s1);
-          const safeS2 = escapeHtml(s2);
-          const safeS3 = escapeHtml(s3);
-
-          badOut.innerHTML =
-            '<div class="ldemo-status warn">status: completed (ungrounded)</div>' +
-            '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-            '<div>$ stage: direct model completion</div>' +
-            '<div>$ answer: General guidance without citations or verification. Risk: wrong-but-confident output.</div>';
-
-          goodOut.innerHTML =
-            '<div class="ldemo-status ok">status: grounded</div>' +
-            '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-            '<div>$ stage: query -> embedding -> retrieval -> context -> response</div>' +
-            '<div>$ answer: ' + safeAnswer + '</div>';
-
-          if (mcpOut) {
-            const mcpSummary =
-              'Tool reads indicate a recent change and correlated alerts. Next: confirm rollback criteria and blast radius before any write action.';
-
-            mcpOut.innerHTML =
-              '<div class="ldemo-status ok">status: tool-grounded (read-only)</div>' +
-              '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-              '<div>$ tool: get_pipeline_runs(service=payments-api) -> failed_step=deploy</div>' +
-              '<div>$ tool: get_deployments(service=payments-api) -> version_change=detected</div>' +
-              '<div>$ tool: get_recent_alerts(service=payments-api) -> error_rate=high</div>' +
-              '<div>$ answer: ' + escapeHtml(mcpSummary) + '</div>' +
-              '<div>$ note: writes require approval (rollback, restart, config change)</div>';
-          }
-
-          if (agentOut) {
-            const agentRec =
-              'Plan: (1) Pull citations from the runbook and recent incident notes. (2) Verify current deployment and alerts via tools. ' +
-              '(3) Propose the smallest safe action (rollback or config revert) with an explicit approval checkpoint.';
-
-            agentOut.innerHTML =
-              '<div class="ldemo-status ok">status: orchestrated (RAG + tools + guardrails)</div>' +
-              '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-              '<div>$ step1: retrieve relevant runbook sections + recent incident snippets</div>' +
-              '<div>$ step2: call tools for live verification (deployments, pipeline runs, alerts)</div>' +
-              '<div>$ step3: propose action + ask for approval before execution</div>' +
-              '<div>$ answer: ' + escapeHtml(agentRec) + '</div>';
-          }
-
-          confidenceEl.textContent = conf;
-          relevanceEl.textContent = rel;
-          explainEl.textContent = data.explain || 'Response generated from matched portfolio sources.';
-          src.innerHTML =
-            '<div class="ldemo-src">' + safeS1 + '</div>' +
-            '<div class="ldemo-src">' + safeS2 + '</div>' +
-            '<div class="ldemo-src">' + safeS3 + '</div>';
-          src.classList.add('show');
-          if (exampleBlock && examplePre) {
-            const out =
-              'Query: ' + q + '\n\n' +
-              'RAG (Knowledge Grounding):\n' + answer + '\n\n' +
-              'MCP (Tool Grounding):\n' +
-              '- get_pipeline_runs(service=payments-api)\n' +
-              '- get_deployments(service=payments-api)\n' +
-              '- get_recent_alerts(service=payments-api)\n' +
-              'Output: Tool-grounded triage summary with no writes.\n\n' +
-              'Agent (Plan + Guardrails):\n' +
-              '- plan -> retrieve evidence -> verify via tools -> propose safe action -> approval\n\n' +
-              'Sources:\n' +
-              '- ' + s1 + '\n' +
-              '- ' + s2 + '\n' +
-              '- ' + s3;
-            examplePre.textContent = out;
-            exampleBlock.classList.add('show');
-          }
-        } catch (err) {
-          badOut.innerHTML =
-            '<div class="ldemo-status warn">status: completed (ungrounded)</div>' +
-            '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-            '<div>$ stage: direct model completion</div>' +
-            '<div>$ answer: Generic recommendation without source validation.</div>';
-
-          goodOut.innerHTML =
-            '<div class="ldemo-status ok">status: crawl failed</div>' +
-            '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-            '<div>$ stage: crawl -> rank -> context -> response</div>' +
-            '<div>$ answer: Unable to crawl local pages right now. Please refresh and retry.</div>';
-
-          if (mcpOut) {
-            mcpOut.innerHTML =
-              '<div class="ldemo-status ok">status: tools unavailable</div>' +
-              '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-              '<div>$ answer: Tool simulation unavailable in current runtime. Please refresh and retry.</div>';
-          }
-
-          if (agentOut) {
-            agentOut.innerHTML =
-              '<div class="ldemo-status ok">status: agent paused</div>' +
-              '<div>$ query: <span class="term-prompt">' + safeQ + '</span></div>' +
-              '<div>$ answer: Agent requires evidence and tool reads. Please refresh and retry.</div>';
-          }
-
-          confidenceEl.textContent = 'N/A';
-          relevanceEl.textContent = 'N/A';
-          explainEl.textContent = 'Crawler unavailable in current runtime.';
-          src.innerHTML = '';
-          src.classList.add('show');
-          if (exampleBlock) exampleBlock.classList.remove('show');
-        }
-      }
-
-      if (liveBtn) liveBtn.addEventListener('click', runLiveComparison);
-      if (liveInput) {
-        liveInput.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter') runLiveComparison();
-        });
-      }
-
-      const reveals = Array.from(document.querySelectorAll('.reveal-up'));
-      if ('IntersectionObserver' in window && reveals.length) {
-        const obs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('on');
-              obs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12 });
-        reveals.forEach(function (el) { obs.observe(el); });
-      } else {
-        reveals.forEach(function (el) { el.classList.add('on'); });
-      }
-    })();
-  </script>
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/aurora.js"></script>
+    <script>
+        (() => {
+            const QUERIES = { q1: { text: 'What is our current deployment success rate?', docs: ['KB-003'] }, q2: { text: 'How should we handle a P1 production incident?', docs: ['KB-005', 'KB-002'] }, q3: { text: 'What are our CI/CD pipeline standards?', docs: ['KB-002'] } };
+            const RESPONSES = { q1: { simple: { bad: 'Deployment success rates typically range from 90-99% depending on team maturity, tooling, and infrastructure reliability. Rates vary significantly by industry and organization size. Best practices suggest aiming for 95%+ success rates in production environments. Many teams use automated testing and monitoring to maintain high deployment success.' }, rag: { good: 'Based on the Q3 2025 Platform Health Report, our current deployment success rate is <strong>96.2%</strong>, which exceeds our target of 95%. This was achieved through our CI/CD standards and incident response procedures. The report shows an improvement trend: we had 8 incidents in Q3 compared to 14 in Q2.' }, mcp: { good: 'I called <code>search_kb("deployment success rate")</code> and found KB-003 (Q3 2025 Platform Health Report). The result confirms: <strong>Deployment success rate: 96.2%</strong> (target: 95%). Mean time to recovery: 12 minutes. This is grounded in the actual platform metrics document.' }, agent: { good: 'I retrieved the Q3 2025 Platform Health Report (KB-003) and cross-referenced it with our CI/CD Standards (KB-002). Our current deployment success rate is <strong>96.2%</strong>, which exceeds our target of 95%. The success is driven by our pipeline standards (security scanning, unit tests, integration tests, smoke tests) with a 5-minute deployment target.' } }, q2: { simple: { bad: 'When handling P1 incidents, typical best practices include establishing an incident commander, creating an incident war room, assigning roles (commander, comms lead, technical lead), documenting the incident timeline, and conducting a post-incident review. Escalation procedures vary by organization. Response time targets are typically 15-30 minutes for critical incidents.' }, rag: { good: 'According to our Incident Response Playbook (KB-005), a P1 incident response follows these steps: <strong>1) Page on-call immediately</strong> 2) Run incident.run gameday 3) Establish incident commander 4) Post mortem within 24 hours. The playbook ensures consistent, rapid response to production incidents.' }, mcp: { good: 'I called <code>search_kb("P1 incident response")</code> and found our Incident Response Playbook (KB-005). Response procedure: <strong>Page on-call immediately → Run incident.run gameday → Establish incident commander → 24-hour post mortem</strong>. This is our formal escalation process for P1 incidents.' }, agent: { good: 'I retrieved our Incident Response Playbook (KB-005) and cross-checked with CI/CD Standards (KB-002) to understand our incident context. For P1 incidents: <strong>1) Page on-call immediately 2) Run incident.run gameday 3) Establish incident commander 4) Post mortem within 24 hours</strong>. Our target mean time to recovery is 12 minutes based on Q3 2025 performance metrics.' } }, q3: { simple: { bad: 'CI/CD pipeline standards typically include automated testing (unit, integration, end-to-end), code review requirements, deployment approval workflows, and automated rollback capabilities. Many teams mandate security scanning, performance testing, and compliance checks. Standard targets are 5-15 minute deployment times with 99%+ success rates.' }, rag: { good: 'Our CI/CD Pipeline Standards v2.0 (KB-002) requires all deployments to pass: <strong>security scanning, unit tests, integration tests, and smoke tests</strong>. We maintain a <strong>5-minute deployment target</strong>. Every change must go through this standardized pipeline before reaching production.' }, mcp: { good: 'I called <code>search_kb("CI/CD standards")</code> and found our CI/CD Pipeline Standards v2.0 (KB-002). Required pipeline stages: <strong>Security scanning → Unit tests → Integration tests → Smoke tests → Deploy (5-min target)</strong>. This is our formal deployment process governance.' }, agent: { good: 'I retrieved our CI/CD Pipeline Standards v2.0 (KB-002) which governs all deployments. The standardized pipeline includes: <strong>Security scanning, unit tests, integration tests, smoke tests</strong> with a <strong>5-minute deployment target</strong>. These standards directly contribute to our 96.2% deployment success rate (Q3 2025 metrics from KB-003).' } } };
+            const input = document.getElementById('ldemo-input');
+            const presetBtns = document.querySelectorAll('.ldemo-preset-btn');
+            const tabs = document.querySelectorAll('.ldemo-tab');
+            const panels = document.querySelectorAll('.ldemo-mode-panel');
+            let currentQuery = 'q1', currentMode = 'simple';
+            presetBtns.forEach(btn => { btn.addEventListener('click', () => { currentQuery = btn.dataset.query; input.value = QUERIES[currentQuery].text; render(); }); });
+            tabs.forEach(tab => { tab.addEventListener('click', () => { currentMode = tab.dataset.mode; tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); }); tab.classList.add('active'); tab.setAttribute('aria-selected', 'true'); panels.forEach(p => p.classList.remove('active')); document.getElementById(`ldemo-panel-${currentMode}`).classList.add('active'); render(); }); });
+            input.addEventListener('input', () => { currentQuery = null; render(); });
+            function render() { if (!currentQuery) return; const q = QUERIES[currentQuery], r = RESPONSES[currentQuery]; const docNames = { 'KB-001': 'Platform Engineering Charter', 'KB-002': 'CI/CD Pipeline Standards v2.0', 'KB-003': 'Q3 2025 Platform Health Report', 'KB-004': 'Developer Experience Survey', 'KB-005': 'Incident Response Playbook' }; if (currentMode === 'simple') { document.getElementById('ldemo-simple-bad').innerHTML = r.simple.bad; } else if (currentMode === 'rag') { document.getElementById('ldemo-rag-good').innerHTML = r.rag.good; document.getElementById('ldemo-rag-chunks').textContent = `Retrieved: ${q.docs.length} doc(s)`; document.getElementById('ldemo-rag-sources').innerHTML = q.docs.map(d => `<span class="ldemo-src">${d}: ${docNames[d]}</span>`).join(''); } else if (currentMode === 'mcp') { document.getElementById('ldemo-mcp-good').innerHTML = r.mcp.good; document.getElementById('ldemo-mcp-chunks').textContent = `Retrieved: ${q.docs.length} doc(s)`; document.getElementById('ldemo-mcp-sources').innerHTML = q.docs.map(d => `<span class="ldemo-src"><code>get_document("${d}")</code> → ${docNames[d]}</span>`).join(''); } else if (currentMode === 'agent') { document.getElementById('ldemo-agent-good').innerHTML = r.agent.good; document.getElementById('ldemo-agent-chunks').textContent = `Retrieved: ${q.docs.length} doc(s)`; document.getElementById('ldemo-agent-sources').innerHTML = q.docs.map(d => `<span class="ldemo-src">${d}: ${docNames[d]}</span>`).join(''); } }
+            input.value = QUERIES.q1.text;
+            render();
+        })();
+    </script>
 </body>
-
 </html>
