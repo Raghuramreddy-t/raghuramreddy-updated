@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <script>!function () { var t = localStorage.getItem("theme") || "dark"; document.documentElement.setAttribute("data-theme", t); document.documentElement.classList.add("no-transition"); requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.remove("no-transition"); }) }) }();</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Cost Comparator | Enterprise Claude API Optimization</title>
+    <meta name="description" content="Interactive tool to compare Claude Haiku, Sonnet, and Opus token costs. Includes batch processing estimator for enterprise LLM budget planning.">
+    <meta property="og:title" content="Token Cost Comparator | Enterprise Claude API Optimization">
+    <meta property="og:description" content="Calculate and compare token costs across Claude models. Interactive playground for tokenization and batch cost estimation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/token-cost-comparator.html">
+    <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
+    <link rel="canonical" href="https://raghuramreddy.tech/pages/blog/token-cost-comparator.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <link rel="stylesheet" href="../../assets/css/pages.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/design-v2.css">
+    <link rel="stylesheet" href="../../assets/css/enhancements.css">
+    <link rel="stylesheet" href="../../assets/css/token-cost-comparator.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
+</head>
+
+<body>
+    <div class="bg-gradient"></div>
+    <div class="floating-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+    <canvas id="aurora-canvas" aria-hidden="true"></canvas>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="nav-logo">
+                <span class="logo-icon">RRR</span>
+                <div class="logo-stack">
+                    <span class="logo-name">RaghuRamReddy</span>
+                    <span class="logo-tagline">Designing technology for human experience</span>
+                </div>
+            </a>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="../work.html" class="nav-link">Work &amp; Impact</a>
+                <a href="../applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
+                <a href="../future-systems.html" class="nav-link">Future Systems</a>
+                <a href="../writing.html" class="nav-link active">Writing</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <span class="page-tag animate-fade-in">Cost Optimization</span>
+                <h1 class="page-title animate-slide-up">Token Cost Comparator<span class="gradient-text"></span></h1>
+                <p class="page-subtitle animate-slide-up delay-1">
+                    Stop overpaying for Claude API calls. Calculate costs, compare models, and optimize your enterprise LLM budget.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="section">
+        <article class="article-body container">
+
+            <!-- INTRO SECTION -->
+            <section class="article-intro">
+                <h2>Why Token Costs Matter at Enterprise Scale</h2>
+                <p>
+                    You're already committed to Claude for your production systems. The API is fast, reliable, and the model quality is unmatched. But token costs add up quickly — a single 10K-document batch processing job can cost hundreds to thousands of dollars depending on which Claude model you choose and how you architect your prompts.
+                </p>
+                <p>
+                    This guide walks you through the token economics of Claude API, shows you the real cost differences between Haiku, Sonnet, and Opus, and gives you the tools to make informed model selection decisions at scale.
+                </p>
+            </section>
+
+            <!-- WHAT ARE TOKENS SECTION -->
+            <section class="article-section">
+                <h2>What Are Tokens? A Quick Primer</h2>
+                <p>
+                    Tokens are the atomic units that LLMs process. You don't pay per word or per request — you pay per token, for both input and output.
+                </p>
+                <div class="article-callout">
+                    <strong>Rule of thumb:</strong> 1 token ≈ 4 characters of English text. A typical paragraph (400 words) ≈ 500 tokens. An average JSON API response ≈ 200 tokens.
+                </div>
+                <p>
+                    But tokenization isn't uniform. Whitespace, punctuation, numbers, and code tokens behave differently. Special tokens (like <code>&lt;|start_thinking|&gt;</code>) count as single tokens despite being multiple bytes. This is why actual token counts can vary ±10% from the simple "divide by 4" approximation.
+                </p>
+                <p>
+                    For practical cost planning, this ±10% variance is negligible — you care about order-of-magnitude accuracy, not decimal precision.
+                </p>
+            </section>
+
+            <!-- CLAUDE MODEL TIERS SECTION -->
+            <section class="article-section">
+                <h2>Claude Model Tiers: Speed vs. Intelligence vs. Cost</h2>
+                <p>
+                    Anthropic publishes three primary Claude models, each optimized for different workloads:
+                </p>
+                <div class="model-comparison-table">
+                    <div class="comparison-row header">
+                        <div class="col">Model</div>
+                        <div class="col">Best For</div>
+                        <div class="col">Input Price</div>
+                        <div class="col">Output Price</div>
+                        <div class="col">Throughput</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="col"><strong>Haiku 4.5</strong></div>
+                        <div class="col">Classification, summarization, fast transformations</div>
+                        <div class="col">$0.80 / 1M</div>
+                        <div class="col">$4.00 / 1M</div>
+                        <div class="col">Fastest ⚡</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="col"><strong>Sonnet 4.6</strong></div>
+                        <div class="col">Balanced — reasoning + speed for production</div>
+                        <div class="col">$3.00 / 1M</div>
+                        <div class="col">$15.00 / 1M</div>
+                        <div class="col">Fast ⚡⚡</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="col"><strong>Opus 4.7</strong></div>
+                        <div class="col">Complex reasoning, research, code generation</div>
+                        <div class="col">$15.00 / 1M</div>
+                        <div class="col">$75.00 / 1M</div>
+                        <div class="col">Powerful ⚡⚡⚡</div>
+                    </div>
+                </div>
+                <p>
+                    The cost difference is dramatic: Opus is 19× more expensive than Haiku for output tokens. But Opus solves problems Haiku can't, and Sonnet is often the sweet spot for production — good reasoning, acceptable cost, reasonable latency.
+                </p>
+                <div class="example-box">
+                    <strong>Real scenario:</strong> You're building a document classification system. Haiku can classify 1000 documents for ~$4.80 (1K input + 500 output tokens). Opus would cost $90+ for the same job. Unless you need Opus-level reasoning, this is wasted spend.
+                </div>
+            </section>
+
+            <!-- COST FORMULA SECTION -->
+            <section class="article-section">
+                <h2>The Token Cost Formula</h2>
+                <p>
+                    Cost is simple math:
+                </p>
+                <div class="code-block">
+                    Total Cost = (Input Tokens × Input Price per Token) + (Output Tokens × Output Price per Token)
+                </div>
+                <p>
+                    For example, classifying a 2000-token document with Haiku:
+                </p>
+                <div class="code-block">
+                    Input Cost:  2000 tokens × ($0.80 / 1,000,000) = $0.0016<br>
+                    Output Cost: 100 tokens × ($4.00 / 1,000,000) = $0.0004<br>
+                    Total:       $0.0020 per request
+                </div>
+                <p>
+                    Scale this to 1 million documents, and you're looking at ~$2000 total — manageable. Switch to Opus, and you're at $38,000+. This is where architecture matters.
+                </p>
+            </section>
+
+            <!-- BATCH PROCESSING SECTION -->
+            <section class="article-section">
+                <h2>Batch Processing at Scale: The Real Cost Driver</h2>
+                <p>
+                    Where token costs become critical is batch processing. A single classified document is cheap. Processing your entire customer database monthly is expensive.
+                </p>
+                <p>
+                    The batch cost model scales linearly: double your document count, double your cost. But the model choice multiplies this effect:
+                </p>
+                <div class="batch-example">
+                    <strong>Processing 100,000 documents (2KB each = ~500 tokens/doc):</strong>
+                    <ul>
+                        <li><strong>Haiku:</strong> 50M input tokens = $40 input + 5M output tokens (assuming 10% output) = $20 output = <strong>$60</strong></li>
+                        <li><strong>Sonnet:</strong> 50M input = $150 input + 5M output = $75 = <strong>$225</strong></li>
+                        <li><strong>Opus:</strong> 50M input = $750 input + 5M output = $375 = <strong>$1,125</strong></li>
+                    </ul>
+                </div>
+                <p>
+                    Choosing Haiku over Opus saves you $1,065 per 100K document batch. Over a year of monthly batches, that's ~$12,780 in savings — just by picking the right model for the job.
+                </p>
+            </section>
+
+            <!-- ENTERPRISE RECOMMENDATIONS SECTION -->
+            <section class="article-section">
+                <h2>Enterprise Strategies for Cost Optimization</h2>
+                <h3>1. Model Routing</h3>
+                <p>
+                    Not all requests are equal. Start with Haiku. Escalate to Sonnet only when Haiku confidence is low. Reserve Opus for true complex reasoning tasks.
+                </p>
+                <div class="example-box">
+                    <strong>Example routing logic:</strong> Incoming customer support ticket → Try Haiku classification first. If confidence &lt; 0.8, route to Sonnet for deeper analysis. Only escalate to Opus for novel/complex cases.
+                </div>
+                <h3>2. Prompt Compression</h3>
+                <p>
+                    Every token in your system prompt counts. A 2000-token system prompt processed 1 million times/month = 2B tokens just on overhead. Compress it ruthlessly.
+                </p>
+                <h3>3. Batch Caching (Prompt Caching)</h3>
+                <p>
+                    If you're processing documents with the same system prompt, use Anthropic's prompt caching — 90% discount on cached input tokens. This is a game-changer for batch operations.
+                </p>
+                <h3>4. Output Pruning</h3>
+                <p>
+                    You pay for output tokens. If you're asking Claude to generate a 5000-token essay but only need the key insights, ask for a 200-token summary instead. Less output = less cost.
+                </p>
+                <h3>5. Async Batch API</h3>
+                <p>
+                    For non-urgent batch operations, Anthropic's Batch API offers 50% discounts on input tokens. When processing millions of documents, this is significant.
+                </p>
+            </section>
+
+            <!-- LIVE DEMO SECTION -->
+            <section class="tc-demo-section">
+                <h2>Interactive: Calculate Your Token Costs</h2>
+                <p>
+                    Use the playground below to experiment with token counts and see real-time cost comparisons across Claude models. Type text, adjust your batch size, and see how model choice affects your bottom line.
+                </p>
+
+                <!-- DEMO WRAPPER -->
+                <div class="tc-wrap" id="live-demo">
+
+                    <!-- Tokenizer Input Section -->
+                    <div class="tc-input-section">
+                        <label for="tc-input" class="tc-label">Paste or type your text:</label>
+                        <div class="tc-input-container">
+                            <textarea id="tc-input" class="tc-input-area" placeholder="Paste a customer review, document, API response, or code snippet. Token count updates in real-time." rows="6"></textarea>
+                            <div class="tc-stats">
+                                <div class="tc-stat">
+                                    <span class="tc-stat-label">Characters:</span>
+                                    <span class="tc-stat-value" id="tc-char-count">0</span>
+                                </div>
+                                <div class="tc-stat">
+                                    <span class="tc-stat-label">Approx. Tokens:</span>
+                                    <span class="tc-stat-value tc-highlight" id="tc-token-count">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cost Calculation Settings -->
+                    <div class="tc-settings">
+                        <div class="tc-setting-group">
+                            <label for="tc-output-ratio">Output Token Ratio:</label>
+                            <select id="tc-output-ratio" class="tc-select">
+                                <option value="0.1">10% (summary / classification)</option>
+                                <option value="0.2">20% (moderate output)</option>
+                                <option value="0.5" selected>50% (balanced)</option>
+                                <option value="1.0">100% (detailed generation)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Model Comparison Grid -->
+                    <div class="tc-model-grid">
+                        <!-- Haiku Card -->
+                        <div class="tc-model-card tc-haiku">
+                            <div class="tc-model-header">
+                                <h3>Haiku 4.5</h3>
+                                <span class="tc-model-tier fast">Fast ⚡</span>
+                            </div>
+                            <div class="tc-pricing">
+                                <div class="tc-price-row">
+                                    <span>Input:</span>
+                                    <code>$0.80 / 1M</code>
+                                </div>
+                                <div class="tc-price-row">
+                                    <span>Output:</span>
+                                    <code>$4.00 / 1M</code>
+                                </div>
+                            </div>
+                            <div class="tc-model-cost">
+                                <div class="tc-cost-label">Estimated Cost</div>
+                                <div class="tc-cost-value" id="tc-cost-haiku">$0.00</div>
+                            </div>
+                            <div class="tc-use-case">Best for: Classification, summarization, quick transformations</div>
+                        </div>
+
+                        <!-- Sonnet Card -->
+                        <div class="tc-model-card tc-sonnet">
+                            <div class="tc-model-header">
+                                <h3>Sonnet 4.6</h3>
+                                <span class="tc-model-tier balanced">Balanced ⚡⚡</span>
+                            </div>
+                            <div class="tc-pricing">
+                                <div class="tc-price-row">
+                                    <span>Input:</span>
+                                    <code>$3.00 / 1M</code>
+                                </div>
+                                <div class="tc-price-row">
+                                    <span>Output:</span>
+                                    <code>$15.00 / 1M</code>
+                                </div>
+                            </div>
+                            <div class="tc-model-cost">
+                                <div class="tc-cost-label">Estimated Cost</div>
+                                <div class="tc-cost-value" id="tc-cost-sonnet">$0.00</div>
+                            </div>
+                            <div class="tc-use-case">Best for: Production AI systems, reasoning + speed balance</div>
+                        </div>
+
+                        <!-- Opus Card -->
+                        <div class="tc-model-card tc-opus">
+                            <div class="tc-model-header">
+                                <h3>Opus 4.7</h3>
+                                <span class="tc-model-tier powerful">Powerful ⚡⚡⚡</span>
+                            </div>
+                            <div class="tc-pricing">
+                                <div class="tc-price-row">
+                                    <span>Input:</span>
+                                    <code>$15.00 / 1M</code>
+                                </div>
+                                <div class="tc-price-row">
+                                    <span>Output:</span>
+                                    <code>$75.00 / 1M</code>
+                                </div>
+                            </div>
+                            <div class="tc-model-cost">
+                                <div class="tc-cost-label">Estimated Cost</div>
+                                <div class="tc-cost-value" id="tc-cost-opus">$0.00</div>
+                            </div>
+                            <div class="tc-use-case">Best for: Complex reasoning, research, advanced code gen</div>
+                        </div>
+                    </div>
+
+                    <!-- Batch Processor Section -->
+                    <div class="tc-batch-section">
+                        <h3>Batch Cost Estimator</h3>
+                        <p>How much will it cost to process N documents of this size?</p>
+
+                        <div class="tc-batch-controls">
+                            <div class="tc-batch-slider-group">
+                                <label for="tc-doc-slider">Number of Documents:</label>
+                                <div class="tc-slider-container">
+                                    <input type="range" id="tc-doc-slider" class="tc-slider" min="1" max="7" value="3" aria-label="Document count (logarithmic scale)">
+                                    <div class="tc-slider-value">
+                                        <span id="tc-doc-count">1,000</span> documents
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tc-batch-results">
+                            <table class="tc-batch-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Input Cost</th>
+                                        <th>Output Cost</th>
+                                        <th>Total Batch Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Haiku</strong></td>
+                                        <td id="tc-batch-haiku-in">$0.00</td>
+                                        <td id="tc-batch-haiku-out">$0.00</td>
+                                        <td id="tc-batch-haiku-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sonnet</strong></td>
+                                        <td id="tc-batch-sonnet-in">$0.00</td>
+                                        <td id="tc-batch-sonnet-out">$0.00</td>
+                                        <td id="tc-batch-sonnet-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Opus</strong></td>
+                                        <td id="tc-batch-opus-in">$0.00</td>
+                                        <td id="tc-batch-opus-out">$0.00</td>
+                                        <td id="tc-batch-opus-total" class="tc-total"><strong>$0.00</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="tc-savings">
+                                <strong id="tc-savings-text">Haiku saves $0.00 vs. Opus</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tc-disclaimer">
+                        <strong>Note:</strong> Token counts are approximations (±10% variance). Pricing reflects public Anthropic API rates as of Jan 2025 — verify current pricing at <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">anthropic.com/pricing</a>. Output token ratios are estimates; actual output length depends on your prompt.
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONCLUSION SECTION -->
+            <section class="article-section">
+                <h2>Parting Thoughts: Token Economics = Product Economics</h2>
+                <p>
+                    Token costs are not a technical detail to ignore — they're a product lever. Every dollar spent on tokens is a dollar not spent on compute, storage, or headcount. Getting model selection right compounds.
+                </p>
+                <p>
+                    The strategy is simple:
+                </p>
+                <ul>
+                    <li><strong>Default to Haiku</strong> for straightforward tasks (classification, summarization, simple transformations)</li>
+                    <li><strong>Use Sonnet</strong> as your production workhorse (good reasoning + acceptable cost)</li>
+                    <li><strong>Reserve Opus</strong> for genuinely hard problems where no other model works</li>
+                </ul>
+                <p>
+                    Combined with prompt caching, batch APIs, and careful output pruning, you can build Claude-powered systems that are both performant and cost-efficient at scale.
+                </p>
+            </section>
+
+        </article>
+    </main>
+
+    <!-- FOOTER DIVIDER -->
+    <div class="footer-divider"></div>
+
+    <footer class="footer footer--pro">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-card footer-brand-card">
+                    <a href="../../index.html" class="footer-logo">
+                        <span class="logo-icon">RRR</span>
+                        <span class="logo-text">RaghuRamReddy</span>
+                    </a>
+                    <p class="footer-tagline">Designing technology for human experience</p>
+                    <p class="footer-subline">Platform Engineering • DevSecOps • Automation • AI-assisted Operations</p>
+                    <div class="footer-social-row">
+                        <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+                        <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+                        <a class="social-pill" href="../contact.html">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Navigation</h4>
+                        <div class="footer-links">
+                            <a href="../../index.html" class="footer-link">Home</a>
+                            <a href="../work.html" class="footer-link">Work &amp; Impact</a>
+                            <a href="../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
+                            <a href="../writing.html" class="footer-link">Writing</a>
+                            <a href="../about.html" class="footer-link">About</a>
+                            <a href="../contact.html" class="footer-link">Contact</a>
+                        </div>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4 class="footer-col-title">Explore</h4>
+                        <div class="footer-links">
+                            <a href="../future-systems.html" class="footer-link">Future Systems</a>
+                            <a href="../operational-standards-library.html" class="footer-link">Operational Standards</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-card footer-connect-card">
+                    <div class="footer-connect-header">
+                        <h4 class="footer-col-title">Connect</h4>
+                        <p class="footer-connect-note">Fastest response on LinkedIn.</p>
+                    </div>
+                    <div class="footer-icon-grid">
+                        <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+                        </a>
+                        <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a class="icon-btn" href="../contact.html" aria-label="Contact">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+                        </a>
+                    </div>
+                    <a class="footer-cta" href="../contact.html">Let&apos;s talk →</a>
+                </div>
+
+                <div class="footer-visual" aria-hidden="true">
+                    <span class="fv-orb fv-orb-1"></span>
+                    <span class="fv-orb fv-orb-2"></span>
+                    <span class="fv-line fv-line-1"></span>
+                    <span class="fv-line fv-line-2"></span>
+                    <span class="fv-dot fv-dot-1"></span>
+                    <span class="fv-dot fv-dot-2"></span>
+                </div>
+            </div>
+
+            <div class="footer-bottom footer-bottom--pro">
+                <p>&copy; 2025 RaghuRamReddy Thummalapalli. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+    <script src="../../assets/js/aurora.js"></script>
+
+    <script>
+        // Token Cost Comparator - Interactive Demo
+        (() => {
+            const inputEl = document.getElementById('tc-input');
+            const sliderEl = document.getElementById('tc-doc-slider');
+            const ratioEl = document.getElementById('tc-output-ratio');
+            const charCountEl = document.getElementById('tc-char-count');
+            const tokenCountEl = document.getElementById('tc-token-count');
+
+            const docCountEl = document.getElementById('tc-doc-count');
+
+            // Cost elements
+            const costHaikuEl = document.getElementById('tc-cost-haiku');
+            const costSonnetEl = document.getElementById('tc-cost-sonnet');
+            const costOpusEl = document.getElementById('tc-cost-opus');
+
+            // Batch results
+            const batchHaikuInEl = document.getElementById('tc-batch-haiku-in');
+            const batchHaikuOutEl = document.getElementById('tc-batch-haiku-out');
+            const batchHaikuTotalEl = document.getElementById('tc-batch-haiku-total');
+
+            const batchSonnetInEl = document.getElementById('tc-batch-sonnet-in');
+            const batchSonnetOutEl = document.getElementById('tc-batch-sonnet-out');
+            const batchSonnetTotalEl = document.getElementById('tc-batch-sonnet-total');
+
+            const batchOpusInEl = document.getElementById('tc-batch-opus-in');
+            const batchOpusOutEl = document.getElementById('tc-batch-opus-out');
+            const batchOpusTotalEl = document.getElementById('tc-batch-opus-total');
+
+            const savingsEl = document.getElementById('tc-savings-text');
+
+            // Pricing (per 1M tokens)
+            const pricing = {
+                haiku: { input: 0.80, output: 4.00 },
+                sonnet: { input: 3.00, output: 15.00 },
+                opus: { input: 15.00, output: 75.00 }
+            };
+
+            function countTokens(text) {
+                // Rough approximation: 1 token ≈ 4 chars
+                // Adjust for code/special chars
+                return Math.max(1, Math.ceil(text.length / 4));
+            }
+
+            function formatCost(dollars) {
+                if (dollars < 0.01) return '$' + dollars.toFixed(6);
+                if (dollars < 1) return '$' + dollars.toFixed(4);
+                return '$' + dollars.toFixed(2);
+            }
+
+            function getDocCount() {
+                const value = parseInt(sliderEl.value);
+                const counts = [1000, 3000, 10000, 30000, 100000, 300000, 1000000];
+                return counts[Math.min(value, counts.length - 1)];
+            }
+
+            function updateAllCosts() {
+                const text = inputEl.value;
+                const charCount = text.length;
+                const tokenCount = countTokens(text);
+                const outputRatio = parseFloat(ratioEl.value);
+                const outputTokens = Math.max(1, Math.ceil(tokenCount * outputRatio));
+                const docCount = getDocCount();
+
+                // Update character and token counts
+                charCountEl.textContent = charCount.toLocaleString();
+                tokenCountEl.textContent = tokenCount.toLocaleString();
+
+                // Update per-request costs
+                const costs = {};
+                Object.entries(pricing).forEach(([model, prices]) => {
+                    const inputCost = (tokenCount * prices.input) / 1000000;
+                    const outputCost = (outputTokens * prices.output) / 1000000;
+                    costs[model] = inputCost + outputCost;
+                });
+
+                costHaikuEl.textContent = formatCost(costs.haiku);
+                costSonnetEl.textContent = formatCost(costs.sonnet);
+                costOpusEl.textContent = formatCost(costs.opus);
+
+                // Update batch costs
+                const batchCosts = {};
+                Object.entries(pricing).forEach(([model, prices]) => {
+                    const inputCost = ((tokenCount * docCount) * prices.input) / 1000000;
+                    const outputCost = ((outputTokens * docCount) * prices.output) / 1000000;
+                    batchCosts[model] = { input: inputCost, output: outputCost, total: inputCost + outputCost };
+                });
+
+                batchHaikuInEl.textContent = formatCost(batchCosts.haiku.input);
+                batchHaikuOutEl.textContent = formatCost(batchCosts.haiku.output);
+                batchHaikuTotalEl.textContent = formatCost(batchCosts.haiku.total);
+
+                batchSonnetInEl.textContent = formatCost(batchCosts.sonnet.input);
+                batchSonnetOutEl.textContent = formatCost(batchCosts.sonnet.output);
+                batchSonnetTotalEl.textContent = formatCost(batchCosts.sonnet.total);
+
+                batchOpusInEl.textContent = formatCost(batchCosts.opus.input);
+                batchOpusOutEl.textContent = formatCost(batchCosts.opus.output);
+                batchOpusTotalEl.textContent = formatCost(batchCosts.opus.total);
+
+                const savings = batchCosts.opus.total - batchCosts.haiku.total;
+                savingsEl.textContent = `Haiku saves ${formatCost(savings)} vs. Opus`;
+            }
+
+            function updateDocCount() {
+                const docCount = getDocCount();
+                docCountEl.textContent = docCount.toLocaleString();
+                updateAllCosts();
+            }
+
+            // Event listeners
+            inputEl.addEventListener('input', updateAllCosts);
+            inputEl.addEventListener('paste', () => setTimeout(updateAllCosts, 10));
+            sliderEl.addEventListener('input', updateDocCount);
+            ratioEl.addEventListener('change', updateAllCosts);
+
+            // Initialize
+            updateAllCosts();
+        })();
+    </script>
+
+</body>
+
+</html>
