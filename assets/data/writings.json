@@ -19,7 +19,7 @@
       "description": "Interactive playground: calculate token costs in real-time, compare Claude vs GPT-5.5 pricing, and estimate batch costs at scale.",
       "url": "blog/token-cost-comparator.html#live-demo",
       "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Interactive"],
-      "published": "2025-10-25",
+      "published": "2025-10-28",
       "version": "1.0.0"
     },
     {
@@ -28,7 +28,7 @@
       "description": "Comprehensive guide to grounding knowledge in AI systems. Learn RAG, vector embeddings, MCP, agents, and multi-agent architectures. Includes hallucination problems, retrieval strategies, real-world considerations, and when to use each pattern.",
       "url": "blog/rag-knowledge-systems.html",
       "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering", "Grounding"],
-      "published": "2025-10-28",
+      "published": "2025-10-20",
       "version": "1.0.0"
     },
     {
@@ -37,7 +37,7 @@
       "description": "Interactive playground: Ask any question and compare how Simple Completion, RAG, MCP, Agent, and Multi-Agent systems respond. See the difference between hallucination and grounded answers.",
       "url": "blog/rag-knowledge-systems.html#live-demo",
       "tags": ["RAG", "Interactive Lab", "AI Patterns", "Demo"],
-      "published": "2025-10-28",
+      "published": "2025-10-21",
       "version": "1.0.0"
     },
     {
@@ -46,7 +46,7 @@
       "description": "DevOps got us here - but it won't take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.",
       "url": "blog/xops-beyond-devops-2025.html",
       "tags": ["XOps", "DevOps", "Platform Engineering", "AI Ops"],
-      "published": "2025-10-20",
+      "published": "2025-10-15",
       "version": "1.0.0"
     },
     {
@@ -55,7 +55,7 @@
       "description": "LLM Sonnet 4.6 overview, capability improvements, and what the model shift means for practical AI engineering workflows.",
       "url": "https://raghuramreddy-tech.medium.com/llm-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e",
       "tags": ["AI", "LLM", "GenAI"],
-      "published": "2025-10-15",
+      "published": "2025-10-08",
       "version": "1.0.0"
     },
     {
@@ -64,7 +64,7 @@
       "description": "Why platform reliability is now a public-interest problem and how platform teams should treat reliability, governance, and resilience as infrastructure responsibilities.",
       "url": "https://raghuramreddy-tech.medium.com/software-platforms-as-critical-infrastructure-why-reliability-is-now-a-public-interest-problem-27da1b5dfc1b",
       "tags": ["Platform Engineering", "Reliability", "Infrastructure"],
-      "published": "2025-10-10",
+      "published": "2025-10-01",
       "version": "1.0.0"
     }
   ]
