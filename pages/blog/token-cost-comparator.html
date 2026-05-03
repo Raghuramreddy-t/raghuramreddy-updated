@@ -751,7 +751,7 @@
 
             function countTokens(text) {
                 if (!text.trim()) return 0;
-                return Math.max(1, Math.ceil(text.length / 4));
+                return Math.max(1, Math.round(text.length / 4.5));
             }
 
             function formatCost(dollars) {
