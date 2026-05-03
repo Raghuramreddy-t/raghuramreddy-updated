@@ -6,8 +6,8 @@
   "posts": [
     {
       "id": "token-cost-comparator",
-      "title": "Token Cost Comparator & Tokenizer Playground",
-      "description": "Understand tokens, embeddings, and tokenizers from first principles. Then compare Claude and GPT-5.5 costs side-by-side with a live interactive playground.",
+      "title": "The Token Ledger",
+      "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
       "url": "blog/token-cost-comparator.html",
       "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Claude", "GPT"],
       "published": "2026-05-03",

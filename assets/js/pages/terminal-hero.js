@@ -71,6 +71,7 @@
             const line = document.createElement('div');
             line.className = 'term-output-line' + (cls ? ' ' + cls : '');
             line.textContent = text;
+            line.style.color = cls === 'success' ? '#22c55e' : 'rgba(148, 163, 184, 0.85)';
             termBody.insertBefore(line, promptEl);
             // Keep scroll at bottom
             termBody.scrollTop = termBody.scrollHeight;
@@ -101,7 +102,7 @@
                 // All output printed — move prompt to history
                 const histLine = document.createElement('div');
                 histLine.className = 'term-hist-line';
-                histLine.innerHTML = `<span class="term-ps1">raghuramreddy:~$</span> <span class="term-hist-cmd">${COMMANDS[cmdIdx].prompt}</span>`;
+                histLine.innerHTML = `<span class="term-ps1" style="color:#8b5cf6">raghuramreddy:~$</span> <span class="term-hist-cmd" style="color:#e2e8f0">${COMMANDS[cmdIdx].prompt}</span>`;
                 termBody.insertBefore(histLine, termBody.querySelector('.term-output-line'));
 
                 // Clear prompt
@@ -126,6 +127,8 @@
         }
 
         // Start after a short delay
+        promptEl.style.color = '#8b5cf6';
+        promptText.style.color = '#e2e8f0';
         timeoutId = setTimeout(typePrompt, 800);
     }
 

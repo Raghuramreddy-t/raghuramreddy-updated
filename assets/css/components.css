@@ -21,11 +21,6 @@
     position: relative;
 }
 
-[data-theme="light"] #hero-terminal {
-    background: #1a1a2e;
-    border-color: #2d2d44;
-}
-
 .term-titlebar {
     display: flex;
     align-items: center;
@@ -33,11 +28,6 @@
     padding: 10px 14px;
     background: #161b22;
     border-bottom: 1px solid #21262d;
-}
-
-[data-theme="light"] .term-titlebar {
-    background: #16213e;
-    border-bottom-color: #2d2d44;
 }
 
 .term-btn {
@@ -133,8 +123,8 @@
     50%       { opacity: 0; }
 }
 
-/* Glow frame around terminal in dark mode */
-[data-theme="dark"] #hero-terminal::before {
+/* Glow frame around terminal */
+#hero-terminal::before {
     content: '';
     position: absolute;
     inset: -1px;
@@ -145,6 +135,53 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
+}
+
+/* Keep the homepage terminal visually identical across dark and light themes. */
+.home-page #hero-terminal,
+[data-theme="light"] .home-page #hero-terminal {
+    background: #0d1117 !important;
+    border-color: #21262d !important;
+}
+
+.home-page #hero-terminal .term-titlebar,
+[data-theme="light"] .home-page #hero-terminal .term-titlebar {
+    background: #161b22 !important;
+    border-bottom-color: #21262d !important;
+}
+
+.home-page #hero-terminal .term-title-label,
+[data-theme="light"] .home-page #hero-terminal .term-title-label {
+    color: rgba(148, 163, 184, 0.5) !important;
+}
+
+.home-page #hero-terminal .term-ps1,
+.home-page #hero-terminal .term-prompt-ps1,
+[data-theme="light"] .home-page #hero-terminal .term-ps1,
+[data-theme="light"] .home-page #hero-terminal .term-prompt-ps1 {
+    color: #8b5cf6 !important;
+}
+
+.home-page #hero-terminal .term-hist-cmd,
+.home-page #hero-terminal .term-prompt-text,
+[data-theme="light"] .home-page #hero-terminal .term-hist-cmd,
+[data-theme="light"] .home-page #hero-terminal .term-prompt-text {
+    color: #e2e8f0 !important;
+}
+
+.home-page #hero-terminal .term-output-line,
+[data-theme="light"] .home-page #hero-terminal .term-output-line {
+    color: rgba(148, 163, 184, 0.85) !important;
+}
+
+.home-page #hero-terminal .term-output-line.success,
+[data-theme="light"] .home-page #hero-terminal .term-output-line.success {
+    color: #22c55e !important;
+}
+
+.home-page #hero-terminal .term-cursor,
+[data-theme="light"] .home-page #hero-terminal .term-cursor {
+    background: #3b82f6 !important;
 }
 
 /* ============================================

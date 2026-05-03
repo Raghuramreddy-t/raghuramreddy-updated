@@ -18,12 +18,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/animations.css">
-    <link rel="stylesheet" href="../assets/css/pages.css">
-    <link rel="stylesheet" href="../assets/css/components.css">
-    <link rel="stylesheet" href="../assets/css/design-v2.css">
-    <link rel="stylesheet" href="../assets/css/enhancements.css">
+    <link rel="stylesheet" href="../assets/css/main.css?v=20260503">
+    <link rel="stylesheet" href="../assets/css/animations.css?v=20260503">
+    <link rel="stylesheet" href="../assets/css/pages.css?v=20260503">
+    <link rel="stylesheet" href="../assets/css/components.css?v=20260503">
+    <link rel="stylesheet" href="../assets/css/design-v2.css?v=20260503">
+    <link rel="stylesheet" href="../assets/css/enhancements.css?v=20260503">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
     <style>
         /* Work tabs bar */
@@ -34,6 +34,10 @@
             background: var(--bg-primary, #0a0a0f);
             border-bottom: 1px solid rgba(255,255,255,0.07);
             padding: 0;
+        }
+        [data-theme="light"] .work-tabs-bar {
+            border-bottom-color: rgba(15, 23, 42, 0.1);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
         }
         .work-tabs-bar .container {
             padding-top: 0;
@@ -335,7 +339,7 @@
             <div class="container">
                 <div class="ai-hero">
                     <h2>The Digital Nervous System</h2>
-                    <p>A robust cloud-native platform is more than just Kubernetes. It's a cohesive system of compute, networking, identity, and delivery pipelines that allows developers to ship code without thinking about infrastructure.</p>
+                    <p>A cloud-native platform is more than Kubernetes. It's the set of compute, networking, identity, and delivery paths that lets teams ship without treating infrastructure as a daily puzzle.</p>
                 </div>
 
                 <div class="capabilities-grid">
@@ -417,8 +421,8 @@
 
                 <div class="section-header" style="margin-top: 3rem;">
                     <span class="section-tag">Blueprints</span>
-                    <h2 class="section-title">Reusable Architecture Artifacts</h2>
-                    <p class="section-subtitle">Patterns I repeat because they scale across teams and tools.</p>
+                    <h2 class="section-title">Architecture Patterns I Reuse</h2>
+                    <p class="section-subtitle">The design moves, guardrails, and operating structures I keep coming back to because they survive real scale.</p>
                 </div>
 
                 <div class="capabilities-grid">
@@ -700,12 +704,12 @@
       </div>
     </footer>
 
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/aurora.js"></script>
-    <script src="../assets/js/pages/ecosystem-data.js"></script>
-    <script src="../assets/js/pages/ecosystem-render.js"></script>
-    <script src="../assets/js/pages/projects-render.js"></script>
-    <script src="../assets/js/pages/radar-chart.js"></script>
+    <script src="../assets/js/main.js?v=20260503"></script>
+    <script src="../assets/js/aurora.js?v=20260503"></script>
+    <script src="../assets/js/pages/ecosystem-data.js?v=20260503"></script>
+    <script src="../assets/js/pages/ecosystem-render.js?v=20260503"></script>
+    <script src="../assets/js/pages/projects-render.js?v=20260503"></script>
+    <script src="../assets/js/pages/radar-chart.js?v=20260503"></script>
     <script>
     // Initialise ecosystem renderers after tab panels are known
     (function () {
@@ -787,10 +791,6 @@
     </script>
 </body>
 </html>
-
-
-
-
 
 
 
