@@ -476,15 +476,20 @@
     --model-color: #8b5cf6;
 }
 
-/* GPT Model Colors */
-.tc-model-card.tc-gpt35 {
-    --model-color: #10b981;
+/* GPT-5.5 Model Colors (2026) */
+.tc-model-card.tc-gpt55m {
+    --model-color: #14b8a6;
 }
 
-.tc-model-card.tc-gpt4om {
-    --model-color: #22c55e;
+.tc-model-card.tc-gpt55 {
+    --model-color: #06b6d4;
 }
 
+.tc-model-card.tc-gpt55p {
+    --model-color: #0ea5e9;
+}
+
+/* Legacy GPT Model Colors */
 .tc-model-card.tc-gpt4o {
     --model-color: #3b82f6;
 }
@@ -495,10 +500,6 @@
 
 .tc-model-card.tc-gpt4 {
     --model-color: #ef4444;
-}
-
-.tc-model-card.tc-o1m {
-    --model-color: #8b5cf6;
 }
 
 .tc-model-header {
