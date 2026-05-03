@@ -138,7 +138,7 @@
 
             <section class="article-section">
                 <h2>The Playground</h2>
-                <p>Below is an interactive demo. Type a question or click a preset query. Switch between architecture modes (Simple, RAG, MCP, Agent) to see how each approach handles the same question differently.</p>
+                <p>Below is an interactive demo. Type a question or click a preset query, then click Analyze to see how all four architecture modes handle the same question side-by-side.</p>
 
                 <div class="tc-wrap" id="live-demo">
 
@@ -150,88 +150,97 @@
                                 placeholder="Ask about deployment success, incident response, CI/CD standards, or developer experience. Click a preset below or type your own."
                                 rows="3"></textarea>
                         </div>
-                        <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap;">
+                        <div style="display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; align-items:center;">
                             <button class="tc-ptab" data-query="q1" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">Deployment success rate?</button>
                             <button class="tc-ptab" data-query="q2" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">P1 incident response?</button>
                             <button class="tc-ptab" data-query="q3" style="background:var(--bg-secondary); border:1px solid var(--border-color); padding:10px 16px; border-radius:8px; cursor:pointer; font-size:14px;">CI/CD standards?</button>
+                            <button id="rag-analyze-btn" style="background:var(--accent-primary); color:var(--bg-primary); border:none; padding:10px 20px; border-radius:8px; cursor:pointer; font-size:14px; font-weight:600; margin-left:auto;">Analyze</button>
                         </div>
                     </div>
 
-                    <!-- Architecture Mode Tabs -->
-                    <div class="tc-provider-tabs" style="margin-top:32px;">
-                        <button class="tc-ptab active" data-mode="simple" aria-selected="true">Simple Completion</button>
-                        <button class="tc-ptab" data-mode="rag" aria-selected="false">RAG</button>
-                        <button class="tc-ptab" data-mode="mcp" aria-selected="false">MCP</button>
-                        <button class="tc-ptab" data-mode="agent" aria-selected="false">Agent</button>
-                        <span class="tc-tab-hint">Multi-Agent · Agentic RAG · more coming soon</span>
-                    </div>
+                    <!-- 2x2 Grid Layout -->
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:32px;">
 
-                    <!-- Simple Mode -->
-                    <div class="tc-provider-panel active" id="rag-panel-simple">
-                        <h3 style="margin-bottom:16px;">Simple Completion</h3>
-                        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;"><strong>No retrieval. Model answers from training data only. Risk: hallucination.</strong></p>
-                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:20px; margin-bottom:16px;">
-                            <div id="rag-simple-response" style="font-size:15px; line-height:1.6; color:var(--text-secondary);"></div>
+                        <!-- Simple Completion (Top Left) -->
+                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:12px; padding:24px;">
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+                                <h3 style="margin:0; font-size:16px;">Simple Completion</h3>
+                                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:rgba(107, 114, 128, 0.5);"></span>
+                            </div>
+                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.4;">No retrieval. Answers from training data only. Risk of hallucination.</p>
+                            <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-bottom:12px; min-height:120px;">
+                                <div id="rag-simple-response" style="font-size:14px; line-height:1.6; color:var(--text-secondary);"></div>
+                            </div>
+                            <div style="display:flex; gap:12px; font-size:12px; flex-wrap:wrap;">
+                                <span>⏱️ 1s</span>
+                                <span>📄 0 docs</span>
+                                <span style="color:var(--accent-primary);">🔴 Low confidence</span>
+                            </div>
                         </div>
-                        <div style="display:flex; gap:16px; font-size:14px;">
-                            <span>Latency: ~1s</span>
-                            <span>Docs retrieved: 0</span>
-                            <span style="color:var(--accent-primary);">Confidence: Low ⚠️</span>
-                        </div>
-                    </div>
 
-                    <!-- RAG Mode -->
-                    <div class="tc-provider-panel" id="rag-panel-rag">
-                        <h3 style="margin-bottom:16px;">RAG (Retrieval-Augmented Generation)</h3>
-                        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;"><strong>Retrieves relevant docs, augments prompt, LLM generates grounded answer.</strong></p>
-                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:20px; margin-bottom:16px;">
-                            <div id="rag-rag-response" style="font-size:15px; line-height:1.6; color:var(--text-secondary);"></div>
+                        <!-- RAG (Top Right) -->
+                        <div style="background:var(--bg-secondary); border:1px solid rgba(34, 197, 94, 0.3); border-radius:12px; padding:24px;">
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+                                <h3 style="margin:0; font-size:16px;">RAG</h3>
+                                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:rgba(34, 197, 94, 0.6);"></span>
+                            </div>
+                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.4;">Retrieves relevant docs, augments prompt, generates grounded answer.</p>
+                            <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-bottom:12px; min-height:120px;">
+                                <div id="rag-rag-response" style="font-size:14px; line-height:1.6; color:var(--text-secondary);"></div>
+                            </div>
+                            <div style="background:rgba(34, 197, 94, 0.08); border:1px solid rgba(34, 197, 94, 0.2); border-radius:6px; padding:10px; margin-bottom:12px;">
+                                <strong style="font-size:11px; color:var(--text-secondary);">Sources:</strong>
+                                <div id="rag-rag-sources" style="margin-top:6px; font-size:12px;"></div>
+                            </div>
+                            <div style="display:flex; gap:12px; font-size:12px; flex-wrap:wrap;">
+                                <span>⏱️ 2.5s</span>
+                                <span id="rag-rag-count">📄 0 docs</span>
+                                <span style="color:var(--accent-primary);">🟢 High confidence</span>
+                            </div>
                         </div>
-                        <div style="background:rgba(34, 197, 94, 0.08); border:1px solid rgba(34, 197, 94, 0.3); border-radius:8px; padding:12px; margin-bottom:16px;">
-                            <strong style="font-size:13px; color:var(--text-secondary);">Sources retrieved:</strong>
-                            <div id="rag-rag-sources" style="margin-top:8px; font-size:13px;"></div>
-                        </div>
-                        <div style="display:flex; gap:16px; font-size:14px;">
-                            <span>Latency: ~2.5s</span>
-                            <span id="rag-rag-count">Docs retrieved: 0</span>
-                            <span style="color:var(--accent-primary);">Confidence: High ✓</span>
-                        </div>
-                    </div>
 
-                    <!-- MCP Mode -->
-                    <div class="tc-provider-panel" id="rag-panel-mcp">
-                        <h3 style="margin-bottom:16px;">MCP (Model Context Protocol)</h3>
-                        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;"><strong>LLM calls typed functions to retrieve structured data. Predictable, contract-based.</strong></p>
-                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:20px; margin-bottom:16px;">
-                            <div id="rag-mcp-response" style="font-size:15px; line-height:1.6; color:var(--text-secondary);"></div>
+                        <!-- MCP (Bottom Left) -->
+                        <div style="background:var(--bg-secondary); border:1px solid rgba(59, 130, 246, 0.3); border-radius:12px; padding:24px;">
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+                                <h3 style="margin:0; font-size:16px;">MCP</h3>
+                                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:rgba(59, 130, 246, 0.6);"></span>
+                            </div>
+                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.4;">LLM calls typed functions to retrieve structured data. Contract-based.</p>
+                            <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-bottom:12px; min-height:120px;">
+                                <div id="rag-mcp-response" style="font-size:14px; line-height:1.6; color:var(--text-secondary);"></div>
+                            </div>
+                            <div style="background:rgba(59, 130, 246, 0.08); border:1px solid rgba(59, 130, 246, 0.2); border-radius:6px; padding:10px; margin-bottom:12px;">
+                                <strong style="font-size:11px; color:var(--text-secondary);">Tool calls:</strong>
+                                <div id="rag-mcp-sources" style="margin-top:6px; font-size:12px;"></div>
+                            </div>
+                            <div style="display:flex; gap:12px; font-size:12px; flex-wrap:wrap;">
+                                <span>⏱️ 2.8s</span>
+                                <span id="rag-mcp-count">📄 0 docs</span>
+                                <span style="color:var(--accent-primary);">🟢 High confidence</span>
+                            </div>
                         </div>
-                        <div style="background:rgba(59, 130, 246, 0.08); border:1px solid rgba(59, 130, 246, 0.3); border-radius:8px; padding:12px; margin-bottom:16px;">
-                            <strong style="font-size:13px; color:var(--text-secondary);">Tool calls made:</strong>
-                            <div id="rag-mcp-sources" style="margin-top:8px; font-size:13px;"></div>
-                        </div>
-                        <div style="display:flex; gap:16px; font-size:14px;">
-                            <span>Latency: ~2.8s</span>
-                            <span id="rag-mcp-count">Docs retrieved: 0</span>
-                            <span style="color:var(--accent-primary);">Confidence: High ✓</span>
-                        </div>
-                    </div>
 
-                    <!-- Agent Mode -->
-                    <div class="tc-provider-panel" id="rag-panel-agent">
-                        <h3 style="margin-bottom:16px;">Agent (Autonomous Reasoning)</h3>
-                        <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;"><strong>LLM decides what to retrieve, when to iterate, how to synthesize. Handles uncertainty.</strong></p>
-                        <div style="background:var(--bg-secondary); border:1px solid var(--border-color); border-radius:8px; padding:20px; margin-bottom:16px;">
-                            <div id="rag-agent-response" style="font-size:15px; line-height:1.6; color:var(--text-secondary);"></div>
+                        <!-- Agent (Bottom Right) -->
+                        <div style="background:var(--bg-secondary); border:1px solid rgba(168, 85, 247, 0.3); border-radius:12px; padding:24px;">
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+                                <h3 style="margin:0; font-size:16px;">Agent</h3>
+                                <span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:rgba(168, 85, 247, 0.6);"></span>
+                            </div>
+                            <p style="font-size:12px; color:var(--text-secondary); margin-bottom:16px; line-height:1.4;">Autonomous reasoning. Decides what to retrieve, when to iterate, how to synthesize.</p>
+                            <div style="background:var(--bg-primary); border:1px solid var(--border-color); border-radius:8px; padding:16px; margin-bottom:12px; min-height:120px;">
+                                <div id="rag-agent-response" style="font-size:14px; line-height:1.6; color:var(--text-secondary);"></div>
+                            </div>
+                            <div style="background:rgba(168, 85, 247, 0.08); border:1px solid rgba(168, 85, 247, 0.2); border-radius:6px; padding:10px; margin-bottom:12px;">
+                                <strong style="font-size:11px; color:var(--text-secondary);">Sources:</strong>
+                                <div id="rag-agent-sources" style="margin-top:6px; font-size:12px;"></div>
+                            </div>
+                            <div style="display:flex; gap:12px; font-size:12px; flex-wrap:wrap;">
+                                <span>⏱️ 3.2s</span>
+                                <span id="rag-agent-count">📄 0 docs</span>
+                                <span style="color:var(--accent-primary);">⭐ Very high confidence</span>
+                            </div>
                         </div>
-                        <div style="background:rgba(168, 85, 247, 0.08); border:1px solid rgba(168, 85, 247, 0.3); border-radius:8px; padding:12px; margin-bottom:16px;">
-                            <strong style="font-size:13px; color:var(--text-secondary);">Sources consulted:</strong>
-                            <div id="rag-agent-sources" style="margin-top:8px; font-size:13px;"></div>
-                        </div>
-                        <div style="display:flex; gap:16px; font-size:14px;">
-                            <span>Latency: ~3.2s</span>
-                            <span id="rag-agent-count">Docs retrieved: 0</span>
-                            <span style="color:var(--accent-primary);">Confidence: Very High ✓✓</span>
-                        </div>
+
                     </div>
 
                 </div>
@@ -317,69 +326,52 @@
 
             const input = document.getElementById('rag-input');
             const presetBtns = document.querySelectorAll('.tc-ptab[data-query]');
-            const modeTabs = document.querySelectorAll('.tc-ptab[data-mode]');
-            const panels = document.querySelectorAll('.tc-provider-panel');
+            const analyzeBtn = document.getElementById('rag-analyze-btn');
 
             let currentQuery = 'q1';
-            let currentMode = 'simple';
 
             presetBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     currentQuery = btn.dataset.query;
                     input.value = QUERIES[currentQuery].text;
-                    render();
                 });
             });
 
-            modeTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    currentMode = tab.dataset.mode;
-                    modeTabs.forEach(t => {
-                        t.classList.remove('active');
-                        t.setAttribute('aria-selected', 'false');
-                    });
-                    tab.classList.add('active');
-                    tab.setAttribute('aria-selected', 'true');
-                    panels.forEach(p => p.classList.remove('active'));
-                    document.getElementById(`rag-panel-${currentMode}`).classList.add('active');
-                    render();
-                });
-            });
-
-            input.addEventListener('input', () => {
-                currentQuery = null;
-            });
+            analyzeBtn.addEventListener('click', render);
 
             function render() {
-                if (!currentQuery) return;
+                if (!currentQuery) {
+                    currentQuery = 'q1';
+                }
                 const q = QUERIES[currentQuery];
                 const r = RESPONSES[currentQuery];
 
-                if (currentMode === 'simple') {
-                    document.getElementById('rag-simple-response').innerHTML = r.simple.text;
-                } else if (currentMode === 'rag') {
-                    document.getElementById('rag-rag-response').innerHTML = r.rag.text;
-                    document.getElementById('rag-rag-count').textContent = `Docs retrieved: ${q.docs.length}`;
-                    document.getElementById('rag-rag-sources').innerHTML = q.docs.map(d =>
-                        `<div style="margin:4px 0; font-size:13px;"><strong>${d}:</strong> ${docNames[d]}</div>`
-                    ).join('');
-                } else if (currentMode === 'mcp') {
-                    document.getElementById('rag-mcp-response').innerHTML = r.mcp.text;
-                    document.getElementById('rag-mcp-count').textContent = `Docs retrieved: ${q.docs.length}`;
-                    document.getElementById('rag-mcp-sources').innerHTML = q.docs.map(d =>
-                        `<div style="margin:4px 0; font-size:13px;"><code>get_document("${d}")</code> → ${docNames[d]}</div>`
-                    ).join('');
-                } else if (currentMode === 'agent') {
-                    document.getElementById('rag-agent-response').innerHTML = r.agent.text;
-                    document.getElementById('rag-agent-count').textContent = `Docs retrieved: ${q.docs.length}`;
-                    document.getElementById('rag-agent-sources').innerHTML = q.docs.map(d =>
-                        `<div style="margin:4px 0; font-size:13px;"><strong>${d}:</strong> ${docNames[d]}</div>`
-                    ).join('');
-                }
+                // Simple
+                document.getElementById('rag-simple-response').innerHTML = r.simple.text;
+
+                // RAG
+                document.getElementById('rag-rag-response').innerHTML = r.rag.text;
+                document.getElementById('rag-rag-count').textContent = `📄 ${q.docs.length} doc${q.docs.length !== 1 ? 's' : ''}`;
+                document.getElementById('rag-rag-sources').innerHTML = q.docs.map(d =>
+                    `<div style="margin:4px 0; font-size:12px;"><strong>${d}</strong> ${docNames[d]}</div>`
+                ).join('');
+
+                // MCP
+                document.getElementById('rag-mcp-response').innerHTML = r.mcp.text;
+                document.getElementById('rag-mcp-count').textContent = `📄 ${q.docs.length} doc${q.docs.length !== 1 ? 's' : ''}`;
+                document.getElementById('rag-mcp-sources').innerHTML = q.docs.map(d =>
+                    `<div style="margin:4px 0; font-size:12px;"><code>get_document("${d}")</code></div>`
+                ).join('');
+
+                // Agent
+                document.getElementById('rag-agent-response').innerHTML = r.agent.text;
+                document.getElementById('rag-agent-count').textContent = `📄 ${q.docs.length} doc${q.docs.length !== 1 ? 's' : ''}`;
+                document.getElementById('rag-agent-sources').innerHTML = q.docs.map(d =>
+                    `<div style="margin:4px 0; font-size:12px;"><strong>${d}</strong> ${docNames[d]}</div>`
+                ).join('');
             }
 
             input.value = QUERIES.q1.text;
-            render();
         })();
     </script>
 </body>
