@@ -79,16 +79,16 @@
       <article class="article-body">
 
         <p>
-          Most enterprise DevOps toolchains weren't designed â€” they accumulated. A legacy CI instance from 2015, an artifact repository added in 2017, and a GitLab instance introduced by one team in 2019 now run pipelines for twenty teams. The tools are loosely integrated in ways nobody fully understands. When the organization decides to modernize, the first instinct is to replace the old tools with new ones and call it done.
+          Most enterprise DevOps toolchains weren't designed – they accumulated. A legacy CI instance from 2015, an artifact repository added in 2017, and a GitLab instance introduced by one team in 2019 now run pipelines for twenty teams. The tools are loosely integrated in ways nobody fully understands. When the organization decides to modernize, the first instinct is to replace the old tools with new ones and call it done.
         </p>
 
         <p>
-          This is where most toolchain modernization programs fail. They migrate the tools without addressing the underlying architecture. The new toolchain has the same structural problems as the old one â€” the same lack of clear boundaries between responsibilities, the same implicit dependencies, the same operational fragility â€” just with newer version numbers.
+          This is where most toolchain modernization programs fail. They migrate the tools without addressing the underlying architecture. The new toolchain has the same structural problems as the old one – the same lack of clear boundaries between responsibilities, the same implicit dependencies, the same operational fragility – just with newer version numbers.
         </p>
 
         <hr style="margin: 40px 0; opacity: 0.15;" />
 
-        <h2>1. Problem â€” What Breaks at Scale</h2>
+        <h2>1. Problem – What Breaks at Scale</h2>
 
         <p>
           Legacy toolchains break in predictable ways when pushed beyond their original design constraints. The breakage usually shows up in three areas:
@@ -109,7 +109,7 @@
         <h2>2. Why Current Approaches Fail</h2>
 
         <p>
-          Lift-and-shift modernization â€” moving the existing toolchain to new infrastructure without changing how it works â€” is the most common approach because it minimizes disruption. It also minimizes value. The operational complexity moves to the cloud. The integration brittleness moves to the cloud. The security debt moves to the cloud. The new toolchain is faster to provision and easier to scale, but it's still architecturally incoherent.
+          Lift-and-shift modernization – moving the existing toolchain to new infrastructure without changing how it works – is the most common approach because it minimizes disruption. It also minimizes value. The operational complexity moves to the cloud. The integration brittleness moves to the cloud. The security debt moves to the cloud. The new toolchain is faster to provision and easier to scale, but it's still architecturally incoherent.
         </p>
 
         <p>
@@ -130,7 +130,7 @@
 
         <ul>
           <li><strong>Source and version control.</strong> The authoritative record of what was built and when. Everything traces back here.</li>
-          <li><strong>Build and artifact management.</strong> Transforms source into verified, signed artifacts. Produces a software bill of materials. Artifacts never go directly from build to production â€” they go through the artifact store.</li>
+          <li><strong>Build and artifact management.</strong> Transforms source into verified, signed artifacts. Produces a software bill of materials. Artifacts never go directly from build to production – they go through the artifact store.</li>
           <li><strong>Deployment and environment management.</strong> Moves artifacts from the artifact store to the target environment. Environment state is declarative and version-controlled. Drift from declared state is detectable and correctable.</li>
           <li><strong>Validation and observability.</strong> Verifies that what's running in the environment matches what was intended. Surfaces deviations as actionable signals, not noise.</li>
         </ul>
@@ -139,18 +139,18 @@
           The key design principle: data flows in one direction. Source â†’ artifacts â†’ environments â†’ observability. No tool in a downstream layer writes back to an upstream layer except through the defined interface. No tool bypasses a layer.
         </p>
 
-        <h2>4. Solution Model â€” Decoupled, Observable, Version-Controlled</h2>
+        <h2>4. Solution Model – Decoupled, Observable, Version-Controlled</h2>
 
         <p>
           <strong>Replace tools layer by layer, not all at once.</strong> Start with the layer that's causing the most pain or presenting the most risk. Establish the new tool in that layer with clear interfaces to adjacent layers. Stabilize before moving to the next layer.
         </p>
 
         <p>
-          <strong>Containerize everything that runs.</strong> Build agents, scanner containers, deployment tooling â€” all of it runs in containers with defined, minimal permissions. No shared build servers with accumulated state. Ephemeral build environments mean every build is reproducible, and a compromised build agent is discarded at the end of the job.
+          <strong>Containerize everything that runs.</strong> Build agents, scanner containers, deployment tooling – all of it runs in containers with defined, minimal permissions. No shared build servers with accumulated state. Ephemeral build environments mean every build is reproducible, and a compromised build agent is discarded at the end of the job.
         </p>
 
         <p>
-          <strong>Instrument everything.</strong> Before decommissioning any legacy tool, know exactly what it does. Capture its integrations, its consumers, its output formats. Modern observability tools make it possible to instrument legacy systems passively before migration â€” which is how you discover the undocumented integrations that would otherwise break silently during cutover.
+          <strong>Instrument everything.</strong> Before decommissioning any legacy tool, know exactly what it does. Capture its integrations, its consumers, its output formats. Modern observability tools make it possible to instrument legacy systems passively before migration – which is how you discover the undocumented integrations that would otherwise break silently during cutover.
         </p>
 
         <p>
@@ -168,7 +168,7 @@
         </p>
 
         <p>
-          Teams migrate incrementally, starting with the simplest pipelines. The platform team maintains a compatibility shim that translates legacy CI webhook events to the new system's format so that downstream integrations don't break during migration. When all teams have migrated, the legacy CI instance is decommissioned â€” with a 90-day snapshot retained in case anything was missed.
+          Teams migrate incrementally, starting with the simplest pipelines. The platform team maintains a compatibility shim that translates legacy CI webhook events to the new system's format so that downstream integrations don't break during migration. When all teams have migrated, the legacy CI instance is decommissioned – with a 90-day snapshot retained in case anything was missed.
         </p>
 
         <h2>6. Trade-offs</h2>
@@ -178,16 +178,16 @@
         </p>
 
         <p>
-          <strong>Standardization vs. accommodating existing behavior.</strong> When the legacy system has 200 pipeline definitions, some percentage of them will have behavior that doesn't map cleanly to the new architecture. Accommodating all edge cases makes the new system as complex as the old one. Drawing a line â€” these patterns are supported, these aren't â€” creates migration friction for the teams whose pipelines fall outside the line. Finding that line is the hardest design decision in most toolchain modernizations.</p>
+          <strong>Standardization vs. accommodating existing behavior.</strong> When the legacy system has 200 pipeline definitions, some percentage of them will have behavior that doesn't map cleanly to the new architecture. Accommodating all edge cases makes the new system as complex as the old one. Drawing a line – these patterns are supported, these aren't – creates migration friction for the teams whose pipelines fall outside the line. Finding that line is the hardest design decision in most toolchain modernizations.</p>
 
         <p>
-          <strong>Stateful data migration.</strong> Artifact repositories, pipeline history, and audit logs are stateful. Unlike stateless components that can simply be replaced, stateful data has to migrate correctly or be recreated. The toolchain cutover date is often gated on the artifact migration completing successfully â€” which takes longer than expected, almost always.
+          <strong>Stateful data migration.</strong> Artifact repositories, pipeline history, and audit logs are stateful. Unlike stateless components that can simply be replaced, stateful data has to migrate correctly or be recreated. The toolchain cutover date is often gated on the artifact migration completing successfully – which takes longer than expected, almost always.
         </p>
 
         <h2>7. Future Direction</h2>
 
         <p>
-          The next generation of toolchain modernization will be driven by declarative toolchain definitions â€” infrastructure-as-code patterns applied to the toolchain layer itself. The entire toolchain described in version-controlled configuration: which tools, which versions, which integrations, which policies. Toolchain drift becomes as detectable and correctable as infrastructure drift.
+          The next generation of toolchain modernization will be driven by declarative toolchain definitions – infrastructure-as-code patterns applied to the toolchain layer itself. The entire toolchain described in version-controlled configuration: which tools, which versions, which integrations, which policies. Toolchain drift becomes as detectable and correctable as infrastructure drift.
         </p>
 
         <p>
@@ -195,7 +195,7 @@
         </p>
 
         <div class="article-callout">
-          <strong>Final takeaway.</strong> Modernization is not about new tools. It's about reducing operational friction by establishing clear architectural boundaries, eliminating implicit dependencies, and making system behavior observable and controllable. If the new system still depends on manual coordination and tribal knowledge, it isn't modern â€” regardless of how recently the tools were released.
+          <strong>Final takeaway.</strong> Modernization is not about new tools. It's about reducing operational friction by establishing clear architectural boundaries, eliminating implicit dependencies, and making system behavior observable and controllable. If the new system still depends on manual coordination and tribal knowledge, it isn't modern – regardless of how recently the tools were released.
         </div>
 
         <hr style="margin: 40px 0; opacity: 0.15;" />
