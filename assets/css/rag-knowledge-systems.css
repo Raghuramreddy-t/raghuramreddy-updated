@@ -1217,11 +1217,21 @@ html[data-theme="light"] .arch-svg {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--text-primary);
+}
+
+.rag-lab-textarea::placeholder {
+    color: var(--text-secondary);
 }
 
 .rag-lab-textarea:focus {
     outline: none;
-    box-shadow: none;
+}
+
+.rag-lab-search-box:has(.rag-lab-textarea:focus) {
+    border-color: rgba(96, 165, 250, 0.48);
+    background: rgba(15, 23, 42, 0.78);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .rag-lab-run {
@@ -1233,6 +1243,19 @@ html[data-theme="light"] .arch-svg {
     font-size: 13px;
     letter-spacing: 0;
     box-shadow: 0 14px 24px rgba(59, 130, 246, 0.18);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.rag-lab-run:hover {
+    box-shadow: 0 18px 32px rgba(59, 130, 246, 0.24);
+    transform: translateY(-2px);
+}
+
+.rag-lab-run:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.16);
 }
 
 .rag-lab-compare-grid {
@@ -1247,27 +1270,58 @@ html[data-theme="light"] .arch-svg {
     background: rgba(255, 255, 255, 0.03);
     overflow: hidden;
     min-width: 0;
+    transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.rag-mini-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(148, 163, 184, 0.32);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.24);
 }
 
 .rag-mini-card--simple {
     border-color: rgba(107, 114, 128, 0.28);
     opacity: 0.85;
 }
+
 .rag-mini-card--rag {
     border-color: rgba(34, 197, 94, 0.28);
     background: linear-gradient(180deg, rgba(34, 197, 94, 0.03), rgba(255, 255, 255, 0.02));
 }
+
+.rag-mini-card--rag:hover {
+    border-color: rgba(34, 197, 94, 0.48);
+    box-shadow: 0 16px 32px rgba(34, 197, 94, 0.12);
+}
+
 .rag-mini-card--mcp {
     border-color: rgba(59, 130, 246, 0.28);
     background: linear-gradient(180deg, rgba(59, 130, 246, 0.03), rgba(255, 255, 255, 0.02));
 }
+
+.rag-mini-card--mcp:hover {
+    border-color: rgba(59, 130, 246, 0.48);
+    box-shadow: 0 16px 32px rgba(59, 130, 246, 0.12);
+}
+
 .rag-mini-card--agent {
     border-color: rgba(168, 85, 247, 0.28);
     background: linear-gradient(180deg, rgba(168, 85, 247, 0.03), rgba(255, 255, 255, 0.02));
 }
+
+.rag-mini-card--agent:hover {
+    border-color: rgba(168, 85, 247, 0.48);
+    box-shadow: 0 16px 32px rgba(168, 85, 247, 0.12);
+}
+
 .rag-mini-card--multi {
     border-color: rgba(251, 191, 36, 0.34);
     background: linear-gradient(180deg, rgba(251, 191, 36, 0.06), rgba(255, 255, 255, 0.02));
+}
+
+.rag-mini-card--multi:hover {
+    border-color: rgba(251, 191, 36, 0.54);
+    box-shadow: 0 16px 32px rgba(251, 191, 36, 0.12);
 }
 
 .rag-mini-head {
@@ -1371,9 +1425,24 @@ html[data-theme="light"] .rag-lab-label {
     color: #0f172a;
 }
 
+html[data-theme="light"] .rag-lab-run {
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.15);
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+html[data-theme="light"] .rag-lab-run:hover {
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.25);
+}
+
 html[data-theme="light"] .rag-lab-search-box {
     background: rgba(255, 255, 255, 0.98);
     border-color: rgba(148, 163, 184, 0.34);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] .rag-lab-search-box:has(.rag-lab-textarea:focus) {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 2px 8px rgba(59, 130, 246, 0.1);
 }
 
 html[data-theme="light"] .rag-lab-textarea {
