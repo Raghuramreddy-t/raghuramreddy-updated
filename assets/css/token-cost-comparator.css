@@ -1,5 +1,6 @@
 /* ============================================
    TOKEN COST COMPARATOR - Page-specific CSS
+   Claude vs GPT comparison with tabbed demos
    ============================================ */
 
 /* ============================================
@@ -368,6 +369,53 @@
 }
 
 /* ============================================
+   PROVIDER TABS
+   ============================================ */
+
+.tc-provider-tabs {
+    display: flex;
+    gap: 12px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+}
+
+.tc-ptab {
+    padding: 10px 18px;
+    border: 1px solid transparent;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tc-ptab:hover {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.tc-ptab.active {
+    color: var(--accent-primary);
+    border-bottom-color: var(--accent-primary);
+}
+
+.tc-provider-panel {
+    opacity: 1;
+    transition: opacity var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.tc-provider-panel:not(.active) {
+    display: none;
+    opacity: 0;
+}
+
+/* ============================================
    MODEL GRID & CARDS
    ============================================ */
 
@@ -379,6 +427,23 @@
 
 @media (max-width: 768px) {
     .tc-model-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 6-column grid for GPT models (wraps to 2 rows of 3) */
+.tc-model-grid-6 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+    .tc-model-grid-6 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .tc-model-grid-6 {
         grid-template-columns: 1fr;
     }
 }
@@ -408,6 +473,31 @@
 }
 
 .tc-model-card.tc-opus {
+    --model-color: #8b5cf6;
+}
+
+/* GPT Model Colors */
+.tc-model-card.tc-gpt35 {
+    --model-color: #10b981;
+}
+
+.tc-model-card.tc-gpt4om {
+    --model-color: #22c55e;
+}
+
+.tc-model-card.tc-gpt4o {
+    --model-color: #3b82f6;
+}
+
+.tc-model-card.tc-gpt4t {
+    --model-color: #f59e0b;
+}
+
+.tc-model-card.tc-gpt4 {
+    --model-color: #ef4444;
+}
+
+.tc-model-card.tc-o1m {
     --model-color: #8b5cf6;
 }
 
@@ -842,4 +932,22 @@ html[data-theme="light"] .tc-disclaimer {
 
 html[data-theme="light"] .tc-disclaimer strong {
     color: #0f172a;
+}
+
+html[data-theme="light"] .tc-provider-tabs {
+    border-bottom-color: #e2e8f0;
+}
+
+html[data-theme="light"] .tc-ptab {
+    color: #64748b;
+}
+
+html[data-theme="light"] .tc-ptab:hover {
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+html[data-theme="light"] .tc-ptab.active {
+    color: #3b82f6;
+    border-bottom-color: #3b82f6;
 }

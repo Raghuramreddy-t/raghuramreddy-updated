@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <script>!function () { var t = localStorage.getItem("theme") || "dark"; document.documentElement.setAttribute("data-theme", t); document.documentElement.classList.add("no-transition"); requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.remove("no-transition"); }) }) }();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Cost Comparator | Enterprise Claude API Optimization</title>
-    <meta name="description" content="Interactive tool to compare Claude Haiku, Sonnet, and Opus token costs. Includes batch processing estimator for enterprise LLM budget planning.">
-    <meta property="og:title" content="Token Cost Comparator | Enterprise Claude API Optimization">
-    <meta property="og:description" content="Calculate and compare token costs across Claude models. Interactive playground for tokenization and batch cost estimation.">
+    <title>LLM Token Cost Comparator | Claude vs GPT Cost Analysis</title>
+    <meta name="description" content="Compare token costs across Claude (Haiku, Sonnet, Opus) and OpenAI GPT (3.5, 4, 4o, o1) models. Interactive cost calculator and batch processor.">
+    <meta property="og:title" content="LLM Token Cost Comparator | Claude vs GPT">
+    <meta property="og:description" content="Interactive tool comparing Claude vs OpenAI GPT token costs and pricing. Calculate real costs for your enterprise LLM workloads.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/token-cost-comparator.html">
     <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
@@ -73,9 +73,9 @@
         <div class="container">
             <div class="page-header-content">
                 <span class="page-tag animate-fade-in">Cost Optimization</span>
-                <h1 class="page-title animate-slide-up">Token Cost Comparator<span class="gradient-text"></span></h1>
+                <h1 class="page-title animate-slide-up">LLM Token Cost Comparator<span class="gradient-text"></span></h1>
                 <p class="page-subtitle animate-slide-up delay-1">
-                    Stop overpaying for Claude API calls. Calculate costs, compare models, and optimize your enterprise LLM budget.
+                    Stop overpaying for LLM API calls. Compare Claude and GPT costs head-to-head, and optimize your enterprise AI budget.
                 </p>
             </div>
         </div>
@@ -86,145 +86,125 @@
 
             <!-- INTRO SECTION -->
             <section class="article-intro">
-                <h2>Why Token Costs Matter at Enterprise Scale</h2>
+                <h2>LLM Costs Are Now a Product Engineering Problem</h2>
                 <p>
-                    You're already committed to Claude for your production systems. The API is fast, reliable, and the model quality is unmatched. But token costs add up quickly — a single 10K-document batch processing job can cost hundreds to thousands of dollars depending on which Claude model you choose and how you architect your prompts.
+                    You have a choice. Claude. GPT-4. GPT-4o. Each has different pricing, different capabilities, and different trade-offs. A single large-scale batch operation can cost you $2,000 with Claude Sonnet or $50,000 with OpenAI GPT-4 — for the exact same job.
                 </p>
                 <p>
-                    This guide walks you through the token economics of Claude API, shows you the real cost differences between Haiku, Sonnet, and Opus, and gives you the tools to make informed model selection decisions at scale.
+                    But it's not just about picking the cheapest option. Token costs are hidden in your product architecture. They influence how you route requests, cache prompts, truncate outputs, and parallelize workloads. Get this wrong, and you're building a system that works great at 1000 users but bleeds money at 1 million.
+                </p>
+                <p>
+                    This guide compares Claude and OpenAI GPT across all price tiers, shows you how each provider tokenizes, and gives you the tools to make economically sound model selection decisions for enterprise scale.
                 </p>
             </section>
 
-            <!-- WHAT ARE TOKENS SECTION -->
+            <!-- TOKENS EXPLAINED SECTION -->
             <section class="article-section">
-                <h2>What Are Tokens? A Quick Primer</h2>
+                <h2>Tokens: The Unit of LLM Economics</h2>
                 <p>
-                    Tokens are the atomic units that LLMs process. You don't pay per word or per request — you pay per token, for both input and output.
+                    Tokens are the atomic units that LLMs process. You don't pay per word, per request, or per second — you pay per token. Both on input (your prompt) and output (the model's response).
                 </p>
                 <div class="article-callout">
-                    <strong>Rule of thumb:</strong> 1 token ≈ 4 characters of English text. A typical paragraph (400 words) ≈ 500 tokens. An average JSON API response ≈ 200 tokens.
+                    <strong>Rule of thumb:</strong> 1 token ≈ 4 characters of English text. A typical paragraph (400 words) ≈ 500 tokens. A JSON API response ≈ 200 tokens. But this is a rough heuristic — actual token counts vary based on tokenizer implementation.
                 </div>
                 <p>
-                    But tokenization isn't uniform. Whitespace, punctuation, numbers, and code tokens behave differently. Special tokens (like <code>&lt;|start_thinking|&gt;</code>) count as single tokens despite being multiple bytes. This is why actual token counts can vary ±10% from the simple "divide by 4" approximation.
+                    Tokenization isn't uniform across providers. Claude uses its own tokenizer; OpenAI uses tiktoken (a byte-pair encoding variant). The same text might be 100 tokens in Claude and 105 tokens in GPT-4 — or the reverse. This 5-10% variance is baked into the cost model.
                 </p>
                 <p>
-                    For practical cost planning, this ±10% variance is negligible — you care about order-of-magnitude accuracy, not decimal precision.
+                    For practical cost planning, this variance is negligible — you care about order-of-magnitude accuracy, not decimal precision. What matters is the pricing per 1M tokens, not the tokenizer minutiae.
                 </p>
             </section>
 
-            <!-- CLAUDE MODEL TIERS SECTION -->
+            <!-- CLAUDE VS GPT SECTION -->
             <section class="article-section">
-                <h2>Claude Model Tiers: Speed vs. Intelligence vs. Cost</h2>
+                <h2>Claude vs OpenAI GPT: The Economics</h2>
                 <p>
-                    Anthropic publishes three primary Claude models, each optimized for different workloads:
-                </p>
-                <div class="model-comparison-table">
-                    <div class="comparison-row header">
-                        <div class="col">Model</div>
-                        <div class="col">Best For</div>
-                        <div class="col">Input Price</div>
-                        <div class="col">Output Price</div>
-                        <div class="col">Throughput</div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="col"><strong>Haiku 4.5</strong></div>
-                        <div class="col">Classification, summarization, fast transformations</div>
-                        <div class="col">$0.80 / 1M</div>
-                        <div class="col">$4.00 / 1M</div>
-                        <div class="col">Fastest ⚡</div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="col"><strong>Sonnet 4.6</strong></div>
-                        <div class="col">Balanced — reasoning + speed for production</div>
-                        <div class="col">$3.00 / 1M</div>
-                        <div class="col">$15.00 / 1M</div>
-                        <div class="col">Fast ⚡⚡</div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="col"><strong>Opus 4.7</strong></div>
-                        <div class="col">Complex reasoning, research, code generation</div>
-                        <div class="col">$15.00 / 1M</div>
-                        <div class="col">$75.00 / 1M</div>
-                        <div class="col">Powerful ⚡⚡⚡</div>
-                    </div>
-                </div>
-                <p>
-                    The cost difference is dramatic: Opus is 19× more expensive than Haiku for output tokens. But Opus solves problems Haiku can't, and Sonnet is often the sweet spot for production — good reasoning, acceptable cost, reasonable latency.
+                    Both providers have a price tier strategy: cheap models for high-volume simple tasks, expensive models for complex reasoning. But the tier spacing is different.
                 </p>
                 <div class="example-box">
-                    <strong>Real scenario:</strong> You're building a document classification system. Haiku can classify 1000 documents for ~$4.80 (1K input + 500 output tokens). Opus would cost $90+ for the same job. Unless you need Opus-level reasoning, this is wasted spend.
+                    <strong>Claude's approach:</strong> Haiku is 19× cheaper than Opus. Sonnet is the "production sweet spot" — 3.75× cheaper than Opus but still capable for most reasoning tasks.
                 </div>
+                <div class="example-box">
+                    <strong>OpenAI's approach:</strong> GPT-4o mini is the new default (ultra-cheap). GPT-4o is balanced. GPT-4 is the legacy flagship (expensive). o1-mini is the new reasoning model (moderate cost). GPT-4 Turbo sits awkwardly between 4 and 4o.
+                </div>
+                <p>
+                    The key economic insight: <strong>Claude Haiku ($0.80 input) is cheaper than GPT-4o mini ($0.15 input), but Opus ($15.00 input) is also cheaper than GPT-4 ($30.00 input).</strong> Claude's pricing is more competitive at both tiers.
+                </p>
             </section>
 
             <!-- COST FORMULA SECTION -->
             <section class="article-section">
                 <h2>The Token Cost Formula</h2>
                 <p>
-                    Cost is simple math:
+                    Cost calculation is straightforward:
                 </p>
                 <div class="code-block">
                     Total Cost = (Input Tokens × Input Price per Token) + (Output Tokens × Output Price per Token)
                 </div>
                 <p>
-                    For example, classifying a 2000-token document with Haiku:
+                    Example: Processing a 2000-token document with Claude Sonnet:
                 </p>
                 <div class="code-block">
-                    Input Cost:  2000 tokens × ($0.80 / 1,000,000) = $0.0016<br>
-                    Output Cost: 100 tokens × ($4.00 / 1,000,000) = $0.0004<br>
-                    Total:       $0.0020 per request
+                    Input Cost:  2000 × ($3.00 / 1,000,000) = $0.0060<br>
+                    Output Cost: 500 × ($15.00 / 1,000,000) = $0.0075<br>
+                    Total:       $0.0135 per request
                 </div>
                 <p>
-                    Scale this to 1 million documents, and you're looking at ~$2000 total — manageable. Switch to Opus, and you're at $38,000+. This is where architecture matters.
+                    The same operation with OpenAI GPT-4o:
                 </p>
+                <div class="code-block">
+                    Input Cost:  2000 × ($5.00 / 1,000,000) = $0.0100<br>
+                    Output Cost: 500 × ($15.00 / 1,000,000) = $0.0075<br>
+                    Total:       $0.0175 per request (30% more expensive)
+                </div>
             </section>
 
             <!-- BATCH PROCESSING SECTION -->
             <section class="article-section">
-                <h2>Batch Processing at Scale: The Real Cost Driver</h2>
+                <h2>Batch Processing: Where Costs Explode</h2>
                 <p>
-                    Where token costs become critical is batch processing. A single classified document is cheap. Processing your entire customer database monthly is expensive.
+                    Single-request economics don't matter. Batch operations do. Process 1 million documents monthly, and the model choice multiplies your costs.
                 </p>
                 <p>
-                    The batch cost model scales linearly: double your document count, double your cost. But the model choice multiplies this effect:
+                    Example: Processing 100,000 documents (2KB each, ~500 tokens/doc, 10% output ratio):
                 </p>
                 <div class="batch-example">
-                    <strong>Processing 100,000 documents (2KB each = ~500 tokens/doc):</strong>
-                    <ul>
-                        <li><strong>Haiku:</strong> 50M input tokens = $40 input + 5M output tokens (assuming 10% output) = $20 output = <strong>$60</strong></li>
-                        <li><strong>Sonnet:</strong> 50M input = $150 input + 5M output = $75 = <strong>$225</strong></li>
-                        <li><strong>Opus:</strong> 50M input = $750 input + 5M output = $375 = <strong>$1,125</strong></li>
-                    </ul>
+                    <strong>Claude Haiku:</strong> 50M input tokens = $40 + 5M output = $20 = <strong>$60</strong><br>
+                    <strong>Claude Sonnet:</strong> 50M input = $150 + 5M output = $75 = <strong>$225</strong><br>
+                    <strong>Claude Opus:</strong> 50M input = $750 + 5M output = $375 = <strong>$1,125</strong><br>
+                    <br>
+                    <strong>GPT-4o mini:</strong> 50M input = $7.50 + 5M output = $3 = <strong>$10.50</strong><br>
+                    <strong>GPT-4o:</strong> 50M input = $250 + 5M output = $75 = <strong>$325</strong><br>
+                    <strong>GPT-4 Turbo:</strong> 50M input = $500 + 5M output = $150 = <strong>$650</strong><br>
+                    <strong>GPT-4:</strong> 50M input = $1500 + 5M output = $300 = <strong>$1,800</strong>
                 </div>
                 <p>
-                    Choosing Haiku over Opus saves you $1,065 per 100K document batch. Over a year of monthly batches, that's ~$12,780 in savings — just by picking the right model for the job.
+                    The delta: Claude Haiku vs. Opus is $1,065 savings per 100K batch. OpenAI GPT-4o mini vs. GPT-4 is $1,789.50. Over a year of monthly batches, that's either $12,780 (Claude) or $21,474 (OpenAI) in model choice cost.
                 </p>
             </section>
 
-            <!-- ENTERPRISE RECOMMENDATIONS SECTION -->
+            <!-- ENTERPRISE STRATEGIES SECTION -->
             <section class="article-section">
-                <h2>Enterprise Strategies for Cost Optimization</h2>
+                <h2>Enterprise Cost Optimization Strategies</h2>
                 <h3>1. Model Routing</h3>
                 <p>
-                    Not all requests are equal. Start with Haiku. Escalate to Sonnet only when Haiku confidence is low. Reserve Opus for true complex reasoning tasks.
+                    Not all requests require your strongest (most expensive) model. Implement a routing layer: try Haiku/GPT-4o mini first. Escalate to Sonnet/GPT-4o only if confidence is low. Reserve your flagship for truly hard problems.
                 </p>
-                <div class="example-box">
-                    <strong>Example routing logic:</strong> Incoming customer support ticket → Try Haiku classification first. If confidence &lt; 0.8, route to Sonnet for deeper analysis. Only escalate to Opus for novel/complex cases.
-                </div>
-                <h3>2. Prompt Compression</h3>
+                <h3>2. Prompt Caching</h3>
                 <p>
-                    Every token in your system prompt counts. A 2000-token system prompt processed 1 million times/month = 2B tokens just on overhead. Compress it ruthlessly.
+                    If you're processing documents with the same system prompt or context, use prompt caching (both Claude and OpenAI support it). You get a 90% discount on cached tokens. For large-scale batch operations, caching can reduce costs by 50%+ if the same context is reused.
                 </p>
-                <h3>3. Batch Caching (Prompt Caching)</h3>
+                <h3>3. Output Pruning</h3>
                 <p>
-                    If you're processing documents with the same system prompt, use Anthropic's prompt caching — 90% discount on cached input tokens. This is a game-changer for batch operations.
+                    You pay for every output token. If you're asking the model to generate a 5000-token essay but only need a 200-token summary, ask for the summary. Less output = dramatically lower cost.
                 </p>
-                <h3>4. Output Pruning</h3>
+                <h3>4. Batch APIs</h3>
                 <p>
-                    You pay for output tokens. If you're asking Claude to generate a 5000-token essay but only need the key insights, ask for a 200-token summary instead. Less output = less cost.
+                    Both Anthropic and OpenAI offer batch APIs with 50% discounts on input tokens for non-urgent operations. If you can wait 24 hours, batch API makes economic sense for large operations.
                 </p>
-                <h3>5. Async Batch API</h3>
+                <h3>5. Provider Arbitrage</h3>
                 <p>
-                    For non-urgent batch operations, Anthropic's Batch API offers 50% discounts on input tokens. When processing millions of documents, this is significant.
+                    For the same task, Claude Haiku often costs less than GPT-4o mini, but GPT-4o mini may perform better on some tasks. Test both on your specific workload and measure cost-per-quality. Sometimes "best" isn't "cheapest."
                 </p>
             </section>
 
@@ -232,17 +212,17 @@
             <section class="tc-demo-section">
                 <h2>Interactive: Calculate Your Token Costs</h2>
                 <p>
-                    Use the playground below to experiment with token counts and see real-time cost comparisons across Claude models. Type text, adjust your batch size, and see how model choice affects your bottom line.
+                    Use the playground below to compare token costs across both Claude and OpenAI models. Type or paste text, select your output ratio, and see real-time cost estimates and batch projections. Switch between Claude and GPT tabs to see the cost difference for the same operation.
                 </p>
 
                 <!-- DEMO WRAPPER -->
                 <div class="tc-wrap" id="live-demo">
 
-                    <!-- Tokenizer Input Section -->
+                    <!-- Shared Input Section -->
                     <div class="tc-input-section">
                         <label for="tc-input" class="tc-label">Paste or type your text:</label>
                         <div class="tc-input-container">
-                            <textarea id="tc-input" class="tc-input-area" placeholder="Paste a customer review, document, API response, or code snippet. Token count updates in real-time." rows="6"></textarea>
+                            <textarea id="tc-input" class="tc-input-area" placeholder="Paste a document, API response, code, or any text. Token count updates in real-time." rows="6"></textarea>
                             <div class="tc-stats">
                                 <div class="tc-stat">
                                     <span class="tc-stat-label">Characters:</span>
@@ -256,7 +236,7 @@
                         </div>
                     </div>
 
-                    <!-- Cost Calculation Settings -->
+                    <!-- Settings Row -->
                     <div class="tc-settings">
                         <div class="tc-setting-group">
                             <label for="tc-output-ratio">Output Token Ratio:</label>
@@ -269,154 +249,240 @@
                         </div>
                     </div>
 
-                    <!-- Model Comparison Grid -->
-                    <div class="tc-model-grid">
-                        <!-- Haiku Card -->
-                        <div class="tc-model-card tc-haiku">
-                            <div class="tc-model-header">
-                                <h3>Haiku 4.5</h3>
-                                <span class="tc-model-tier fast">Fast ⚡</span>
-                            </div>
-                            <div class="tc-pricing">
-                                <div class="tc-price-row">
-                                    <span>Input:</span>
-                                    <code>$0.80 / 1M</code>
-                                </div>
-                                <div class="tc-price-row">
-                                    <span>Output:</span>
-                                    <code>$4.00 / 1M</code>
-                                </div>
-                            </div>
-                            <div class="tc-model-cost">
-                                <div class="tc-cost-label">Estimated Cost</div>
-                                <div class="tc-cost-value" id="tc-cost-haiku">$0.00</div>
-                            </div>
-                            <div class="tc-use-case">Best for: Classification, summarization, quick transformations</div>
-                        </div>
-
-                        <!-- Sonnet Card -->
-                        <div class="tc-model-card tc-sonnet">
-                            <div class="tc-model-header">
-                                <h3>Sonnet 4.6</h3>
-                                <span class="tc-model-tier balanced">Balanced ⚡⚡</span>
-                            </div>
-                            <div class="tc-pricing">
-                                <div class="tc-price-row">
-                                    <span>Input:</span>
-                                    <code>$3.00 / 1M</code>
-                                </div>
-                                <div class="tc-price-row">
-                                    <span>Output:</span>
-                                    <code>$15.00 / 1M</code>
-                                </div>
-                            </div>
-                            <div class="tc-model-cost">
-                                <div class="tc-cost-label">Estimated Cost</div>
-                                <div class="tc-cost-value" id="tc-cost-sonnet">$0.00</div>
-                            </div>
-                            <div class="tc-use-case">Best for: Production AI systems, reasoning + speed balance</div>
-                        </div>
-
-                        <!-- Opus Card -->
-                        <div class="tc-model-card tc-opus">
-                            <div class="tc-model-header">
-                                <h3>Opus 4.7</h3>
-                                <span class="tc-model-tier powerful">Powerful ⚡⚡⚡</span>
-                            </div>
-                            <div class="tc-pricing">
-                                <div class="tc-price-row">
-                                    <span>Input:</span>
-                                    <code>$15.00 / 1M</code>
-                                </div>
-                                <div class="tc-price-row">
-                                    <span>Output:</span>
-                                    <code>$75.00 / 1M</code>
-                                </div>
-                            </div>
-                            <div class="tc-model-cost">
-                                <div class="tc-cost-label">Estimated Cost</div>
-                                <div class="tc-cost-value" id="tc-cost-opus">$0.00</div>
-                            </div>
-                            <div class="tc-use-case">Best for: Complex reasoning, research, advanced code gen</div>
-                        </div>
+                    <!-- Provider Tabs -->
+                    <div class="tc-provider-tabs">
+                        <button class="tc-ptab active" data-provider="claude" aria-selected="true">
+                            Claude (Anthropic)
+                        </button>
+                        <button class="tc-ptab" data-provider="gpt" aria-selected="false">
+                            OpenAI GPT
+                        </button>
                     </div>
 
-                    <!-- Batch Processor Section -->
-                    <div class="tc-batch-section">
-                        <h3>Batch Cost Estimator</h3>
-                        <p>How much will it cost to process N documents of this size?</p>
-
-                        <div class="tc-batch-controls">
-                            <div class="tc-batch-slider-group">
-                                <label for="tc-doc-slider">Number of Documents:</label>
-                                <div class="tc-slider-container">
-                                    <input type="range" id="tc-doc-slider" class="tc-slider" min="1" max="7" value="3" aria-label="Document count (logarithmic scale)">
-                                    <div class="tc-slider-value">
-                                        <span id="tc-doc-count">1,000</span> documents
-                                    </div>
+                    <!-- CLAUDE PANEL -->
+                    <div class="tc-provider-panel active" id="tc-panel-claude">
+                        <div class="tc-model-grid">
+                            <div class="tc-model-card tc-haiku">
+                                <div class="tc-model-header">
+                                    <h3>Haiku 4.5</h3>
+                                    <span class="tc-model-tier fast">Fast ⚡</span>
                                 </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$0.80 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$4.00 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-claude-haiku">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: Classification, summarization, simple transformations</div>
+                            </div>
+
+                            <div class="tc-model-card tc-sonnet">
+                                <div class="tc-model-header">
+                                    <h3>Sonnet 4.6</h3>
+                                    <span class="tc-model-tier balanced">Balanced ⚡⚡</span>
+                                </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$3.00 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$15.00 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-claude-sonnet">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: Production AI systems, reasoning + speed balance</div>
+                            </div>
+
+                            <div class="tc-model-card tc-opus">
+                                <div class="tc-model-header">
+                                    <h3>Opus 4.7</h3>
+                                    <span class="tc-model-tier powerful">Powerful ⚡⚡⚡</span>
+                                </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$15.00 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$75.00 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-claude-opus">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: Complex reasoning, research, advanced code generation</div>
                             </div>
                         </div>
 
-                        <div class="tc-batch-results">
+                        <!-- Claude Batch Estimator -->
+                        <div class="tc-batch-section">
+                            <h3>Batch Cost Estimator</h3>
+                            <div class="tc-batch-controls">
+                                <label for="tc-doc-slider">Number of Documents:</label>
+                                <div class="tc-slider-container">
+                                    <input type="range" id="tc-doc-slider" class="tc-slider" min="1" max="7" value="3">
+                                    <div class="tc-slider-value"><span id="tc-doc-count">1,000</span> documents</div>
+                                </div>
+                            </div>
                             <table class="tc-batch-table">
                                 <thead>
                                     <tr>
                                         <th>Model</th>
                                         <th>Input Cost</th>
                                         <th>Output Cost</th>
-                                        <th>Total Batch Cost</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><strong>Haiku</strong></td>
-                                        <td id="tc-batch-haiku-in">$0.00</td>
-                                        <td id="tc-batch-haiku-out">$0.00</td>
-                                        <td id="tc-batch-haiku-total" class="tc-total"><strong>$0.00</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Sonnet</strong></td>
-                                        <td id="tc-batch-sonnet-in">$0.00</td>
-                                        <td id="tc-batch-sonnet-out">$0.00</td>
-                                        <td id="tc-batch-sonnet-total" class="tc-total"><strong>$0.00</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Opus</strong></td>
-                                        <td id="tc-batch-opus-in">$0.00</td>
-                                        <td id="tc-batch-opus-out">$0.00</td>
-                                        <td id="tc-batch-opus-total" class="tc-total"><strong>$0.00</strong></td>
-                                    </tr>
+                                    <tr><td><strong>Haiku</strong></td><td id="tc-batch-claude-haiku-in">$0.00</td><td id="tc-batch-claude-haiku-out">$0.00</td><td id="tc-batch-claude-haiku-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr><td><strong>Sonnet</strong></td><td id="tc-batch-claude-sonnet-in">$0.00</td><td id="tc-batch-claude-sonnet-out">$0.00</td><td id="tc-batch-claude-sonnet-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr><td><strong>Opus</strong></td><td id="tc-batch-claude-opus-in">$0.00</td><td id="tc-batch-claude-opus-out">$0.00</td><td id="tc-batch-claude-opus-total" class="tc-total"><strong>$0.00</strong></td></tr>
                                 </tbody>
                             </table>
-                            <div class="tc-savings">
-                                <strong id="tc-savings-text">Haiku saves $0.00 vs. Opus</strong>
+                            <div class="tc-savings"><strong id="tc-savings-claude">Haiku saves $0.00 vs. Opus</strong></div>
+                        </div>
+                    </div>
+
+                    <!-- GPT PANEL -->
+                    <div class="tc-provider-panel" id="tc-panel-gpt">
+                        <div class="tc-model-grid tc-model-grid-6">
+                            <div class="tc-model-card tc-gpt35">
+                                <div class="tc-model-header">
+                                    <h3>GPT-3.5 Turbo</h3>
+                                    <span class="tc-model-tier fast">Fast ⚡</span>
+                                </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$0.50 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$1.50 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-gpt-gpt35">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: Simple tasks, ultra high volume, legacy app</div>
                             </div>
+
+                            <div class="tc-model-card tc-gpt4om">
+                                <div class="tc-model-header">
+                                    <h3>GPT-4o mini</h3>
+                                    <span class="tc-model-tier fast">Fastest ⚡</span>
+                                </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$0.15 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$0.60 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-gpt-gpt4om">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: Ultra-cheap batch ops, simple reasoning, high volume</div>
+                            </div>
+
+                            <div class="tc-model-card tc-o1m">
+                                <div class="tc-model-header">
+                                    <h3>o1-mini</h3>
+                                    <span class="tc-model-tier">Reasoning 🧠</span>
+                                </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$3.00 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$12.00 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-gpt-o1m">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: STEM, math, coding, logical reasoning</div>
+                            </div>
+
+                            <div class="tc-model-card tc-gpt4o">
+                                <div class="tc-model-header">
+                                    <h3>GPT-4o</h3>
+                                    <span class="tc-model-tier balanced">Balanced ⚡⚡</span>
+                                </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$5.00 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$15.00 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-gpt-gpt4o">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: Latest OpenAI flagship, vision + text, balanced reasoning</div>
+                            </div>
+
+                            <div class="tc-model-card tc-gpt4t">
+                                <div class="tc-model-header">
+                                    <h3>GPT-4 Turbo</h3>
+                                    <span class="tc-model-tier">Efficient ⚡⚡</span>
+                                </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$10.00 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$30.00 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-gpt-gpt4t">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: Better than GPT-4, cheaper alternative, legacy code</div>
+                            </div>
+
+                            <div class="tc-model-card tc-gpt4">
+                                <div class="tc-model-header">
+                                    <h3>GPT-4</h3>
+                                    <span class="tc-model-tier">Flagship 🏆</span>
+                                </div>
+                                <div class="tc-pricing">
+                                    <div class="tc-price-row"><span>Input:</span><code>$30.00 / 1M</code></div>
+                                    <div class="tc-price-row"><span>Output:</span><code>$60.00 / 1M</code></div>
+                                </div>
+                                <div class="tc-model-cost">
+                                    <div class="tc-cost-label">Cost per Request</div>
+                                    <div class="tc-cost-value" id="tc-cost-gpt-gpt4">$0.00</div>
+                                </div>
+                                <div class="tc-use-case">Best for: Legacy flagship, max capability, most expensive</div>
+                            </div>
+                        </div>
+
+                        <!-- GPT Batch Estimator -->
+                        <div class="tc-batch-section">
+                            <h3>Batch Cost Estimator</h3>
+                            <div class="tc-batch-controls">
+                                <p style="margin:0 0 12px 0; color:var(--text-secondary); font-size:13px;">Uses the same document count slider above.</p>
+                            </div>
+                            <table class="tc-batch-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Input Cost</th>
+                                        <th>Output Cost</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><strong>GPT-3.5 T.</strong></td><td id="tc-batch-gpt-gpt35-in">$0.00</td><td id="tc-batch-gpt-gpt35-out">$0.00</td><td id="tc-batch-gpt-gpt35-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr><td><strong>GPT-4o mini</strong></td><td id="tc-batch-gpt-gpt4om-in">$0.00</td><td id="tc-batch-gpt-gpt4om-out">$0.00</td><td id="tc-batch-gpt-gpt4om-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr><td><strong>o1-mini</strong></td><td id="tc-batch-gpt-o1m-in">$0.00</td><td id="tc-batch-gpt-o1m-out">$0.00</td><td id="tc-batch-gpt-o1m-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr><td><strong>GPT-4o</strong></td><td id="tc-batch-gpt-gpt4o-in">$0.00</td><td id="tc-batch-gpt-gpt4o-out">$0.00</td><td id="tc-batch-gpt-gpt4o-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr><td><strong>GPT-4 Turbo</strong></td><td id="tc-batch-gpt-gpt4t-in">$0.00</td><td id="tc-batch-gpt-gpt4t-out">$0.00</td><td id="tc-batch-gpt-gpt4t-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                    <tr><td><strong>GPT-4</strong></td><td id="tc-batch-gpt-gpt4-in">$0.00</td><td id="tc-batch-gpt-gpt4-out">$0.00</td><td id="tc-batch-gpt-gpt4-total" class="tc-total"><strong>$0.00</strong></td></tr>
+                                </tbody>
+                            </table>
+                            <div class="tc-savings"><strong id="tc-savings-gpt">GPT-4o mini saves $0.00 vs. GPT-4</strong></div>
                         </div>
                     </div>
 
                     <div class="tc-disclaimer">
-                        <strong>Note:</strong> Token counts are approximations (±10% variance). Pricing reflects public Anthropic API rates as of Jan 2025 — verify current pricing at <a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">anthropic.com/pricing</a>. Output token ratios are estimates; actual output length depends on your prompt.
+                        <strong>Disclaimer:</strong> Token counts are approximations (±10% variance). Pricing reflects public OpenAI and Anthropic API rates as of early 2025 — verify at <a href="https://openai.com/pricing" target="_blank" rel="noopener">openai.com/pricing</a> and <a href="https://anthropic.com/pricing" target="_blank" rel="noopener">anthropic.com/pricing</a>. Output ratios are estimates; actual costs depend on your prompt and use case.
                     </div>
+
                 </div>
             </section>
 
-            <!-- CONCLUSION SECTION -->
+            <!-- CONCLUSION -->
             <section class="article-section">
-                <h2>Parting Thoughts: Token Economics = Product Economics</h2>
+                <h2>The Bottom Line: Choose Wisely</h2>
                 <p>
-                    Token costs are not a technical detail to ignore — they're a product lever. Every dollar spent on tokens is a dollar not spent on compute, storage, or headcount. Getting model selection right compounds.
+                    Token costs compound. A model choice that saves 5% per request translates to 5% savings on your entire AI infrastructure. For companies processing millions of requests monthly, that's the difference between a seven-figure and eight-figure bill.
                 </p>
                 <p>
-                    The strategy is simple:
-                </p>
-                <ul>
-                    <li><strong>Default to Haiku</strong> for straightforward tasks (classification, summarization, simple transformations)</li>
-                    <li><strong>Use Sonnet</strong> as your production workhorse (good reasoning + acceptable cost)</li>
-                    <li><strong>Reserve Opus</strong> for genuinely hard problems where no other model works</li>
-                </ul>
-                <p>
-                    Combined with prompt caching, batch APIs, and careful output pruning, you can build Claude-powered systems that are both performant and cost-efficient at scale.
+                    The playground above lets you experiment. But the real work is in your architecture: implementing model routing, using prompt caching, pruning outputs ruthlessly, and testing both providers on your specific workloads. Cost isn't destiny — it's a product decision you make daily.
                 </p>
             </section>
 
@@ -455,7 +521,6 @@
                             <a href="../contact.html" class="footer-link">Contact</a>
                         </div>
                     </div>
-
                     <div class="footer-col">
                         <h4 class="footer-col-title">Explore</h4>
                         <div class="footer-links">
@@ -493,7 +558,6 @@
                     <span class="fv-dot fv-dot-2"></span>
                 </div>
             </div>
-
             <div class="footer-bottom footer-bottom--pro">
                 <p>&copy; 2025 RaghuRamReddy Thummalapalli. All rights reserved.</p>
             </div>
@@ -504,46 +568,39 @@
     <script src="../../assets/js/aurora.js"></script>
 
     <script>
-        // Token Cost Comparator - Interactive Demo
+        // Token Cost Comparator - Claude vs GPT Demo
         (() => {
+            // Model data
+            const PROVIDERS = {
+                claude: {
+                    models: [
+                        { id: 'haiku', name: 'Haiku 4.5', input: 0.80, output: 4.00 },
+                        { id: 'sonnet', name: 'Sonnet 4.6', input: 3.00, output: 15.00 },
+                        { id: 'opus', name: 'Opus 4.7', input: 15.00, output: 75.00 }
+                    ]
+                },
+                gpt: {
+                    models: [
+                        { id: 'gpt35', name: 'GPT-3.5 Turbo', input: 0.50, output: 1.50 },
+                        { id: 'gpt4om', name: 'GPT-4o mini', input: 0.15, output: 0.60 },
+                        { id: 'o1m', name: 'o1-mini', input: 3.00, output: 12.00 },
+                        { id: 'gpt4o', name: 'GPT-4o', input: 5.00, output: 15.00 },
+                        { id: 'gpt4t', name: 'GPT-4 Turbo', input: 10.00, output: 30.00 },
+                        { id: 'gpt4', name: 'GPT-4', input: 30.00, output: 60.00 }
+                    ]
+                }
+            };
+
             const inputEl = document.getElementById('tc-input');
             const sliderEl = document.getElementById('tc-doc-slider');
             const ratioEl = document.getElementById('tc-output-ratio');
             const charCountEl = document.getElementById('tc-char-count');
             const tokenCountEl = document.getElementById('tc-token-count');
-
             const docCountEl = document.getElementById('tc-doc-count');
 
-            // Cost elements
-            const costHaikuEl = document.getElementById('tc-cost-haiku');
-            const costSonnetEl = document.getElementById('tc-cost-sonnet');
-            const costOpusEl = document.getElementById('tc-cost-opus');
-
-            // Batch results
-            const batchHaikuInEl = document.getElementById('tc-batch-haiku-in');
-            const batchHaikuOutEl = document.getElementById('tc-batch-haiku-out');
-            const batchHaikuTotalEl = document.getElementById('tc-batch-haiku-total');
-
-            const batchSonnetInEl = document.getElementById('tc-batch-sonnet-in');
-            const batchSonnetOutEl = document.getElementById('tc-batch-sonnet-out');
-            const batchSonnetTotalEl = document.getElementById('tc-batch-sonnet-total');
-
-            const batchOpusInEl = document.getElementById('tc-batch-opus-in');
-            const batchOpusOutEl = document.getElementById('tc-batch-opus-out');
-            const batchOpusTotalEl = document.getElementById('tc-batch-opus-total');
-
-            const savingsEl = document.getElementById('tc-savings-text');
-
-            // Pricing (per 1M tokens)
-            const pricing = {
-                haiku: { input: 0.80, output: 4.00 },
-                sonnet: { input: 3.00, output: 15.00 },
-                opus: { input: 15.00, output: 75.00 }
-            };
+            let currentProvider = 'claude';
 
             function countTokens(text) {
-                // Rough approximation: 1 token ≈ 4 chars
-                // Adjust for code/special chars
                 return Math.max(1, Math.ceil(text.length / 4));
             }
 
@@ -567,44 +624,54 @@
                 const outputTokens = Math.max(1, Math.ceil(tokenCount * outputRatio));
                 const docCount = getDocCount();
 
-                // Update character and token counts
                 charCountEl.textContent = charCount.toLocaleString();
                 tokenCountEl.textContent = tokenCount.toLocaleString();
 
-                // Update per-request costs
-                const costs = {};
-                Object.entries(pricing).forEach(([model, prices]) => {
-                    const inputCost = (tokenCount * prices.input) / 1000000;
-                    const outputCost = (outputTokens * prices.output) / 1000000;
-                    costs[model] = inputCost + outputCost;
+                // Update costs for current provider
+                const provider = PROVIDERS[currentProvider];
+                const models = provider.models;
+
+                models.forEach(model => {
+                    const inputCost = (tokenCount * model.input) / 1000000;
+                    const outputCost = (outputTokens * model.output) / 1000000;
+                    const totalCost = inputCost + outputCost;
+
+                    const costEl = document.getElementById(`tc-cost-${currentProvider}-${model.id}`);
+                    if (costEl) costEl.textContent = formatCost(totalCost);
+
+                    // Batch costs
+                    const batchInputCost = ((tokenCount * docCount) * model.input) / 1000000;
+                    const batchOutputCost = ((outputTokens * docCount) * model.output) / 1000000;
+                    const batchTotal = batchInputCost + batchOutputCost;
+
+                    const batchInEl = document.getElementById(`tc-batch-${currentProvider}-${model.id}-in`);
+                    const batchOutEl = document.getElementById(`tc-batch-${currentProvider}-${model.id}-out`);
+                    const batchTotalEl = document.getElementById(`tc-batch-${currentProvider}-${model.id}-total`);
+
+                    if (batchInEl) batchInEl.textContent = formatCost(batchInputCost);
+                    if (batchOutEl) batchOutEl.textContent = formatCost(batchOutputCost);
+                    if (batchTotalEl) batchTotalEl.textContent = formatCost(batchTotal);
                 });
 
-                costHaikuEl.textContent = formatCost(costs.haiku);
-                costSonnetEl.textContent = formatCost(costs.sonnet);
-                costOpusEl.textContent = formatCost(costs.opus);
+                // Update savings line
+                const cheapestCost = Math.min(...models.map(m => {
+                    const inputCost = ((tokenCount * docCount) * m.input) / 1000000;
+                    const outputCost = ((outputTokens * docCount) * m.output) / 1000000;
+                    return inputCost + outputCost;
+                }));
+                const mostExpensiveCost = Math.max(...models.map(m => {
+                    const inputCost = ((tokenCount * docCount) * m.input) / 1000000;
+                    const outputCost = ((outputTokens * docCount) * m.output) / 1000000;
+                    return inputCost + outputCost;
+                }));
+                const savings = mostExpensiveCost - cheapestCost;
 
-                // Update batch costs
-                const batchCosts = {};
-                Object.entries(pricing).forEach(([model, prices]) => {
-                    const inputCost = ((tokenCount * docCount) * prices.input) / 1000000;
-                    const outputCost = ((outputTokens * docCount) * prices.output) / 1000000;
-                    batchCosts[model] = { input: inputCost, output: outputCost, total: inputCost + outputCost };
-                });
-
-                batchHaikuInEl.textContent = formatCost(batchCosts.haiku.input);
-                batchHaikuOutEl.textContent = formatCost(batchCosts.haiku.output);
-                batchHaikuTotalEl.textContent = formatCost(batchCosts.haiku.total);
-
-                batchSonnetInEl.textContent = formatCost(batchCosts.sonnet.input);
-                batchSonnetOutEl.textContent = formatCost(batchCosts.sonnet.output);
-                batchSonnetTotalEl.textContent = formatCost(batchCosts.sonnet.total);
-
-                batchOpusInEl.textContent = formatCost(batchCosts.opus.input);
-                batchOpusOutEl.textContent = formatCost(batchCosts.opus.output);
-                batchOpusTotalEl.textContent = formatCost(batchCosts.opus.total);
-
-                const savings = batchCosts.opus.total - batchCosts.haiku.total;
-                savingsEl.textContent = `Haiku saves ${formatCost(savings)} vs. Opus`;
+                const savingsEl = document.getElementById(`tc-savings-${currentProvider}`);
+                if (savingsEl) {
+                    const cheapest = models[0];
+                    const mostExp = models[models.length - 1];
+                    savingsEl.textContent = `${cheapest.name} saves ${formatCost(savings)} vs. ${mostExp.name}`;
+                }
             }
 
             function updateDocCount() {
@@ -613,11 +680,27 @@
                 updateAllCosts();
             }
 
+            function switchProvider(provider) {
+                currentProvider = provider;
+                document.querySelectorAll('.tc-ptab').forEach(tab => {
+                    tab.classList.toggle('active', tab.dataset.provider === provider);
+                    tab.setAttribute('aria-selected', tab.dataset.provider === provider);
+                });
+                document.querySelectorAll('.tc-provider-panel').forEach(panel => {
+                    panel.classList.toggle('active', panel.id === `tc-panel-${provider}`);
+                });
+                updateAllCosts();
+            }
+
             // Event listeners
             inputEl.addEventListener('input', updateAllCosts);
             inputEl.addEventListener('paste', () => setTimeout(updateAllCosts, 10));
             sliderEl.addEventListener('input', updateDocCount);
             ratioEl.addEventListener('change', updateAllCosts);
+
+            document.querySelectorAll('.tc-ptab').forEach(tab => {
+                tab.addEventListener('click', () => switchProvider(tab.dataset.provider));
+            });
 
             // Initialize
             updateAllCosts();
