@@ -1525,6 +1525,8 @@ hr.gradient-divider {
 .spotlight-carousel {
     position: relative;
     min-height: 340px;
+    width: 100%;
+    overflow: clip;
 }
 
 .spotlight-slide {
@@ -1620,13 +1622,19 @@ hr.gradient-divider {
 }
 .spotlight-cta:hover { opacity: 0.8; }
 
+.spotlight-visual {
+    overflow: hidden;
+    border-radius: 16px;
+}
+
 .spotlight-visual svg {
     width: 100%;
     height: auto;
-    border-radius: 16px;
+    display: block;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     padding: 16px;
+    border-radius: 16px;
 }
 
 /* Keep diagram stable; animate only internal flow/signals */
