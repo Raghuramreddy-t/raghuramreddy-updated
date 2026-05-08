@@ -69,40 +69,51 @@ margin:0 auto;
 line-height:1.55;
 }
 .arch{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:14px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:28px 32px;
+position:relative;
+}
+.arch::before{
+content:'';
+position:absolute;
+top:60px;
+left:50%;
+width:2px;
+height:calc(100% - 120px);
+background:linear-gradient(180deg,rgba(110,231,255,0.3),rgba(139,92,246,0.3),transparent);
+transform:translateX(-50%);
 }
 .layer{
-width:100%;
-padding:20px 22px;
+padding:28px;
 text-align:center;
-border-radius:24px;
-background:linear-gradient(135deg,#111827,#1e293b);
-border:1px solid rgba(255,255,255,0.08);
-box-shadow:0 0 30px rgba(124,58,237,0.2);
+border-radius:20px;
+background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.08));
+border:1px solid rgba(110,231,255,0.2);
+box-shadow:0 0 40px rgba(124,58,237,0.15);
 transition:all 0.3s ease;
 animation:slideUp 0.6s ease-out backwards;
+position:relative;
 }
-.layer:nth-child(1){animation-delay:0.1s}
-.layer:nth-child(3){animation-delay:0.2s}
-.layer:nth-child(5){animation-delay:0.3s}
-.layer:nth-child(7){animation-delay:0.4s}
-.layer:nth-child(9){animation-delay:0.5s}
-.layer:nth-child(11){animation-delay:0.6s}
-.layer:nth-child(13){animation-delay:0.7s}
-.layer:nth-child(15){animation-delay:0.8s}
+.layer:nth-child(1){animation-delay:0.05s}
+.layer:nth-child(2){animation-delay:0.1s}
+.layer:nth-child(3){animation-delay:0.15s}
+.layer:nth-child(4){animation-delay:0.2s}
+.layer:nth-child(5){animation-delay:0.25s}
+.layer:nth-child(6){animation-delay:0.3s}
+.layer:nth-child(7){animation-delay:0.35s}
+.layer:nth-child(8){animation-delay:0.4s}
 .layer:hover{
-background:linear-gradient(135deg,#0f172a,#1a2f4b);
-box-shadow:0 0 50px rgba(124,58,237,0.35);
-transform:translateY(-2px);
+background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(139,92,246,0.12));
+border-color:rgba(110,231,255,0.4);
+box-shadow:0 0 60px rgba(124,58,237,0.3);
+transform:translateY(-3px);
 }
 .layer h2{
 margin:0;
-font-size:24px;
+font-size:22px;
 font-weight:700;
-margin-bottom:6px;
+margin-bottom:8px;
 background:linear-gradient(90deg,#6ee7ff,#8b5cf6);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -110,14 +121,41 @@ background:linear-gradient(90deg,#6ee7ff,#8b5cf6);
 .layer p{
 margin:0;
 color:#cbd5e1;
-font-size:13px;
-line-height:1.45;
+font-size:12px;
+line-height:1.5;
+}
+.layer::after{
+content:'';
+position:absolute;
+width:8px;
+height:8px;
+background:#6ee7ff;
+border-radius:50%;
+top:-16px;
+left:50%;
+transform:translateX(-50%);
+box-shadow:0 0 12px rgba(110,231,255,0.6);
+}
+.layer:nth-child(odd)::before{
+content:'';
+position:absolute;
+width:40%;
+height:2px;
+background:linear-gradient(90deg,transparent,rgba(110,231,255,0.4));
+top:-14px;
+right:-42%;
+}
+.layer:nth-child(even)::before{
+content:'';
+position:absolute;
+width:40%;
+height:2px;
+background:linear-gradient(90deg,rgba(110,231,255,0.4),transparent);
+top:-14px;
+left:-42%;
 }
 .arrow{
-font-size:30px;
-color:#6ee7ff;
-opacity:0.8;
-line-height:1;
+display:none;
 }
 @keyframes fadeIn{
 from{opacity:0}
@@ -128,25 +166,30 @@ from{opacity:0;transform:translateY(20px)}
 to{opacity:1;transform:translateY(0)}
 }
 [data-theme="light"] body{
-background:#f9fafb;
+background:linear-gradient(135deg,#f0f4f8,#f9fafb);
 color:#111827;
 }
 [data-theme="light"] .layer{
-background:linear-gradient(135deg,#f3f4f6,#e5e7eb);
-border-color:rgba(0,0,0,0.08);
-box-shadow:0 0 30px rgba(59,130,246,0.1);
+background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.06));
+border-color:rgba(59,130,246,0.25);
+box-shadow:0 0 40px rgba(59,130,246,0.1);
 }
 [data-theme="light"] .layer:hover{
-background:linear-gradient(135deg,#f0f1f3,#dfe3e9);
-box-shadow:0 0 50px rgba(59,130,246,0.2);
+background:linear-gradient(135deg,rgba(59,130,246,0.12),rgba(139,92,246,0.1));
+border-color:rgba(59,130,246,0.35);
+box-shadow:0 0 60px rgba(59,130,246,0.15);
 }
-[data-theme="light"] body{
-background:linear-gradient(135deg,#f0f4f8,#f9fafb);
+[data-theme="light"] .layer h2{
+background:linear-gradient(90deg,#0ea5e9,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
-[data-theme="light"] .layer{
-background:linear-gradient(135deg,#ffffff,#f3f8fc);
-border-color:rgba(59,130,246,0.15);
-box-shadow:0 0 40px rgba(59,130,246,0.12);
+[data-theme="light"] .layer::after{
+background:#0ea5e9;
+box-shadow:0 0 12px rgba(14,165,233,0.4);
+}
+[data-theme="light"] .arch::before{
+background:linear-gradient(180deg,rgba(14,165,233,0.2),rgba(59,130,246,0.2),transparent);
 }
 [data-theme="light"] .layer:hover{
 background:linear-gradient(135deg,#f0f8ff,#e8f2fb);
@@ -161,20 +204,29 @@ background:linear-gradient(90deg,#0ea5e9,#06b6d4);
 color:#475569;
 }
 @media(max-width:768px){
+.arch{
+grid-template-columns:1fr;
+gap:20px;
+}
+.arch::before{
+display:none;
+}
+.layer::after,
+.layer::before{
+display:none;
+}
 .title{
 font-size:34px;
 }
 .layer{
-padding:18px 18px;
+padding:22px;
 }
 .layer h2{
-font-size:22px;
+font-size:20px;
+margin-bottom:6px;
 }
 .layer p{
 font-size:12px;
-}
-.arrow{
-font-size:24px;
 }
 }
 @media(max-width:480px){
@@ -185,8 +237,17 @@ padding:30px 14px 40px;
 font-size:28px;
 margin-bottom:28px;
 }
+.arch{
+gap:16px;
+}
 .layer{
 padding:16px;
+}
+.layer h2{
+font-size:16px;
+}
+.layer p{
+font-size:11px;
 }
 }
 </style>
@@ -236,20 +297,13 @@ padding:16px;
 </div>
 <div class="arch">
 <div class="layer"><h2>Developer Layer</h2><p>Git • PR • CI/CD • Versioning</p></div>
-<div class="arrow">↓</div>
-<div class="layer"><h2>Build Intelligence Layer</h2><p>Validation • Quality • SBOM</p></div>
-<div class="arrow">↓</div>
-<div class="layer"><h2>Security Intelligence Layer</h2><p>SAST • IaC • Container Security</p></div>
-<div class="arrow">↓</div>
-<div class="layer"><h2>Governance & Policy Layer</h2><p>OPA • Compliance • Guardrails</p></div>
-<div class="arrow">↓</div>
-<div class="layer"><h2>Runtime Intelligence Layer</h2><p>Drift • Runtime Security • RBAC</p></div>
-<div class="arrow">↓</div>
-<div class="layer"><h2>Observability Correlation Layer</h2><p>Metrics • Logs • Traces • Events</p></div>
-<div class="arrow">↓</div>
+<div class="layer"><h2>Build Intelligence</h2><p>Validation • Quality • SBOM</p></div>
+<div class="layer"><h2>Security Intelligence</h2><p>SAST • IaC • Container Security</p></div>
+<div class="layer"><h2>Governance & Policy</h2><p>OPA • Compliance • Guardrails</p></div>
+<div class="layer"><h2>Runtime Intelligence</h2><p>Drift • Runtime Security • RBAC</p></div>
+<div class="layer"><h2>Observability Correlation</h2><p>Metrics • Logs • Traces • Events</p></div>
 <div class="layer"><h2>AI Operational Analysis</h2><p>RCA • Risk • Recommendations</p></div>
-<div class="arrow">↓</div>
-<div class="layer"><h2>Operational Decision Layer</h2><p>Human Approval • Rollback • CAB</p></div>
+<div class="layer"><h2>Operational Decision</h2><p>Human Approval • Rollback • CAB</p></div>
 </div>
 </div>
 </div>

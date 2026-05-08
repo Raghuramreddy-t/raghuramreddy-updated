@@ -183,6 +183,121 @@ Show real systems, real impact, and clear thinking.
                 grid-template-columns: 1fr;
             }
         }
+
+        .home-page .featured-carousel-section {
+            background: transparent;
+        }
+
+        .home-page .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .home-page .impact-card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-height: 220px;
+            padding: 26px;
+            border-radius: 24px;
+            text-decoration: none;
+            background: rgba(15, 23, 42, 0.74);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .home-page .impact-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(110, 231, 255, 0.35);
+            box-shadow: 0 28px 60px rgba(59, 130, 246, 0.18);
+        }
+
+        .home-page .impact-badge {
+            display: inline-flex;
+            width: fit-content;
+            align-items: center;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #dbeafe;
+            background: rgba(59, 130, 246, 0.14);
+            border: 1px solid rgba(96, 165, 250, 0.28);
+        }
+
+        .home-page .impact-card h3 {
+            font-size: 22px;
+            line-height: 1.2;
+            color: #f8fafc;
+        }
+
+        .home-page .impact-card p {
+            margin: 0;
+            color: rgba(203, 213, 225, 0.9);
+            line-height: 1.7;
+        }
+
+        .home-page .impact-meta {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .home-page .impact-meta span {
+            padding: 7px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: rgba(226, 232, 240, 0.9);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+        }
+
+        [data-theme="light"] .home-page .impact-card {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(148, 163, 184, 0.22);
+            box-shadow: 0 18px 42px rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .home-page .impact-card:hover {
+            border-color: rgba(59, 130, 246, 0.22);
+            box-shadow: 0 26px 50px rgba(59, 130, 246, 0.12);
+        }
+
+        [data-theme="light"] .home-page .impact-badge {
+            color: #1d4ed8;
+            background: rgba(59, 130, 246, 0.08);
+            border-color: rgba(59, 130, 246, 0.18);
+        }
+
+        [data-theme="light"] .home-page .impact-card h3 {
+            color: #0f172a;
+        }
+
+        [data-theme="light"] .home-page .impact-card p {
+            color: #475569;
+        }
+
+        [data-theme="light"] .home-page .impact-meta span {
+            color: #334155;
+            background: rgba(148, 163, 184, 0.08);
+            border-color: rgba(148, 163, 184, 0.18);
+        }
+
+        @media (max-width: 1100px) {
+            .home-page .impact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 720px) {
+            .home-page .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
     <script type="application/ld+json">
@@ -401,183 +516,57 @@ Show real systems, real impact, and clear thinking.
 
     <hr class="gradient-divider">
 
-    <!-- Featured Spotlight Carousel -->
-<section class="section featured-carousel-section" id="featured-spotlight">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Featured Work</span>
-            <h2 class="section-title">Areas of Impact</h2>
-            <p class="section-subtitle">Platform engineering &middot; Security automation &middot; AI operations &middot; Knowledge sharing</p>
-        </div>
-        <div class="spotlight-carousel" id="spotlightCarousel">
-            <!-- Slide 1: Platform Engineering -->
-            <div class="spotlight-slide active" data-slide="0">
-                <div class="spotlight-content">
-                    <div class="spotlight-badge">Platform Engineering</div>
+    <section class="section featured-carousel-section" id="featured-spotlight">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Featured Work</span>
+                <h2 class="section-title">Areas of Impact</h2>
+                <p class="section-subtitle">Platform engineering &middot; Security automation &middot; AI operations &middot; Knowledge sharing</p>
+            </div>
+
+            <div class="impact-grid">
+                <a href="pages/work.html" class="impact-card">
+                    <div class="impact-badge">Platform Engineering</div>
                     <h3>Enterprise-Scale Delivery Platforms</h3>
-                    <p>Designing and operating internal developer platforms that serve 5,000+ engineers across regulated industries. Built standardized CI/CD governance, release reliability, and software supply chain security controls &mdash; enabling repeatable, auditable deployments across multiple organizations.</p>
-                    <div class="spotlight-stats">
-                        <div class="sstat"><span class="sstat-num">5K+</span><span class="sstat-label">Developers Served</span></div>
-                        <div class="sstat"><span class="sstat-num">35+</span><span class="sstat-label">Teams Enabled</span></div>
-                        <div class="sstat"><span class="sstat-num">80%</span><span class="sstat-label">Faster Remediation</span></div>
+                    <p>Internal developer platforms, standardized CI/CD governance, and release reliability for regulated environments.</p>
+                    <div class="impact-meta">
+                        <span>5K+ engineers</span>
+                        <span>35+ teams</span>
                     </div>
-                    <a href="pages/work.html" class="spotlight-cta">View Platform Work &rarr;</a>
-                </div>
-                <div class="spotlight-visual">
-                    <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Pipeline flow diagram -->
-                        <rect x="20" y="110" width="70" height="40" rx="8" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.6)" stroke-width="1.5"/>
-                        <text x="55" y="135" text-anchor="middle" fill="#60a5fa" font-size="11" font-family="monospace">Plan</text>
-                        <path d="M90 130 L110 130" stroke="rgba(59,130,246,0.5)" stroke-width="1.5" marker-end="url(#arr)"/>
-                        <rect x="110" y="110" width="70" height="40" rx="8" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.6)" stroke-width="1.5"/>
-                        <text x="145" y="135" text-anchor="middle" fill="#60a5fa" font-size="11" font-family="monospace">Build</text>
-                        <path d="M180 130 L200 130" stroke="rgba(59,130,246,0.5)" stroke-width="1.5"/>
-                        <rect x="200" y="110" width="70" height="40" rx="8" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.6)" stroke-width="1.5"/>
-                        <text x="235" y="135" text-anchor="middle" fill="#a78bfa" font-size="11" font-family="monospace">Test</text>
-                        <path d="M270 130 L290 130" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
-                        <rect x="290" y="110" width="80" height="40" rx="8" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.6)" stroke-width="1.5"/>
-                        <text x="330" y="135" text-anchor="middle" fill="#34d399" font-size="11" font-family="monospace">Deploy</text>
-                        <!-- Live flow packet -->
-                        <circle class="flow-packet" cx="90" cy="130" r="4.5" fill="#60a5fa"/>
-                        <circle class="flow-packet flow-packet-2" cx="90" cy="130" r="3.5" fill="#34d399"/>
-                        <!-- Security shield -->
-                        <path d="M195 60 L205 55 L215 60 L215 72 L205 78 L195 72 Z" fill="rgba(59,130,246,0.2)" stroke="#60a5fa" stroke-width="1.5"/>
-                        <text x="205" y="70" text-anchor="middle" fill="#60a5fa" font-size="9">SEC</text>
-                        <!-- Metrics -->
-                        <rect x="40" y="180" width="120" height="60" rx="10" fill="rgba(15,23,42,0.8)" stroke="rgba(59,130,246,0.3)" stroke-width="1"/>
-                        <text x="100" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">MTTR</text>
-                        <text x="100" y="225" text-anchor="middle" fill="#34d399" font-size="20" font-weight="bold">11 min</text>
-                        <rect x="230" y="180" width="120" height="60" rx="10" fill="rgba(15,23,42,0.8)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
-                        <text x="290" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">Coverage</text>
-                        <text x="290" y="225" text-anchor="middle" fill="#a78bfa" font-size="20" font-weight="bold">5,000+</text>
-                        <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="rgba(59,130,246,0.5)"/></marker></defs>
-                    </svg>
-                </div>
-            </div>
-            <!-- Slide 2: AI & Security -->
-            <div class="spotlight-slide" data-slide="1">
-                <div class="spotlight-content">
-                    <div class="spotlight-badge">AI & Cybersecurity</div>
+                </a>
+
+                <a href="pages/applied-ai-systems.html" class="impact-card">
+                    <div class="impact-badge">Security Automation</div>
                     <h3>AI-Driven Security & Operations</h3>
-                    <p>Integrating applied AI into DevSecOps workflows &mdash; from intelligent pipeline anomaly detection to automated compliance validation. Building the intersection of AI and secure software delivery for critical enterprise infrastructure.</p>
-                    <div class="spotlight-stats">
-                        <div class="sstat"><span class="sstat-num">40%</span><span class="sstat-label">Fewer Incidents</span></div>
-                        <div class="sstat"><span class="sstat-num">3x</span><span class="sstat-label">Faster Detection</span></div>
-                        <div class="sstat"><span class="sstat-num">Zero</span><span class="sstat-label">Critical CVEs Shipped</span></div>
+                    <p>Applied AI for anomaly detection, compliance validation, and secure software delivery workflows.</p>
+                    <div class="impact-meta">
+                        <span>Fewer incidents</span>
+                        <span>Faster detection</span>
                     </div>
-                    <a href="pages/applied-ai-systems.html" class="spotlight-cta">View AI Work &rarr;</a>
-                </div>
-                <div class="spotlight-visual">
-                    <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background grid lines -->
-                        <line x1="0" y1="70" x2="400" y2="70" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
-                        <line x1="0" y1="140" x2="400" y2="140" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
-                        <line x1="0" y1="210" x2="400" y2="210" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
-                        <!-- Input layer -->
-                        <circle cx="55" cy="80" r="16" fill="rgba(59,130,246,0.25)" stroke="#60a5fa" stroke-width="2"/>
-                        <text x="55" y="85" text-anchor="middle" fill="#93c5fd" font-size="9">IN</text>
-                        <circle cx="55" cy="140" r="16" fill="rgba(59,130,246,0.25)" stroke="#60a5fa" stroke-width="2"/>
-                        <text x="55" y="145" text-anchor="middle" fill="#93c5fd" font-size="9">SIG</text>
-                        <circle cx="55" cy="200" r="16" fill="rgba(59,130,246,0.25)" stroke="#60a5fa" stroke-width="2"/>
-                        <text x="55" y="205" text-anchor="middle" fill="#93c5fd" font-size="9">LOG</text>
-                        <!-- Hidden layer 1 -->
-                        <circle cx="155" cy="60" r="16" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
-                        <circle cx="155" cy="110" r="16" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
-                        <circle cx="155" cy="160" r="16" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
-                        <circle cx="155" cy="210" r="16" fill="rgba(167,139,250,0.25)" stroke="#a78bfa" stroke-width="2"/>
-                        <!-- Hidden layer 2 -->
-                        <circle cx="255" cy="100" r="16" fill="rgba(52,211,153,0.25)" stroke="#34d399" stroke-width="2"/>
-                        <circle cx="255" cy="160" r="16" fill="rgba(52,211,153,0.25)" stroke="#34d399" stroke-width="2"/>
-                        <!-- Output / AI node -->
-                        <circle cx="345" cy="130" r="22" fill="rgba(251,191,36,0.2)" stroke="#fbbf24" stroke-width="2.5"/>
-                        <text x="345" y="127" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">AI</text>
-                        <text x="345" y="141" text-anchor="middle" fill="#fbbf24" font-size="8">OPS</text>
-                        <!-- Connections: input to h1 -->
-                        <line x1="71" y1="80" x2="139" y2="60" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
-                        <line x1="71" y1="80" x2="139" y2="110" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
-                        <line x1="71" y1="140" x2="139" y2="110" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
-                        <line x1="71" y1="140" x2="139" y2="160" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
-                        <line x1="71" y1="200" x2="139" y2="160" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
-                        <line x1="71" y1="200" x2="139" y2="210" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
-                        <!-- Connections: h1 to h2 -->
-                        <line x1="171" y1="60" x2="239" y2="100" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
-                        <line x1="171" y1="110" x2="239" y2="100" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
-                        <line x1="171" y1="160" x2="239" y2="160" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
-                        <line x1="171" y1="210" x2="239" y2="160" stroke="rgba(167,139,250,0.45)" stroke-width="1.5"/>
-                        <!-- Connections: h2 to output -->
-                        <line x1="271" y1="100" x2="323" y2="120" stroke="rgba(52,211,153,0.6)" stroke-width="2"/>
-                        <line x1="271" y1="160" x2="323" y2="140" stroke="rgba(52,211,153,0.6)" stroke-width="2"/>
-                        <!-- Status cards -->
-                        <rect x="10" y="235" width="105" height="34" rx="8" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.4)" stroke-width="1"/>
-                        <text x="62" y="250" text-anchor="middle" fill="#94a3b8" font-size="9">Anomaly Detect</text>
-                        <text x="62" y="263" text-anchor="middle" fill="#60a5fa" font-size="10" font-weight="700">Active</text>
-                        <rect x="145" y="235" width="110" height="34" rx="8" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
-                        <text x="200" y="250" text-anchor="middle" fill="#94a3b8" font-size="9">Policy Validation</text>
-                        <text x="200" y="263" text-anchor="middle" fill="#a78bfa" font-size="10" font-weight="700">Auto-enforced</text>
-                        <rect x="275" y="235" width="115" height="34" rx="8" fill="rgba(52,211,153,0.12)" stroke="rgba(52,211,153,0.4)" stroke-width="1"/>
-                        <text x="332" y="250" text-anchor="middle" fill="#94a3b8" font-size="9">Remediation</text>
-                        <text x="332" y="263" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700">AI-Assisted</text>
-                    </svg>
-                </div>
-            </div>
-            <!-- Slide 3: Writing & Publications -->
-            <div class="spotlight-slide" data-slide="2">
-                <div class="spotlight-content">
-                    <div class="spotlight-badge">Research & Writing</div>
+                </a>
+
+                <a href="pages/writing.html" class="impact-card">
+                    <div class="impact-badge">AI Operations</div>
                     <h3>Published Research & Industry Knowledge</h3>
-                    <p>Advancing the field through peer-reviewed research, technical writing, and an open knowledge-sharing platform. Covering DevSecOps, platform engineering, AI operations, and software supply chain security to benefit the broader engineering community.</p>
-                    <div class="spotlight-stats">
-                        <div class="sstat"><span class="sstat-num">10+</span><span class="sstat-label">Technical Articles</span></div>
-                        <div class="sstat"><span class="sstat-num">Open</span><span class="sstat-label">Knowledge Hub</span></div>
-                        <div class="sstat"><span class="sstat-num">CET</span><span class="sstat-label">Field Contributor</span></div>
+                    <p>Technical writing, research notes, and knowledge systems covering platform engineering and DevSecOps.</p>
+                    <div class="impact-meta">
+                        <span>Articles</span>
+                        <span>Research</span>
                     </div>
-                    <a href="pages/writing.html" class="spotlight-cta">View Writing &rarr;</a>
-                </div>
-                <div class="spotlight-visual">
-                    <svg viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Article cards stacked -->
-                        <rect x="50" y="30" width="200" height="130" rx="12" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.5)" stroke-width="1.5"/>
-                        <rect x="58" y="50" width="140" height="10" rx="5" fill="rgba(59,130,246,0.5)"/>
-                        <rect x="58" y="70" width="110" height="7" rx="3" fill="rgba(59,130,246,0.3)"/>
-                        <rect x="58" y="84" width="130" height="7" rx="3" fill="rgba(59,130,246,0.25)"/>
-                        <rect x="58" y="98" width="95" height="7" rx="3" fill="rgba(59,130,246,0.2)"/>
-                        <rect x="58" y="118" width="60" height="22" rx="6" fill="rgba(59,130,246,0.25)" stroke="rgba(59,130,246,0.6)" stroke-width="1"/>
-                        <text x="88" y="133" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">DevSecOps</text>
-                        <!-- Second article card (offset) -->
-                        <rect x="80" y="80" width="200" height="130" rx="12" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
-                        <rect x="88" y="100" width="140" height="10" rx="5" fill="rgba(167,139,250,0.5)"/>
-                        <rect x="88" y="120" width="110" height="7" rx="3" fill="rgba(167,139,250,0.3)"/>
-                        <rect x="88" y="134" width="130" height="7" rx="3" fill="rgba(167,139,250,0.25)"/>
-                        <rect x="88" y="148" width="60" height="22" rx="6" fill="rgba(167,139,250,0.25)" stroke="rgba(167,139,250,0.6)" stroke-width="1"/>
-                        <text x="118" y="163" text-anchor="middle" fill="#c4b5fd" font-size="9" font-weight="700">Platform Eng</text>
-                        <!-- Third article card (most front) -->
-                        <rect x="110" y="130" width="200" height="115" rx="12" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.5)" stroke-width="1.5"/>
-                        <rect x="118" y="150" width="140" height="10" rx="5" fill="rgba(52,211,153,0.5)"/>
-                        <rect x="118" y="170" width="110" height="7" rx="3" fill="rgba(52,211,153,0.3)"/>
-                        <rect x="118" y="184" width="130" height="7" rx="3" fill="rgba(52,211,153,0.25)"/>
-                        <rect x="118" y="200" width="60" height="22" rx="6" fill="rgba(52,211,153,0.25)" stroke="rgba(52,211,153,0.6)" stroke-width="1"/>
-                        <text x="148" y="215" text-anchor="middle" fill="#6ee7b7" font-size="9" font-weight="700">AI-OPS</text>
-                        <!-- Side knowledge pills -->
-                        <rect x="328" y="50" width="62" height="26" rx="8" fill="rgba(251,191,36,0.15)" stroke="rgba(251,191,36,0.5)" stroke-width="1"/>
-                        <text x="359" y="67" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Research</text>
-                        <rect x="332" y="100" width="58" height="26" rx="8" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.5)" stroke-width="1"/>
-                        <text x="361" y="117" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">Writing</text>
-                        <rect x="328" y="150" width="62" height="26" rx="8" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.5)" stroke-width="1"/>
-                        <text x="359" y="167" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="600">Open KB</text>
-                        <rect x="330" y="200" width="60" height="26" rx="8" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/>
-                        <text x="360" y="217" text-anchor="middle" fill="#6ee7b7" font-size="10" font-weight="600">10+ Posts</text>
-                    </svg>
-                </div>
+                </a>
+
+                <a href="pages/writing.html" class="impact-card">
+                    <div class="impact-badge">Knowledge Sharing</div>
+                    <h3>Open Knowledge Systems</h3>
+                    <p>Reusable reference material, diagram suites, and practical insights that help teams move faster safely.</p>
+                    <div class="impact-meta">
+                        <span>Reference guides</span>
+                        <span>Diagram suites</span>
+                    </div>
+                </a>
             </div>
         </div>
-        <!-- Carousel Controls -->
-        <div class="carousel-controls">
-            <button class="carousel-dot active" data-target="0" aria-label="Slide 1"></button>
-            <button class="carousel-dot" data-target="1" aria-label="Slide 2"></button>
-            <button class="carousel-dot" data-target="2" aria-label="Slide 3"></button>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Ecosystem Section -->
     <section class="section ecosystem" id="ecosystem-section">
@@ -1055,8 +1044,6 @@ Show real systems, real impact, and clear thinking.
     <script>renderEcosystem("ecosystem");</script>
 </body>
 </html>
-
-
 
 
 
