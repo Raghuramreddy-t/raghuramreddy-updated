@@ -211,7 +211,7 @@
 
                     <!-- GPT LAB PANEL -->
                     <div class="tc-provider-panel" id="to-lab-panel-gpt">
-                        <div class="tc-model-grid tc-model-grid-6">
+                        <div class="tc-model-grid">
                             <!-- Rendered by JS -->
                         </div>
                     </div>
@@ -479,9 +479,9 @@
                 ['claude', 'gpt'].forEach(providerId => {
                     const provider = getProvider(providerId);
                     const panelId = `to-lab-panel-${providerId}`;
-                    const gridClass = providerId === 'gpt' ? 'tc-model-grid-6' : 'tc-model-grid';
+                    const gridClass = 'tc-model-grid';
                     const panel = document.getElementById(panelId);
-                    const grid = panel.querySelector('.tc-model-grid, .tc-model-grid-6') || document.createElement('div');
+                    const grid = panel.querySelector('.tc-model-grid') || document.createElement('div');
                     grid.className = gridClass;
                     grid.innerHTML = '';
 
