@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="How deployments, logs, metrics, and security signals converge into AI-driven operational analysis.">
-<title>Operational Intelligence Flow | Intelligent Delivery Platforms</title>
-<link rel="canonical" href="https://raghuramreddy.tech/pages/blog/diagrams/operational-intelligence-flow.html">
+<meta name="description" content="8-layer reference architecture for Intelligent Delivery Platforms: from developer workflows through AI operational analysis to decision layers.">
+<title>Reference Architecture | Intelligent Delivery Platforms | RaghuRamReddy</title>
+<link rel="canonical" href="https://raghuramreddy.tech/pages/blog/diagrams/reference-architecture.html">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AI-Assisted Operational Intelligence Flow">
-<meta property="og:description" content="Telemetry correlation engine: deployments, logs, metrics, and security events flowing into AI analysis and human decision layers.">
-<meta property="og:url" content="https://raghuramreddy.tech/pages/blog/diagrams/operational-intelligence-flow.html">
+<meta property="og:title" content="Intelligent Delivery Platform Reference Architecture">
+<meta property="og:description" content="8-layer architecture: Developer → Build Intelligence → Security → Governance → Runtime → Observability → AI Analysis → Decision">
+<meta property="og:url" content="https://raghuramreddy.tech/pages/blog/diagrams/reference-architecture.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,19 +23,19 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
-background:#030712;
+background:#050816;
 font-family:Inter,sans-serif;
 color:white;
-padding:60px 20px;
+padding:40px 18px 48px;
 }
 .container{
 width:100%;
-max-width:1200px;
+max-width:920px;
 margin:0 auto;
 }
 .back-btn{
 display:inline-block;
-margin-bottom:40px;
+margin-bottom:24px;
 padding:10px 16px;
 border:1px solid rgba(255,255,255,0.1);
 border-radius:8px;
@@ -50,73 +50,74 @@ color:#fff;
 }
 .header{
 text-align:center;
-margin-bottom:80px;
+margin-bottom:44px;
 animation:fadeIn 0.6s ease-out;
 }
 .title{
-font-size:54px;
+font-size:46px;
 font-weight:800;
-margin-bottom:16px;
+margin-bottom:12px;
 background:linear-gradient(90deg,#6ee7ff,#8b5cf6,#d946ef);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 .subtitle{
-font-size:16px;
+font-size:15px;
 color:#cbd5e1;
-max-width:600px;
+max-width:680px;
 margin:0 auto;
-line-height:1.6;
+line-height:1.55;
 }
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-margin-bottom:70px;
+.arch{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:14px;
 }
-.node{
-padding:32px;
-border-radius:28px;
-background:linear-gradient(135deg,#111827,#1f2937);
+.layer{
+width:100%;
+padding:20px 22px;
 text-align:center;
-box-shadow:0 0 30px rgba(0,0,0,.45);
+border-radius:24px;
+background:linear-gradient(135deg,#111827,#1e293b);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 0 30px rgba(124,58,237,0.2);
 transition:all 0.3s ease;
 animation:slideUp 0.6s ease-out backwards;
 }
-.node:nth-child(1){animation-delay:0.1s}
-.node:nth-child(2){animation-delay:0.2s}
-.node:nth-child(3){animation-delay:0.3s}
-.node:hover{
+.layer:nth-child(1){animation-delay:0.1s}
+.layer:nth-child(3){animation-delay:0.2s}
+.layer:nth-child(5){animation-delay:0.3s}
+.layer:nth-child(7){animation-delay:0.4s}
+.layer:nth-child(9){animation-delay:0.5s}
+.layer:nth-child(11){animation-delay:0.6s}
+.layer:nth-child(13){animation-delay:0.7s}
+.layer:nth-child(15){animation-delay:0.8s}
+.layer:hover{
+background:linear-gradient(135deg,#0f172a,#1a2f4b);
 box-shadow:0 0 50px rgba(124,58,237,0.35);
-transform:translateY(-4px);
+transform:translateY(-2px);
 }
-.node h2{
-font-size:28px;
-margin-bottom:14px;
-color:#6ee7ff;
-font-weight:700;
-}
-.node p{
-color:#d1d5db;
-font-size:14px;
-line-height:1.6;
-}
-.center{
-text-align:center;
-font-size:32px;
-line-height:2.2;
-font-weight:700;
-color:#d1d5db;
-animation:fadeIn 0.8s ease-out 0.4s backwards;
-}
-.highlight{
-color:#6ee7ff;
-font-size:34px;
-}
-.arrow-connector{
+.layer h2{
+margin:0;
 font-size:24px;
+font-weight:700;
+margin-bottom:6px;
+background:linear-gradient(90deg,#6ee7ff,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.layer p{
+margin:0;
+color:#cbd5e1;
+font-size:13px;
+line-height:1.45;
+}
+.arrow{
+font-size:30px;
 color:#6ee7ff;
 opacity:0.8;
+line-height:1;
 }
 @keyframes fadeIn{
 from{opacity:0}
@@ -127,62 +128,65 @@ from{opacity:0;transform:translateY(20px)}
 to{opacity:1;transform:translateY(0)}
 }
 [data-theme="light"] body{
-background:linear-gradient(135deg,#f0f4f8,#f9fafb);
+background:#f9fafb;
 color:#111827;
 }
-[data-theme="light"] .node{
+[data-theme="light"] .layer{
+background:linear-gradient(135deg,#f3f4f6,#e5e7eb);
+border-color:rgba(0,0,0,0.08);
+box-shadow:0 0 30px rgba(59,130,246,0.1);
+}
+[data-theme="light"] .layer:hover{
+background:linear-gradient(135deg,#f0f1f3,#dfe3e9);
+box-shadow:0 0 50px rgba(59,130,246,0.2);
+}
+[data-theme="light"] body{
+background:linear-gradient(135deg,#f0f4f8,#f9fafb);
+}
+[data-theme="light"] .layer{
 background:linear-gradient(135deg,#ffffff,#f3f8fc);
-border:1px solid rgba(59,130,246,0.1);
+border-color:rgba(59,130,246,0.15);
 box-shadow:0 0 40px rgba(59,130,246,0.12);
 }
-[data-theme="light"] .node:hover{
+[data-theme="light"] .layer:hover{
 background:linear-gradient(135deg,#f0f8ff,#e8f2fb);
 box-shadow:0 0 60px rgba(59,130,246,0.2);
 }
-[data-theme="light"] .node h2{
+[data-theme="light"] .layer h2{
 background:linear-gradient(90deg,#0ea5e9,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-[data-theme="light"] .node p{
+[data-theme="light"] .layer p{
 color:#475569;
 }
-[data-theme="light"] .center{
-color:#1e293b;
-}
-[data-theme="light"] .highlight{
-background:linear-gradient(90deg,#0ea5e9,#06b6d4);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-@media(max-width:1024px){
-.grid{
-grid-template-columns:1fr;
-}
+@media(max-width:768px){
 .title{
-font-size:42px;
+font-size:34px;
 }
+.layer{
+padding:18px 18px;
 }
-@media(max-width:640px){
-body{
-padding:40px 20px;
-}
-.title{
-font-size:32px;
-margin-bottom:60px;
-}
-.node{
-padding:24px;
-}
-.node h2{
+.layer h2{
 font-size:22px;
 }
-.center{
-font-size:24px;
-line-height:1.8;
+.layer p{
+font-size:12px;
 }
-.highlight{
-font-size:26px;
+.arrow{
+font-size:24px;
+}
+}
+@media(max-width:480px){
+body{
+padding:30px 14px 40px;
+}
+.title{
+font-size:28px;
+margin-bottom:28px;
+}
+.layer{
+padding:16px;
 }
 }
 </style>
@@ -227,22 +231,25 @@ font-size:26px;
 <div class="container">
 <a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">← Back to Diagrams</a>
 <div class="header">
-<div class="title">Operational Intelligence<br>Flow</div>
-<p class="subtitle">How deployments, logs, metrics, and security signals converge into AI-driven operational analysis</p>
+<div class="title">Intelligent Delivery Platform<br>Reference Architecture</div>
+<p class="subtitle">8-layer stack from developer workflows through AI operational analysis to decision layers</p>
 </div>
-<div class="grid">
-<div class="node"><h2>Deployments</h2><p>Release telemetry and rollout intelligence</p></div>
-<div class="node"><h2>Logs & Metrics</h2><p>Operational telemetry streams</p></div>
-<div class="node"><h2>Security Events</h2><p>Runtime anomalies and drift signals</p></div>
-</div>
-<div class="center">
-<span class="highlight">Telemetry Correlation Engine</span><br>
-<span class="arrow-connector">↓</span><br>
-<span class="highlight">AI Operational Intelligence</span><br>
-<span class="arrow-connector">↓</span><br>
-Risk Analysis • Anomaly Detection • Root Cause Suggestions • Remediation Guidance<br>
-<span class="arrow-connector">↓</span><br>
-Human Decision Layer
+<div class="arch">
+<div class="layer"><h2>Developer Layer</h2><p>Git • PR • CI/CD • Versioning</p></div>
+<div class="arrow">↓</div>
+<div class="layer"><h2>Build Intelligence Layer</h2><p>Validation • Quality • SBOM</p></div>
+<div class="arrow">↓</div>
+<div class="layer"><h2>Security Intelligence Layer</h2><p>SAST • IaC • Container Security</p></div>
+<div class="arrow">↓</div>
+<div class="layer"><h2>Governance & Policy Layer</h2><p>OPA • Compliance • Guardrails</p></div>
+<div class="arrow">↓</div>
+<div class="layer"><h2>Runtime Intelligence Layer</h2><p>Drift • Runtime Security • RBAC</p></div>
+<div class="arrow">↓</div>
+<div class="layer"><h2>Observability Correlation Layer</h2><p>Metrics • Logs • Traces • Events</p></div>
+<div class="arrow">↓</div>
+<div class="layer"><h2>AI Operational Analysis</h2><p>RCA • Risk • Recommendations</p></div>
+<div class="arrow">↓</div>
+<div class="layer"><h2>Operational Decision Layer</h2><p>Human Approval • Rollback • CAB</p></div>
 </div>
 </div>
 </div>
@@ -252,8 +259,8 @@ Human Decision Layer
 <div class="footer-inner">
 <div class="footer-main">
 <div class="footer-top">
-<h3>Operational Intelligence Flow</h3>
-<p>How deployments, logs, metrics, and security signals converge into AI-driven operational analysis</p>
+<h3>Intelligent Delivery Platform Reference Architecture</h3>
+<p>8-layer stack from developer workflows through AI operational analysis to decision layers</p>
 <div class="footer-icon-grid">
 <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
