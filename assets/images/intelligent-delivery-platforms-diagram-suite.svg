@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Intelligent Delivery Platform Diagram Suite</title>
+  <desc id="desc">Dark enterprise diagram hero showing pipeline, architecture, runtime, and ecosystem layers.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050816" />
+      <stop offset="100%" stop-color="#0b1024" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6ee7ff" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#d946ef" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#1f2937" />
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="980" cy="110" r="170" fill="#8b5cf6" opacity="0.10" />
+  <circle cx="210" cy="520" r="220" fill="#6ee7ff" opacity="0.08" />
+  <path d="M0 520C180 460 300 570 520 530S860 430 1200 500V630H0Z" fill="#111827" opacity="0.55" />
+
+  <g filter="url(#shadow)">
+    <rect x="72" y="64" width="1056" height="502" rx="30" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" />
+  </g>
+
+  <g transform="translate(110 112)">
+    <rect x="0" y="0" width="132" height="132" rx="24" fill="rgba(110,231,255,0.10)" stroke="url(#accent)" stroke-width="2" />
+    <text x="66" y="82" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="url(#accent)">RRR</text>
+
+    <text x="184" y="28" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#ffffff">Intelligent Delivery Platform</text>
+    <text x="184" y="64" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#6ee7ff">Diagram Suite</text>
+    <text x="184" y="102" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="18" fill="#b8c1ec">Traditional pipelines, reference architecture, runtime reality, and ecosystem mapping</text>
+  </g>
+
+  <g transform="translate(108 282)">
+    <rect x="0" y="0" width="180" height="86" rx="18" fill="url(#panel)" stroke="rgba(255,255,255,0.08)" />
+    <text x="90" y="35" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#6ee7ff">Code</text>
+    <text x="90" y="60" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="15" fill="#d1d5db">Execution</text>
+
+    <text x="215" y="54" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#6ee7ff">→</text>
+
+    <rect x="252" y="0" width="212" height="86" rx="18" fill="url(#panel)" stroke="rgba(255,255,255,0.08)" />
+    <text x="358" y="35" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#d946ef">Intelligence</text>
+    <text x="358" y="60" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="15" fill="#d1d5db">Context + Risk + Telemetry</text>
+
+    <text x="490" y="54" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="28" font-weight="800" fill="#6ee7ff">→</text>
+
+    <rect x="528" y="0" width="250" height="86" rx="18" fill="url(#panel)" stroke="rgba(255,255,255,0.08)" />
+    <text x="653" y="35" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#8b5cf6">Governance</text>
+    <text x="653" y="60" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="15" fill="#d1d5db">Policy, approval, remediation</text>
+  </g>
+
+  <g transform="translate(108 404)">
+    <rect x="0" y="0" width="976" height="84" rx="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" />
+    <text x="488" y="35" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Layers</text>
+    <text x="488" y="59" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" fill="#b8c1ec">Developer → Build Intelligence → Security Intelligence → Runtime Intelligence → Observability → AI Analysis → Decision</text>
+  </g>
+
+  <text x="600" y="586" text-anchor="middle" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="16" fill="#94a3b8">raghuramreddy.tech</text>
+</svg>

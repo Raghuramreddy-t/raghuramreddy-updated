@@ -104,7 +104,7 @@
     <div class="work-panel" id="panel-blog" role="tabpanel">
 
         <section class="section">
-            <div class="container">
+            <div class="container" data-blog-posts>
                 <div class="section-header">
                     <span class="section-tag">Featured</span>
                     <h2 class="section-title">Most Read Articles</h2>
@@ -125,6 +125,20 @@
                         <p>Why traditional CI/CD pipelines are evolving into AI-assisted operational systems. Exploring the shift from deployment automation to continuous operational intelligence.</p>
                         <div class="blog-card-actions"><a href="blog/intelligent-delivery-platforms.html"
                                 class="project-link"><span>Read Article</span><svg viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg></a></div>
+                    </div>
+                </div>
+
+                <div class="publication-card">
+                    <div class="publication-content blog-card-content">
+                        <div class="project-tags blog-card-tags"><span>Architecture</span><span>Diagrams</span><span>Platform Engineering</span><span>AI Ops</span>
+                        </div>
+                        <h3>Intelligent Delivery Platform Diagram Suite</h3>
+                        <p>A visual companion with the reference architecture, runtime reality comparison, operational intelligence flow, evolution timeline, and ecosystem map.</p>
+                        <div class="blog-card-actions"><a href="blog/intelligent-delivery-platforms-diagrams.html"
+                                class="project-link"><span>Open Diagram Suite</span><svg viewBox="0 0 24 24" fill="none"
                                     stroke="currentColor" stroke-width="2">
                                     <path d="M5 12h14M12 5l7 7-7 7" />
                                 </svg></a></div>
@@ -307,7 +321,7 @@
                     <span class="section-tag">Papers</span>
                     <h2 class="section-title">Technical Publications</h2>
                 </div>
-                <div class="publications-grid">
+                <div class="publications-grid" data-publications-grid>
                     <div class="publication-card" data-aos="fade-up">
                         <div class="publication-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -476,6 +490,7 @@
 
     <script src="../assets/js/main.js?v=20260503"></script>
     <script src="../assets/js/aurora.js?v=20260503"></script>
+    <script src="../assets/js/pages/content-hub-render.js?v=20260508"></script>
     <script>
         (function () {
             var tabs = document.querySelectorAll('#writing-tabs-bar .wtab[data-panel]');
@@ -503,4 +518,3 @@
 </body>
 
 </html>
-

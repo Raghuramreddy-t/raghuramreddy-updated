@@ -5,30 +5,174 @@
   },
   "posts": [
     {
+      "id": "intelligent-delivery-platforms-diagrams",
+      "title": "Intelligent Delivery Platform Diagram Suite",
+      "description": "A visual companion with the reference architecture, runtime reality comparison, operational intelligence flow, evolution timeline, and ecosystem map.",
+      "url": "/pages/blog/intelligent-delivery-platforms-diagrams.html",
+      "tags": ["Architecture", "Diagrams", "Platform Engineering", "AI Ops"],
+      "actions": [
+        {
+          "label": "Open Diagram Suite",
+          "url": "/pages/blog/intelligent-delivery-platforms-diagrams.html"
+        }
+      ]
+    },
+    {
+      "id": "intelligent-delivery-platforms",
+      "title": "The Rise of Intelligent Delivery Platforms",
+      "description": "Why traditional CI/CD pipelines are evolving into AI-assisted operational systems. Exploring the shift from deployment automation to continuous operational intelligence.",
+      "url": "/pages/blog/intelligent-delivery-platforms.html",
+      "tags": ["Platform Engineering", "DevSecOps", "AI Operations", "Cloud-Native"],
+      "actions": [
+        {
+          "label": "Read Article",
+          "url": "/pages/blog/intelligent-delivery-platforms.html"
+        },
+        {
+          "label": "Open Diagram Suite",
+          "url": "/pages/blog/intelligent-delivery-platforms-diagrams.html"
+        }
+      ]
+    },
+    {
+      "id": "token-cost-comparator",
+      "title": "The Token Ledger",
+      "description": "A close read of token counts, embeddings, and tokenizer behavior. Includes cost calculations and educational breakdowns. Use the TokenOps platform for interactive cost estimation.",
+      "url": "/pages/blog/token-cost-comparator.html",
+      "tags": ["Tokenizers", "Token Economics", "Claude", "Demo"],
+      "actions": [
+        {
+          "label": "Read Article",
+          "url": "/pages/blog/token-cost-comparator.html"
+        },
+        {
+          "label": "Open Ledger Lab",
+          "url": "/pages/blog/token-cost-comparator.html#live-demo"
+        }
+      ]
+    },
+    {
+      "id": "rag-knowledge-systems",
+      "title": "Grounded AI Systems",
+      "description": "Comprehensive guide to grounding knowledge in AI systems. Learn RAG, vector embeddings, MCP, agents, and multi-agent architectures. Hallucination problems, retrieval strategies, real-world considerations, and when to use each pattern.",
+      "url": "/pages/blog/rag-knowledge-systems.html",
+      "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "Grounding"],
+      "actions": [
+        {
+          "label": "Read Article",
+          "url": "/pages/blog/rag-knowledge-systems.html"
+        },
+        {
+          "label": "Open Grounded AI Lab",
+          "url": "/pages/blog/rag-knowledge-systems.html#live-demo"
+        }
+      ]
+    },
+    {
+      "id": "ci-cd-failures-at-scale",
+      "title": "Why Enterprise CI/CD Pipelines Fail at Scale",
+      "description": "Most enterprise CI/CD failures are system design problems. A breakdown of where reliability fails and how to fix it architecturally.",
+      "url": "/pages/blog/ci-cd-failures-at-scale.html",
+      "tags": ["CI/CD", "Platform Engineering", "Scale", "7 min"],
+      "actions": [
+        {
+          "label": "Read Article",
+          "url": "/pages/blog/ci-cd-failures-at-scale.html"
+        }
+      ]
+    },
+    {
+      "id": "devops-to-platform-engineering",
+      "title": "From DevOps to Platform Engineering: What Actually Changed",
+      "description": "DevOps is a culture. Platform Engineering is an operating model. This piece gets into what that shift changes in day-to-day delivery.",
+      "url": "/pages/blog/devops-to-platform-engineering.html",
+      "tags": ["Platform Engineering", "DevOps", "IDP", "5 min"],
+      "actions": [
+        {
+          "label": "Read Article",
+          "url": "/pages/blog/devops-to-platform-engineering.html"
+        }
+      ]
+    },
+    {
+      "id": "secure-by-design-ci-cd",
+      "title": "Secure-by-Design CI/CD Is No Longer Optional",
+      "description": "How to embed security as a first-class pipeline capability from build-time policy to provenance evidence.",
+      "url": "/pages/blog/secure-by-design-ci-cd.html",
+      "tags": ["DevSecOps", "Supply Chain", "SBOM", "6 min"],
+      "actions": [
+        {
+          "label": "Read Article",
+          "url": "/pages/blog/secure-by-design-ci-cd.html"
+        }
+      ]
+    },
+    {
+      "id": "toolchain-modernization",
+      "title": "Modernizing Legacy DevOps Toolchains Without Stopping Delivery",
+      "description": "A migration model for upgrading enterprise toolchains across teams without disrupting production delivery.",
+      "url": "/pages/blog/toolchain-modernization.html",
+      "tags": ["Modernization", "GitOps", "Migration", "7 min"],
+      "actions": [
+        {
+          "label": "Read Article",
+          "url": "/pages/blog/toolchain-modernization.html"
+        }
+      ]
+    },
+    {
+      "id": "ai-cicd-troubleshooter",
+      "title": "DevOps Troubleshooters for CI/CD Failures",
+      "description": "An architecture breakdown of advisory troubleshooters: ingestion, matching, confidence scoring, and human control.",
+      "url": "/pages/blog/ai-cicd-troubleshooter.html",
+      "tags": ["AI Ops", "DevOps", "Automation", "12 min"],
+      "actions": [
+        {
+          "label": "Read Article",
+          "url": "/pages/blog/ai-cicd-troubleshooter.html"
+        }
+      ]
+    },
+    {
       "id": "xops-beyond-devops-2025",
       "title": "Why XOps Is the Next Step Beyond DevOps in 2025",
-      "description": "DevOps got us here — but it won’t take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.",
+      "description": "Why XOps is the next operating step for secure, scalable, AI-augmented operations in enterprise platforms.",
       "url": "/pages/blog/xops-beyond-devops-2025.html",
-      "tags": ["XOps", "DevOps", "Platform Engineering", "DevSecOps", "Operating Model"],
-      "published": "2026-02-08",
-      "updated": "2026-02-08",
-      "version": "1.0.0",
-      "alsoPublished": {
-        "linkedin": "https://www.linkedin.com/posts/raghuramreddy-t-9237901b3_xops-devops-mlops-activity-7342718856102109184--scU",
-        "medium": ""
-      },
-      "changelog": [
+      "tags": ["XOps", "DevOps", "Platform Engineering", "AI Ops"],
+      "actions": [
         {
-          "version": "1.0.0",
-          "date": "2026-02-08",
-          "changes": [
-            "Initial publication on portfolio",
-            "Added canonical URL + structured data",
-            "LinkedIn distribution link added"
-          ]
+          "label": "Read Article",
+          "url": "/pages/blog/xops-beyond-devops-2025.html"
         }
-      ],
-      "aiIndexText": "XOps is the next step beyond DevOps. It integrates platform engineering, security, reliability, data and AI into one operating loop. Focus: safe automation, measurable governance, reduced handoffs, faster delivery, security-by-default and feedback loops."
+      ]
+    },
+    {
+      "id": "llm-sonnet-4-6",
+      "title": "LLM Sonnet 4.6 Is Here - Closing the Gap with Frontier Models",
+      "description": "LLM Sonnet 4.6 overview, capability improvements, and what the model shift means for day-to-day AI engineering.",
+      "url": "https://raghuramreddy-tech.medium.com/llm-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e",
+      "tags": ["AI", "LLM", "GenAI"],
+      "actions": [
+        {
+          "label": "Read on Medium",
+          "url": "https://raghuramreddy-tech.medium.com/llm-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e",
+          "target": "_blank"
+        }
+      ]
+    },
+    {
+      "id": "software-platforms-critical-infra",
+      "title": "Software Platforms as Critical Infrastructure: Why Reliability Is Now a Public Interest Problem",
+      "description": "How platform teams can treat reliability, governance, and resilience as infrastructure responsibilities.",
+      "url": "https://raghuramreddy-tech.medium.com/software-platforms-as-critical-infrastructure-why-reliability-is-now-a-public-interest-problem-27da1b5dfc1b",
+      "tags": ["Platform Engineering", "Reliability", "Infrastructure"],
+      "actions": [
+        {
+          "label": "Read on Medium",
+          "url": "https://raghuramreddy-tech.medium.com/software-platforms-as-critical-infrastructure-why-reliability-is-now-a-public-interest-problem-27da1b5dfc1b",
+          "target": "_blank"
+        }
+      ]
     }
   ]
 }

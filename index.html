@@ -1051,54 +1051,10 @@ Show real systems, real impact, and clear thinking.
     <script src="assets/js/pages/ecosystem-data.js?v=20260503"></script>
     <script src="assets/js/pages/ecosystem-render.js?v=20260503"></script>
     <script src="assets/js/pages/terminal-hero.js?v=20260503"></script>
+    <script src="assets/js/pages/home-render.js?v=20260508"></script>
     <script>renderEcosystem("ecosystem");</script>
-<script>
-// Spotlight Carousel
-(function() {
-    var slides = document.querySelectorAll('.spotlight-slide');
-    var dots   = document.querySelectorAll('.carousel-dot');
-    var carousel = document.getElementById('spotlightCarousel');
-    var current = 0;
-    var timer;
-
-    function goTo(n) {
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = (n + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-    }
-
-    dots.forEach(function(dot) {
-        dot.addEventListener('click', function() {
-            stopAuto();
-            goTo(parseInt(this.dataset.target));
-            startAuto();
-        });
-    });
-
-    function stopAuto() {
-        if (timer) clearInterval(timer);
-    }
-
-    function startAuto() {
-        stopAuto();
-        timer = setInterval(function() { goTo(current + 1); }, 5200);
-    }
-
-    if (carousel) {
-        carousel.addEventListener('mouseenter', stopAuto);
-        carousel.addEventListener('mouseleave', startAuto);
-        carousel.addEventListener('touchstart', stopAuto, { passive: true });
-        carousel.addEventListener('touchend', startAuto, { passive: true });
-    }
-
-    startAuto();
-})();
-</script>
 </body>
 </html>
-
 
 
 
