@@ -65,11 +65,26 @@
 
     <main class="section">
         <article class="article-body container">
+            <!-- TL;DR SECTION -->
+            <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px; margin-bottom: 32px;">
+                <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">⚡ TL;DR</h3>
+                <ul style="margin: 8px 0; padding-left: 20px;">
+                    <li><strong>Hallucination Problem:</strong> LLMs invent answers when they lack training data; grounding supplies real information at runtime</li>
+                    <li><strong>RAG Pattern:</strong> Retrieve documents → inject context → model answers based on text (not training weights)</li>
+                    <li><strong>MCP/Agents/Multi-Agent:</strong> Progressive complexity for structured tools, iterative reasoning, and coordinated verification</li>
+                    <li><strong>Choose by task:</strong> RAG for documents, MCP for APIs, Agents for multi-step reasoning, Multi-Agent for compliance</li>
+                    <li><strong>Cost vs. Reliability:</strong> Grounded systems cost more per request but prevent expensive hallucination-driven mistakes</li>
+                </ul>
+            </div>
+
             <section class="article-intro">
                 <h2>The Hallucination Problem</h2>
                 <p>Large language models are trained on data up to a specific cutoff date. They have never seen your internal documentation, your current operational status, or your team's real standards. When you ask them a question they cannot answer from their training data, they don't say "I don't know." Instead, they hallucinate — they confidently fabricate plausible-sounding answers.</p>
                 <p>In production systems, hallucination is unacceptable. A model that confidently tells you "your deployment success rate is 92%" when it's actually 96.2%, or that "the P1 incident response is to wait 24 hours" when your actual standard is immediate escalation — these errors cascade into operational chaos.</p>
                 <p><strong>Grounding</strong> is the fix. Instead of asking the model to guess from its frozen training data, you give it access to the right information at runtime. The model reads the answer instead of inventing it. This is the core idea behind RAG, MCP, agents, and multi-agent systems.</p>
+                <div style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 20px; border-radius: 8px; margin: 24px 0;">
+                    <strong style="color: #22c55e;">Best Practice:</strong> Always measure your baseline hallucination rate before implementing grounding. Build a test set of questions where you know the ground truth answer, then compare model responses with and without context. This gives you a quantified ROI on your grounding investment.
+                </div>
             </section>
 
             <section class="article-section">
@@ -97,6 +112,17 @@
                 <p><strong>Key insight:</strong> The retrieval quality determines everything. If your search finds the wrong documents, the model will answer based on wrong context. Good RAG requires: proper chunking, semantic embeddings, and careful prompt engineering.</p>
                 <p><strong>Cost:</strong> RAG systems cost slightly more per request (retrieval + embedding overhead), but prevent expensive downstream mistakes from hallucinated answers.</p>
                 <p><strong>When to use RAG:</strong> Most enterprise use cases. Document QA, support chatbots, operational intelligence (current metrics, standards, playbooks), knowledge bases that change frequently.</p>
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 20px; border-radius: 8px; margin: 24px 0;">
+                    <strong style="color: #ef4444;">Common Pitfall:</strong> Naive RAG retrieves whatever is most similar, not what is most relevant. A question about "deployment reliability" might retrieve a document mentioning "build reliability" or "reliability metrics" that are not about your deployment process. Solution: Use hybrid retrieval (sparse + dense) with re-ranking to ensure precision.
+                </div>
+                <div style="background: rgba(15, 23, 42, 0.8); color: #93c5fd; padding: 16px; border-radius: 8px; margin: 24px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; overflow-x: auto;">
+                    <div style="margin-bottom: 8px; color: #94a3b8;">// Basic RAG pattern pseudo-code</div>
+                    <div>query = "What is our deployment success rate?"</div>
+                    <div>docs = retriever.search(query, top_k=3)  // Vector + keyword hybrid</div>
+                    <div>context = "\n".join([d.text for d in docs])</div>
+                    <div>prompt = f"Based on: {context}\n\nAnswer: {query}"</div>
+                    <div>response = llm(prompt)  // Model reads docs, doesn't hallucinate</div>
+                </div>
             </section>
 
             <section class="article-section">
@@ -194,6 +220,28 @@
                 <p><strong>Latency:</strong> RAG adds retrieval overhead (typically +100–500ms). MCP adds tool call latency. Agents iterate, so they're slower. Simple completion is fastest but hallucinated.</p>
                 <p><strong>Reliability:</strong> Your grounding is only as good as your source data. Corrupted docs, outdated metrics, or wrong API responses propagate directly to bad answers. Invest in source quality.</p>
                 <p><strong>Auditability:</strong> Grounded systems are auditable — you can see what context the model read. Simple completions and hallucinations are black boxes. For mission-critical decisions, auditability matters.</p>
+            </section>
+
+            <section class="article-section">
+                <h2>Common Pitfalls & Solutions</h2>
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 20px; border-radius: 8px; margin: 24px 0;">
+                    <strong style="color: #ef4444;">Pitfall 1: Stale Context</strong><br/>
+                    Your RAG retrieves documents from 3 weeks ago. Model answers based on outdated metrics or deprecated runbooks.<br/>
+                    <strong>Solution:</strong> Implement context freshness checking. Validate retrieved docs against timestamps and re-rank by recency when querying operational data.
+                </div>
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 20px; border-radius: 8px; margin: 24px 0;">
+                    <strong style="color: #ef4444;">Pitfall 2: Over-Chunking</strong><br/>
+                    Breaking documents into tiny chunks (100 tokens) loses context. "Our policy is X" appears in one chunk, the exception clause "except in emergency Y" appears in another chunk that doesn't get retrieved.<br/>
+                    <strong>Solution:</strong> Use overlapping chunks (50% overlap) and semantic boundaries. Aim for 300-500 token chunks for maximum context retention.
+                </div>
+                <div style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 20px; border-radius: 8px; margin: 24px 0;">
+                    <strong style="color: #22c55e;">Best Practice: Confidence Scoring</strong><br/>
+                    Always return retrieval confidence alongside the answer. "I found the answer with 94% confidence in your Q3 Health Report" is more trustworthy than "The answer is X" with no source attribution.
+                </div>
+                <div style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 20px; border-radius: 8px; margin: 24px 0;">
+                    <strong style="color: #22c55e;">Best Practice: Fallback Chains</strong><br/>
+                    If MCP fails (API down), fall back to RAG. If RAG returns low confidence, escalate to an agent or human. Design graceful degradation so grounding failures don't cascade.
+                </div>
             </section>
 
             <section class="article-section">

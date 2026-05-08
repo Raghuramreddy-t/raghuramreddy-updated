@@ -151,6 +151,31 @@
                 <p>Every AI system I build follows three core principles: it must be <strong>safe by design</strong>, <strong>fully auditable</strong>, and deliver <strong>measurable business value</strong>. AI in operations should enhance human decision-making, not replace human judgment.</p>
             </div>
 
+            <!-- Typical AI Operations Workflow -->
+            <div style="margin: 64px 0; padding: 40px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08)); border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 12px;" data-aos="fade-up">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h3 style="margin: 0 0 12px 0; font-size: 1.3rem;">Typical AI Operations Workflow</h3>
+                    <p style="margin: 0; color: var(--text-secondary); font-size: 0.95rem;">How foundational AI, generative AI, and agentic workflows integrate in enterprise operations</p>
+                </div>
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; flex-direction: column;">
+                    <div style="display: flex; align-items: center; gap: 12px; width: 100%; font-size: 0.9rem;">
+                        <div style="min-width: 140px; padding: 12px 16px; background: rgba(34, 197, 94, 0.1); border-left: 3px solid #22c55e; border-radius: 6px;"><strong>Infrastructure Signals</strong><br><span style="color: var(--text-secondary); font-size: 0.85rem;">Metrics, logs, events</span></div>
+                        <div style="flex: 1; text-align: center; color: var(--accent-primary);">→</div>
+                        <div style="min-width: 140px; padding: 12px 16px; background: rgba(59, 130, 246, 0.1); border-left: 3px solid #3b82f6; border-radius: 6px;"><strong>AIOps Detection</strong><br><span style="color: var(--text-secondary); font-size: 0.85rem;">Anomaly detection</span></div>
+                        <div style="flex: 1; text-align: center; color: var(--accent-primary);">→</div>
+                        <div style="min-width: 140px; padding: 12px 16px; background: rgba(139, 92, 246, 0.1); border-left: 3px solid #8b5cf6; border-radius: 6px;"><strong>GenAI Triage</strong><br><span style="color: var(--text-secondary); font-size: 0.85rem;">Context & summary</span></div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; width: 100%; font-size: 0.9rem;">
+                        <div style="min-width: 140px; padding: 12px 16px; background: rgba(249, 115, 22, 0.1); border-left: 3px solid #f97316; border-radius: 6px;"><strong>Agentic Resolution</strong><br><span style="color: var(--text-secondary); font-size: 0.85rem;">Multi-step actions</span></div>
+                        <div style="flex: 1; text-align: center; color: var(--accent-primary);">→</div>
+                        <div style="min-width: 140px; padding: 12px 16px; background: rgba(168, 85, 247, 0.1); border-left: 3px solid #a855f7; border-radius: 6px;"><strong>Human Approval</strong><br><span style="color: var(--text-secondary); font-size: 0.85rem;">Review & authorize</span></div>
+                        <div style="flex: 1; text-align: center; color: var(--accent-primary);">→</div>
+                        <div style="min-width: 140px; padding: 12px 16px; background: rgba(20, 184, 166, 0.1); border-left: 3px solid #14b8a6; border-radius: 6px;"><strong>Audit & Learning</strong><br><span style="color: var(--text-secondary); font-size: 0.85rem;">Logging & improve</span></div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 24px; color: var(--text-secondary); font-size: 0.9rem;"><em>This workflow keeps humans in control while leveraging AI for speed and pattern recognition at every stage.</em></p>
+            </div>
+
             <div class="ai-capabilities">
                 <div class="ai-card" data-aos="fade-up">
                     <div class="ai-card-icon">
@@ -458,35 +483,137 @@
         </div>
     </section>
 
-    <!-- AI Safety Framework -->
+    <!-- AI Safety & Governance Framework -->
     <section class="section" style="background: var(--bg-primary);">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Framework</span>
-                <h2 class="section-title">AI Safety Principles</h2>
-                <p class="section-subtitle">Every AI system follows these non-negotiable principles</p>
+                <h2 class="section-title">AI Safety & Governance</h2>
+                <p class="section-subtitle">Non-negotiable principles for safe, compliant, auditable AI systems</p>
             </div>
-            <div class="principles-grid">
-                <div class="principle-card" data-aos="fade-up">
-                    <div class="principle-number">01</div>
-                    <h3>Human-in-the-Loop</h3>
-                    <p>Critical decisions always require human approval. AI recommends, humans decide. No fully autonomous actions on production systems without explicit approval chains.</p>
+
+            <!-- Core Principles -->
+            <div style="margin-bottom: 48px;">
+                <h3 style="margin-bottom: 24px; text-align: center; color: var(--text-primary);">Core Principles</h3>
+                <div class="principles-grid">
+                    <div class="principle-card" data-aos="fade-up">
+                        <div class="principle-number">01</div>
+                        <h3>Human-in-the-Loop</h3>
+                        <p>Critical decisions always require human approval. AI recommends, humans decide. No fully autonomous actions on production systems without explicit approval chains.</p>
+                    </div>
+                    <div class="principle-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="principle-number">02</div>
+                        <h3>Full Explainability</h3>
+                        <p>Every AI recommendation includes reasoning. No black boxes. Teams understand why AI suggests specific actions, building trust and enabling better decisions.</p>
+                    </div>
+                    <div class="principle-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="principle-number">03</div>
+                        <h3>Complete Audit Trail</h3>
+                        <p>Every AI action is logged with full context. Who approved, what data was used, what was the outcome. Essential for compliance and continuous improvement.</p>
+                    </div>
+                    <div class="principle-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="principle-number">04</div>
+                        <h3>Graceful Degradation</h3>
+                        <p>When AI systems fail or become unavailable, operations continue safely. Manual overrides always available. AI enhances, never creates single points of failure.</p>
+                    </div>
                 </div>
-                <div class="principle-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="principle-number">02</div>
-                    <h3>Full Explainability</h3>
-                    <p>Every AI recommendation includes reasoning. No black boxes. Teams understand why AI suggests specific actions, building trust and enabling better decisions.</p>
+            </div>
+
+            <!-- Governance & Compliance -->
+            <div style="padding: 32px; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 12px;" data-aos="fade-up">
+                <h3 style="margin-top: 0; margin-bottom: 24px; color: var(--accent-primary);">Compliance & Regulatory Alignment</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 8px; color: var(--text-primary);">🏛️ Regulatory Frameworks</h4>
+                        <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                            <li>NIST AI Risk Management Framework</li>
+                            <li>ISO/IEC 42001 (AI Management)</li>
+                            <li>SOC 2 Type II compliance</li>
+                            <li>GDPR & data privacy requirements</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 8px; color: var(--text-primary);">📊 Monitoring & Observability</h4>
+                        <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                            <li>Real-time model performance dashboards</li>
+                            <li>Drift detection & alerting</li>
+                            <li>Cost tracking & optimization</li>
+                            <li>Bias & fairness metrics</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-top: 0; margin-bottom: 8px; color: var(--text-primary);">🔐 Data Governance</h4>
+                        <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                            <li>Data lineage & provenance tracking</li>
+                            <li>Access control & DLP policies</li>
+                            <li>Encryption & secure data handling</li>
+                            <li>Data retention & deletion procedures</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="principle-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="principle-number">03</div>
-                    <h3>Complete Audit Trail</h3>
-                    <p>Every AI action is logged with full context. Who approved, what data was used, what was the outcome. Essential for compliance and continuous improvement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Steps & Learn More -->
+    <section class="section" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Next Steps</span>
+                <h2 class="section-title">Continue <span class="gradient-text">Learning</span></h2>
+                <p class="section-subtitle">Dive deeper into specific areas of applied AI and operational excellence</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+                <!-- TokenOps Card -->
+                <div style="padding: 24px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 10px; display: flex; flex-direction: column; transition: all 0.2s ease;" data-aos="fade-up">
+                    <div style="font-size: 1.8rem; margin-bottom: 12px;">💰</div>
+                    <h3 style="margin-top: 0; margin-bottom: 8px;">TokenOps: Cost Engineering</h3>
+                    <p style="margin: 8px 0 16px 0; color: var(--text-secondary); flex: 1;">Interactive model comparison, prompt cost estimation, and monthly budget forecasting for AI infrastructure. Understand token economics and optimize your AI spending.</p>
+                    <a href="tokenops.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--accent-primary); color: white; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease; align-self: flex-start;">
+                        <span>Explore TokenOps</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="principle-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="principle-number">04</div>
-                    <h3>Graceful Degradation</h3>
-                    <p>When AI systems fail or become unavailable, operations continue safely. Manual overrides always available. AI enhances, never creates single points of failure.</p>
+
+                <!-- RAG Article Card -->
+                <div style="padding: 24px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 10px; display: flex; flex-direction: column; transition: all 0.2s ease;" data-aos="fade-up" data-aos-delay="100">
+                    <div style="font-size: 1.8rem; margin-bottom: 12px;">🧠</div>
+                    <h3 style="margin-top: 0; margin-bottom: 8px;">Grounded AI Systems</h3>
+                    <p style="margin: 8px 0 16px 0; color: var(--text-secondary); flex: 1;">Deep dive into RAG, vector embeddings, agents, and MCP. Learn how to ground AI systems in enterprise knowledge and prevent hallucinations with retrieval strategies.</p>
+                    <a href="writing.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--accent-primary); color: white; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease; align-self: flex-start;">
+                        <span>Read Article</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
                 </div>
+
+                <!-- Operational Standards Card -->
+                <div style="padding: 24px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 10px; display: flex; flex-direction: column; transition: all 0.2s ease;" data-aos="fade-up" data-aos-delay="200">
+                    <div style="font-size: 1.8rem; margin-bottom: 12px;">📋</div>
+                    <h3 style="margin-top: 0; margin-bottom: 8px;">Operational Standards</h3>
+                    <p style="margin: 8px 0 16px 0; color: var(--text-secondary); flex: 1;">Concrete standards, checklists, and runbooks for implementing AI safely in production. From incident response to model deployment, operational governance that works.</p>
+                    <a href="operational-standards-library.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--accent-primary); color: white; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease; align-self: flex-start;">
+                        <span>View Standards</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 24px; background: rgba(99, 102, 241, 0.08); border-left: 4px solid var(--accent-primary); border-radius: 8px; text-align: center;" data-aos="fade-up">
+                <h3 style="margin: 0 0 12px 0; color: var(--text-primary);">Ready to Transform Your AI Operations?</h3>
+                <p style="margin: 0 0 16px 0; color: var(--text-secondary);">Whether you're starting from scratch or scaling existing systems, I help teams build AI that is safe, cost-effective, and production-ready.</p>
+                <a href="contact.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--accent-primary); color: white; border-radius: 6px; text-decoration: none; font-weight: 600; transition: all 0.2s ease;">
+                    <span>Get in Touch</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
             </div>
         </div>
     </section>

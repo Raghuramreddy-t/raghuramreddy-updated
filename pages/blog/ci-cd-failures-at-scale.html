@@ -86,6 +86,18 @@
     <div class="container" style="max-width: 880px;">
       <article class="article-body" id="article-body">
 
+        <!-- TL;DR SECTION -->
+        <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px; margin-bottom: 32px;">
+            <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">⚡ TL;DR</h3>
+            <ul style="margin: 8px 0; padding-left: 20px;">
+                <li><strong>Problem at scale:</strong> Team-owned pipelines diverge. Quality gates are inconsistent. Changes require 30+ per-team tickets. Failures are invisible across teams.</li>
+                <li><strong>Root cause:</strong> DevOps model assumes small teams. At 30+ teams, decentralization breaks – you have 30 implementations of "CI/CD", not one delivery system</li>
+                <li><strong>Solution:</strong> Shift from "team-owned copies" to "platform-owned by reference." Golden path pipelines + non-bypassable gates + central observability</li>
+                <li><strong>Outcome:</strong> New security policy rolls out to 35 teams in 24 hours (not weeks). Compliance coverage is measurable. Failures are system-visible.</li>
+                <li><strong>Key tradeoff:</strong> More control = less team flexibility. Provide escape hatches for real edge cases, not convenience.</li>
+            </ul>
+        </div>
+
         <p>
           CI/CD pipelines work extremely well in small systems. Add a few tests, wire up a deploy step, done. The feedback loop is fast and the cognitive overhead is low. This is exactly what makes them dangerous at enterprise scale – they succeed so well early on that no one redesigns them as the system grows around them.
         </p>
@@ -128,6 +140,11 @@
           Shared pipeline templates help, but they're still a copy-paste model. The moment a team copies the template and modifies it for their use case, the central team loses sight of what's running. Template drift is just as bad as hand-written drift.
         </p>
 
+        <div style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 20px; border-radius: 8px; margin: 24px 0;">
+            <strong style="color: #22c55e;">Best Practice: Golden Path Over Templates</strong><br/>
+            Don't distribute templates as copies. Instead, make pipelines reference central definitions via version control. Teams import the pipeline spec, not copy it. When the platform team updates the spec, all consuming teams get the update on their next run – no per-team action required.
+        </div>
+
         <h2>3. Architecture Thinking</h2>
 
         <p>
@@ -161,6 +178,20 @@
         <p>
           <strong>Self-service within bounds.</strong> Teams get configuration knobs – which environments to deploy to, whether to run additional scan types, how long to retain artifacts. The knobs don't give access to the structure.
         </p>
+
+        <div style="background: rgba(15, 23, 42, 0.8); color: #93c5fd; padding: 16px; border-radius: 8px; margin: 24px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; overflow-x: auto;">
+            <div style="margin-bottom: 8px; color: #94a3b8;">// Golden path pipeline: teams reference by version, not copy</div>
+            <div>// .github/workflows/build.yml (team's file)</div>
+            <div style="margin-top: 4px;">uses: platform-team/pipeline-templates/service@v3.2.1</div>
+            <div>with:</div>
+            <div style="margin-left: 16px;">deploy-target: staging,production</div>
+            <div style="margin-left: 16px;">additional-scans: performance,integration</div>
+            <div style="margin-left: 16px;">retention-days: 30</div>
+            <div style="margin-top: 4px; color: #94a3b8;"><span style="color: #22c55e;">// v3.2.1 includes: security-scan, license-check,</span></div>
+            <div style="color: #94a3b8;"><span style="color: #22c55e;">// artifact-sign (non-bypassable). Teams can't remove.</span></div>
+            <div style="color: #94a3b8;"><span style="color: #22c55e;">// Platform team updates v3.2.1 → all consumers</span></div>
+            <div style="color: #94a3b8;"><span style="color: #22c55e;">// get the new version automatically on next run.</span></div>
+        </div>
 
         <h2>5. Real-World Scenario</h2>
 
