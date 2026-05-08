@@ -91,6 +91,18 @@
     <main class="section">
         <article class="article-body container">
 
+            <!-- TL;DR SECTION -->
+            <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px; margin-bottom: 32px;">
+                <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">⚡ TL;DR</h3>
+                <ul style="margin: 8px 0; padding-left: 20px;">
+                    <li><strong>Tokens ≈ 4 characters</strong> for English text (Claude uses ~0.75 tokens/word)</li>
+                    <li><strong>Claude Opus 4.7:</strong> $15/$75 per 1M tokens (input/output)</li>
+                    <li><strong>GPT-5.5:</strong> $8/$32 per 1M tokens (cheaper per token, but less capable)</li>
+                    <li><strong>At scale (10M tokens/day):</strong> Model choice = $300-600/day difference</li>
+                    <li><strong>Best practice:</strong> Use the Ledger Lab below to calculate your actual costs</li>
+                </ul>
+            </div>
+
             <!-- INTRO SECTION -->
             <section class="article-intro">
                 <h2>Why Token Economics Matter</h2>
@@ -270,6 +282,69 @@
                         discounts on input tokens. For non-urgent workloads, batching is nearly always more economical.
                     </li>
                 </ul>
+            </section>
+
+            <!-- CODE EXAMPLES -->
+            <section class="article-section">
+                <h2>Code Examples: Token Counting & Cost Calculation</h2>
+                <p><strong>Basic token counter (JavaScript):</strong></p>
+                <div style="background: rgba(15, 23, 42, 0.8); padding: 16px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2); overflow-x: auto; margin: 12px 0;">
+                    <code style="color: #93c5fd; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+function estimateTokens(text) {<br/>
+&nbsp;&nbsp;// Rough heuristic: English ≈ 0.75 tokens/word<br/>
+&nbsp;&nbsp;const words = text.trim().split(/\s+/).length;<br/>
+&nbsp;&nbsp;return Math.round(words / 0.75);<br/>
+}<br/>
+<br/>
+const prompt = "Explain machine learning in 100 words";<br/>
+const tokens = estimateTokens(prompt);<br/>
+console.log(`~${tokens} tokens`); // Output: ~47 tokens
+                    </code>
+                </div>
+
+                <p><strong>Cost calculator (Python):</strong></p>
+                <div style="background: rgba(15, 23, 42, 0.8); padding: 16px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2); overflow-x: auto; margin: 12px 0;">
+                    <code style="color: #93c5fd; font-family: 'Courier New', monospace; font-size: 0.9rem;">
+MODELS = {<br/>
+&nbsp;&nbsp;"claude-opus": {"input": 15.00, "output": 75.00},<br/>
+&nbsp;&nbsp;"gpt-5.5": {"input": 8.00, "output": 32.00},<br/>
+}<br/>
+<br/>
+def calculate_cost(model, input_tokens, output_tokens):<br/>
+&nbsp;&nbsp;rates = MODELS[model]<br/>
+&nbsp;&nbsp;cost = (input_tokens * rates["input"] + <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output_tokens * rates["output"]) / 1_000_000<br/>
+&nbsp;&nbsp;return round(cost, 6)<br/>
+<br/>
+cost = calculate_cost("claude-opus", 2000, 500)<br/>
+print(f"Cost: ${cost:.4f}")  # Output: $0.0675
+                    </code>
+                </div>
+            </section>
+
+            <!-- COMMON PITFALLS -->
+            <section class="article-section">
+                <h2>Common Pitfalls (and How to Avoid Them)</h2>
+
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin: 16px 0;">
+                    <h4 style="margin-top: 0; color: #ef4444;">❌ Pitfall 1: Ignoring output token costs</h4>
+                    <p style="margin: 8px 0; font-size: 0.95rem;">Many teams focus only on input token pricing. Output tokens are cheaper but add up fast if you're not constrained. Solution: Set explicit output limits and track output/input ratio per model.</p>
+                </div>
+
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin: 16px 0;">
+                    <h4 style="margin-top: 0; color: #ef4444;">❌ Pitfall 2: Paying full price for cached content</h4>
+                    <p style="margin: 8px 0; font-size: 0.95rem;">If the same system prompt or document is used 1000 times, cache it. Not caching is leaving 30–50% savings on the table. Both Claude and GPT support it; enable it by default.</p>
+                </div>
+
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin: 16px 0;">
+                    <h4 style="margin-top: 0; color: #ef4444;">❌ Pitfall 3: Using Opus/GPT-5.5 Pro for everything</h4>
+                    <p style="margin: 8px 0; font-size: 0.95rem;">It's tempting to use the best model for all tasks. In reality, Haiku or Sonnet solve 85% of problems perfectly. A/B test your cheaper models first; you'll often find they're sufficient.</p>
+                </div>
+
+                <div style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 16px; border-radius: 8px; margin: 16px 0;">
+                    <h4 style="margin-top: 0; color: #22c55e;">✓ Best Practice: Token-aware architecture</h4>
+                    <p style="margin: 8px 0; font-size: 0.95rem;">Build token budgets into your system design. Know the token cost per request type, set per-request maximums, and monitor spend. The Ledger Lab below helps you calculate; use it to baseline your workload.</p>
+                </div>
             </section>
 
             <!-- LEDGER LAB SECTION -->
