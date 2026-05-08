@@ -5,6 +5,15 @@
   },
   "posts": [
     {
+      "id": "intelligent-delivery-platforms",
+      "title": "The Rise of Intelligent Delivery Platforms",
+      "description": "Why traditional CI/CD pipelines are evolving into AI-assisted operational systems. Exploring the shift from deployment automation to continuous operational intelligence.",
+      "url": "blog/intelligent-delivery-platforms.html",
+      "tags": ["Platform Engineering", "DevSecOps", "AI Operations", "Cloud-Native", "Delivery Platforms"],
+      "published": "2026-05-08",
+      "version": "1.0.0"
+    },
+    {
       "id": "token-cost-comparator",
       "title": "The Token Ledger",
       "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
