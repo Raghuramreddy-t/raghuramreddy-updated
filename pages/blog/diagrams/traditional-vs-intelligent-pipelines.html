@@ -4,10 +4,22 @@
 <meta charset="UTF-8">
 <script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Traditional vs Intelligent Pipelines | RaghuRamReddy</title>
+<meta name="description" content="Compare linear execution models with continuously analyzing operational intelligence platforms.">
+<title>Traditional vs Intelligent Pipelines | Intelligent Delivery Platforms</title>
+<link rel="canonical" href="https://raghuramreddy.tech/pages/blog/diagrams/traditional-vs-intelligent-pipelines.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Traditional Pipelines vs Intelligent Delivery Platforms">
+<meta property="og:description" content="Visual comparison of linear CI/CD execution models versus continuously analyzing operational intelligence systems.">
+<meta property="og:url" content="https://raghuramreddy.tech/pages/blog/diagrams/traditional-vs-intelligent-pipelines.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../assets/css/main.css?v=20260503">
+<link rel="stylesheet" href="../../../assets/css/animations.css?v=20260503">
+<link rel="stylesheet" href="../../../assets/css/pages.css?v=20260503">
+<link rel="stylesheet" href="../../../assets/css/components.css?v=20260503">
+<link rel="stylesheet" href="../../../assets/css/design-v2.css?v=20260503">
+<link rel="stylesheet" href="../../../assets/css/enhancements.css?v=20260503">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
@@ -36,14 +48,25 @@ transition:all 0.3s ease;
 border-color:rgba(255,255,255,0.3);
 color:#fff;
 }
-.title{
+.header{
 text-align:center;
+margin-bottom:80px;
+animation:fadeIn 0.6s ease-out;
+}
+.title{
 font-size:54px;
 font-weight:800;
-margin-bottom:80px;
+margin-bottom:16px;
 background:linear-gradient(90deg,#6ee7ff,#8b5cf6,#d946ef);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+}
+.subtitle{
+font-size:16px;
+color:#cbd5e1;
+max-width:600px;
+margin:0 auto;
+line-height:1.6;
 }
 .panels{
 display:grid;
@@ -56,10 +79,17 @@ border-radius:28px;
 background:rgba(255,255,255,0.03);
 border:1px solid rgba(255,255,255,0.08);
 backdrop-filter:blur(12px);
+animation:slideUp 0.6s ease-out backwards;
 }
+.panel:first-child{animation-delay:0.1s}
+.panel:last-child{animation-delay:0.2s}
 .panel h2{
 font-size:32px;
+font-weight:700;
 margin-bottom:28px;
+background:linear-gradient(90deg,#6ee7ff,#8b5cf6);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 .flow{
 display:flex;
@@ -77,15 +107,24 @@ text-align:center;
 background:linear-gradient(135deg,#2563eb,#1d4ed8);
 box-shadow:0 8px 18px rgba(37,99,235,0.35);
 white-space:nowrap;
+transition:all 0.3s ease;
+}
+.box:hover{
+transform:translateY(-2px);
+box-shadow:0 12px 24px rgba(37,99,235,0.5);
 }
 .panel.ai .box{
 background:linear-gradient(135deg,#7c3aed,#5b21b6);
 box-shadow:0 8px 18px rgba(124,58,237,0.35);
 }
+.panel.ai .box:hover{
+box-shadow:0 12px 24px rgba(124,58,237,0.5);
+}
 .arrow{
 font-size:24px;
 color:#6ee7ff;
 font-weight:800;
+opacity:0.8;
 }
 ul{
 list-style:none;
@@ -98,27 +137,60 @@ padding:14px 16px;
 border-radius:12px;
 background:rgba(255,255,255,0.04);
 color:#d1d5db;
+font-size:14px;
+transition:all 0.2s ease;
+}
+li:hover{
+background:rgba(255,255,255,0.06);
+transform:translateX(4px);
+}
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+@keyframes slideUp{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
 }
 [data-theme="light"] body{
-background:#f9fafb;
+background:linear-gradient(135deg,#f0f4f8,#f9fafb);
 color:#111827;
 }
 [data-theme="light"] .panel{
-background:rgba(0,0,0,0.02);
-border-color:rgba(0,0,0,0.08);
+background:linear-gradient(135deg,#ffffff,#f3f8fc);
+border-color:rgba(59,130,246,0.15);
+box-shadow:0 0 30px rgba(59,130,246,0.1);
+}
+[data-theme="light"] .panel:hover{
+box-shadow:0 0 50px rgba(59,130,246,0.15);
 }
 [data-theme="light"] .panel h2{
-color:#111827;
+background:linear-gradient(90deg,#0ea5e9,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 [data-theme="light"] li{
-background:rgba(0,0,0,0.05);
-color:#374151;
+background:linear-gradient(135deg,#f5fbff,#eef9ff);
+color:#334155;
+border-left:3px solid #0ea5e9;
+}
+[data-theme="light"] li:hover{
+background:linear-gradient(135deg,#eef9ff,#e0f2fe);
+box-shadow:0 0 20px rgba(59,130,246,0.1);
 }
 [data-theme="light"] .box{
-background:linear-gradient(135deg,#3b82f6,#1e40af);
+background:linear-gradient(135deg,#0ea5e9,#0284c7);
+box-shadow:0 4px 12px rgba(59,130,246,0.25);
+}
+[data-theme="light"] .box:hover{
+box-shadow:0 6px 16px rgba(59,130,246,0.35);
 }
 [data-theme="light"] .panel.ai .box{
-background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+background:linear-gradient(135deg,#8b5cf6,#7c3aed);
+box-shadow:0 4px 12px rgba(139,92,246,0.25);
+}
+[data-theme="light"] .panel.ai .box:hover{
+box-shadow:0 6px 16px rgba(139,92,246,0.35);
 }
 @media(max-width:1024px){
 .panels{
@@ -151,9 +223,48 @@ padding:10px 14px;
 </style>
 </head>
 <body>
+<div class="bg-gradient"></div>
+<div class="floating-orbs">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+</div>
+<div id="cursor-dot"></div>
+
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="../../../index.html" class="nav-logo">
+<span class="logo-icon">RRR</span>
+<div class="logo-stack">
+<span class="logo-name">RaghuRamReddy</span>
+<span class="logo-tagline">Designing technology for human experience</span>
+</div>
+</a>
+<div class="nav-menu" id="nav-menu">
+<a href="../../../index.html" class="nav-link">Home</a>
+<a href="../../work.html" class="nav-link">Work &amp; Impact</a>
+<a href="../../applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
+<a href="../../future-systems.html" class="nav-link">Future Systems</a>
+<a href="../../writing.html" class="nav-link">Writing</a>
+<a href="../../about.html" class="nav-link">About</a>
+<a href="../../contact.html" class="nav-link">Contact</a>
+</div>
+<div class="nav-actions">
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+<svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+<svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+<button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</div>
+</nav>
+
+<main class="section">
 <div class="container">
 <a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">← Back to Diagrams</a>
-<div class="title">Traditional Pipelines vs Intelligent Delivery Platforms</div>
+<div class="header">
+<div class="title">Traditional Pipelines vs<br>Intelligent Delivery Platforms</div>
+<p class="subtitle">Compare linear execution models with continuously analyzing operational intelligence platforms</p>
+</div>
 <div class="panels">
 <div class="panel">
 <h2>Traditional Pipeline</h2>
@@ -197,5 +308,40 @@ padding:10px 14px;
 </div>
 </div>
 </div>
+</div>
+</main>
+
+<footer class="footer">
+<div class="footer-inner">
+<div class="footer-main">
+<div class="footer-top">
+<h3>Traditional Pipelines vs Intelligent Delivery Platforms</h3>
+<p>Compare linear execution models with continuously analyzing operational intelligence systems</p>
+<div class="footer-icon-grid">
+<a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+</a>
+<a class="icon-btn" href="../../contact.html" aria-label="Contact">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+</a>
+</div>
+<a class="footer-cta" href="../../contact.html">Let's talk &rarr;</a>
+</div>
+<div class="footer-visual" aria-hidden="true">
+<span class="fv-orb fv-orb-1"></span>
+<span class="fv-orb fv-orb-2"></span>
+<span class="fv-line fv-line-1"></span>
+<span class="fv-line fv-line-2"></span>
+<span class="fv-dot fv-dot-1"></span>
+<span class="fv-dot fv-dot-2"></span>
+</div>
+</div>
+<div class="footer-bottom footer-bottom--pro">
+<p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<script src="../../../assets/js/main.js?v=20260503"></script>
 </body>
 </html>
