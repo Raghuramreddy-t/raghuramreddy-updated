@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evolution of Software Delivery Systems | RaghuRamReddy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:#050816;
+font-family:Inter,sans-serif;
+color:white;
+padding:60px 20px;
+overflow-x:hidden;
+}
+.container{
+width:100%;
+max-width:1500px;
+margin:0 auto;
+}
+.back-btn{
+display:inline-block;
+margin-bottom:40px;
+padding:10px 16px;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:8px;
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+transition:all 0.3s ease;
+}
+.back-btn:hover{
+border-color:rgba(255,255,255,0.3);
+color:#fff;
+}
+.title{
+text-align:center;
+font-size:54px;
+font-weight:800;
+margin-bottom:80px;
+background:linear-gradient(90deg,#6ee7ff,#8b5cf6,#d946ef);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.timeline{
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:relative;
+gap:20px;
+}
+.timeline::before{
+content:'';
+position:absolute;
+top:50%;
+left:5%;
+width:90%;
+height:6px;
+background:linear-gradient(90deg,#2563eb,#8b5cf6,#d946ef);
+transform:translateY(-50%);
+box-shadow:0 0 25px rgba(139,92,246,.8);
+z-index:1;
+}
+.node{
+width:180px;
+height:180px;
+border-radius:50%;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(10px);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+box-shadow:0 0 40px rgba(124,58,237,.35);
+z-index:2;
+transition:all 0.3s ease;
+}
+.node:hover{
+background:rgba(255,255,255,.08);
+box-shadow:0 0 60px rgba(124,58,237,.55);
+}
+.node h2{
+font-size:22px;
+margin:0;
+text-align:center;
+padding:0 12px;
+}
+.node span{
+margin-top:12px;
+font-size:13px;
+color:#cbd5e1;
+text-align:center;
+padding:0 14px;
+line-height:1.5;
+}
+[data-theme="light"] body{
+background:#f9fafb;
+color:#111827;
+}
+[data-theme="light"] .node{
+background:rgba(0,0,0,.03);
+border-color:rgba(0,0,0,.1);
+box-shadow:0 0 40px rgba(59,130,246,.15);
+}
+[data-theme="light"] .node h2{
+color:#111827;
+}
+[data-theme="light"] .node span{
+color:#4b5563;
+}
+[data-theme="light"] .node:hover{
+background:rgba(0,0,0,.05);
+}
+[data-theme="light"] .back-btn{
+border-color:rgba(0,0,0,.1);
+color:#4b5563;
+}
+[data-theme="light"] .back-btn:hover{
+border-color:rgba(0,0,0,.3);
+color:#111827;
+}
+@media(max-width:1024px){
+.timeline{
+flex-direction:column;
+gap:40px;
+}
+.timeline::before{
+width:6px;
+height:90%;
+left:50%;
+top:5%;
+transform:translateX(-50%);
+}
+.node{
+width:160px;
+height:160px;
+font-size:14px;
+}
+.title{
+font-size:42px;
+}
+}
+@media(max-width:640px){
+body{
+padding:40px 20px;
+}
+.title{
+font-size:32px;
+margin-bottom:60px;
+}
+.node{
+width:140px;
+height:140px;
+font-size:13px;
+}
+.node h2{
+font-size:18px;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">← Back to Diagrams</a>
+<div class="title">Evolution of Software Delivery Systems</div>
+<div class="timeline">
+<div class="node"><h2>Manual Ops</h2><span>Human-driven deployments</span></div>
+<div class="node"><h2>CI/CD</h2><span>Pipeline automation</span></div>
+<div class="node"><h2>DevSecOps</h2><span>Integrated security</span></div>
+<div class="node"><h2>Cloud Native</h2><span>Kubernetes + GitOps</span></div>
+<div class="node"><h2>Intelligent Platforms</h2><span>AI-assisted governance</span></div>
+<div class="node"><h2>Autonomous Systems</h2><span>Predictive operations</span></div>
+</div>
+</div>
+</body>
+</html>

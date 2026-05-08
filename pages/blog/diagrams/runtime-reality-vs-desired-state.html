@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runtime Reality vs Desired State | RaghuRamReddy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:#050816;
+font-family:Inter,sans-serif;
+color:white;
+padding:60px 20px;
+}
+.container{
+width:100%;
+max-width:1200px;
+margin:0 auto;
+}
+.back-btn{
+display:inline-block;
+margin-bottom:40px;
+padding:10px 16px;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:8px;
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+transition:all 0.3s ease;
+}
+.back-btn:hover{
+border-color:rgba(255,255,255,0.3);
+color:#fff;
+}
+.title{
+text-align:center;
+font-size:54px;
+font-weight:800;
+margin-bottom:80px;
+background:linear-gradient(90deg,#6ee7ff,#8b5cf6,#d946ef);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.layout{
+display:grid;
+grid-template-columns:1fr 220px 1fr;
+gap:40px;
+align-items:center;
+}
+.panel{
+padding:40px;
+border-radius:28px;
+background:linear-gradient(135deg,#111827,#1f2937);
+}
+.panel h2{
+font-size:34px;
+margin-bottom:24px;
+}
+ul{
+list-style:none;
+padding:0;
+}
+li{
+padding:16px;
+margin-bottom:14px;
+border-radius:14px;
+background:rgba(255,255,255,0.05);
+font-size:14px;
+}
+.center{
+text-align:center;
+font-size:28px;
+font-weight:800;
+color:#6ee7ff;
+line-height:1.8;
+}
+[data-theme="light"] body{
+background:#f9fafb;
+color:#111827;
+}
+[data-theme="light"] .panel{
+background:linear-gradient(135deg,#f3f4f6,#e5e7eb);
+}
+[data-theme="light"] .panel h2{
+color:#111827;
+}
+[data-theme="light"] li{
+background:rgba(0,0,0,0.05);
+color:#374151;
+}
+@media(max-width:1024px){
+.layout{
+grid-template-columns:1fr;
+}
+.title{
+font-size:42px;
+}
+.center{
+font-size:24px;
+order:-1;
+margin-bottom:20px;
+}
+}
+@media(max-width:640px){
+body{
+padding:40px 20px;
+}
+.title{
+font-size:32px;
+margin-bottom:60px;
+}
+.panel{
+padding:28px;
+}
+.panel h2{
+font-size:26px;
+}
+li{
+padding:12px;
+font-size:13px;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">← Back to Diagrams</a>
+<div class="title">Runtime Reality vs Desired State</div>
+<div class="layout">
+<div class="panel">
+<h2>Desired State</h2>
+<ul>
+<li>Git Repositories</li>
+<li>Helm Charts</li>
+<li>IaC Definitions</li>
+<li>Security Policies</li>
+<li>Versioned Configurations</li>
+</ul>
+</div>
+<div class="center">
+Continuous<br>
+Runtime<br>
+Intelligence
+</div>
+<div class="panel">
+<h2>Runtime Reality</h2>
+<ul>
+<li>Configuration Drift</li>
+<li>RBAC Changes</li>
+<li>Runtime Mutation</li>
+<li>Scaling Events</li>
+<li>Dependency Drift</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

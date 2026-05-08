@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operational Intelligence Flow | RaghuRamReddy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:#030712;
+font-family:Inter,sans-serif;
+color:white;
+padding:60px 20px;
+}
+.container{
+width:100%;
+max-width:1200px;
+margin:0 auto;
+}
+.back-btn{
+display:inline-block;
+margin-bottom:40px;
+padding:10px 16px;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:8px;
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+transition:all 0.3s ease;
+}
+.back-btn:hover{
+border-color:rgba(255,255,255,0.3);
+color:#fff;
+}
+.title{
+text-align:center;
+font-size:54px;
+font-weight:800;
+margin-bottom:80px;
+background:linear-gradient(90deg,#6ee7ff,#8b5cf6,#d946ef);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-bottom:70px;
+}
+.node{
+padding:32px;
+border-radius:28px;
+background:linear-gradient(135deg,#111827,#1f2937);
+text-align:center;
+box-shadow:0 0 30px rgba(0,0,0,.45);
+transition:all 0.3s ease;
+}
+.node:hover{
+box-shadow:0 0 50px rgba(124,58,237,0.35);
+}
+.node h2{
+font-size:28px;
+margin-bottom:14px;
+color:#6ee7ff;
+}
+.node p{
+color:#d1d5db;
+font-size:14px;
+}
+.center{
+text-align:center;
+font-size:32px;
+line-height:2;
+font-weight:700;
+color:#d1d5db;
+}
+.highlight{
+color:#6ee7ff;
+}
+[data-theme="light"] body{
+background:#f9fafb;
+color:#111827;
+}
+[data-theme="light"] .node{
+background:linear-gradient(135deg,#f3f4f6,#e5e7eb);
+box-shadow:0 0 30px rgba(59,130,246,0.1);
+}
+[data-theme="light"] .node h2{
+color:#0ea5e9;
+}
+[data-theme="light"] .node p{
+color:#4b5563;
+}
+[data-theme="light"] .center{
+color:#1f2937;
+}
+@media(max-width:1024px){
+.grid{
+grid-template-columns:1fr;
+}
+.title{
+font-size:42px;
+}
+}
+@media(max-width:640px){
+body{
+padding:40px 20px;
+}
+.title{
+font-size:32px;
+margin-bottom:60px;
+}
+.node{
+padding:24px;
+}
+.node h2{
+font-size:22px;
+}
+.center{
+font-size:24px;
+line-height:1.8;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">← Back to Diagrams</a>
+<div class="title">AI-Assisted Operational Intelligence Flow</div>
+<div class="grid">
+<div class="node"><h2>Deployments</h2><p>Release telemetry and rollout intelligence</p></div>
+<div class="node"><h2>Logs & Metrics</h2><p>Operational telemetry streams</p></div>
+<div class="node"><h2>Security Events</h2><p>Runtime anomalies and drift signals</p></div>
+</div>
+<div class="center">
+<span class="highlight">Telemetry Correlation Engine</span><br>
+↓<br>
+<span class="highlight">AI Operational Intelligence</span><br>
+↓<br>
+Risk Analysis • Anomaly Detection • Root Cause Suggestions • Remediation Guidance<br>
+↓<br>
+Human Decision Layer
+</div>
+</div>
+</body>
+</html>
