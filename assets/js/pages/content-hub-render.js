@@ -14,6 +14,22 @@
     return raw;
   }
 
+  function dedupePosts(posts) {
+    const seen = new Set();
+    return (posts || []).filter((post) => {
+      const key = [
+        String(post && post.id ? post.id : '').trim().toLowerCase(),
+        String(post && post.url ? post.url : '').trim().toLowerCase(),
+        String(post && post.title ? post.title : '').trim().toLowerCase(),
+      ].find(Boolean);
+
+      if (!key) return true;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
   function clearAndAppend(container, nodes) {
     container.innerHTML = '';
     const frag = document.createDocumentFragment();
@@ -50,7 +66,7 @@
   }
 
   function renderBlogCards(container, posts) {
-    const cards = (posts || []).map((post) => {
+    const cards = dedupePosts(posts).map((post) => {
       const card = document.createElement('div');
       card.className = 'publication-card';
       card.dataset.postId = post.id || '';
@@ -94,7 +110,7 @@
   }
 
   function renderPublications(grid, papers) {
-    const cards = (papers || []).map((paper, index) => {
+    const cards = dedupePosts(papers).map((paper, index) => {
       const card = document.createElement('div');
       card.className = 'publication-card';
       card.dataset.paperId = paper.id || '';

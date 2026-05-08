@@ -5,19 +5,6 @@
   },
   "posts": [
     {
-      "id": "intelligent-delivery-platforms-diagrams",
-      "title": "Intelligent Delivery Platform Diagram Suite",
-      "description": "A visual companion with the reference architecture, runtime reality comparison, operational intelligence flow, evolution timeline, and ecosystem map.",
-      "url": "/pages/blog/intelligent-delivery-platforms-diagrams.html",
-      "tags": ["Architecture", "Diagrams", "Platform Engineering", "AI Ops"],
-      "actions": [
-        {
-          "label": "Open Diagram Suite",
-          "url": "/pages/blog/intelligent-delivery-platforms-diagrams.html"
-        }
-      ]
-    },
-    {
       "id": "intelligent-delivery-platforms",
       "title": "The Rise of Intelligent Delivery Platforms",
       "description": "Why traditional CI/CD pipelines are evolving into AI-assisted operational systems. Exploring the shift from deployment automation to continuous operational intelligence.",
