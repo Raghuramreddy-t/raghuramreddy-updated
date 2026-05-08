@@ -1529,6 +1529,17 @@ hr.gradient-divider {
     overflow: clip;
 }
 
+.spotlight-carousel::before,
+.spotlight-carousel::after,
+.spotlight-slide::before,
+.spotlight-slide::after,
+.spotlight-content::before,
+.spotlight-content::after,
+.spotlight-visual::before,
+.spotlight-visual::after {
+    display: none !important;
+}
+
 .spotlight-slide {
     display: none;
     grid-template-columns: 1fr 1fr;
