@@ -4606,6 +4606,18 @@ iframe {
     padding-left: 12px !important;
 }
 
+/* Fallback for cached old homepage markup: keep the removed carousel out of view. */
+.home-page .spotlight-carousel,
+.home-page .carousel-controls,
+.home-page .spotlight-slide,
+.home-page .spotlight-visual {
+    display: none !important;
+}
+
+.home-page .featured-carousel-section .impact-grid {
+    display: grid !important;
+}
+
 .home-page .spotlight-content p {
     margin-bottom: 12px !important;
 }

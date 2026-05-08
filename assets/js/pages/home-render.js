@@ -228,7 +228,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
-    const carousel = document.getElementById('spotlightCarousel');
+    const carousel = null;
     const khPreview = document.querySelector('.kh-preview');
     const spotlightSection = document.querySelector('#featured-spotlight .section-header');
     if (!carousel && !khPreview && !spotlightSection) return;
