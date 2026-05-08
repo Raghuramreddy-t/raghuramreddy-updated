@@ -1,334 +1,286 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Intelligent Delivery Platform Diagram Suite | RaghuRamReddy Thummalapalli</title>
-  <meta name="description" content="Interactive diagrams: operational intelligence flows, reference architecture, evolution timeline, and platform ecosystem maps." />
-  <link rel="canonical" href="https://raghuramreddy.tech/pages/blog/intelligent-delivery-platforms-diagrams.html" />
+<meta charset="UTF-8" />
+<script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intelligent Delivery Platform Diagrams | RaghuRamReddy Thummalapalli</title>
+<meta name="description" content="Architecture diagrams, operational flows, and evolution timeline for Intelligent Delivery Platforms." />
+<link rel="canonical" href="https://raghuramreddy.tech/pages/blog/intelligent-delivery-platforms-diagrams.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Intelligent Delivery Platform Diagrams" />
+<meta property="og:description" content="Visual architecture and operational intelligence flows." />
+<meta property="og:url" content="https://raghuramreddy.tech/pages/blog/intelligent-delivery-platforms-diagrams.html" />
 
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Intelligent Delivery Platform Diagram Suite" />
-  <meta property="og:description" content="Visual guide to IDP architecture, flows, and operational intelligence." />
-  <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/intelligent-delivery-platforms-diagrams.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../assets/css/main.css?v=20260503" />
+<link rel="stylesheet" href="../../assets/css/animations.css?v=20260503" />
+<link rel="stylesheet" href="../../assets/css/pages.css?v=20260503" />
+<link rel="stylesheet" href="../../assets/css/components.css?v=20260503" />
+<link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260503" />
+<link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260503" />
 
-  <link rel="stylesheet" href="../../assets/css/main.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/animations.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/pages.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/components.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260503" />
-
-  <style>
-    .diagram-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 40px;
-    }
-
-    .flow-section {
-      margin-bottom: 100px;
-    }
-
-    .flow-title {
-      font-size: 2.2rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      background: linear-gradient(90deg, #6ee7ff, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .flow-subtitle {
-      font-size: 1.05rem;
-      color: #a0aec0;
-      margin-bottom: 40px;
-      line-height: 1.7;
-    }
-
-    .flow-diagram {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding: 40px;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(110, 231, 255, 0.2);
-      border-radius: 20px;
-      margin-bottom: 40px;
-    }
-
-    .flow-node {
-      min-width: 200px;
-      padding: 24px;
-      border-radius: 16px;
-      text-align: center;
-      font-weight: 700;
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
-      flex-shrink: 0;
-    }
-
-    .flow-node.ai { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-    .flow-node.security { background: linear-gradient(135deg, #ef4444, #dc2626); }
-    .flow-node.observability { background: linear-gradient(135deg, #10b981, #059669); }
-    .flow-node.governance { background: linear-gradient(135deg, #f59e0b, #d97706); }
-    .flow-node.decision { background: linear-gradient(135deg, #06b6d4, #0891b2); }
-
-    .flow-arrow {
-      font-size: 32px;
-      color: #6ee7ff;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-
-    .layer-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 40px;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(110, 231, 255, 0.2);
-      border-radius: 20px;
-    }
-
-    .layer {
-      padding: 24px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      border-left: 4px solid #6ee7ff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .layer-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #6ee7ff;
-    }
-
-    .layer-items {
-      color: #a0aec0;
-      font-size: 0.95rem;
-      text-align: right;
-    }
-
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 40px;
-    }
-
-    .comparison-card {
-      padding: 32px;
-      border-radius: 20px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(110, 231, 255, 0.2);
-    }
-
-    .comparison-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: #6ee7ff;
-    }
-
-    .comparison-item {
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(110, 231, 255, 0.1);
-      color: #cbd5e1;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .comparison-item:last-child {
-      border-bottom: none;
-    }
-
-    .comparison-label {
-      font-weight: 600;
-    }
-
-    .comparison-value {
-      color: #6ee7ff;
-      font-weight: 700;
-    }
-
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-bottom: 40px;
-    }
-
-    .metric-card {
-      padding: 28px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #111827, #1f2937);
-      border: 1px solid rgba(110, 231, 255, 0.15);
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #6ee7ff;
-      margin-bottom: 8px;
-    }
-
-    .metric-label {
-      color: #a0aec0;
-      font-size: 0.95rem;
-    }
-
-    .timeline {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      padding: 20px;
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 20px;
-      margin-bottom: 40px;
-    }
-
-    .timeline-step {
-      min-width: 200px;
-      padding: 24px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      border: 1px solid rgba(110, 231, 255, 0.15);
-      text-align: center;
-    }
-
-    .timeline-year {
-      font-weight: 800;
-      color: #6ee7ff;
-      margin-bottom: 8px;
-    }
-
-    .timeline-label {
-      font-size: 0.9rem;
-      color: #a0aec0;
-    }
-
-    .ecosystem-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin-bottom: 40px;
-    }
-
-    .ecosystem-node {
-      padding: 32px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #111827, #1f2937);
-      border: 1px solid rgba(110, 231, 255, 0.15);
-      text-align: center;
-    }
-
-    .ecosystem-icon {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-    }
-
-    .ecosystem-title {
-      font-weight: 700;
-      color: #6ee7ff;
-      margin-bottom: 8px;
-      font-size: 1.1rem;
-    }
-
-    .ecosystem-desc {
-      font-size: 0.9rem;
-      color: #a0aec0;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 1024px) {
-      .flow-diagram {
-        flex-direction: column;
-      }
-
-      .flow-arrow {
-        transform: rotate(90deg);
-      }
-
-      .comparison-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline {
-        overflow-x: auto;
-      }
-    }
-
-    [data-theme="light"] .comparison-card {
-      background: rgba(0, 0, 0, 0.03);
-      border-color: rgba(0, 0, 0, 0.1);
-    }
-
-    [data-theme="light"] .comparison-card h3 {
-      color: #0ea5e9;
-    }
-
-    [data-theme="light"] .comparison-item {
-      border-bottom-color: rgba(0, 0, 0, 0.1);
-      color: #374151;
-    }
-
-    [data-theme="light"] .comparison-value {
-      color: #0ea5e9;
-    }
-
-    [data-theme="light"] .layer {
-      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-      border-left-color: #0ea5e9;
-      color: #1f2937;
-    }
-
-    [data-theme="light"] .layer-name {
-      color: #0ea5e9;
-    }
-
-    [data-theme="light"] .layer-items {
-      color: #4b5563;
-    }
-
-    [data-theme="light"] .metric-card {
-      background: linear-gradient(135deg, #f9fafb, #f3f4f6);
-      border-color: rgba(0, 0, 0, 0.1);
-    }
-
-    [data-theme="light"] .metric-value {
-      color: #0ea5e9;
-    }
-
-    [data-theme="light"] .metric-label {
-      color: #4b5563;
-    }
-
-    [data-theme="light"] .timeline-step {
-      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
-      border-color: rgba(0, 0, 0, 0.1);
-    }
-
-    [data-theme="light"] .timeline-year {
-      color: #0ea5e9;
-    }
-
-    [data-theme="light"] .timeline-label {
-      color: #4b5563;
-    }
-  </style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+.diagram-wrapper{
+font-family:'Inter',sans-serif;
+padding:60px 20px;
+}
+.diagram-container{max-width:1500px;margin:auto}
+.diagram-section{
+margin-bottom:120px;
+padding:50px;
+border-radius:32px;
+background:rgba(255,255,255,0.03);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+box-shadow:0 20px 50px rgba(0,0,0,0.45);
+overflow:hidden;
+}
+.diagram-title{
+font-size:52px;
+font-weight:800;
+margin-bottom:18px;
+line-height:1.1;
+background:linear-gradient(90deg,#6ee7ff,#8b5cf6,#d946ef);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+.diagram-subtitle{
+font-size:18px;
+color:#b8c1ec;
+margin-bottom:40px;
+line-height:1.7;
+}
+.grid-2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+.card{
+padding:32px;
+border-radius:28px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 10px 25px rgba(0,0,0,0.35);
+}
+.card h2{
+font-size:32px;
+margin-bottom:24px;
+}
+.pipeline{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+align-items:center;
+margin-bottom:24px;
+}
+.node{
+padding:16px 22px;
+border-radius:18px;
+font-weight:700;
+font-size:15px;
+text-align:center;
+background:linear-gradient(135deg,#2563eb,#1d4ed8);
+box-shadow:0 8px 18px rgba(37,99,235,0.35);
+}
+.node.purple{background:linear-gradient(135deg,#7c3aed,#5b21b6)}
+.arrow{font-size:28px;color:#6ee7ff;font-weight:800}
+.list{
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+.list div{
+padding:14px 18px;
+border-radius:14px;
+background:rgba(255,255,255,0.04);
+color:#d1d5db;
+}
+.architecture{
+display:flex;
+flex-direction:column;
+gap:22px;
+align-items:center;
+}
+.arch-layer{
+width:90%;
+padding:26px;
+border-radius:22px;
+text-align:center;
+font-weight:700;
+background:linear-gradient(135deg,#111827,#1f2937);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 12px 30px rgba(0,0,0,0.35);
+}
+.arch-layer span{
+display:block;
+margin-top:10px;
+font-size:14px;
+font-weight:500;
+color:#cbd5e1;
+}
+.down{font-size:36px;color:#6ee7ff}
+.flow-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:24px;
+margin-bottom:40px;
+}
+.flow-box{
+padding:24px;
+min-height:140px;
+border-radius:24px;
+background:linear-gradient(135deg,#0f172a,#111827);
+border:1px solid rgba(255,255,255,0.08);
+text-align:center;
+box-shadow:0 12px 24px rgba(0,0,0,0.35);
+}
+.flow-box h3{margin-bottom:12px;font-size:22px;color:#6ee7ff}
+.center-flow{
+text-align:center;
+font-size:24px;
+font-weight:700;
+line-height:2;
+color:#d1d5db;
+padding:32px;
+background:rgba(15,23,42,0.7);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:28px;
+}
+.timeline{
+display:flex;
+justify-content:space-between;
+gap:20px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+.timeline-step{
+flex:1;
+min-width:180px;
+padding:28px;
+border-radius:24px;
+background:linear-gradient(135deg,#111827,#1e293b);
+text-align:center;
+position:relative;
+}
+.timeline-step::after{
+content:'→';
+position:absolute;
+right:-18px;
+top:50%;
+transform:translateY(-50%);
+font-size:28px;
+color:#6ee7ff;
+}
+.timeline-step:last-child::after{display:none}
+.timeline-step h3{font-size:24px;margin-bottom:12px}
+.compare{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+}
+.compare-box{
+padding:36px;
+border-radius:28px;
+background:rgba(255,255,255,0.04);
+}
+.compare-box h2{font-size:34px;margin-bottom:26px}
+.runtime-wrap{
+display:grid;
+grid-template-columns:1fr 120px 1fr;
+gap:30px;
+align-items:center;
+}
+.runtime-side{
+padding:30px;
+border-radius:24px;
+background:linear-gradient(135deg,#111827,#1f2937);
+}
+.runtime-side h3{
+font-size:28px;
+margin-bottom:20px;
+}
+.runtime-side ul{
+list-style:none;
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+.runtime-side li{
+padding:14px;
+border-radius:14px;
+background:rgba(255,255,255,0.04);
+}
+.runtime-center{
+text-align:center;
+font-size:22px;
+font-weight:700;
+color:#6ee7ff;
+}
+.ecosystem{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:50px;
+}
+.eco-node{
+padding:28px;
+min-height:180px;
+border-radius:28px;
+background:linear-gradient(135deg,#111827,#1e293b);
+text-align:center;
+box-shadow:0 12px 28px rgba(0,0,0,0.35);
+}
+.eco-node h3{margin-bottom:16px;font-size:24px;color:#6ee7ff}
+.eco-node p{color:#d1d5db;line-height:1.7}
+.hero-center{
+margin:50px auto;
+width:320px;
+height:320px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:34px;
+font-weight:800;
+background:radial-gradient(circle,#7c3aed,#1e1b4b);
+box-shadow:0 0 80px rgba(124,58,237,0.55);
+}
+@media(max-width:1100px){
+.grid-2,.compare,.runtime-wrap,.ecosystem,.flow-grid{grid-template-columns:1fr}
+.timeline{flex-direction:column}
+.timeline-step::after{display:none}
+.hero-center{width:240px;height:240px;font-size:28px}
+.diagram-title{font-size:38px}
+.diagram-section{padding:30px}
+}
+[data-theme="light"] .diagram-section{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.08)}
+[data-theme="light"] .card{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.08);color:#1f2937}
+[data-theme="light"] .card h2{color:#111827}
+[data-theme="light"] .list div{background:rgba(0,0,0,0.05);color:#374151}
+[data-theme="light"] .arch-layer{background:linear-gradient(135deg,#f3f4f6,#e5e7eb);border-color:rgba(0,0,0,0.08);color:#111827}
+[data-theme="light"] .arch-layer span{color:#4b5563}
+[data-theme="light"] .flow-box{background:linear-gradient(135deg,#f9fafb,#f3f4f6);border-color:rgba(0,0,0,0.08);color:#1f2937}
+[data-theme="light"] .flow-box h3{color:#0ea5e9}
+[data-theme="light"] .center-flow{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.08);color:#1f2937}
+[data-theme="light"] .timeline-step{background:linear-gradient(135deg,#f3f4f6,#e5e7eb);color:#1f2937}
+[data-theme="light"] .timeline-step h3{color:#111827}
+[data-theme="light"] .compare-box{background:rgba(0,0,0,0.03);color:#1f2937}
+[data-theme="light"] .compare-box h2{color:#111827}
+[data-theme="light"] .runtime-side{background:linear-gradient(135deg,#f3f4f6,#e5e7eb);color:#1f2937}
+[data-theme="light"] .runtime-side h3{color:#111827}
+[data-theme="light"] .runtime-side li{background:rgba(0,0,0,0.05);color:#374151}
+[data-theme="light"] .eco-node{background:linear-gradient(135deg,#f3f4f6,#e5e7eb);color:#1f2937}
+[data-theme="light"] .eco-node h3{color:#0ea5e9}
+[data-theme="light"] .eco-node p{color:#4b5563}
+</style>
 </head>
-
 <body>
   <div class="bg-gradient"></div>
   <div class="floating-orbs">
@@ -345,7 +297,6 @@
           <span class="logo-tagline">Designing technology for human experience</span>
         </div>
       </a>
-
       <div class="nav-menu" id="nav-menu">
         <a href="../../index.html" class="nav-link">Home</a>
         <a href="../work.html" class="nav-link">Work &amp; Impact</a>
@@ -355,7 +306,6 @@
         <a href="../about.html" class="nav-link">About</a>
         <a href="../contact.html" class="nav-link">Contact</a>
       </div>
-
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
           <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
@@ -370,238 +320,173 @@
     <div class="container">
       <div class="page-header-content">
         <span class="page-tag">Visual Guide</span>
-        <h1 class="page-title">Intelligent Delivery Platform <span class="gradient-text">Diagram Suite</span></h1>
-        <p class="page-subtitle">Operational intelligence flows, reference architecture, evolution timeline, and ecosystem integration.</p>
+        <h1 class="page-title">Intelligent Delivery Platform <span class="gradient-text">Architecture &amp; Flows</span></h1>
+        <p class="page-subtitle">Reference diagrams showing platform architecture, operational flows, and evolution timeline.</p>
         <div class="card-tags" style="margin-top:16px;">
-          <span>May 2026</span><span>Architecture Diagrams</span><span>Operational Flows</span>
+          <span>May 2026</span><span>Architecture Diagrams</span><span>Visual Reference</span>
         </div>
       </div>
     </div>
   </header>
 
   <main class="section">
-    <div class="diagram-container">
+    <div class="diagram-wrapper">
+      <div class="diagram-container">
 
-      <!-- Operational Intelligence Flow -->
-      <section class="flow-section">
-        <h2 class="flow-title">Operational Intelligence Flow</h2>
-        <p class="flow-subtitle">How deployment signals, security events, and operational telemetry converge into AI-driven intelligence and decision support.</p>
-
-        <div class="flow-diagram">
-          <div class="flow-node">Deployments</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node security">Security Signals</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node observability">Telemetry Correlation</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node ai">AI Operational Analysis</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-node decision">Decision Support</div>
-        </div>
-      </section>
-
-      <!-- Reference Architecture -->
-      <section class="flow-section">
-        <h2 class="flow-title">Reference Architecture</h2>
-        <p class="flow-subtitle">Eight-layer intelligent delivery platform stack from developer input through operational decisions.</p>
-
-        <div class="layer-stack">
-          <div class="layer">
-            <div class="layer-name">1. Developer Layer</div>
-            <div class="layer-items">Git · PR · CI/CD · Versioning</div>
-          </div>
-          <div class="layer">
-            <div class="layer-name">2. Build Intelligence</div>
-            <div class="layer-items">Validation · Quality · SBOM Generation</div>
-          </div>
-          <div class="layer">
-            <div class="layer-name">3. Security Intelligence</div>
-            <div class="layer-items">SAST · Container Scanning · IaC Validation</div>
-          </div>
-          <div class="layer">
-            <div class="layer-name">4. Governance &amp; Policy</div>
-            <div class="layer-items">OPA · Compliance · Guardrails · Gates</div>
-          </div>
-          <div class="layer">
-            <div class="layer-name">5. Runtime Intelligence</div>
-            <div class="layer-items">Drift Detection · Runtime Security · RBAC Monitoring</div>
-          </div>
-          <div class="layer">
-            <div class="layer-name">6. Observability Correlation</div>
-            <div class="layer-items">Metrics · Logs · Traces · Events</div>
-          </div>
-          <div class="layer">
-            <div class="layer-name">7. AI Operational Analysis</div>
-            <div class="layer-items">RCA · Risk Scoring · Recommendations</div>
-          </div>
-          <div class="layer">
-            <div class="layer-name">8. Decision Layer</div>
-            <div class="layer-items">Human Approval · Rollback · CAB · Audit</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Traditional vs IDP Comparison -->
-      <section class="flow-section">
-        <h2 class="flow-title">Traditional CI/CD vs Intelligent Delivery Platforms</h2>
-        <p class="flow-subtitle">Key differences in approach, capabilities, and operational outcomes.</p>
-
-        <div class="comparison-grid">
-          <div class="comparison-card">
-            <h3>Traditional CI/CD</h3>
-            <div class="comparison-item">
-              <span class="comparison-label">Focus</span>
-              <span class="comparison-value">Execution</span>
+        <section class="diagram-section">
+          <h1 class="diagram-title">Traditional Pipelines vs Intelligent Delivery Platforms</h1>
+          <p class="diagram-subtitle">Modern delivery systems are evolving from linear execution engines into continuously analyzing operational intelligence platforms.</p>
+          <div class="compare">
+            <div class="compare-box">
+              <h2>Traditional Pipeline</h2>
+              <div class="pipeline">
+                <div class="node">Code</div>
+                <div class="arrow">→</div>
+                <div class="node">Build</div>
+                <div class="arrow">→</div>
+                <div class="node">Test</div>
+                <div class="arrow">→</div>
+                <div class="node">Deploy</div>
+              </div>
+              <div class="list">
+                <div>Execution-focused</div>
+                <div>Linear workflow model</div>
+                <div>Isolated tooling</div>
+                <div>Reactive operations</div>
+                <div>Low operational context</div>
+              </div>
             </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Model</span>
-              <span class="comparison-value">Linear</span>
-            </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Awareness</span>
-              <span class="comparison-value">Low Context</span>
-            </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Operations</span>
-              <span class="comparison-value">Reactive</span>
-            </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Intelligence</span>
-              <span class="comparison-value">Manual</span>
-            </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Scope</span>
-              <span class="comparison-value">Pipeline Only</span>
+            <div class="compare-box">
+              <h2>Intelligent Delivery Platform</h2>
+              <div class="pipeline">
+                <div class="node purple">Code</div>
+                <div class="arrow">→</div>
+                <div class="node purple">Validation Intelligence</div>
+                <div class="arrow">→</div>
+                <div class="node purple">Security Intelligence</div>
+                <div class="arrow">→</div>
+                <div class="node purple">Runtime Intelligence</div>
+                <div class="arrow">→</div>
+                <div class="node purple">Observability Correlation</div>
+                <div class="arrow">→</div>
+                <div class="node purple">AI Operational Analysis</div>
+                <div class="arrow">→</div>
+                <div class="node purple">Governance Engine</div>
+                <div class="arrow">→</div>
+                <div class="node purple">Deployment Decision</div>
+              </div>
+              <div class="list">
+                <div>Context-aware operations</div>
+                <div>Continuously analyzing telemetry</div>
+                <div>Policy-driven governance</div>
+                <div>AI-assisted intelligence</div>
+                <div>Operationally correlated systems</div>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="comparison-card">
-            <h3>Intelligent Delivery Platforms</h3>
-            <div class="comparison-item">
-              <span class="comparison-label">Focus</span>
-              <span class="comparison-value">Intelligence</span>
+        <section class="diagram-section">
+          <h1 class="diagram-title">Intelligent Delivery Platform Reference Architecture</h1>
+          <p class="diagram-subtitle">A modern cloud-native architecture combining observability, governance, runtime intelligence and AI-assisted operational analysis.</p>
+          <div class="architecture">
+            <div class="arch-layer">Developer Layer<span>Git • PR • CI/CD • Versioning</span></div>
+            <div class="down">↓</div>
+            <div class="arch-layer">Build Intelligence Layer<span>Validation • Quality • SBOM</span></div>
+            <div class="down">↓</div>
+            <div class="arch-layer">Security Intelligence Layer<span>SAST • IaC • Container Security</span></div>
+            <div class="down">↓</div>
+            <div class="arch-layer">Governance & Policy Layer<span>OPA • Compliance • Guardrails</span></div>
+            <div class="down">↓</div>
+            <div class="arch-layer">Runtime Intelligence Layer<span>Drift • Runtime Security • RBAC</span></div>
+            <div class="down">↓</div>
+            <div class="arch-layer">Observability Correlation Layer<span>Metrics • Logs • Traces • Events</span></div>
+            <div class="down">↓</div>
+            <div class="arch-layer">AI Operational Analysis<span>RCA • Risk • Recommendations</span></div>
+            <div class="down">↓</div>
+            <div class="arch-layer">Operational Decision Layer<span>Human Approval • Rollback • CAB</span></div>
+          </div>
+        </section>
+
+        <section class="diagram-section">
+          <h1 class="diagram-title">AI-Assisted Operational Intelligence Flow</h1>
+          <p class="diagram-subtitle">Operational telemetry converges into AI-driven analysis engines for real-time risk awareness and intelligent operational decision support.</p>
+          <div class="flow-grid">
+            <div class="flow-box"><h3>Deployments</h3><p>Release activities, rollout metadata and deployment state transitions.</p></div>
+            <div class="flow-box"><h3>Logs & Metrics</h3><p>Centralized telemetry streams collected continuously from distributed systems.</p></div>
+            <div class="flow-box"><h3>Security Events</h3><p>Vulnerability alerts, runtime events, drift signals and policy violations.</p></div>
+          </div>
+          <div class="center-flow">
+            Telemetry Correlation Engine<br>
+            ↓<br>
+            AI Operational Intelligence<br>
+            ↓<br>
+            Risk Analysis • Anomaly Detection • Root Cause Suggestions • Remediation Guidance<br>
+            ↓<br>
+            Human Decision Layer
+          </div>
+        </section>
+
+        <section class="diagram-section">
+          <h1 class="diagram-title">Evolution of Software Delivery Systems</h1>
+          <p class="diagram-subtitle">The industry is evolving from simple deployment automation into intelligent operational systems driven by AI, governance and observability.</p>
+          <div class="timeline">
+            <div class="timeline-step"><h3>Manual Ops</h3><p>Human-driven release coordination and infrastructure operations.</p></div>
+            <div class="timeline-step"><h3>CI/CD</h3><p>Automated build, test and deployment workflows.</p></div>
+            <div class="timeline-step"><h3>DevSecOps</h3><p>Integrated security and compliance validation.</p></div>
+            <div class="timeline-step"><h3>Cloud-Native</h3><p>Container orchestration, GitOps and distributed systems.</p></div>
+            <div class="timeline-step"><h3>Intelligent Delivery Platforms</h3><p>AI-assisted operational governance and telemetry intelligence.</p></div>
+            <div class="timeline-step"><h3>Autonomous Operational Systems</h3><p>Predictive, adaptive and continuously self-analyzing systems.</p></div>
+          </div>
+        </section>
+
+        <section class="diagram-section">
+          <h1 class="diagram-title">Runtime Reality vs Desired State</h1>
+          <p class="diagram-subtitle">Modern delivery systems must continuously compare desired infrastructure definitions against runtime operational reality.</p>
+          <div class="runtime-wrap">
+            <div class="runtime-side">
+              <h3>Desired State</h3>
+              <ul>
+                <li>Git Repositories</li>
+                <li>Helm Charts</li>
+                <li>Infrastructure as Code</li>
+                <li>Deployment Policies</li>
+                <li>Security Baselines</li>
+                <li>Version-Controlled Configurations</li>
+              </ul>
             </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Model</span>
-              <span class="comparison-value">Continuous Correlation</span>
+            <div class="runtime-center">
+              Continuous Runtime Intelligence
             </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Awareness</span>
-              <span class="comparison-value">Full Context</span>
-            </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Operations</span>
-              <span class="comparison-value">Predictive</span>
-            </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Intelligence</span>
-              <span class="comparison-value">AI-Assisted</span>
-            </div>
-            <div class="comparison-item">
-              <span class="comparison-label">Scope</span>
-              <span class="comparison-value">End-to-End System</span>
+            <div class="runtime-side">
+              <h3>Runtime Reality</h3>
+              <ul>
+                <li>Configuration Drift</li>
+                <li>Unexpected Scaling</li>
+                <li>RBAC Changes</li>
+                <li>Runtime Mutation</li>
+                <li>Dependency Changes</li>
+                <li>Policy Drift</li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Impact Metrics -->
-      <section class="flow-section">
-        <h2 class="flow-title">Operational Impact</h2>
-        <p class="flow-subtitle">Typical improvements organizations see after adopting intelligent delivery platforms.</p>
+        <section class="diagram-section">
+          <h1 class="diagram-title">Future of Platform Engineering Ecosystem</h1>
+          <p class="diagram-subtitle">The future platform engineering model combines AI operations, governance, runtime intelligence and cloud-native observability into unified operational systems.</p>
+          <div class="hero-center">Intelligent Platform Engineering</div>
+          <div class="ecosystem">
+            <div class="eco-node"><h3>AI Operations</h3><p>AI-assisted telemetry analysis, operational correlation and intelligent remediation guidance.</p></div>
+            <div class="eco-node"><h3>Observability</h3><p>Unified logs, metrics, traces and event-driven operational awareness.</p></div>
+            <div class="eco-node"><h3>Runtime Security</h3><p>Continuous runtime validation, workload integrity and behavioral monitoring.</p></div>
+            <div class="eco-node"><h3>Governance</h3><p>Automated compliance, policy enforcement and operational guardrails.</p></div>
+            <div class="eco-node"><h3>Reliability Engineering</h3><p>Scalability, resilience, SLOs and distributed operational reliability.</p></div>
+            <div class="eco-node"><h3>Supply Chain Security</h3><p>SBOMs, provenance, artifact integrity and dependency trust systems.</p></div>
+          </div>
+        </section>
 
-        <div class="metrics-grid">
-          <div class="metric-card">
-            <div class="metric-value">75%↓</div>
-            <div class="metric-label">MTTR Reduction</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">60%↓</div>
-            <div class="metric-label">Alert Noise</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">4x↑</div>
-            <div class="metric-label">Deployment Frequency</div>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">80%↓</div>
-            <div class="metric-label">Manual Ops Time</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Evolution Timeline -->
-      <section class="flow-section">
-        <h2 class="flow-title">Evolution of Delivery Systems</h2>
-        <p class="flow-subtitle">The industry transition from manual operations toward intelligent, AI-assisted operational platforms.</p>
-
-        <div class="timeline">
-          <div class="timeline-step">
-            <div class="timeline-year">2010s</div>
-            <div class="timeline-label">Manual Operations</div>
-          </div>
-          <div class="timeline-step">
-            <div class="timeline-year">2015+</div>
-            <div class="timeline-label">DevOps &amp; CI/CD</div>
-          </div>
-          <div class="timeline-step">
-            <div class="timeline-year">2018+</div>
-            <div class="timeline-label">DevSecOps</div>
-          </div>
-          <div class="timeline-step">
-            <div class="timeline-year">2020+</div>
-            <div class="timeline-label">Cloud-Native</div>
-          </div>
-          <div class="timeline-step">
-            <div class="timeline-year">2024+</div>
-            <div class="timeline-label">Intelligent Platforms</div>
-          </div>
-          <div class="timeline-step">
-            <div class="timeline-year">2026+</div>
-            <div class="timeline-label">Autonomous Systems</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Platform Ecosystem -->
-      <section class="flow-section">
-        <h2 class="flow-title">Platform Engineering Ecosystem</h2>
-        <p class="flow-subtitle">Six core pillars that comprise modern intelligent delivery platforms.</p>
-
-        <div class="ecosystem-grid">
-          <div class="ecosystem-node">
-            <div class="ecosystem-icon">🤖</div>
-            <div class="ecosystem-title">AI Operations</div>
-            <div class="ecosystem-desc">Telemetry analysis, operational correlation, intelligent remediation guidance.</div>
-          </div>
-          <div class="ecosystem-node">
-            <div class="ecosystem-icon">📊</div>
-            <div class="ecosystem-title">Observability</div>
-            <div class="ecosystem-desc">Unified logs, metrics, traces, and event-driven operational awareness.</div>
-          </div>
-          <div class="ecosystem-node">
-            <div class="ecosystem-icon">🔒</div>
-            <div class="ecosystem-title">Runtime Security</div>
-            <div class="ecosystem-desc">Continuous validation, workload integrity, behavioral monitoring.</div>
-          </div>
-          <div class="ecosystem-node">
-            <div class="ecosystem-icon">📋</div>
-            <div class="ecosystem-title">Governance</div>
-            <div class="ecosystem-desc">Automated compliance, policy enforcement, operational guardrails.</div>
-          </div>
-          <div class="ecosystem-node">
-            <div class="ecosystem-icon">⚡</div>
-            <div class="ecosystem-title">Reliability</div>
-            <div class="ecosystem-desc">Scalability, resilience, SLOs, distributed operational reliability.</div>
-          </div>
-          <div class="ecosystem-node">
-            <div class="ecosystem-icon">🔗</div>
-            <div class="ecosystem-title">Supply Chain</div>
-            <div class="ecosystem-desc">SBOMs, provenance, artifact integrity, dependency trust.</div>
-          </div>
-        </div>
-      </section>
-
+      </div>
     </div>
   </main>
 
@@ -610,9 +495,8 @@
     <div class="footer-inner">
       <div class="footer-main">
         <div class="footer-top">
-          <h3>Building intelligent delivery systems that scale safely.</h3>
-          <p>Visual diagrams and operational architecture reference.</p>
-
+          <h3>Visual architecture reference for intelligent delivery systems.</h3>
+          <p>Diagrams, flows, and operational intelligence patterns.</p>
           <div class="footer-icon-grid">
             <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -621,10 +505,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
             </a>
           </div>
-
           <a class="footer-cta" href="../contact.html">Let's talk &rarr;</a>
         </div>
-
         <div class="footer-visual" aria-hidden="true">
           <span class="fv-orb fv-orb-1"></span>
           <span class="fv-orb fv-orb-2"></span>
@@ -634,7 +516,6 @@
           <span class="fv-dot fv-dot-2"></span>
         </div>
       </div>
-
       <div class="footer-bottom footer-bottom--pro">
         <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
       </div>
