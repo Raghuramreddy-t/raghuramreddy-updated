@@ -1,0 +1,156 @@
+{
+  "version": "2026-05",
+  "last_verified": "2026-05-08",
+  "providers": [
+    {
+      "id": "claude",
+      "name": "Claude (Anthropic)",
+      "models": [
+        {
+          "id": "haiku",
+          "name": "Claude Haiku 4.5",
+          "input_per_mtok": 0.80,
+          "output_per_mtok": 4.00,
+          "context_window_k": 200,
+          "tier": "fast",
+          "is_legacy": false,
+          "reasoning": false,
+          "vision": true,
+          "speed": "fast",
+          "best_for": "Classification, summarization, high-volume tasks",
+          "color": "#22c55e",
+          "source": "https://anthropic.com/pricing"
+        },
+        {
+          "id": "sonnet",
+          "name": "Claude Sonnet 4.6",
+          "input_per_mtok": 3.00,
+          "output_per_mtok": 15.00,
+          "context_window_k": 200,
+          "tier": "balanced",
+          "is_legacy": false,
+          "reasoning": false,
+          "vision": true,
+          "speed": "medium",
+          "best_for": "Production AI systems, reasoning + speed balance",
+          "color": "#3b82f6",
+          "source": "https://anthropic.com/pricing"
+        },
+        {
+          "id": "opus",
+          "name": "Claude Opus 4.7",
+          "input_per_mtok": 15.00,
+          "output_per_mtok": 75.00,
+          "context_window_k": 200,
+          "tier": "powerful",
+          "is_legacy": false,
+          "reasoning": true,
+          "vision": true,
+          "speed": "slow",
+          "best_for": "Complex reasoning, research, advanced code generation",
+          "color": "#8b5cf6",
+          "source": "https://anthropic.com/pricing"
+        }
+      ]
+    },
+    {
+      "id": "gpt",
+      "name": "OpenAI GPT",
+      "models": [
+        {
+          "id": "gpt55m",
+          "name": "GPT-5.5 mini",
+          "input_per_mtok": 2.00,
+          "output_per_mtok": 8.00,
+          "context_window_k": 128,
+          "tier": "fast",
+          "is_legacy": false,
+          "reasoning": false,
+          "vision": true,
+          "speed": "fast",
+          "best_for": "High-volume tasks, cost-sensitive workloads, fast inference",
+          "color": "#14b8a6",
+          "source": "https://openai.com/pricing"
+        },
+        {
+          "id": "gpt55",
+          "name": "GPT-5.5",
+          "input_per_mtok": 8.00,
+          "output_per_mtok": 32.00,
+          "context_window_k": 128,
+          "tier": "balanced",
+          "is_legacy": false,
+          "reasoning": true,
+          "vision": true,
+          "speed": "medium",
+          "best_for": "Production workloads, reasoning tasks, versatile reasoning",
+          "color": "#06b6d4",
+          "source": "https://openai.com/pricing"
+        },
+        {
+          "id": "gpt55p",
+          "name": "GPT-5.5 Pro",
+          "input_per_mtok": 12.00,
+          "output_per_mtok": 48.00,
+          "context_window_k": 128,
+          "tier": "powerful",
+          "is_legacy": false,
+          "reasoning": true,
+          "vision": true,
+          "speed": "slow",
+          "best_for": "Complex reasoning, research, advanced problem-solving",
+          "color": "#0ea5e9",
+          "source": "https://openai.com/pricing"
+        },
+        {
+          "id": "gpt4o",
+          "name": "GPT-4o",
+          "input_per_mtok": 5.00,
+          "output_per_mtok": 15.00,
+          "context_window_k": 128,
+          "tier": "balanced",
+          "is_legacy": true,
+          "reasoning": false,
+          "vision": true,
+          "speed": "medium",
+          "best_for": "No longer recommended. Use GPT-5.5 instead for better cost-to-performance.",
+          "color": "#3b82f6",
+          "deprecated_by": "gpt55",
+          "source": "https://openai.com/pricing"
+        },
+        {
+          "id": "gpt4t",
+          "name": "GPT-4 Turbo",
+          "input_per_mtok": 10.00,
+          "output_per_mtok": 30.00,
+          "context_window_k": 128,
+          "tier": "balanced",
+          "is_legacy": true,
+          "reasoning": false,
+          "vision": false,
+          "speed": "slow",
+          "best_for": "Superseded by GPT-5.5. Avoid for new projects. Higher cost, lower performance.",
+          "color": "#f59e0b",
+          "deprecated_by": "gpt55",
+          "source": "https://openai.com/pricing"
+        },
+        {
+          "id": "gpt4",
+          "name": "GPT-4",
+          "input_per_mtok": 30.00,
+          "output_per_mtok": 60.00,
+          "context_window_k": 8,
+          "tier": "powerful",
+          "is_legacy": true,
+          "reasoning": false,
+          "vision": false,
+          "speed": "slow",
+          "best_for": "Original GPT-4. Expensive, outdated. Use GPT-5.5 Pro for comparable (or better) performance at 60% the cost.",
+          "color": "#ef4444",
+          "deprecated_by": "gpt55p",
+          "source": "https://openai.com/pricing"
+        }
+      ]
+    }
+  ]
+}
