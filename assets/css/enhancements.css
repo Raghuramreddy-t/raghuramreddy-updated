@@ -1549,6 +1549,14 @@ hr.gradient-divider {
 }
 .spotlight-slide.active { display: grid; }
 
+.spotlight-content {
+    padding-right: 24px;
+}
+
+.spotlight-visual {
+    padding-left: 24px;
+}
+
 .spotlight-slide .spotlight-content > * {
     opacity: 0;
     transform: translateY(10px);
