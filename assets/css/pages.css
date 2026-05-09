@@ -1314,18 +1314,6 @@
         gap: 32px;
     }
 
-    body.applied-ai-systems-page {
-        overflow-x: auto;
-    }
-
-    body.applied-ai-systems-page .ai-capabilities {
-        grid-template-columns: repeat(3, minmax(260px, 1fr));
-    }
-
-    body.applied-ai-systems-page .ai-capabilities--nextgen-sequence {
-        grid-template-columns: repeat(4, minmax(240px, 1fr));
-    }
-
     .article-body {
         padding: 0 16px;
     }
