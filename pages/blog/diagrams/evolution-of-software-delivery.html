@@ -78,6 +78,65 @@ color:#fff;
   line-height: 1.7;
 }
 
+/* Insight Cards Section */
+.diagram-insight {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 80px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.insight-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1);
+  transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12));
+  border-color: rgba(110, 231, 255, 0.4);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.2);
+  transform: translateY(-4px);
+}
+
+.insight-card strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.insight-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+/* Stage Index Badge */
+.stage-index {
+  display: block;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.8;
+}
+
 .timeline {
   display: flex;
   justify-content: space-between;
@@ -269,6 +328,40 @@ color:#fff;
   color: #475569;
 }
 
+[data-theme="light"] .diagram-insight {
+  max-width: 900px;
+}
+
+[data-theme="light"] .insight-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(139, 92, 246, 0.06));
+  border-color: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="light"] .insight-card:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="light"] .insight-card strong {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .insight-card p {
+  color: #475569;
+}
+
+[data-theme="light"] .stage-index {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 [data-theme="light"] .back-btn {
   border-color: rgba(14, 165, 233, 0.2);
   color: #475569;
@@ -318,7 +411,25 @@ color:#fff;
   }
 
   .header {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
+  }
+
+  .diagram-insight {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+
+  .insight-card {
+    padding: 18px;
+  }
+
+  .insight-card strong {
+    font-size: 16px;
+  }
+
+  .insight-card p {
+    font-size: 13px;
   }
 
   .timeline {
@@ -332,6 +443,10 @@ color:#fff;
 
   .node h2 {
     font-size: 20px;
+  }
+
+  .stage-index {
+    font-size: 28px;
   }
 
   .node span {
@@ -349,7 +464,26 @@ color:#fff;
   }
 
   .header {
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+  }
+
+  .diagram-insight {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 50px;
+  }
+
+  .insight-card {
+    padding: 16px;
+  }
+
+  .insight-card strong {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .insight-card p {
+    font-size: 12px;
   }
 
   .timeline {
@@ -364,6 +498,11 @@ color:#fff;
   .node h2 {
     font-size: 18px;
     margin: 0;
+  }
+
+  .stage-index {
+    font-size: 24px;
+    margin-bottom: 6px;
   }
 
   .node span {
