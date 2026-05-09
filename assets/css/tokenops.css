@@ -366,6 +366,21 @@
   .to-best-for {
     max-width: none;
   }
+
+  .to-comparison-section,
+  .to-budget-section,
+  .tc-provider-panel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .to-comparison-table {
+    min-width: 920px;
+  }
+
+  .to-budget-table {
+    min-width: 760px;
+  }
 }
 
 /* ============================================

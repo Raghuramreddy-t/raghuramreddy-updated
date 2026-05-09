@@ -766,6 +766,10 @@
     gap: 24px;
 }
 
+.ai-capabilities--nextgen-sequence {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .ai-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -1028,6 +1032,10 @@
     .ai-capabilities {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .ai-capabilities--nextgen-sequence {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
     
     .contact-grid {
         grid-template-columns: 1fr;
@@ -1061,6 +1069,10 @@
     }
 
     .ai-capabilities {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-capabilities--nextgen-sequence {
         grid-template-columns: 1fr;
     }
 
@@ -1180,6 +1192,11 @@
     color: var(--text-secondary);
 }
 
+.article-body :is(p, li) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
 .article-body ul,
 .article-body ol {
     margin: 0 0 18px 0;
@@ -1200,6 +1217,28 @@
     border-radius: 4px;
     padding: 2px 7px;
     color: var(--accent-primary);
+}
+
+.article-body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.article-body > div[style*="font-family: 'JetBrains Mono'"] {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.article-body > div[style*="font-family: 'JetBrains Mono'"] > div {
+    white-space: pre;
+}
+
+.article-body > div[style*="background"] {
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .article-body strong {
@@ -1280,6 +1319,30 @@
         padding: 0 16px;
     }
 
+    .article-body > div[style*="font-family: 'JetBrains Mono'"] {
+        padding: 14px !important;
+        font-size: 0.85em !important;
+        border-radius: 10px !important;
+    }
+
+    .profile-grid,
+    .projects-grid,
+    .ai-capabilities,
+    .contact-grid,
+    .principles-grid,
+    .certs-grid,
+    .std-quicknav,
+    .standards-model,
+    .workflow-track,
+    .wf-grid,
+    .related-systems-grid,
+    .mh-kpis,
+    .artifact-grid,
+    .cs-grid,
+    .cs-flow {
+        grid-template-columns: 1fr !important;
+    }
+
     /* Tables: horizontal scroll on mobile */
     table {
         width: 100%;
@@ -1355,6 +1418,13 @@
         display: block !important;
     }
 
+    .article-body > div[style*="font-family: 'JetBrains Mono'"] {
+        padding: 12px 14px !important;
+        margin: 16px 0 !important;
+        font-size: 0.8em !important;
+        border-radius: 8px !important;
+    }
+
     table {
         font-size: 14px;
         display: block !important;
@@ -1363,7 +1433,9 @@
 
     td, th {
         padding: 8px 6px !important;
-        display: block !important;
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
 
     /* Sections visible on mobile */
@@ -1379,8 +1451,7 @@
     }
 
     /* Grid layouts stack on mobile */
-    [class*="grid"],
-    [class*="panel"] {
+    [class*="grid"] {
         display: block !important;
         width: 100% !important;
     }
