@@ -92,7 +92,6 @@
   }
 
   function renderBlogCards(container, posts) {
-    const hidePublishedMeta = window.location.pathname.includes('/pages/writing.html');
     const cards = dedupePosts(sortPostsByPublished(posts)).map((post) => {
       const card = document.createElement('div');
       card.className = 'publication-card';
@@ -131,7 +130,7 @@
 
       content.appendChild(tags);
       content.appendChild(title);
-      if (!hidePublishedMeta && published.textContent) {
+      if (published.textContent) {
         content.appendChild(published);
       }
       content.appendChild(description);

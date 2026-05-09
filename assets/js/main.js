@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ensureSharedBackgroundTheme();
     initTheme();
     initNavbar();
-    injectArticleHeaderDate();
     ensureOperationalStandardsNavLink();
     normalizePrimaryNavOrder();
     initUISound();
@@ -37,44 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
     initWordReveal();
     initBtnRoll();
 });
-
-function injectArticleHeaderDate() {
-    const header = document.querySelector('.page-header .page-header-content');
-    if (!header) return;
-    if (header.querySelector('.article-header-date, .card-tags')) return;
-
-    const ldJsonScripts = Array.from(document.querySelectorAll('script[type="application/ld+json"]'));
-    const published = ldJsonScripts
-        .map((script) => {
-            try {
-                return JSON.parse(script.textContent || 'null');
-            } catch {
-                return null;
-            }
-        })
-        .find((data) => data && data.datePublished);
-
-    if (!published || !published.datePublished) return;
-
-    const date = new Date(String(published.datePublished) + 'T00:00:00Z');
-    if (Number.isNaN(date.getTime())) return;
-
-    const label = document.createElement('div');
-    label.className = 'card-tags article-header-date';
-    label.style.marginTop = '20px';
-    label.style.justifyContent = 'center';
-
-    const chip = document.createElement('span');
-    chip.textContent = date.toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
-    label.appendChild(chip);
-
-    const subtitle = header.querySelector('.page-subtitle');
-    if (subtitle && subtitle.parentNode === header) {
-        subtitle.insertAdjacentElement('afterend', label);
-    } else {
-        header.appendChild(label);
-    }
-}
 
 function ensureOperationalStandardsNavLink() {
     const navMenu = document.getElementById('nav-menu');

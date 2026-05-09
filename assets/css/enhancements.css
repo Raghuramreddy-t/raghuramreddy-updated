@@ -1172,18 +1172,6 @@ body::after {
         color: rgba(79,70,229,0.9) !important;
     }
 
-    /* Page tag pill */
-    .page-tag {
-        background: rgba(99,102,241,0.1) !important;
-        border: 1px solid rgba(99,102,241,0.2) !important;
-        color: rgba(79,70,229,0.9) !important;
-    }
-
-    .page-tag::before,
-    .section-tag::before {
-        color: rgba(79,70,229,0.85) !important;
-    }
-
     /* Stat / impact numbers */
     .stat-number, .impact-number, .stat-num {
         background: linear-gradient(135deg, #1e40af 0%, #6d28d9 50%, #047857 100%) !important;
