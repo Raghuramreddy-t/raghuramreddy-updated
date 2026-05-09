@@ -93,10 +93,24 @@
 
   function renderBlogCards(container, posts) {
     const hidePublishedMeta = window.location.pathname.includes('/pages/writing.html');
-    const cards = dedupePosts(sortPostsByPublished(posts)).map((post) => {
+    const articleVariants = [
+      { name: 'sapphire', color: '#3b82f6' },
+      { name: 'violet', color: '#8b5cf6' },
+      { name: 'teal', color: '#14b8a6' },
+      { name: 'amber', color: '#f59e0b' },
+      { name: 'rose', color: '#f43f5e' },
+      { name: 'emerald', color: '#10b981' },
+    ];
+
+    const cards = dedupePosts(sortPostsByPublished(posts)).map((post, index) => {
       const card = document.createElement('div');
       card.className = 'publication-card';
+      card.classList.add('writing-article-card');
+      const variant = articleVariants[index % articleVariants.length];
+      card.classList.add('writing-article-card--' + variant.name);
+      card.style.setProperty('--article-accent', variant.color);
       card.dataset.postId = post.id || '';
+      card.dataset.variant = variant.name;
 
       const content = document.createElement('div');
       content.className = 'publication-content blog-card-content';
@@ -120,15 +134,22 @@
       description.textContent = post.description || '';
 
       const actions = document.createElement('div');
-      actions.className = 'blog-card-actions';
+      actions.className = 'blog-card-actions writing-article-actions';
       const links = Array.isArray(post.actions) && post.actions.length
         ? post.actions
         : [{ label: 'Read Article', url: post.url || '#' }];
 
       links.forEach((action) => {
-        actions.appendChild(createActionLink(action, action.label || 'Read Article'));
+        const link = createActionLink(action, action.label || 'Read Article');
+        link.classList.add('writing-article-cta');
+        actions.appendChild(link);
       });
 
+      const ribbon = document.createElement('div');
+      ribbon.className = 'writing-article-ribbon';
+      ribbon.textContent = variant.name.toUpperCase();
+
+      card.appendChild(ribbon);
       content.appendChild(tags);
       content.appendChild(title);
       if (!hidePublishedMeta && published.textContent) {

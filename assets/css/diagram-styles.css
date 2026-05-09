@@ -560,3 +560,117 @@ html[data-theme="light"] body.diagram-suite-page .footer-divider {
     animation: none !important;
   }
 }
+
+@media (max-width: 768px) {
+  body.diagram-suite-page .details-section {
+    padding: 24px 18px;
+    margin-bottom: 28px;
+  }
+
+  body.diagram-suite-page .details-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  body.diagram-suite-page .details-content h2 {
+    font-size: 24px;
+  }
+
+  body.diagram-suite-page .details-content h3 {
+    font-size: 13px;
+  }
+
+  body.diagram-suite-page .ecosystem-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  body.diagram-suite-page .stack-layer {
+    flex-direction: column;
+  }
+
+  body.diagram-suite-page .layer-top {
+    width: 100%;
+    height: 8px;
+  }
+
+  body.diagram-suite-page .layer-content {
+    border-left: 1px solid rgba(110, 231, 255, 0.2);
+    border-top: none;
+    padding: 20px 22px;
+  }
+
+  body.diagram-suite-page .details-panel {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    max-height: none;
+    margin-top: 6px;
+  }
+
+  body.diagram-suite-page .flow-container {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding: 18px 2px 28px;
+    scroll-snap-type: x proximity;
+  }
+
+  body.diagram-suite-page .stage {
+    flex: 0 0 240px;
+    min-width: 240px;
+    scroll-snap-align: start;
+  }
+
+  body.diagram-suite-page .arrow {
+    flex: 0 0 28px;
+    min-width: 28px;
+  }
+
+  body.diagram-suite-page .details-grid {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  body.diagram-suite-page .title {
+    font-size: 34px;
+  }
+
+  body.diagram-suite-page .subtitle {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  body.diagram-suite-page .stack-layer {
+    margin-bottom: 14px;
+  }
+
+  body.diagram-suite-page .layer-content h3 {
+    font-size: 18px;
+  }
+
+  body.diagram-suite-page .details-section {
+    padding: 20px 16px;
+  }
+
+  body.diagram-suite-page .stage {
+    flex-basis: 220px;
+    min-width: 220px;
+  }
+
+  body.diagram-suite-page .stage-card {
+    padding: 22px 16px;
+  }
+
+  body.diagram-suite-page .stage-title {
+    font-size: 18px;
+  }
+
+  body.diagram-suite-page .stage-desc {
+    font-size: 12px;
+  }
+}

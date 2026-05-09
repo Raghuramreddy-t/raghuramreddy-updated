@@ -419,14 +419,19 @@
 
 .tc-provider-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     align-items: center;
+    justify-content: flex-start;
     padding: 16px 0;
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 24px;
 }
 
 .tc-ptab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 18px;
     border: 1px solid transparent;
     border-bottom: 2px solid transparent;
@@ -436,6 +441,7 @@
     font-weight: 600;
     cursor: pointer;
     transition: all var(--transition-fast);
+    touch-action: manipulation;
 }
 
 .tc-ptab:hover {
@@ -1066,6 +1072,25 @@ html[data-theme="light"] .tc-ptab.active {
 
 html[data-theme="light"] .tc-tab-hint {
     color: #64748b;
+}
+
+@media (max-width: 768px) {
+    .tc-provider-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 12px;
+    }
+
+    .tc-provider-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tc-ptab {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
 }
 
 html[data-theme="light"] .demo-badge {

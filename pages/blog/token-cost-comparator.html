@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
 <head>
@@ -126,7 +126,7 @@
                     tokenizer algorithm. You pay per token for input and output; everything else is free.
                 </p>
                 <p>
-                    English prose: 1 token × 4 characters. "Hello, world!" is 4 tokens. "Unbelievable" might be 1–2
+                    English prose: 1 token �- 4 characters. "Hello, world!" is 4 tokens. "Unbelievable" might be 1–2
                     tokens; "tokenization" is 3–4 tokens. Numbers split unpredictably: "2026" is 1 token, but
                     "2026-05-03" is 4 tokens (hyphens, digits split). Code is much more token-dense because symbols,
                     brackets, and special characters each become their own token or token sequence.
@@ -161,8 +161,8 @@
                 </p>
                 <p>
                     The context window sets the cost ceiling for any single request:
-                    <code>Max Input Cost = Context Window Size × Input Price per Token</code>. For Claude Opus: 200K
-                    tokens × ($15 / 1M) = $3.00. You can't spend more than that on a single input without hitting the
+                    <code>Max Input Cost = Context Window Size �- Input Price per Token</code>. For Claude Opus: 200K
+                    tokens �- ($15 / 1M) = $3.00. You can't spend more than that on a single input without hitting the
                     context limit.
                 </p>
                 <p>
@@ -188,7 +188,7 @@
                 </p>
                 <div class="article-callout">
                     <strong>Key insight:</strong> Don't compare raw token counts across providers. Always compare costs
-                    (tokens × price per token). The lab below uses 1 token × 4 chars as a universal heuristic — actual
+                    (tokens �- price per token). The lab below uses 1 token �- 4 chars as a universal heuristic — actual
                     token counts will differ by ±10% from this estimate.
                 </div>
             </section>
@@ -201,8 +201,8 @@
                 for complex reasoning. In April 2026, the landscape shifted with GPT-5.5's release.
             </p>
             <div class="example-box">
-                <strong>Claude's approach:</strong> Haiku is 93× cheaper than Opus. Sonnet is the "production sweet
-                spot" — 5× cheaper than Opus but still capable for most reasoning tasks.
+                <strong>Claude's approach:</strong> Haiku is 93�- cheaper than Opus. Sonnet is the "production sweet
+                spot" — 5�- cheaper than Opus but still capable for most reasoning tasks.
             </div>
             <div class="example-box">
                 <strong>OpenAI's approach (April 2026):</strong> GPT-5.5 mini is the new cost leader ($2.00 input).
@@ -210,7 +210,7 @@
                 Turbo, GPT-4) are still available but deprecated in favor of the 5.5 series.
             </div>
             <p>
-                The key economic insight: <strong>Claude Haiku ($0.80 input) is 2.5× cheaper than GPT-5.5 mini ($2.00
+                The key economic insight: <strong>Claude Haiku ($0.80 input) is 2.5�- cheaper than GPT-5.5 mini ($2.00
                     input). But Opus ($15.00 input) costs 25% more than GPT-5.5 Pro ($12.00 input).</strong> Claude owns
                 the ultra-cheap tier; OpenAI's 5.5 series is more competitive at mid-to-high tiers.
             </p>
@@ -225,19 +225,19 @@
                     serial and computation-heavy).
                 </p>
                 <div class="code-block">
-                    Total Cost = (Input Tokens × Input Price) + (Output Tokens × Output Price)
+                    Total Cost = (Input Tokens �- Input Price) + (Output Tokens �- Output Price)
                 </div>
                 <p>
                     Example: Processing a 2000-token prompt with Claude Sonnet, expecting ~500 output tokens:
                 </p>
                 <div class="code-block">
-                    Input Cost: 2000 × ($3.00 / 1M) = $0.0060<br>
-                    Output Cost: 500 × ($15.00 / 1M) = $0.0075<br>
+                    Input Cost: 2000 �- ($3.00 / 1M) = $0.0060<br>
+                    Output Cost: 500 �- ($15.00 / 1M) = $0.0075<br>
                     Total: $0.0135 per request
                 </div>
                 <p>
                     The ratio of output price to input price varies by provider and model tier. For Claude Sonnet, it's
-                    5×. For GPT-5.5 mini, it's 4×. For Opus or GPT-5.5 Pro, it's also 4–5×. The practical
+                    5�-. For GPT-5.5 mini, it's 4�-. For Opus or GPT-5.5 Pro, it's also 4–5�-. The practical
                     implication: output budget is precious. If you don't need 500 tokens of output, ask for 200.
                 </p>
             </section>
@@ -250,7 +250,7 @@
                     model you pick determines your monthly bill.
                 </p>
                 <div class="batch-example">
-                    <strong>Example: 100,000 documents × 500 tokens each × 10% output ratio</strong><br>
+                    <strong>Example: 100,000 documents �- 500 tokens each �- 10% output ratio</strong><br>
                     <br>
                     <strong>Claude Haiku:</strong> $60 total<br>
                     <strong>Claude Sonnet:</strong> $225 total<br>
@@ -259,7 +259,7 @@
                     <strong>GPT-5.5 Pro:</strong> $840 total
                 </div>
                 <p>
-                    The spread: Claude Haiku to Opus is a 18.75× cost multiplier. GPT-5.5 mini to Pro is a 6×
+                    The spread: Claude Haiku to Opus is a 18.75�- cost multiplier. GPT-5.5 mini to Pro is a 6�-
                     multiplier. Annualized (monthly batches), that's $12,780/year (Claude range) or $8,400/year (GPT-5.5
                     range) in model choice cost. This is why model selection is a product engineering decision, not just
                     an ops decision.
@@ -378,8 +378,8 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0675
             <section class="article-section">
                 <h2>Take-Away: Model Choice Is a Lever</h2>
                 <p>
-                    Tokens are the atomic unit of LLM economics. A 5× difference in token costs between models becomes
-                    a 5× difference in your AI infrastructure budget. Use the lab to estimate your own workload, then
+                    Tokens are the atomic unit of LLM economics. A 5�- difference in token costs between models becomes
+                    a 5�- difference in your AI infrastructure budget. Use the lab to estimate your own workload, then
                     apply the four optimization levers (routing, caching, output budget, batch APIs) to squeeze more
                     value out of every token. Tokens are cheap in absolute terms — but they add up fast at scale.
                 </p>
@@ -461,7 +461,7 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0675
                             </svg>
                         </a>
                     </div>
-                    <a class="footer-cta" href="../contact.html">Let&apos;s talk â†’</a>
+                    <a class="footer-cta" href="../contact.html">Let&apos;s talk &rarr;</a>
                 </div>
 
                 <div class="footer-visual" aria-hidden="true">
