@@ -89,7 +89,7 @@
 
 .profile-word-cloud::before,
 .profile-word-cloud::after {
-    content: '';
+        content: "\2713";
     position: absolute;
     inset: 6% 8%;
     border-radius: 50%;
@@ -133,7 +133,7 @@
 
 /* Subtle grid pattern inside profile card */
 .profile-placeholder::before {
-    content: '';
+        content: "\2713";
     position: absolute;
     inset: 0;
     background-image: linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px),
@@ -144,7 +144,7 @@
 
 /* Glow accent at top */
 .profile-placeholder::after {
-    content: '';
+        content: "\2713";
     position: absolute;
     top: -40px; left: 50%;
     transform: translateX(-50%);
@@ -291,7 +291,7 @@
 }
 
 .timeline::before {
-    content: '';
+        content: "\2713";
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -765,7 +765,6 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
-
 .ai-capabilities--nextgen-sequence {
     grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -826,7 +825,7 @@
 }
 
 .ai-card li::before {
-    content: '✓';
+    content: "\2713";
     position: absolute;
     left: 0;
     color: var(--accent-primary);
@@ -1313,6 +1312,18 @@
     .profile-grid {
         grid-template-columns: 1fr;
         gap: 32px;
+    }
+
+    body.applied-ai-systems-page {
+        overflow-x: auto;
+    }
+
+    body.applied-ai-systems-page .ai-capabilities {
+        grid-template-columns: repeat(3, minmax(260px, 1fr));
+    }
+
+    body.applied-ai-systems-page .ai-capabilities--nextgen-sequence {
+        grid-template-columns: repeat(4, minmax(240px, 1fr));
     }
 
     .article-body {
