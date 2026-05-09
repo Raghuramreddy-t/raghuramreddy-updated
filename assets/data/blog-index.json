@@ -9,6 +9,7 @@
       "title": "The Rise of Intelligent Delivery Platforms",
       "description": "Why traditional CI/CD pipelines are evolving into AI-assisted operational systems. Exploring the shift from deployment automation to continuous operational intelligence.",
       "url": "/pages/blog/intelligent-delivery-platforms.html",
+      "published": "2026-05-08",
       "tags": ["Platform Engineering", "DevSecOps", "AI Operations", "Cloud-Native"],
       "actions": [
         {
@@ -26,6 +27,7 @@
       "title": "The Token Ledger",
       "description": "A close read of token counts, embeddings, and tokenizer behavior. Includes cost calculations and educational breakdowns. Use the TokenOps platform for interactive cost estimation.",
       "url": "/pages/blog/token-cost-comparator.html",
+      "published": "2026-04-01",
       "tags": ["Tokenizers", "Token Economics", "Claude", "Demo"],
       "actions": [
         {
@@ -43,6 +45,7 @@
       "title": "Grounded AI Systems",
       "description": "Comprehensive guide to grounding knowledge in AI systems. Learn RAG, vector embeddings, MCP, agents, and multi-agent architectures. Hallucination problems, retrieval strategies, real-world considerations, and when to use each pattern.",
       "url": "/pages/blog/rag-knowledge-systems.html",
+      "published": "2026-03-01",
       "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "Grounding"],
       "actions": [
         {
@@ -60,6 +63,7 @@
       "title": "Why Enterprise CI/CD Pipelines Fail at Scale",
       "description": "Most enterprise CI/CD failures are system design problems. A breakdown of where reliability fails and how to fix it architecturally.",
       "url": "/pages/blog/ci-cd-failures-at-scale.html",
+      "published": "2026-02-01",
       "tags": ["CI/CD", "Platform Engineering", "Scale", "7 min"],
       "actions": [
         {
@@ -73,6 +77,7 @@
       "title": "From DevOps to Platform Engineering: What Actually Changed",
       "description": "DevOps is a culture. Platform Engineering is an operating model. This piece gets into what that shift changes in day-to-day delivery.",
       "url": "/pages/blog/devops-to-platform-engineering.html",
+      "published": "2026-01-01",
       "tags": ["Platform Engineering", "DevOps", "IDP", "5 min"],
       "actions": [
         {
@@ -86,6 +91,7 @@
       "title": "Secure-by-Design CI/CD Is No Longer Optional",
       "description": "How to embed security as a first-class pipeline capability from build-time policy to provenance evidence.",
       "url": "/pages/blog/secure-by-design-ci-cd.html",
+      "published": "2026-02-01",
       "tags": ["DevSecOps", "Supply Chain", "SBOM", "6 min"],
       "actions": [
         {

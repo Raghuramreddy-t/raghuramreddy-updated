@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="../../../assets/css/components.css?v=20260503">
 <link rel="stylesheet" href="../../../assets/css/design-v2.css?v=20260503">
 <link rel="stylesheet" href="../../../assets/css/enhancements.css?v=20260503">
+<link rel="stylesheet" href="../../../assets/css/diagram-styles.css?v=20260503">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
@@ -228,7 +229,6 @@ padding:10px 14px;
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 </div>
-<div id="cursor-dot"></div>
 
 <nav class="navbar" id="navbar">
 <div class="nav-container">
@@ -260,21 +260,32 @@ padding:10px 14px;
 
 <main class="section">
 <div class="container">
-<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">← Back to Diagrams</a>
+<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">&larr; Back to Diagrams</a>
 <div class="header">
 <div class="title">Traditional Pipelines vs<br>Intelligent Delivery Platforms</div>
 <p class="subtitle">Compare linear execution models with continuously analyzing operational intelligence platforms</p>
 </div>
+<div class="diagram-insight">
+<div class="insight-card">
+<strong>Traditional flow</strong>
+<p>Code moves in a straight line. Feedback arrives late, so the pipeline is mostly executing work rather than learning from it.</p>
+</div>
+<div class="insight-card">
+<strong>Intelligent flow</strong>
+<p>Validation, security, runtime, and observability are correlated before the deployment decision, turning delivery into a control loop.</p>
+</div>
+</div>
 <div class="panels">
 <div class="panel">
+<div class="panel-note">Execution path</div>
 <h2>Traditional Pipeline</h2>
 <div class="flow">
 <div class="box">Code</div>
-<div class="arrow">→</div>
+<div class="arrow">&rarr;</div>
 <div class="box">Build</div>
-<div class="arrow">→</div>
+<div class="arrow">&rarr;</div>
 <div class="box">Test</div>
-<div class="arrow">→</div>
+<div class="arrow">&rarr;</div>
 <div class="box">Deploy</div>
 </div>
 <ul>
@@ -286,16 +297,17 @@ padding:10px 14px;
 </ul>
 </div>
 <div class="panel ai">
+<div class="panel-note">Control path</div>
 <h2>Intelligent Delivery Platform</h2>
 <div class="flow">
 <div class="box">Validation</div>
-<div class="arrow">→</div>
+<div class="arrow">&rarr;</div>
 <div class="box">Security</div>
-<div class="arrow">→</div>
+<div class="arrow">&rarr;</div>
 <div class="box">Governance</div>
-<div class="arrow">→</div>
+<div class="arrow">&rarr;</div>
 <div class="box">Runtime</div>
-<div class="arrow">→</div>
+<div class="arrow">&rarr;</div>
 <div class="box">Intelligence</div>
 </div>
 <ul>

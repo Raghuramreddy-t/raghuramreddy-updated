@@ -27,14 +27,153 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="../../assets/css/main.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/animations.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/pages.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/components.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260503" />
-  <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260503" />
+  <!-- Critical CSS - render blocking -->
+  <link rel="stylesheet" href="../../assets/css/main.css?v=20260508" />
+  <link rel="stylesheet" href="../../assets/css/pages.css?v=20260508" />
+  <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260508" />
+
+  <!-- Non-critical CSS - deferred -->
+  <link rel="stylesheet" href="../../assets/css/animations.css?v=20260508" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="../../assets/css/components.css?v=20260508" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260508" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="../../assets/css/animations.css?v=20260508" />
+    <link rel="stylesheet" href="../../assets/css/components.css?v=20260508" />
+    <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260508" />
+  </noscript>
+
+  <style>
+    .idp-flow-diagram {
+      margin: 48px 0;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(20, 30, 60, 0.8), rgba(30, 40, 80, 0.8));
+      border: 1px solid rgba(110, 231, 255, 0.25);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+      animation: slideUp 0.6s ease-out;
+    }
+
+    .idp-flow-title {
+      margin: 0 0 32px 0;
+      color: #6ee7ff;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .idp-flow-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .idp-flow-step {
+      min-width: 140px;
+      padding: 18px 20px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.1));
+      border: 1px solid rgba(110, 231, 255, 0.2);
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .idp-flow-step:hover {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(139, 92, 246, 0.15));
+      border-color: rgba(110, 231, 255, 0.35);
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .idp-flow-arrow {
+      font-size: 28px;
+      color: #6ee7ff;
+      font-weight: 800;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    .idp-flow-description {
+      margin: 28px 0 0 0;
+      text-align: center;
+      color: #a0aec0;
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    [data-theme="light"] .idp-flow-diagram {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(243, 248, 252, 0.9));
+      border-color: rgba(59, 130, 246, 0.2);
+      box-shadow: 0 20px 60px rgba(59, 130, 246, 0.08);
+    }
+
+    [data-theme="light"] .idp-flow-title {
+      color: #0ea5e9;
+    }
+
+    [data-theme="light"] .idp-flow-step {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.05));
+      border-color: rgba(59, 130, 246, 0.25);
+      color: #111827;
+    }
+
+    [data-theme="light"] .idp-flow-step:hover {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(59, 130, 246, 0.08));
+      border-color: rgba(59, 130, 246, 0.35);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
+    }
+
+    [data-theme="light"] .idp-flow-arrow {
+      color: #0ea5e9;
+    }
+
+    [data-theme="light"] .idp-flow-description {
+      color: #4b5563;
+    }
+
+    .page-title {
+      letter-spacing: 0.01em;
+    }
+
+    .article-body .article-callout,
+    .article-body .idp-flow-diagram,
+    .article-body .article-note,
+    .article-body .quote-block {
+      border-radius: 18px;
+      border: 1px solid rgba(110, 231, 255, 0.14);
+      box-shadow: 0 16px 40px rgba(59, 130, 246, 0.08);
+    }
+
+    .article-body .article-callout {
+      background: rgba(110, 231, 255, 0.06) !important;
+      padding: 18px 20px;
+    }
+
+    .article-body .idp-flow-diagram {
+      background: linear-gradient(135deg, rgba(20, 30, 60, 0.8), rgba(30, 40, 80, 0.8));
+      border-color: rgba(110, 231, 255, 0.25);
+    }
+
+    [data-theme="light"] .article-body .article-callout,
+    [data-theme="light"] .article-body .idp-flow-diagram,
+    [data-theme="light"] .article-body .article-note,
+    [data-theme="light"] .article-body .quote-block {
+      background: rgba(14, 165, 233, 0.06) !important;
+      border-color: rgba(14, 165, 233, 0.16) !important;
+      box-shadow: 0 16px 40px rgba(14, 165, 233, 0.08);
+    }
+  </style>
 
   <!-- Article structured data -->
   <script type="application/ld+json">
@@ -64,7 +203,10 @@
     <div class="nav-container">
       <a href="../../index.html" class="nav-logo">
         <span class="logo-icon">RRR</span>
-        <span class="logo-text">RaghuRamReddy</span>
+        <div class="logo-stack">
+          <span class="logo-name">RaghuRamReddy</span>
+          <span class="logo-tagline">Designing technology for human experience</span>
+        </div>
       </a>
 
       <div class="nav-menu" id="nav-menu">
@@ -107,7 +249,7 @@
 
         <!-- TL;DR SECTION -->
         <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px; margin-bottom: 32px;">
-            <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">⚡ TL;DR</h3>
+            <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">TL;DR</h3>
             <ul style="margin: 8px 0; padding-left: 20px;">
                 <li><strong>Problem:</strong> Traditional CI/CD pipelines automate deployment execution but lack operational intelligence for modern distributed systems</li>
                 <li><strong>Solution:</strong> Intelligent Delivery Platforms (IDPs) continuously correlate deployment, security, observability, and governance signals</li>
@@ -389,20 +531,20 @@
         </div>
 
         <!-- OPERATIONAL INTELLIGENCE FLOW DIAGRAM -->
-        <div style="margin: 48px 0; padding: 32px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(110, 231, 255, 0.2); border-radius: 20px;">
-          <h3 style="margin: 0 0 24px 0; color: #6ee7ff; text-align: center;">Operational Intelligence Flow</h3>
-          <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
-            <div style="min-width: 120px; padding: 16px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 12px; text-align: center; font-weight: 700; font-size: 0.9rem;">Deployments</div>
-            <div style="font-size: 24px; color: #6ee7ff; font-weight: 800;">→</div>
-            <div style="min-width: 120px; padding: 16px; background: linear-gradient(135deg, #ef4444, #dc2626); border-radius: 12px; text-align: center; font-weight: 700; font-size: 0.9rem;">Security Signals</div>
-            <div style="font-size: 24px; color: #6ee7ff; font-weight: 800;">→</div>
-            <div style="min-width: 120px; padding: 16px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 12px; text-align: center; font-weight: 700; font-size: 0.9rem;">Telemetry Correlation</div>
-            <div style="font-size: 24px; color: #6ee7ff; font-weight: 800;">→</div>
-            <div style="min-width: 120px; padding: 16px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 12px; text-align: center; font-weight: 700; font-size: 0.9rem;">AI Analysis</div>
-            <div style="font-size: 24px; color: #6ee7ff; font-weight: 800;">→</div>
-            <div style="min-width: 120px; padding: 16px; background: linear-gradient(135deg, #06b6d4, #0891b2); border-radius: 12px; text-align: center; font-weight: 700; font-size: 0.9rem;">Decision Support</div>
+        <div class="idp-flow-diagram">
+          <h3 class="idp-flow-title">Operational Intelligence Flow</h3>
+          <div class="idp-flow-container">
+            <div class="idp-flow-step">Deployments</div>
+            <div class="idp-flow-arrow">&rarr;</div>
+            <div class="idp-flow-step">Security Signals</div>
+            <div class="idp-flow-arrow">&rarr;</div>
+            <div class="idp-flow-step">Telemetry Correlation</div>
+            <div class="idp-flow-arrow">&rarr;</div>
+            <div class="idp-flow-step">AI Analysis</div>
+            <div class="idp-flow-arrow">&rarr;</div>
+            <div class="idp-flow-step">Decision Support</div>
           </div>
-          <p style="margin: 20px 0 0 0; text-align: center; color: #a0aec0; font-size: 0.9rem;">All signals converge into AI-driven operational intelligence for human decision-making</p>
+          <p class="idp-flow-description">All signals converge into AI-driven operational intelligence for human decision-making</p>
         </div>
 
         <h2>Why AI Changes Operations More Than Coding</h2>
@@ -425,7 +567,7 @@
 
         <h2>Intelligent Operations Architecture</h2>
 
-        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;">Deployments + Security Signals + Runtime Events + Metrics + Logs + Traces + Dependency Graphs + Governance Policies → AI Operational Intelligence Engine → Risk Analysis, Anomaly Detection, Failure Correlation, Remediation Guidance, Operational Recommendations</p>
+        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;">Deployments + Security Signals + Runtime Events + Metrics + Logs + Traces + Dependency Graphs + Governance Policies &rarr; AI Operational Intelligence Engine &rarr; Risk Analysis, Anomaly Detection, Failure Correlation, Remediation Guidance, Operational Recommendations</p>
 
         <h2>Visual Companion</h2>
 
@@ -494,14 +636,59 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-main">
-        <div class="footer-top">
-          <h3>Building intelligent systems that scale safely.</h3>
-          <p>Ideas on platform engineering, AI operations, and DevSecOps.</p>
+  <div class="footer-divider"></div>
+
+  <footer class="footer footer--pro">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-card footer-brand-card">
+          <a href="../index.html" class="footer-logo">
+            <span class="logo-icon">RRR</span>
+            <span class="logo-text">RaghuRamReddy</span>
+          </a>
+
+          <p class="footer-tagline">Designing technology for human experience</p>
+          <p class="footer-subline">Platform Engineering &bull; DevSecOps &bull; Automation &bull; AI-assisted Operations</p>
+
+          <div class="footer-social-row">
+            <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+            <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="social-pill" href="../contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Navigation</h4>
+            <div class="footer-links">
+              <a href="../index.html" class="footer-link">Home</a>
+              <a href="../work.html" class="footer-link">Work &amp; Impact</a>
+              <a href="../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
+              <a href="../writing.html" class="footer-link">Writing</a>
+              <a href="../about.html" class="footer-link">About</a>
+              <a href="../contact.html" class="footer-link">Contact</a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Explore</h4>
+            <div class="footer-links">
+              <a href="../future-systems.html" class="footer-link">Future Systems</a>
+              <a href="../operational-standards-library.html" class="footer-link">Operational Standards Library</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-card footer-connect-card">
+          <div class="footer-connect-header">
+            <h4 class="footer-col-title">Connect</h4>
+            <p class="footer-connect-note">Fastest response on LinkedIn.</p>
+          </div>
 
           <div class="footer-icon-grid">
+            <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+            </a>
             <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
             </a>

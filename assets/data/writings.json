@@ -19,8 +19,17 @@
       "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
       "url": "blog/token-cost-comparator.html",
       "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Claude", "GPT"],
-      "published": "2026-05-03",
+      "published": "2026-04-01",
       "version": "1.2.0"
+    },
+    {
+      "id": "rag-knowledge-systems",
+      "title": "Grounded AI Systems",
+      "description": "Comprehensive guide to grounding knowledge in AI systems. Learn RAG, vector embeddings, MCP, agents, and multi-agent architectures. Includes hallucination problems, retrieval strategies, real-world considerations, and when to use each pattern.",
+      "url": "blog/rag-knowledge-systems.html",
+      "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering", "Grounding"],
+      "published": "2026-03-01",
+      "version": "1.0.0"
     },
     {
       "id": "token-cost-comparator-lab",
@@ -29,15 +38,6 @@
       "url": "blog/token-cost-comparator.html#live-demo",
       "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Interactive"],
       "published": "2025-10-28",
-      "version": "1.0.0"
-    },
-    {
-      "id": "rag-knowledge-systems",
-      "title": "Grounded AI Systems",
-      "description": "Comprehensive guide to grounding knowledge in AI systems. Learn RAG, vector embeddings, MCP, agents, and multi-agent architectures. Includes hallucination problems, retrieval strategies, real-world considerations, and when to use each pattern.",
-      "url": "blog/rag-knowledge-systems.html",
-      "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering", "Grounding"],
-      "published": "2025-10-20",
       "version": "1.0.0"
     },
     {

@@ -30,6 +30,21 @@
     });
   }
 
+  function sortPostsByPublished(posts) {
+    return [...(posts || [])].sort((a, b) => {
+      const aHasDate = Boolean(a && a.published);
+      const bHasDate = Boolean(b && b.published);
+      if (aHasDate !== bHasDate) return aHasDate ? -1 : 1;
+
+      const aTime = aHasDate ? new Date(String(a.published) + 'T00:00:00Z').getTime() : Number.NaN;
+      const bTime = bHasDate ? new Date(String(b.published) + 'T00:00:00Z').getTime() : Number.NaN;
+      const aSafe = Number.isNaN(aTime) ? Number.NEGATIVE_INFINITY : aTime;
+      const bSafe = Number.isNaN(bTime) ? Number.NEGATIVE_INFINITY : bTime;
+      if (aSafe !== bSafe) return bSafe - aSafe;
+      return String(a && a.title ? a.title : '').localeCompare(String(b && b.title ? b.title : ''));
+    });
+  }
+
   function clearAndAppend(container, nodes) {
     container.innerHTML = '';
     const frag = document.createDocumentFragment();
@@ -65,8 +80,19 @@
     return link;
   }
 
+  function formatPublishedDate(published) {
+    if (!published) return '';
+    const parsed = new Date(String(published) + 'T00:00:00Z');
+    if (Number.isNaN(parsed.getTime())) return String(published);
+    return parsed.toLocaleString('en-US', {
+      month: 'short',
+      year: 'numeric',
+      timeZone: 'UTC',
+    });
+  }
+
   function renderBlogCards(container, posts) {
-    const cards = dedupePosts(posts).map((post) => {
+    const cards = dedupePosts(sortPostsByPublished(posts)).map((post) => {
       const card = document.createElement('div');
       card.className = 'publication-card';
       card.dataset.postId = post.id || '';
@@ -85,6 +111,10 @@
       const title = document.createElement('h3');
       title.textContent = post.title || '';
 
+      const published = document.createElement('p');
+      published.className = 'publication-meta';
+      published.textContent = formatPublishedDate(post.published);
+
       const description = document.createElement('p');
       description.textContent = post.description || '';
 
@@ -100,6 +130,9 @@
 
       content.appendChild(tags);
       content.appendChild(title);
+      if (published.textContent) {
+        content.appendChild(published);
+      }
       content.appendChild(description);
       content.appendChild(actions);
       card.appendChild(content);
@@ -110,7 +143,7 @@
   }
 
   function renderPublications(grid, papers) {
-    const cards = dedupePosts(papers).map((paper, index) => {
+    const cards = dedupePosts(sortPostsByPublished(papers)).map((paper, index) => {
       const card = document.createElement('div');
       card.className = 'publication-card';
       card.dataset.paperId = paper.id || '';

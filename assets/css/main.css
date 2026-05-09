@@ -80,6 +80,8 @@ html {
     font-size: 16px;
     /* Hard-coded dark background prevents white flash before CSS variables resolve */
     background-color: #0a0a0f;
+    width: 100%;
+    height: 100%;
 }
 
 body {
@@ -90,6 +92,20 @@ body {
     overflow-x: hidden;
     /* Transition suppressed on load via .no-transition class; JS removes it */
     transition: background var(--transition-base), color var(--transition-base);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Prevent layout shift on scroll */
+html {
+    overflow-y: scroll;
+}
+
+/* Ensure main content stretches to fill viewport */
+main {
+    flex: 1;
 }
 
 /* Suppress all transitions during page load / theme init */
@@ -2641,6 +2657,7 @@ body {
         flex-direction: column;
         text-align: center;
         padding-top: 100px;
+        min-height: auto !important;
     }
     
     .hero-content {
@@ -2763,11 +2780,17 @@ grid-template-columns: repeat(2, 1fr);
     .hero-title {
         font-size: 2rem;
     }
-    
+
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 16px;
+    }
+
     .hero-cta {
         flex-direction: column;
     }
-    
+
     .btn {
         width: 100%;
         justify-content: center;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 <link rel="canonical" href="https://raghuramreddy.tech/pages/blog/diagrams/reference-architecture.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Intelligent Delivery Platform Reference Architecture">
-<meta property="og:description" content="8-layer architecture: Developer → Build Intelligence → Security → Governance → Runtime → Observability → AI Analysis → Decision">
+<meta property="og:description" content="8-layer architecture: Developer &rarr; Build Intelligence &rarr; Security &rarr; Governance &rarr; Runtime &rarr; Observability &rarr; AI Analysis &rarr; Decision">
 <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/diagrams/reference-architecture.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="../../../assets/css/components.css?v=20260503">
 <link rel="stylesheet" href="../../../assets/css/design-v2.css?v=20260503">
 <link rel="stylesheet" href="../../../assets/css/enhancements.css?v=20260503">
+<link rel="stylesheet" href="../../../assets/css/diagram-styles.css?v=20260503">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{
@@ -252,13 +253,12 @@ font-size:11px;
 }
 </style>
 </head>
-<body>
+<body class="diagram-suite-page">
 <div class="bg-gradient"></div>
 <div class="floating-orbs">
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 </div>
-<div id="cursor-dot"></div>
 
 <nav class="navbar" id="navbar">
 <div class="nav-container">
@@ -290,32 +290,88 @@ font-size:11px;
 
 <main class="section">
 <div class="container">
-<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">← Back to Diagrams</a>
+<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">&larr; Back to Diagrams</a>
 <div class="header">
 <div class="title">Intelligent Delivery Platform<br>Reference Architecture</div>
 <p class="subtitle">8-layer stack from developer workflows through AI operational analysis to decision layers</p>
 </div>
+<div class="diagram-insight">
+<div class="insight-card">
+<strong>Control plane</strong>
+<p>The lower layers capture developer, build, security, and governance inputs that establish the system’s trust boundary.</p>
+</div>
+<div class="insight-card">
+<strong>Decision plane</strong>
+<p>The upper layers fuse runtime telemetry, correlated observability, and AI analysis so delivery decisions are evidence-led.</p>
+</div>
+</div>
 <div class="arch">
-<div class="layer"><h2>Developer Layer</h2><p>Git • PR • CI/CD • Versioning</p></div>
-<div class="layer"><h2>Build Intelligence</h2><p>Validation • Quality • SBOM</p></div>
-<div class="layer"><h2>Security Intelligence</h2><p>SAST • IaC • Container Security</p></div>
-<div class="layer"><h2>Governance & Policy</h2><p>OPA • Compliance • Guardrails</p></div>
-<div class="layer"><h2>Runtime Intelligence</h2><p>Drift • Runtime Security • RBAC</p></div>
-<div class="layer"><h2>Observability Correlation</h2><p>Metrics • Logs • Traces • Events</p></div>
-<div class="layer"><h2>AI Operational Analysis</h2><p>RCA • Risk • Recommendations</p></div>
-<div class="layer"><h2>Operational Decision</h2><p>Human Approval • Rollback • CAB</p></div>
+<div class="layer"><h2>Developer Layer</h2><p>Git &bull; PR &bull; CI/CD &bull; Versioning</p></div>
+<div class="layer"><h2>Build Intelligence</h2><p>Validation &bull; Quality &bull; SBOM</p></div>
+<div class="layer"><h2>Security Intelligence</h2><p>SAST &bull; IaC &bull; Container Security</p></div>
+<div class="layer"><h2>Governance & Policy</h2><p>OPA &bull; Compliance &bull; Guardrails</p></div>
+<div class="layer"><h2>Runtime Intelligence</h2><p>Drift &bull; Runtime Security &bull; RBAC</p></div>
+<div class="layer"><h2>Observability Correlation</h2><p>Metrics &bull; Logs &bull; Traces &bull; Events</p></div>
+<div class="layer"><h2>AI Operational Analysis</h2><p>RCA &bull; Risk &bull; Recommendations</p></div>
+<div class="layer"><h2>Operational Decision</h2><p>Human Approval &bull; Rollback &bull; CAB</p></div>
 </div>
 </div>
 </div>
 </main>
 
-<footer class="footer">
-<div class="footer-inner">
-<div class="footer-main">
-<div class="footer-top">
-<h3>Intelligent Delivery Platform Reference Architecture</h3>
-<p>8-layer stack from developer workflows through AI operational analysis to decision layers</p>
+<div class="footer-divider"></div>
+
+<footer class="footer footer--pro">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-card footer-brand-card">
+<a href="../../../index.html" class="footer-logo">
+<span class="logo-icon">RRR</span>
+<span class="logo-text">RaghuRamReddy</span>
+</a>
+
+<p class="footer-tagline">Designing technology for human experience</p>
+<p class="footer-subline">Platform Engineering &bull; DevSecOps &bull; Automation &bull; AI-assisted Operations</p>
+
+<div class="footer-social-row">
+<a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+<a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+<a class="social-pill" href="../../contact.html">Contact</a>
+</div>
+</div>
+
+<div class="footer-links-col">
+<div class="footer-col">
+<h4 class="footer-col-title">Navigation</h4>
+<div class="footer-links">
+<a href="../../../index.html" class="footer-link">Home</a>
+<a href="../../work.html" class="footer-link">Work &amp; Impact</a>
+<a href="../../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
+<a href="../../writing.html" class="footer-link">Writing</a>
+<a href="../../about.html" class="footer-link">About</a>
+<a href="../../contact.html" class="footer-link">Contact</a>
+</div>
+</div>
+
+<div class="footer-col">
+<h4 class="footer-col-title">Explore</h4>
+<div class="footer-links">
+<a href="../../future-systems.html" class="footer-link">Future Systems</a>
+<a href="../../operational-standards-library.html" class="footer-link">Operational Standards Library</a>
+</div>
+</div>
+</div>
+
+<div class="footer-card footer-connect-card">
+<div class="footer-connect-header">
+<h4 class="footer-col-title">Connect</h4>
+<p class="footer-connect-note">Fastest response on LinkedIn.</p>
+</div>
+
 <div class="footer-icon-grid">
+<a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+</a>
 <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
 </a>
@@ -323,8 +379,10 @@ font-size:11px;
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
 </a>
 </div>
+
 <a class="footer-cta" href="../../contact.html">Let's talk &rarr;</a>
 </div>
+
 <div class="footer-visual" aria-hidden="true">
 <span class="fv-orb fv-orb-1"></span>
 <span class="fv-orb fv-orb-2"></span>
@@ -334,6 +392,7 @@ font-size:11px;
 <span class="fv-dot fv-dot-2"></span>
 </div>
 </div>
+
 <div class="footer-bottom footer-bottom--pro">
 <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
 </div>

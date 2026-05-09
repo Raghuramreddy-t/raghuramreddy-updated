@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -14,20 +14,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../../../assets/css/main.css?v=20260503">
-<link rel="stylesheet" href="../../../assets/css/animations.css?v=20260503">
-<link rel="stylesheet" href="../../../assets/css/pages.css?v=20260503">
-<link rel="stylesheet" href="../../../assets/css/components.css?v=20260503">
-<link rel="stylesheet" href="../../../assets/css/design-v2.css?v=20260503">
-<link rel="stylesheet" href="../../../assets/css/enhancements.css?v=20260503">
+<link rel="stylesheet" href="../../../assets/css/main.css?v=20260513">
+<link rel="stylesheet" href="../../../assets/css/animations.css?v=20260513">
+<link rel="stylesheet" href="../../../assets/css/pages.css?v=20260513">
+<link rel="stylesheet" href="../../../assets/css/components.css?v=20260513">
+<link rel="stylesheet" href="../../../assets/css/design-v2.css?v=20260513">
+<link rel="stylesheet" href="../../../assets/css/enhancements.css?v=20260513">
+<link rel="stylesheet" href="../../../assets/css/diagram-styles.css?v=20260513">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-background:#030712;
-font-family:Inter,sans-serif;
-color:white;
-padding:60px 20px;
-overflow-x:hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #050816;
+  font-family: Inter, sans-serif;
+  color: white;
+  padding: 60px 20px;
+  overflow-x: hidden;
 }
 .container{
 width:100%;
@@ -49,162 +54,712 @@ transition:all 0.3s ease;
 border-color:rgba(255,255,255,0.3);
 color:#fff;
 }
-.header{
-text-align:center;
-margin-bottom:80px;
-animation:fadeIn 0.6s ease-out;
+.header {
+  text-align: center;
+  margin-bottom: 100px;
 }
-.title{
-font-size:54px;
-font-weight:800;
-margin-bottom:16px;
-background:linear-gradient(90deg,#6ee7ff,#8b5cf6,#d946ef);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+
+.title {
+  font-size: 54px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6, #d946ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.subtitle{
-font-size:16px;
-color:#cbd5e1;
-max-width:600px;
-margin:0 auto;
-line-height:1.6;
+
+.subtitle {
+  font-size: 18px;
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
 }
-.center{
-width:320px;
-height:320px;
-border-radius:50%;
-margin:0 auto 80px auto;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-font-size:34px;
-font-weight:800;
-background:radial-gradient(circle,#8b5cf6,#312e81);
-box-shadow:0 0 80px rgba(139,92,246,.65);
-animation:zoomIn 0.7s ease-out;
+
+.center {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  margin: 0 auto 100px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  background: radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.9), rgba(49, 46, 129, 0.9));
+  border: 2px solid rgba(110, 231, 255, 0.3);
+  box-shadow: 0 0 100px rgba(139, 92, 246, 0.6), inset 0 0 60px rgba(110, 231, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
+
+.center-core{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.15), transparent 28%),
+    radial-gradient(circle at 50% 50%, #6ee7ff, #8b5cf6 56%, #d946ef 100%);
+  box-shadow: 0 0 0 16px rgba(110, 231, 255, 0.06), 0 24px 40px rgba(124, 58, 237, 0.2);
 }
-.node{
-padding:32px;
-border-radius:28px;
-background:linear-gradient(135deg,#111827,#1e293b);
-text-align:center;
-transition:all 0.3s ease;
-animation:slideUp 0.6s ease-out backwards;
+
+.center-core::before{
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.22);
 }
-.node:nth-child(1){animation-delay:0.1s}
-.node:nth-child(2){animation-delay:0.2s}
-.node:nth-child(3){animation-delay:0.3s}
-.node:nth-child(4){animation-delay:0.4s}
-.node:nth-child(5){animation-delay:0.5s}
-.node:nth-child(6){animation-delay:0.6s}
-.node:hover{
-background:linear-gradient(135deg,#0f172a,#1a2f4b);
-box-shadow:0 0 40px rgba(139,92,246,0.4);
-transform:translateY(-4px);
+
+.center-core::after{
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.18), transparent 38%);
+  box-shadow: inset 0 0 30px rgba(255,255,255,0.08);
 }
-.node h2{
-font-size:28px;
-margin-bottom:16px;
-color:#6ee7ff;
-font-weight:700;
+
+.center-label{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-indent: 0.14em;
+  text-transform: uppercase;
+  pointer-events: none;
 }
-.node p{
-color:#cbd5e1;
-line-height:1.7;
-font-size:14px;
+
+.center-label span{
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  opacity: 0.82;
 }
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
+
+.center-ball{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -11px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #6ee7ff 32%, #2563eb 100%);
+  box-shadow: 0 0 16px rgba(110, 231, 255, 0.5), 0 0 0 6px rgba(110, 231, 255, 0.08);
 }
-@keyframes zoomIn{
-from{opacity:0;transform:scale(0.8)}
-to{opacity:1;transform:scale(1)}
+
+.center-ball::before{
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(110, 231, 255, 0.15);
 }
-@keyframes slideUp{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
+
+.center-ball::after{
+  content: '';
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(110,231,255,0.12) 0%, transparent 62%);
+  filter: blur(1px);
+  opacity: 0.6;
 }
-[data-theme="light"] body{
-background:linear-gradient(135deg,#f0f4f8,#f9fafb);
-color:#111827;
+
+.center::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 60% 60%, rgba(110, 231, 255, 0.2), transparent);
+  pointer-events: none;
+  z-index: 0;
 }
-[data-theme="light"] .center{
-background:radial-gradient(circle,#8b5cf6,#7c3aed);
-box-shadow:0 0 80px rgba(139,92,246,0.3);
+
+.center::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 0%, rgba(139, 92, 246, 0.1) 100%);
+  pointer-events: none;
+  z-index: 0;
 }
-[data-theme="light"] .node{
-background:linear-gradient(135deg,#ffffff,#f3f8fc);
-border:1px solid rgba(59,130,246,0.1);
-box-shadow:0 0 30px rgba(59,130,246,0.1);
+
+.center-label{
+  z-index: 2;
+  color: white;
+  background: linear-gradient(135deg, #6ee7ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-[data-theme="light"] .node h2{
-background:linear-gradient(90deg,#0ea5e9,#06b6d4);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+
+.stack-container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 0 20px;
 }
-[data-theme="light"] .node p{
-color:#475569;
+
+.stack-layer {
+  display: flex;
+  margin-bottom: 0;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  animation: slideInLayer 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
 }
-[data-theme="light"] .node:hover{
-background:linear-gradient(135deg,#f0f8ff,#e8f2fb);
-border-color:rgba(59,130,246,0.2);
-box-shadow:0 0 50px rgba(59,130,246,0.15);
+
+@keyframes slideInLayer {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
-@media(max-width:1024px){
-.grid{
-grid-template-columns:repeat(2,1fr);
+
+.layer-top {
+  width: 12px;
+  background: var(--color);
+  flex-shrink: 0;
 }
-.title{
-font-size:42px;
+
+.layer-content {
+  flex: 1;
+  padding: 32px 40px;
+  background: linear-gradient(135deg, rgba(20, 30, 60, 0.9), rgba(30, 40, 80, 0.9));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-left: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
 }
+
+.stack-layer:hover .layer-content {
+  background: linear-gradient(135deg, rgba(20, 30, 60, 1), rgba(30, 60, 120, 0.95));
+  border-color: var(--color);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 0 30px var(--color);
+  padding-left: 45px;
 }
-@media(max-width:768px){
-.grid{
-grid-template-columns:1fr;
+
+.stack-layer:hover .layer-top {
+  width: 20px;
 }
-.center{
-width:240px;
-height:240px;
-font-size:28px;
+
+.layer-content h3 {
+  margin: 0 0 12px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color);
+  transition: all 0.3s ease;
 }
+
+.layer-content p {
+  margin: 0;
+  font-size: 15px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  transition: color 0.3s ease;
 }
-@media(max-width:640px){
-body{
-padding:40px 20px;
+
+.stack-layer:hover .layer-content p {
+  color: #e2e8f0;
 }
-.title{
-font-size:32px;
-margin-bottom:60px;
+
+.layer-click-hint {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
 }
-.center{
-width:200px;
-height:200px;
-font-size:24px;
-margin-bottom:60px;
+
+.stack-layer:hover .layer-click-hint {
+  color: var(--color);
 }
-.node{
-padding:24px;
+
+.details-panel {
+  position: sticky;
+  top: 100px;
+  width: 400px;
+  max-height: 600px;
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(20, 30, 60, 0.95), rgba(30, 40, 80, 0.95));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(-40px);
 }
-.node h2{
-font-size:22px;
+
+.details-panel.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
+
+.details-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.details-close:hover {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.details-content h2 {
+  margin: 0 0 20px 0;
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #6ee7ff, #d946ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.details-content h3 {
+  margin: 20px 0 10px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #a78bfa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.details-content p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.8;
+}
+
+.details-content ul {
+  margin: 12px 0;
+  padding-left: 20px;
+  list-style: none;
+}
+
+.details-content li {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 20px;
+}
+
+.details-content li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color, #6ee7ff);
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  .details-panel {
+    position: static;
+    width: 100%;
+    max-height: none;
+    margin-top: 40px;
+  }
+}
+
+.grid {
+  display: none;
+}
+
+.center, .center-kicker {
+  display: none;
+}
+
+.node {
+  padding: 40px 32px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(20, 30, 60, 0.9), rgba(30, 40, 80, 0.9));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.node::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(110, 231, 255, 0.4), transparent);
+}
+
+.node::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(110, 231, 255, 0.15), transparent);
+  pointer-events: none;
+}
+
+.node:nth-child(1) { animation-delay: 0.1s; --node-color: #6ee7ff; }
+.node:nth-child(2) { animation-delay: 0.2s; --node-color: #a78bfa; }
+.node:nth-child(3) { animation-delay: 0.3s; --node-color: #06b6d4; }
+.node:nth-child(4) { animation-delay: 0.4s; --node-color: #fbbf24; }
+.node:nth-child(5) { animation-delay: 0.5s; --node-color: #34d399; }
+.node:nth-child(6) { animation-delay: 0.6s; --node-color: #ec4899; }
+
+@keyframes nodePulse {
+  0%, 100% { box-shadow: 0 30px 80px rgba(124, 58, 237, 0.15), inset 0 0 20px rgba(110, 231, 255, 0); }
+  50% { box-shadow: 0 30px 80px rgba(124, 58, 237, 0.35), inset 0 0 30px rgba(110, 231, 255, 0.15); }
+}
+
+.node {
+  animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.node:hover {
+  background: linear-gradient(135deg, rgba(20, 30, 60, 1), rgba(30, 60, 120, 0.95));
+  border-color: var(--node-color);
+  box-shadow: 0 30px 80px var(--node-color), 0 0 30px rgba(110, 231, 255, 0.2);
+  transform: translateY(-12px) scale(1.05);
+  animation: nodePulse 1.5s ease-in-out infinite;
+}
+
+.node:hover h2 {
+  background: linear-gradient(90deg, var(--node-color), #d946ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.node:hover::after {
+  background: radial-gradient(circle at 30% 30%, var(--node-color), transparent);
+  opacity: 0.3;
+}
+
+.node-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, var(--node-color), rgba(255,255,255,0));
+  border-radius: 12px;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.node:hover .node-icon {
+  opacity: 1;
+  scale: 1.1;
+  filter: drop-shadow(0 0 20px var(--node-color));
+}
+
+.node h2 {
+  font-size: 28px;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.node p {
+  color: #b8c1ec;
+  line-height: 1.8;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.node:hover p {
+  color: #e2e8f0;
+}
+
+.node:active,
+.node:focus {
+  outline: none;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+}
+
+.node {
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Animation keyframes removed per request. */
+[data-theme="light"] body {
+  background: linear-gradient(135deg, #f0f4f8, #f9fafb);
+  color: #111827;
+}
+
+[data-theme="light"] .center {
+  background: radial-gradient(circle at 40% 40%, rgba(139, 92, 246, 0.4), rgba(124, 58, 237, 0.3));
+  border-color: rgba(14, 165, 233, 0.3);
+  box-shadow: 0 0 80px rgba(14, 165, 233, 0.3), inset 0 0 40px rgba(14, 165, 233, 0.08);
+}
+
+[data-theme="light"] .center-label {
+  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .center::before {
+  background: radial-gradient(circle at 60% 60%, rgba(14, 165, 233, 0.1), transparent);
+}
+
+[data-theme="light"] .node {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 248, 252, 0.95));
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.1);
+}
+
+[data-theme="light"] .node::before {
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.2), transparent);
+}
+
+[data-theme="light"] .node::after {
+  background: radial-gradient(circle at 30% 30%, rgba(14, 165, 233, 0.08), transparent);
+}
+
+[data-theme="light"] .node h2 {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .node p {
+  color: #475569;
+}
+
+[data-theme="light"] .node:hover {
+  background: linear-gradient(135deg, rgba(248, 251, 255, 1), rgba(239, 246, 255, 0.95));
+  border-color: var(--node-color);
+  box-shadow: 0 30px 80px var(--node-color), 0 0 30px rgba(14, 165, 233, 0.1);
+}
+
+[data-theme="light"] .layer-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 248, 252, 0.95));
+  border-color: rgba(14, 165, 233, 0.2);
+}
+
+[data-theme="light"] .layer-content h3 {
+  color: var(--color);
+}
+
+[data-theme="light"] .layer-content p {
+  color: #475569;
+}
+
+[data-theme="light"] .stack-layer:hover .layer-content {
+  background: linear-gradient(135deg, rgba(248, 251, 255, 1), rgba(239, 246, 255, 0.95));
+  border-color: var(--color);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.1), inset 0 0 30px var(--color);
+}
+
+[data-theme="light"] .stack-layer:hover .layer-content p {
+  color: #1e293b;
+}
+
+[data-theme="light"] .layer-click-hint {
+  color: #94a3b8;
+}
+
+[data-theme="light"] .stack-layer:hover .layer-click-hint {
+  color: var(--color);
+}
+
+[data-theme="light"] .details-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 248, 252, 0.95));
+  border-color: rgba(14, 165, 233, 0.2);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.1);
+}
+
+[data-theme="light"] .details-content h2 {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .details-content h3 {
+  color: #0ea5e9;
+}
+
+[data-theme="light"] .details-content p,
+[data-theme="light"] .details-content li {
+  color: #475569;
+}
+
+[data-theme="light"] .details-close {
+  color: #64748b;
+}
+
+@media(max-width: 1024px) {
+  .stack-container {
+    margin: 60px auto;
+  }
+
+  .layer-content {
+    padding: 24px 32px;
+  }
+
+  .layer-content h3 {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+}
+
+@media(max-width: 768px) {
+  body {
+    padding: 40px 16px;
+  }
+
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .stack-container {
+    margin: 40px auto;
+    padding: 0 12px;
+  }
+
+  .layer-content {
+    padding: 20px 24px;
+  }
+
+  .layer-content h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .layer-content p {
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}
+
+@media(max-width: 640px) {
+  body {
+    padding: 30px 14px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .stack-container {
+    margin: 30px auto;
+  }
+
+  .layer-content {
+    padding: 16px 20px;
+  }
+
+  .layer-content h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .layer-content p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
 }
 </style>
 </head>
-<body>
+<body class="diagram-suite-page">
 <div class="bg-gradient"></div>
 <div class="floating-orbs">
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 </div>
-<div id="cursor-dot"></div>
 
 <nav class="navbar" id="navbar">
 <div class="nav-container">
@@ -236,31 +791,139 @@ font-size:22px;
 
 <main class="section">
 <div class="container">
-<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">← Back to Diagrams</a>
+<a href="../intelligent-delivery-platforms-diagrams.html" class="back-btn">&larr; Back to Diagrams</a>
 <div class="header">
 <div class="title">Platform Engineering<br>Ecosystem</div>
-<p class="subtitle">Six pillars of intelligent platform engineering: operations, observability, security, governance, reliability, and supply chain</p>
+<p class="subtitle">Six integrated layers forming an intelligent platform stack</p>
 </div>
-<div class="center">Intelligent Platform Engineering</div>
-<div class="grid">
-<div class="node"><h2>AI Operations</h2><p>AI-assisted operational intelligence and automated remediation</p></div>
-<div class="node"><h2>Observability</h2><p>Metrics, logs, traces, and event-driven correlation</p></div>
-<div class="node"><h2>Runtime Security</h2><p>Runtime protection, anomaly detection, and behavioral monitoring</p></div>
-<div class="node"><h2>Governance</h2><p>Automated compliance, policy enforcement, and guardrails</p></div>
-<div class="node"><h2>Reliability Engineering</h2><p>Scalability, resilience, SLOs, and distributed systems</p></div>
-<div class="node"><h2>Supply Chain Security</h2><p>SBOMs, provenance verification, and artifact integrity</p></div>
+<div class="diagram-insight">
+<div class="insight-card">
+<strong>Layered Architecture</strong>
+<p>Each layer builds upon the previous one, creating a cohesive platform engineering ecosystem where security, reliability, and intelligence are baked in at every level.</p>
+</div>
+</div>
+<div style="display: flex; gap: 40px; margin-top: 60px;">
+  <div class="stack-container">
+    <div class="stack-layer" data-layer="ai" style="animation-delay: 0.6s; --color: #d946ef;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>AI-Augmented Platform</h3>
+        <p>Knowledge agents • Change risk • Automated remediation</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="automation" style="animation-delay: 0.5s; --color: #f472b6;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Automation & Operations</h3>
+        <p>Upgrade factory • Patching • Standardization • Compliance</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="observability" style="animation-delay: 0.4s; --color: #06b6d4;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Observability & Reliability</h3>
+        <p>OpenTelemetry • SLOs • Incident patterns • Self-healing</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="devsecops" style="animation-delay: 0.3s; --color: #34d399;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>DevSecOps</h3>
+        <p>SAST • SCA • Supply chain • Policy-as-code</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="delivery" style="animation-delay: 0.2s; --color: #a78bfa;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Delivery Systems</h3>
+        <p>CI/CD • GitOps • Golden paths • Release governance</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="foundation" style="animation-delay: 0.1s; --color: #6ee7ff;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Platform Foundation</h3>
+        <p>Kubernetes • Networking • IAM • Storage & DR</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="details-panel" id="detailsPanel">
+    <div class="details-close" onclick="document.getElementById('detailsPanel').classList.remove('active')">×</div>
+    <div class="details-content">
+      <h2 id="detailsTitle"></h2>
+      <div id="detailsDescription"></div>
+    </div>
+  </div>
 </div>
 </div>
 </div>
 </main>
 
-<footer class="footer">
-<div class="footer-inner">
-<div class="footer-main">
-<div class="footer-top">
-<h3>Platform Engineering Ecosystem</h3>
-<p>Six pillars of intelligent platform engineering: operations, observability, security, governance, reliability, and supply chain</p>
+<div class="footer-divider"></div>
+
+<footer class="footer footer--pro">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-card footer-brand-card">
+<a href="../../../index.html" class="footer-logo">
+<span class="logo-icon">RRR</span>
+<span class="logo-text">RaghuRamReddy</span>
+</a>
+
+<p class="footer-tagline">Designing technology for human experience</p>
+<p class="footer-subline">Platform Engineering &bull; DevSecOps &bull; Automation &bull; AI-assisted Operations</p>
+
+<div class="footer-social-row">
+<a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+<a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+<a class="social-pill" href="../../contact.html">Contact</a>
+</div>
+</div>
+
+<div class="footer-links-col">
+<div class="footer-col">
+<h4 class="footer-col-title">Navigation</h4>
+<div class="footer-links">
+<a href="../../../index.html" class="footer-link">Home</a>
+<a href="../../work.html" class="footer-link">Work &amp; Impact</a>
+<a href="../../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
+<a href="../../writing.html" class="footer-link">Writing</a>
+<a href="../../about.html" class="footer-link">About</a>
+<a href="../../contact.html" class="footer-link">Contact</a>
+</div>
+</div>
+
+<div class="footer-col">
+<h4 class="footer-col-title">Explore</h4>
+<div class="footer-links">
+<a href="../../future-systems.html" class="footer-link">Future Systems</a>
+<a href="../../operational-standards-library.html" class="footer-link">Operational Standards Library</a>
+</div>
+</div>
+</div>
+
+<div class="footer-card footer-connect-card">
+<div class="footer-connect-header">
+<h4 class="footer-col-title">Connect</h4>
+<p class="footer-connect-note">Fastest response on LinkedIn.</p>
+</div>
+
 <div class="footer-icon-grid">
+<a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+</a>
 <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
 </a>
@@ -268,8 +931,10 @@ font-size:22px;
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
 </a>
 </div>
+
 <a class="footer-cta" href="../../contact.html">Let's talk &rarr;</a>
 </div>
+
 <div class="footer-visual" aria-hidden="true">
 <span class="fv-orb fv-orb-1"></span>
 <span class="fv-orb fv-orb-2"></span>
@@ -279,12 +944,177 @@ font-size:22px;
 <span class="fv-dot fv-dot-2"></span>
 </div>
 </div>
+
 <div class="footer-bottom footer-bottom--pro">
 <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
 </div>
 </div>
 </footer>
 
-<script src="../../../assets/js/main.js?v=20260503"></script>
+<script src="../../../assets/js/main.js?v=20260513"></script>
+<script>
+const layerDetails = {
+  ai: {
+    title: 'AI-Augmented Platform',
+    content: `
+      <h3>Purpose</h3>
+      <p>Integrates AI and machine learning into platform operations to enable intelligent automation, predictive analytics, and guided decision-making for engineers.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>LLM-powered knowledge agents for incident diagnosis</li>
+        <li>Change risk assessment and automated impact analysis</li>
+        <li>Intelligent remediation recommendations with confidence scoring</li>
+        <li>Anomaly detection and pattern recognition across logs/metrics</li>
+        <li>Guardrails and audit trails for safe automated actions</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>40% faster MTTR through AI-assisted RCA</li>
+        <li>Reduced toil via automated operational decisions</li>
+        <li>Improved reliability through predictive scaling</li>
+        <li>Engineers focus on strategic work, not firefighting</li>
+      </ul>
+    `
+  },
+  automation: {
+    title: 'Automation & Operations',
+    content: `
+      <h3>Purpose</h3>
+      <p>Provides standardized, repeatable operational processes that eliminate manual toil and enforce consistency across infrastructure and deployments at scale.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>Upgrade Factory: automated cluster upgrades with orchestration</li>
+        <li>Patch automation and vulnerability remediation</li>
+        <li>Policy enforcement and compliance automation</li>
+        <li>Infrastructure cleanup and resource optimization bots</li>
+        <li>Standardization of deployment templates and runbooks</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>90% faster upgrades (8 hours → 45 minutes)</li>
+        <li>Zero-touch compliance and audit reporting</li>
+        <li>Reduced operational overhead and manual work</li>
+        <li>Consistent infrastructure across deployments</li>
+      </ul>
+    `
+  },
+  observability: {
+    title: 'Observability & Reliability',
+    content: `
+      <h3>Purpose</h3>
+      <p>Provides comprehensive visibility into system behavior and ensures reliability through SLOs, incident detection, and proactive recovery mechanisms.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>OpenTelemetry: unified metrics, logs, and traces</li>
+        <li>SLO definitions and real-time monitoring dashboards</li>
+        <li>Incident pattern recognition and root cause libraries</li>
+        <li>Self-healing mechanisms and automated runbooks</li>
+        <li>Alerting policies tied to business outcomes</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Proactive incident detection before user impact</li>
+        <li>Faster troubleshooting with comprehensive context</li>
+        <li>SLO-driven engineering prioritization</li>
+        <li>Reduced mean time to resolution (MTTR)</li>
+      </ul>
+    `
+  },
+  devsecops: {
+    title: 'DevSecOps',
+    content: `
+      <h3>Purpose</h3>
+      <p>Integrates security into every phase of the software development and deployment lifecycle, shifting left to prevent vulnerabilities before they reach production.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>SAST/DAST: static and dynamic application security testing</li>
+        <li>SCA: software composition analysis and dependency scanning</li>
+        <li>Supply chain security with SBOM generation and verification</li>
+        <li>Policy-as-Code enforcement (OPA, Kyverno, etc.)</li>
+        <li>Container image scanning and artifact integrity checks</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Zero critical CVEs shipped to production</li>
+        <li>80% faster vulnerability remediation</li>
+        <li>Compliance automated into pipelines</li>
+        <li>Engineers shift left, catching issues early</li>
+      </ul>
+    `
+  },
+  delivery: {
+    title: 'Delivery Systems',
+    content: `
+      <h3>Purpose</h3>
+      <p>Provides the core CI/CD infrastructure, golden paths, and governance frameworks that enable safe, repeatable software delivery at enterprise scale.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>Enterprise CI/CD pipeline engines (Jenkins, GitLab CI, etc.)</li>
+        <li>GitOps controllers for declarative deployments</li>
+        <li>Golden path templates and scaffolding tools</li>
+        <li>Release governance and change advisory processes</li>
+        <li>Deployment orchestration across environments</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Self-service deployments for development teams</li>
+        <li>Consistent release processes across orgs</li>
+        <li>Reduced time-to-market for new features</li>
+        <li>Audit-ready deployment trails</li>
+      </ul>
+    `
+  },
+  foundation: {
+    title: 'Platform Foundation',
+    content: `
+      <h3>Purpose</h3>
+      <p>The underlying infrastructure layer that provides compute, networking, security, and resilience primitives for the entire platform to operate.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>Kubernetes or enterprise container orchestration</li>
+        <li>Networking: service mesh, ingress, network policies</li>
+        <li>Identity & Access Management (IAM/SSO)</li>
+        <li>Storage: persistent volumes, backup, disaster recovery</li>
+        <li>Multi-region/multi-cloud infrastructure</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Scalable foundation for millions of transactions/day</li>
+        <li>High availability with automated failover</li>
+        <li>Secure by default with zero-trust networking</li>
+        <li>Cost-optimized resource utilization</li>
+      </ul>
+    `
+  }
+};
+
+document.querySelectorAll('.stack-layer').forEach(layer => {
+  layer.addEventListener('click', function() {
+    const layerType = this.dataset.layer;
+    const details = layerDetails[layerType];
+
+    if (details) {
+      document.getElementById('detailsTitle').textContent = details.title;
+      document.getElementById('detailsDescription').innerHTML = details.content;
+      document.getElementById('detailsPanel').classList.add('active');
+
+      // Set color variable on panel
+      document.getElementById('detailsPanel').style.setProperty('--color', this.style.getPropertyValue('--color'));
+    }
+  });
+});
+</script>
 </body>
 </html>
