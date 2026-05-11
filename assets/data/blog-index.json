@@ -24,10 +24,10 @@
     },
     {
       "id": "token-cost-comparator",
-      "title": "The Token Ledger",
-      "description": "A close read of token counts, embeddings, and tokenizer behavior. Includes cost calculations and educational breakdowns. Use the TokenOps platform for interactive cost estimation.",
+      "title": "TokenOps Cost Engineering Lab",
+      "description": "Estimate token usage, compare Claude and OpenAI costs, and use the TokenOps platform for interactive cost estimation.",
       "url": "/pages/blog/token-cost-comparator.html",
-      "published": "2026-04-01",
+      "published": "2026-05-10",
       "tags": ["Tokenizers", "Token Economics", "Claude", "Demo"],
       "actions": [
         {
@@ -35,7 +35,7 @@
           "url": "/pages/blog/token-cost-comparator.html"
         },
         {
-          "label": "Open Ledger Lab",
+          "label": "Open Cost Lab",
           "url": "/pages/blog/token-cost-comparator.html#live-demo"
         }
       ]

@@ -17,7 +17,7 @@ const PROJECTS_DATA = [
             'Staged rollout with canary deployments',
             'Integrated compliance and security scanning',
             'Automated rollback on failure detection',
-            '90% reduction in upgrade cycle time - 8 hours to 45 minutes'
+            'Case-study outcome: 90% reduction in upgrade cycle time - 8 hours to 45 minutes'
         ],
         impact: '90% Faster Upgrades',
         link: '#upgrade-factory-details'
@@ -34,7 +34,7 @@ const PROJECTS_DATA = [
             'Consolidated findings from 15+ security tools',
             'Unified risk scoring and prioritization engine',
             'Automated JIRA ticket creation for critical findings',
-            '80% reduction in vulnerability remediation time'
+            'Case-study outcome: 80% reduction in vulnerability remediation time'
         ],
         impact: '80% Faster Remediation',
         link: '#shield-details'

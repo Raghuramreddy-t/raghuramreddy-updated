@@ -94,12 +94,12 @@
   function renderBlogCards(container, posts) {
     const hidePublishedMeta = window.location.pathname.includes('/pages/writing.html');
     const articleVariants = [
-      { name: 'sapphire', color: '#3b82f6' },
-      { name: 'violet', color: '#8b5cf6' },
-      { name: 'teal', color: '#14b8a6' },
-      { name: 'amber', color: '#f59e0b' },
-      { name: 'rose', color: '#f43f5e' },
-      { name: 'emerald', color: '#10b981' },
+      { slug: 'focus', label: 'Article Focus', color: '#3b82f6' },
+      { slug: 'lab', label: 'Research Lab', color: '#8b5cf6' },
+      { slug: 'guide', label: 'Guide', color: '#14b8a6' },
+      { slug: 'brief', label: 'Brief', color: '#f59e0b' },
+      { slug: 'essay', label: 'Essay', color: '#f43f5e' },
+      { slug: 'study', label: 'Case Study', color: '#10b981' },
     ];
 
     const cards = dedupePosts(sortPostsByPublished(posts)).map((post, index) => {
@@ -107,10 +107,10 @@
       card.className = 'publication-card';
       card.classList.add('writing-article-card');
       const variant = articleVariants[index % articleVariants.length];
-      card.classList.add('writing-article-card--' + variant.name);
+      card.classList.add('writing-article-card--' + variant.slug);
       card.style.setProperty('--article-accent', variant.color);
       card.dataset.postId = post.id || '';
-      card.dataset.variant = variant.name;
+      card.dataset.variant = variant.slug;
 
       const content = document.createElement('div');
       content.className = 'publication-content blog-card-content';
@@ -147,7 +147,7 @@
 
       const ribbon = document.createElement('div');
       ribbon.className = 'writing-article-ribbon';
-      ribbon.textContent = variant.name.toUpperCase();
+      ribbon.textContent = variant.label;
 
       card.appendChild(ribbon);
       content.appendChild(tags);
