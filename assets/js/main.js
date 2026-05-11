@@ -1155,11 +1155,11 @@ function initTypewriter() {
     if (!el) return;
 
     const roles = [
+        'AI-Augmented Operations Lead',
+        'CICD & DevSecOps Lead',
+        'Enterprise Technology Lead',
         'Platform Engineering Lead',
-        'DevSecOps Leader',
-        'Enterprise Technology Leader',
         'Secure Software Delivery Expert',
-        'AI-Augmented Operations Leader',
     ];
 
     let roleIdx = 0;

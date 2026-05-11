@@ -4428,10 +4428,12 @@ iframe {
     .nav-logo {
         min-width: 0;
         flex: 1 1 auto;
+        align-items: flex-start;
     }
 
     .logo-stack {
         min-width: 0;
+        align-items: flex-start;
     }
 
     .logo-name {
@@ -4439,7 +4441,11 @@ iframe {
     }
 
     .logo-tagline {
-        display: none !important;
+        display: block !important;
+        max-width: 15ch;
+        white-space: normal;
+        line-height: 1.2;
+        font-size: 10px;
     }
 
     .nav-actions {

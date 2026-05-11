@@ -1,92 +1,120 @@
 /* ============================================
    TERMINAL HERO ANIMATION
-   index.html — floating terminal in hero visual
+   index.html - floating terminal in hero visual
    ============================================ */
 
 (function() {
     const COMMANDS = [
         {
-            prompt: 'whoami',
+            prompt: 'git status',
             lines: [
-                'RaghuRamReddy Thummalapalli',
-                'Platform Engineering Leader · DevSecOps Leader',
-                '10+ years building enterprise-scale systems',
+                { text: 'On branch main', tone: 'code' },
+                { text: 'Your branch is up to date', tone: 'primary' },
+                { text: 'nothing to commit, working tree clean', tone: 'success' },
             ],
-            delay: 0,
+        },
+        {
+            prompt: 'cat about.txt',
+            lines: [
+                { text: 'AI-Augmented Operations Lead', tone: 'accent' },
+                { text: 'CICD & DevSecOps Lead', tone: 'success' },
+                { text: 'Enterprise Technology Lead', tone: 'code' },
+                { text: 'Platform Engineering Lead', tone: 'info' },
+                { text: 'Secure Software Delivery Expert', tone: 'warn' },
+            ],
+        },
+        {
+            prompt: 'deploy status',
+            lines: [
+                { text: '↳ Building... [████████████████░░] 87%', tone: 'warn' },
+                { text: '↳ Testing... [██████████████████] 100% ✓', tone: 'success' },
+                { text: '↳ Deploying... [████████████████░░] 92%', tone: 'primary' },
+                { text: '[COMPLETE] Deployment finished in 3m 24s', tone: 'success' },
+            ],
+        },
+        {
+            prompt: 'metrics',
+            lines: [
+                { text: 'Platform Metrics:', tone: 'code' },
+                { text: '  • 5,000+ engineers enabled globally', tone: 'accent' },
+                { text: '  • 100+ mission-critical clusters managed', tone: 'accent' },
+                { text: '  • 80% avg remediation time reduction', tone: 'success' },
+                { text: '  • Zero-downtime patterns: 100% adoption', tone: 'success' },
+            ],
+        },
+        {
+            prompt: 'ls projects/',
+            lines: [
+                { text: 'upgrade-factory/          (90% faster cluster upgrades)', tone: 'primary' },
+                { text: 'project-shield/           (supply chain security)', tone: 'primary' },
+                { text: 'cicd-rca-ai/              (AI-powered incident analysis)', tone: 'accent' },
+                { text: 'toolchain-modernization/  (GitOps + policy-as-code)', tone: 'primary' },
+                { text: 'copilot-governance/       (LLM safety & compliance)', tone: 'accent' },
+            ],
         },
         {
             prompt: 'cat expertise.txt',
             lines: [
-                'Platform Engineering  ███████████▒  94%',
-                'DevSecOps             ██████████▒   91%',
-                'Cloud Architecture    █████████▒    87%',
-                'CI/CD Automation      ██████████    90%',
-                'Applied AI Systems    ████████▒     82%',
+                { text: 'Core Areas:', tone: 'code' },
+                { text: '  ▪ Platform Engineering & DevSecOps', tone: 'primary' },
+                { text: '  ▪ Enterprise CI/CD & Release Automation', tone: 'primary' },
+                { text: '  ▪ Kubernetes & Cloud Architecture', tone: 'accent' },
+                { text: '  ▪ AI-Augmented Operations & AIOps', tone: 'success' },
+                { text: '  ▪ Security Automation & Compliance', tone: 'warn' },
             ],
-            delay: 0,
         },
         {
-            prompt: 'ls flagship-systems/',
+            prompt: 'echo "Ready to build great platforms"',
             lines: [
-                'upgrade-factory/   project-shield/   toolchain-modernization/',
-                'cicd-rca-ai/       copilot-governance/',
+                { text: 'Ready to build great platforms', tone: 'success' },
             ],
-            delay: 0,
-        },
-        {
-            prompt: 'cat impact-summary.log',
-            lines: [
-                '[✓] 90% reduction in cluster upgrade time',
-                '[✓] 80% faster vulnerability remediation',
-                '[✓] 50+ enterprise systems influenced',
-                '[✓] Zero-downtime across 100+ clusters',
-            ],
-            delay: 0,
         },
     ];
 
-    const TYPING_SPEED  = 38;   // ms per char
-    const LINE_DELAY    = 160;  // ms between output lines
-    const CMD_PAUSE     = 1400; // ms after command output before next command
-    const RESTART_DELAY = 3200; // ms before looping
+    const TYPING_SPEED = 35;   // ms per char
+    const LINE_DELAY = 140;    // ms between output lines
+    const CMD_PAUSE = 1400;    // ms after command output before next command
+    const RESTART_DELAY = 2800; // ms before looping
 
     function initTerminal(containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        let cmdIdx    = 0;
-        let lineIdx   = 0;
-        let charIdx   = 0;
-        let state     = 'typing-prompt';  // 'typing-prompt' | 'printing-output' | 'pausing'
+        let cmdIdx = 0;
+        let lineIdx = 0;
+        let charIdx = 0;
         let timeoutId = null;
-        let currentLine = null;
 
-        const termBody   = container.querySelector('.term-body');
-        const promptEl   = container.querySelector('.term-current-prompt');
+        const termBody = container.querySelector('.term-body');
+        const promptEl = container.querySelector('.term-current-prompt');
         const promptText = container.querySelector('.term-prompt-text');
 
         if (!termBody || !promptEl || !promptText) return;
 
-        function addOutputLine(text, cls) {
+        function addOutputLine(text, tone) {
             const line = document.createElement('div');
-            line.className = 'term-output-line' + (cls ? ' ' + cls : '');
+            line.className = 'term-output-line' + (tone ? ` tone-${tone}` : '');
             line.textContent = text;
-            line.style.color = cls === 'success' ? '#22c55e' : 'rgba(148, 163, 184, 0.85)';
             termBody.insertBefore(line, promptEl);
-            // Keep scroll at bottom
             termBody.scrollTop = termBody.scrollHeight;
         }
 
         function typePrompt() {
             const cmd = COMMANDS[cmdIdx];
-            if (charIdx < cmd.prompt.length) {
-                promptText.textContent = cmd.prompt.slice(0, ++charIdx);
+            const full = cmd.prompt;
+
+            promptEl.classList.remove('is-hidden');
+            if (charIdx < full.length) {
+                promptText.textContent = full.slice(0, ++charIdx);
                 timeoutId = setTimeout(typePrompt, TYPING_SPEED);
             } else {
-                // Prompt done — show output
                 charIdx = 0;
                 lineIdx = 0;
-                state = 'printing-output';
+                const histLine = document.createElement('div');
+                histLine.className = 'term-hist-line';
+                histLine.innerHTML = '<span class="term-ps1">raghuramreddy:~$</span> <span class="term-hist-cmd">' + cmd.prompt + '</span>';
+                termBody.insertBefore(histLine, promptEl);
+                promptEl.classList.add('is-hidden');
                 timeoutId = setTimeout(printOutputLine, LINE_DELAY);
             }
         }
@@ -94,42 +122,29 @@
         function printOutputLine() {
             const cmd = COMMANDS[cmdIdx];
             if (lineIdx < cmd.lines.length) {
-                const cls = cmd.lines[lineIdx].startsWith('[✓]') ? 'success' : '';
-                addOutputLine(cmd.lines[lineIdx], cls);
+                const entry = cmd.lines[lineIdx];
+                addOutputLine(entry.text, entry.tone);
                 lineIdx++;
                 timeoutId = setTimeout(printOutputLine, LINE_DELAY);
             } else {
-                // All output printed — move prompt to history
-                const histLine = document.createElement('div');
-                histLine.className = 'term-hist-line';
-                histLine.innerHTML = `<span class="term-ps1" style="color:#8b5cf6">raghuramreddy:~$</span> <span class="term-hist-cmd" style="color:#e2e8f0">${COMMANDS[cmdIdx].prompt}</span>`;
-                termBody.insertBefore(histLine, termBody.querySelector('.term-output-line'));
-
-                // Clear prompt
                 promptText.textContent = '';
-
-                // Remove all current output lines (they're already in the DOM above)
-                // Pause before next command
                 cmdIdx = (cmdIdx + 1) % COMMANDS.length;
-                charIdx = 0;
-                state = 'typing-prompt';
+                promptEl.classList.remove('is-hidden');
 
-                const pause = cmdIdx === 0 ? RESTART_DELAY : CMD_PAUSE;
-                timeoutId = setTimeout(() => {
-                    // Keep history to a manageable length
-                    const histLines = termBody.querySelectorAll('.term-hist-line, .term-output-line');
-                    if (histLines.length > 14) {
-                        histLines[0].remove();
-                    }
-                    typePrompt();
-                }, pause);
+                if (cmdIdx === 0) {
+                    timeoutId = setTimeout(() => {
+                        promptText.textContent = '';
+                        promptEl.classList.remove('is-hidden');
+                        termBody.scrollTop = termBody.scrollHeight;
+                        timeoutId = setTimeout(typePrompt, 100);
+                    }, RESTART_DELAY);
+                } else {
+                    timeoutId = setTimeout(typePrompt, CMD_PAUSE);
+                }
             }
         }
 
-        // Start after a short delay
-        promptEl.style.color = '#8b5cf6';
-        promptText.style.color = '#e2e8f0';
-        timeoutId = setTimeout(typePrompt, 800);
+        typePrompt();
     }
 
     if (document.readyState === 'loading') {
@@ -138,4 +153,3 @@
         initTerminal('hero-terminal');
     }
 })();
-

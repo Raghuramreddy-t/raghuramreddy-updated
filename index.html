@@ -91,46 +91,53 @@ Show real systems, real impact, and clear thinking.
             color: rgba(148, 163, 184, 0.85) !important;
         }
 
-        .home-page #hero-terminal .term-output-line.success {
-            color: #22c55e !important;
+        .home-page #hero-terminal .term-output-line.tone-code {
+            color: #cbd5e1 !important;
+        }
+
+        .home-page #hero-terminal .term-output-line.tone-primary {
+            color: #a7f3d0 !important;
+        }
+
+        .home-page #hero-terminal .term-output-line.tone-accent {
+            color: #86efac !important;
+        }
+
+        .home-page #hero-terminal .term-output-line.tone-info {
+            color: #d1fae5 !important;
+        }
+
+        .home-page #hero-terminal .term-output-line.tone-success {
+            color: #34d399 !important;
+        }
+
+        .home-page #hero-terminal .term-output-line.tone-warn {
+            color: #fbbf24 !important;
         }
 
         .home-page #hero-terminal .term-cursor {
-            background: #3b82f6 !important;
+            background: #34d399 !important;
+            animation: blink 1s infinite;
         }
 
-        .home-page .hero-tag-strip {
-            border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
-            background: rgba(8, 13, 26, 0.58) !important;
-            backdrop-filter: blur(14px) !important;
-            -webkit-backdrop-filter: blur(14px) !important;
-            z-index: 4 !important;
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
         }
 
-        .home-page .hero-tag-chip {
-            color: #dbe4f0 !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
-            background: rgba(15, 23, 42, 0.42) !important;
-            font-size: 12px !important;
-            font-weight: 600 !important;
-            line-height: 1 !important;
-            padding: 7px 12px !important;
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+        .home-page #hero-terminal .term-output-line {
+            animation: slideIn 0.4s ease-out;
         }
 
-        [data-theme="light"] .home-page .hero-tag-strip {
-            border-top: 1px solid rgba(15, 23, 42, 0.18) !important;
-            background: rgba(8, 13, 26, 0.9) !important;
-            box-shadow: 0 -12px 32px rgba(15, 23, 42, 0.2) !important;
-        }
-
-        [data-theme="light"] .home-page .hero-tag-chip {
-            color: #f8fafc !important;
-            border: 1px solid rgba(148, 163, 184, 0.28) !important;
-            background: rgba(15, 23, 42, 0.72) !important;
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.04),
-                0 8px 20px rgba(2, 6, 23, 0.18) !important;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .home-page .scroll-indicator span {
@@ -181,6 +188,94 @@ Show real systems, real impact, and clear thinking.
         @media (max-width: 720px) {
             .home-page #evidence .evidence-grid {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        .tech-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .tech-skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-skill-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 10px 24px rgba(59, 130, 246, 0.08);
+        }
+
+        .tech-abbr {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .tech-skill-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+        }
+
+        .tech-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tools span {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            color: #60a5fa;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-family: var(--font-mono);
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .tech-tools span:hover {
+            background: rgba(59, 130, 246, 0.12);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+
+        [data-theme="light"] .tech-tools span {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #2563eb;
+        }
+
+        [data-theme="light"] .tech-tools span:hover {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        [data-theme="light"] .tech-skill-card:hover {
+            box-shadow: 0 10px 24px rgba(59, 130, 246, 0.06);
+        }
+
+        @media (max-width: 768px) {
+            .tech-skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 16px;
+            }
+
+            .tech-skill-card {
+                padding: 20px;
             }
         }
     </style>
@@ -259,7 +354,7 @@ Show real systems, real impact, and clear thinking.
                 <h1 class="hero-line line-1 animate-slide-up">RaghuRamReddy</h1>
                 <div class="typewriter-wrap animate-slide-up delay-1">
                     <span class="typewriter-static">Raghu &mdash;</span>
-                    <span id="typewriter-text">Platform Engineering Lead</span><span id="typewriter-cursor"></span>
+                    <span id="typewriter-text">AI-Augmented Operations Lead</span><span id="typewriter-cursor"></span>
                 </div>
                 <p class="hero-line line-3 animate-slide-up delay-2">
                     From CI/CD governance to AI-augmented operations, I build enterprise platforms that reduce risk, increase delivery speed, and scale team productivity.
@@ -284,7 +379,6 @@ Show real systems, real impact, and clear thinking.
                     <span class="stat-label">Enterprise Tools Integrated</span>
                 </div>
             </div>
-
             <div class="hero-cta animate-slide-up delay-3">
                 <a href="pages/work.html" class="btn btn-primary">
                     <span>Explore Work</span>
@@ -316,32 +410,6 @@ Show real systems, real impact, and clear thinking.
                         <span class="term-prompt-text"></span>
                         <span class="term-cursor"></span>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-tag-strip" aria-hidden="true">
-            <div class="hero-tag-strip-inner">
-                <div class="hero-tag-strip-track">
-                    <span class="hero-tag-chip">Platform Engineering</span>
-                    <span class="hero-tag-chip">CI/CD Governance</span>
-                    <span class="hero-tag-chip">DevSecOps</span>
-                    <span class="hero-tag-chip">Cloud Architecture</span>
-                    <span class="hero-tag-chip">Observability</span>
-                    <span class="hero-tag-chip">RAG + Knowledge Systems</span>
-                    <span class="hero-tag-chip">AI Ops Guardrails</span>
-                    <span class="hero-tag-chip">Policy-as-Code</span>
-                    <span class="hero-tag-chip">Incident Standards</span>
-                </div>
-                <div class="hero-tag-strip-track" aria-hidden="true">
-                    <span class="hero-tag-chip">Platform Engineering</span>
-                    <span class="hero-tag-chip">CI/CD Governance</span>
-                    <span class="hero-tag-chip">DevSecOps</span>
-                    <span class="hero-tag-chip">Cloud Architecture</span>
-                    <span class="hero-tag-chip">Observability</span>
-                    <span class="hero-tag-chip">RAG + Knowledge Systems</span>
-                    <span class="hero-tag-chip">AI Ops Guardrails</span>
-                    <span class="hero-tag-chip">Policy-as-Code</span>
-                    <span class="hero-tag-chip">Incident Standards</span>
                 </div>
             </div>
         </div>
@@ -700,7 +768,7 @@ Show real systems, real impact, and clear thinking.
             <div class="section-header">
                 <span class="section-tag">Outcomes</span>
                 <h2 class="section-title">Measurable Impact</h2>
-                <p class="section-subtitle">Driving business value through platform engineering and automation.</p>
+                <p class="section-subtitle">Selected outcomes from platform engineering, automation, and reliability work.</p>
             </div>
             <div class="evidence-grid">
                 <div class="evidence-card" data-aos="fade-up">
@@ -708,28 +776,28 @@ Show real systems, real impact, and clear thinking.
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <h3>90% Faster Upgrades</h3>
-                    <p>Reduced cluster upgrade time from 8 hours to 45 minutes via Upgrade Factory.</p>
+                    <p>Case-study outcome: reduced cluster upgrade time from 8 hours to 45 minutes via Upgrade Factory.</p>
                 </div>
                 <div class="evidence-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="evidence-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                     </div>
                     <h3>Risk Visibility</h3>
-                    <p>Unified reporting across toolchains for proactive risk management before CAB.</p>
+                    <p>Selected outcome: unified reporting across toolchains for proactive risk management before CAB.</p>
                 </div>
                 <div class="evidence-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="evidence-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
                     </div>
                     <h3>Standardization</h3>
-                    <p>Shifted from snowflake VM upgrades to standardized Helm/GitOps patterns.</p>
+                    <p>Selected outcome: shifted from snowflake VM upgrades to standardized Helm/GitOps patterns.</p>
                 </div>
                 <div class="evidence-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="evidence-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
                     </div>
                     <h3>Remediation Speed</h3>
-                    <p>80% reduction in vulnerability remediation time through automated aggregation.</p>
+                    <p>Case-study outcome: 80% reduction in vulnerability remediation time through automated aggregation.</p>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
@@ -1112,6 +1180,8 @@ Show real systems, real impact, and clear thinking.
 </script>
 </body>
 </html>
+
+
 
 
 

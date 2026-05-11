@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <script>!function () { var t = localStorage.getItem("theme") || "dark"; document.documentElement.setAttribute("data-theme", t); document.documentElement.classList.add("no-transition"); requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.remove("no-transition"); }) }) }();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TokenOps — AI Cost Engineering Platform</title>
+    <title>TokenOps Cost Engineering Lab</title>
     <meta name="description"
         content="TokenOps: Model comparison, prompt cost calculator, and monthly budget simulator for AI builders. Find which model fits your needs and costs.">
-    <meta property="og:title" content="TokenOps — AI Cost Engineering Platform">
+    <meta property="og:title" content="TokenOps Cost Engineering Lab">
     <meta property="og:description"
         content="TokenOps: Model comparison, prompt cost calculator, and monthly budget simulator for AI builders.">
     <meta property="og:type" content="website">
@@ -81,7 +81,7 @@
         <div class="container">
             <div class="page-header-content">
                 <span class="page-tag">AI Engineering Tool</span>
-                <h1 class="page-title">TokenOps<span class="gradient-text"></span></h1>
+                <h1 class="page-title">TokenOps Cost Engineering Lab<span class="gradient-text"></span></h1>
                 <p class="page-subtitle">
                     Model intelligence and cost engineering for AI builders. Compare models, calculate costs, and plan your AI budget.
                 </p>
@@ -95,7 +95,7 @@
             <!-- SECTION A: MODEL COMPARISON TABLE -->
             <section class="to-comparison-section">
                 <h2>Model Intelligence</h2>
-                <p>Compare pricing, capabilities, and performance across Claude and OpenAI models. Last updated: <strong id="to-version-badge">April 2026</strong></p>
+                <p>Compare pricing, capabilities, and performance across Claude and OpenAI models. Last updated: <strong id="to-version-badge">May 2026</strong></p>
 
                 <!-- Provider Tabs -->
                 <div class="tc-provider-tabs">
@@ -216,12 +216,9 @@
                         </div>
                     </div>
 
-                    <div class="tc-disclaimer">
-                        <strong>Disclaimer:</strong> Token counts are approximations (±10% variance). Pricing reflects
-                        public OpenAI and Anthropic API rates as of May 2026 — verify at <a
-                            href="https://openai.com/pricing" target="_blank" rel="noopener">openai.com/pricing</a> and
-                        <a href="https://anthropic.com/pricing" target="_blank"
-                            rel="noopener">anthropic.com/pricing</a>.
+                                        <div class="tc-disclaimer">
+                        <strong>Pricing last verified: May 2026. Rates change frequently. This tool is for estimation, not billing reconciliation.</strong>
+                        <span>Token counts are approximate and may vary with tokenizer, content type, tools, and model behavior.</span>
                     </div>
 
                 </div>
@@ -400,18 +397,19 @@
             </div>
 
             <div class="footer-bottom footer-bottom--pro">
-                <p>&copy; 2025 RaghuRamReddy Thummalapalli. All rights reserved.</p>
+                <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="../assets/js/main.js?v=20260508"></script>
     <script src="../assets/js/aurora.js?v=20260508"></script>
+    <script src="../assets/js/token-pricing.js?v=20260510"></script>
 
     <script>
         // TokenOps Platform - Multi-tool AI cost engineering interface
         (() => {
-            let modelsData = null;
+            const modelsData = window.TOKENOPS_PRICING;
             let activeProvider = { lab: 'claude', comparison: 'claude', budget: 'claude' };
 
             const config = {
@@ -422,14 +420,12 @@
 
             const reqPerDayMap = [100, 500, 1000, 5000, 10000, 50000, 100000];
 
-            async function loadModels() {
-                try {
-                    const resp = await fetch('../../assets/data/models.json');
-                    modelsData = await resp.json();
-                    initializeUI();
-                } catch (err) {
-                    console.error('Failed to load models.json:', err);
+            function loadModels() {
+                if (!modelsData) {
+                    console.error('Missing shared token pricing data.');
+                    return;
                 }
+                initializeUI();
             }
 
             function initializeUI() {
@@ -461,7 +457,7 @@
                             <td class="to-model-name">${model.name}</td>
                             <td class="to-pricing-cell">$${model.input_per_mtok.toFixed(2)}</td>
                             <td class="to-pricing-cell">$${model.output_per_mtok.toFixed(2)}</td>
-                            <td class="to-context-cell">${model.context_window_k}K</td>
+                            <td class="to-context-cell">${formatContextWindow(model.context_window_k)}</td>
                             <td><span class="to-tier-badge ${model.tier}">${model.tier}</span></td>
                             <td><span class="to-capability-dot ${model.reasoning ? 'yes' : 'no'}"></span></td>
                             <td><span class="to-capability-dot ${model.vision ? 'yes' : 'no'}"></span></td>
@@ -608,6 +604,14 @@
                 return '$' + dollars.toFixed(2);
             }
 
+            function formatContextWindow(contextWindowK) {
+                if (contextWindowK >= 1000) {
+                    const millions = contextWindowK / 1000;
+                    return millions % 1 === 0 ? `${millions}M` : `${millions.toFixed(2)}M`;
+                }
+                return `${contextWindowK}K`;
+            }
+
             // ===== EVENT LISTENERS =====
             function setupEventListeners() {
                 // Lab events
@@ -651,3 +655,5 @@
 </body>
 
 </html>
+
+
