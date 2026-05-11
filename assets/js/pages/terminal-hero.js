@@ -6,15 +6,15 @@
 (function() {
     const COMMANDS = [
         {
-            prompt: 'git status',
+            prompt: 'whoami',
             lines: [
-                { text: 'On branch main', tone: 'code' },
-                { text: 'Your branch is up to date', tone: 'primary' },
-                { text: 'nothing to commit, working tree clean', tone: 'success' },
+                { text: 'RaghuRamReddy Thummalapalli', tone: 'code' },
+                { text: 'AI-Augmented Operations Lead · CICD & DevSecOps Lead', tone: 'primary' },
+                { text: '10+ years building enterprise-scale systems', tone: 'code' },
             ],
         },
         {
-            prompt: 'cat about.txt',
+            prompt: 'cat roles.txt',
             lines: [
                 { text: 'AI-Augmented Operations Lead', tone: 'accent' },
                 { text: 'CICD & DevSecOps Lead', tone: 'success' },
@@ -24,49 +24,19 @@
             ],
         },
         {
-            prompt: 'deploy status',
+            prompt: 'ls flagship-systems/',
             lines: [
-                { text: '↳ Building... [████████████████░░] 87%', tone: 'warn' },
-                { text: '↳ Testing... [██████████████████] 100% ✓', tone: 'success' },
-                { text: '↳ Deploying... [████████████████░░] 92%', tone: 'primary' },
-                { text: '[COMPLETE] Deployment finished in 3m 24s', tone: 'success' },
+                { text: 'upgrade-factory/   project-shield/   toolchain-modernization/', tone: 'code' },
+                { text: 'cicd-rca-ai/       copilot-governance/', tone: 'code' },
             ],
         },
         {
-            prompt: 'metrics',
+            prompt: 'cat impact-summary.log',
             lines: [
-                { text: 'Platform Metrics:', tone: 'code' },
-                { text: '  • 5,000+ engineers enabled globally', tone: 'accent' },
-                { text: '  • 100+ mission-critical clusters managed', tone: 'accent' },
-                { text: '  • 80% avg remediation time reduction', tone: 'success' },
-                { text: '  • Zero-downtime patterns: 100% adoption', tone: 'success' },
-            ],
-        },
-        {
-            prompt: 'ls projects/',
-            lines: [
-                { text: 'upgrade-factory/          (90% faster cluster upgrades)', tone: 'primary' },
-                { text: 'project-shield/           (supply chain security)', tone: 'primary' },
-                { text: 'cicd-rca-ai/              (AI-powered incident analysis)', tone: 'accent' },
-                { text: 'toolchain-modernization/  (GitOps + policy-as-code)', tone: 'primary' },
-                { text: 'copilot-governance/       (LLM safety & compliance)', tone: 'accent' },
-            ],
-        },
-        {
-            prompt: 'cat expertise.txt',
-            lines: [
-                { text: 'Core Areas:', tone: 'code' },
-                { text: '  ▪ Platform Engineering & DevSecOps', tone: 'primary' },
-                { text: '  ▪ Enterprise CI/CD & Release Automation', tone: 'primary' },
-                { text: '  ▪ Kubernetes & Cloud Architecture', tone: 'accent' },
-                { text: '  ▪ AI-Augmented Operations & AIOps', tone: 'success' },
-                { text: '  ▪ Security Automation & Compliance', tone: 'warn' },
-            ],
-        },
-        {
-            prompt: 'echo "Ready to build great platforms"',
-            lines: [
-                { text: 'Ready to build great platforms', tone: 'success' },
+                { text: '[✓] 90% reduction in cluster upgrade time', tone: 'success' },
+                { text: '[✓] 80% faster vulnerability remediation', tone: 'success' },
+                { text: '[✓] 50+ enterprise systems influenced', tone: 'success' },
+                { text: '[✓] Zero-downtime across 100+ clusters', tone: 'success' },
             ],
         },
     ];
