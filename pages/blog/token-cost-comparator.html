@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <script>!function () { var t = localStorage.getItem("theme") || "dark"; document.documentElement.setAttribute("data-theme", t); document.documentElement.classList.add("no-transition"); requestAnimationFrame(function () { requestAnimationFrame(function () { document.documentElement.classList.remove("no-transition"); }) }) }();</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TokenOps Cost Engineering Lab | Claude & GPT Pricing</title>
+    <title>TokenOps Cost Engineering Lab | Tokenization & Pricing</title>
     <meta name="description"
-        content="Estimate LLM token usage, compare Claude and OpenAI model costs, and keep pricing configurable as rates change.">
+        content="Estimate token usage, compare current Claude, OpenAI, Gemini, and Grok model costs, and keep pricing configurable as rates change.">
     <meta property="og:title" content="TokenOps Cost Engineering Lab">
     <meta property="og:description"
-        content="Estimate LLM token usage, compare Claude and OpenAI model costs, and keep pricing configurable as rates change.">
+        content="Estimate token usage, compare current Claude, OpenAI, Gemini, and Grok model costs, and keep pricing configurable as rates change.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raghuramreddy.tech/pages/blog/token-cost-comparator.html">
     <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
@@ -22,15 +22,24 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/main.css?v=20260503">
-    <link rel="stylesheet" href="../../assets/css/animations.css?v=20260503">
-    <link rel="stylesheet" href="../../assets/css/pages.css?v=20260503">
-    <link rel="stylesheet" href="../../assets/css/components.css?v=20260503">
-    <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260503">
-    <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260503">
-    <link rel="stylesheet" href="../../assets/css/token-cost-comparator.css?v=20260503">
+    <link rel="stylesheet" href="../../assets/css/main.css?v=20260523">
+    <link rel="stylesheet" href="../../assets/css/animations.css?v=20260523">
+    <link rel="stylesheet" href="../../assets/css/pages.css?v=20260523">
+    <link rel="stylesheet" href="../../assets/css/components.css?v=20260523">
+    <link rel="stylesheet" href="../../assets/css/design-v2.css?v=20260523">
+    <link rel="stylesheet" href="../../assets/css/enhancements.css?v=20260523">
+    <link rel="stylesheet" href="../../assets/css/token-cost-comparator.css?v=20260523">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "TokenOps Cost Engineering Lab",
+      "author": { "@type": "Person", "name": "RaghuRamReddy Thummalapalli" },
+      "datePublished": "2026-05-10"
+    }
+    </script>
 </head>
 
 <body>
@@ -52,12 +61,12 @@
             </a>
             <div class="nav-menu" id="nav-menu">
                 <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work &amp; Impact</a>
-                <a href="../applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
-                <a href="../future-systems.html" class="nav-link">Future Systems</a>
-                <a href="../writing.html" class="nav-link active">Writing</a>
-                <a href="../about.html" class="nav-link">About</a>
-                <a href="../contact.html" class="nav-link">Contact</a>
+                <a href="../../about.html" class="nav-link">About</a>
+                <a href="../../work.html" class="nav-link">Work & Impact</a>
+                <a href="../../applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
+                <a href="../recognition.html" class="nav-link active">Recognition & Credentials</a>
+                <a href="../../future-systems.html" class="nav-link">Future Systems</a>
+                <a href="../../contact.html" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -80,7 +89,8 @@
         <div class="container">
             <div class="page-header-content">
                 <span class="page-tag animate-fade-in">Engineering Notes</span>
-                <h1 class="page-title animate-slide-up">TokenOps Cost Engineering Lab<span class="gradient-text"></span></h1>
+                <h1 class="page-title animate-slide-up">TokenOps Cost Engineering Lab<span class="gradient-text"></span>
+                </h1>
                 <p class="page-subtitle animate-slide-up delay-1">
                     Estimate LLM token usage, compare model costs, and design cheaper AI workflows.
                 </p>
@@ -92,14 +102,32 @@
         <article class="article-body container">
 
             <!-- TL;DR SECTION -->
-            <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px; margin-bottom: 32px;">
-                <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">⚡ TL;DR</h3>
+            <div
+                style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px; margin-bottom: 32px;">
+                <h3
+                    style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                    TL;DR</h3>
                 <ul style="margin: 8px 0; padding-left: 20px;">
-                    <li><strong>Tokens are the unit of cost.</strong> A rough estimate is 1 token ≈ 4 English characters or about 0.75 words.</li>
-                    <li><strong>Claude Opus 4.7:</strong> <span id="tldr-claude-opus"></span> per 1M tokens (input/output)</li>
-                    <li><strong>Claude Sonnet 4.6:</strong> <span id="tldr-claude-sonnet"></span> per 1M tokens</li>
-                    <li><strong>GPT-5.5:</strong> <span id="tldr-gpt55"></span>; <strong>GPT-5.5 Pro:</strong> <span id="tldr-gpt55p"></span></li>
-                    <li><strong>Pricing last verified:</strong> May 2026. Rates change frequently. This tool is for estimation, not billing reconciliation.</li>
+                    <li><strong>Tokens are the unit of cost.</strong> A rough estimate is 1 token ~ 4 English characters
+                        or about 0.75 words.</li>
+                    <li><strong>Claude Haiku 3.5:</strong> <span id="tldr-claude-haiku"></span> â€” low-cost entry point
+                        for high-volume classification and
+                        summarization</li>
+                    <li><strong>Claude Sonnet 4:</strong> <span id="tldr-claude-sonnet"></span> â€” balanced reasoning and
+                        speed for production workflows</li>
+                    <li><strong>Claude Opus 4.1:</strong> <span id="tldr-claude-opus"></span> â€” premium reasoning tier
+                        for the hardest work</li>
+                    <li><strong>GPT-5.5 / GPT-5.2 / GPT-5 mini:</strong> <span id="tldr-gpt55"></span> / <span
+                            id="tldr-gpt52"></span> / <span id="tldr-gpt5mini"></span> â€” current OpenAI reasoning and
+                        routing
+                        tiers</li>
+                    <li><strong>Gemini 3.1 Pro / Flash-Lite:</strong> <span id="tldr-gemini-pro"></span> / <span
+                            id="tldr-gemini-flash"></span> â€” Google's current long-context and high-throughput
+                        options</li>
+                    <li><strong>Grok 4.3:</strong> <span id="tldr-grok-43"></span> â€” xAI's current flagship reasoning
+                        tier</li>
+                    <li><strong>Pricing last verified:</strong> May 2026. Rates change frequently. This tool is for
+                        estimation, not billing reconciliation.</li>
                     <li><strong>Best practice:</strong> Use the Ledger Lab below to calculate your actual costs</li>
                 </ul>
             </div>
@@ -109,13 +137,14 @@
                 <h2>Why Token Economics Matter</h2>
                 <p>
                     LLMs charge by the token, not the word or the request. If you're building at scale, token efficiency
-                    becomes a core part of your product architecture. Model choice alone can cut your LLM costs by
-                    50–75%, but only if you understand how tokens work, how different providers tokenize differently,
-                    and which models make economic sense for which tasks.
+                    becomes a core part of your product architecture.
+                    Small differences in tokenization, model tier, and output budget can change the cost profile of an
+                    entire platform.
                 </p>
                 <p>
-                    This guide starts with the fundamentals — tokens, embeddings, tokenizers — then gives you a hands-on
-                    lab to compare Claude and OpenAI costs for your own prompts and workloads.
+                    This guide starts with the fundamentals: tokens, embeddings, and tokenizers. It then shows how the
+                    current Claude, OpenAI, Gemini, and Grok model ladders affect cost,
+                    and ends with the TokenOps lab for live estimation.
                 </p>
             </section>
 
@@ -123,25 +152,26 @@
             <section class="article-section">
                 <h2>What Are Tokens?</h2>
                 <p>
-                    LLMs don't read characters or words. They read <strong>tokens</strong> — subword units created by a
-                    tokenizer algorithm. You pay per token for input and output; everything else is free.
+                    LLMs do not read characters or words directly. They read <strong>tokens</strong>, which are subword
+                    units produced by a tokenizer.
+                    You pay per token for input and output, so tokenization is the first layer of model economics.
                 </p>
                 <p>
-                    English prose: 1 token ≈ 4 characters. "Hello, world!" is 4 tokens. "Unbelievable" might be 1–2
-                    tokens; "tokenization" is 3–4 tokens. Numbers split unpredictably: "2026" is 1 token, but
-                    "2026-05-03" is 4 tokens (hyphens, digits split). Code is much more token-dense because symbols,
-                    brackets, and special characters each become their own token or token sequence.
+                    English prose is usually compact, but code, JSON, logs, and structured prompts often expand into
+                    more tokens because punctuation, separators,
+                    and symbols get split differently. That is why a short-looking prompt can still be expensive.
                 </p>
                 <div class="article-callout">
                     <strong>Token density by content type (approx):</strong><br>
                     English prose: 25 tokens per 100 chars<br>
-                    Source code: 30–40 tokens per 100 chars<br>
-                    JSON/YAML: 35–45 tokens per 100 chars (quotes, colons, commas are expensive)<br>
-                    Chinese/Korean: 50–80 tokens per 100 chars
+                    Source code: 30-40 tokens per 100 chars<br>
+                    JSON/YAML: 35-45 tokens per 100 chars<br>
+                    Chinese/Korean: 50-80 tokens per 100 chars
                 </div>
                 <p>
-                    The practical implication: if you're processing logs, code snippets, or API responses (which are
-                    often JSON), your token cost is significantly higher than raw English text. Plan accordingly.
+                    The practical implication: if you're processing logs, code snippets, or API responses, your token
+                    cost is often higher than plain English text.
+                    Token awareness is a design discipline, not an afterthought.
                 </p>
             </section>
 
@@ -149,30 +179,24 @@
             <section class="article-section">
                 <h2>What Are Embeddings?</h2>
                 <p>
-                    Once tokenized, each token is converted into an <strong>embedding</strong> — a numerical vector (a
-                    list of numbers) that captures the token's meaning in context. In modern models, each token becomes
-                    a 4,096-dimensional (or larger) vector. Embeddings capture semantic relationships: "cat" and
-                    "kitten" are close in embedding space; "cat" and "democracy" are distant.
+                    Once tokenized, each token is converted into an <strong>embedding</strong> - a numerical vector that
+                    captures meaning in context.
+                    Embeddings help the model understand relationships between concepts, such as similarity, intent, and
+                    dependency.
                 </p>
                 <p>
-                    The <strong>context window</strong> is how many tokens the model can simultaneously process — it's
-                    the model's working memory. Each token in the context consumes one "slot." When you send a prompt
-                    of 50K input tokens, you consume 5% of a 1M-token window.
+                    The <strong>context window</strong> is the amount of text the model can reason over at one time.
+                    Bigger context windows reduce truncation risk, but they also increase the ceiling for a single
+                    request if you fill them.
                 </p>
                 <p>
-                    The context window sets the cost ceiling for any single request:
-                    <code>Max Input Cost = Context Window Size × Input Price per Token</code>. In practice, a full-window
-                    request costs the context window size multiplied by the model's current input rate. That is why
-                    pricing must stay configurable.
+                    The cost ceiling for any request is still simple:
+                    <code>Input Cost = Input Tokens Ã— Input Price per Token</code>.
+                    Output cost is separate and usually higher, because generated tokens are produced one by one.
                 </p>
                 <p>
-                    Side note: embedding models (used for RAG — retrieval-augmented generation) have separate, much
-                    cheaper pricing. Don't confuse inference token costs with embedding costs.
-                </p>
-                <p>
-                    For production systems, use provider token-count APIs rather than relying only on rough character
-                    estimates. Heuristics are useful for planning, but content type, tools, files, schemas, and model
-                    behavior can all shift the real count.
+                    For production systems, use provider token-count APIs rather than rough character estimates. Content
+                    type, tool calls, files, and schemas can all shift the real count.
                 </p>
             </section>
 
@@ -180,57 +204,56 @@
             <section class="article-section">
                 <h2>How Tokenizers Work & Why They Matter</h2>
                 <p>
-                    Each provider uses a different tokenizer. GPT uses <strong>tiktoken</strong> — a Byte Pair Encoding
-                    (BPE) algorithm that starts with individual bytes and recursively merges the most common pairs into
-                    larger tokens. The final vocabulary is ~100K tokens. Claude uses its own proprietary tokenizer, also
-                    BPE-based but with different merge rules and vocabulary priorities.
+                    Each provider uses its own tokenizer. OpenAI models use the <strong>tiktoken</strong> family of Byte
+                    Pair Encoding tokenizers,
+                    while Anthropic models use their own proprietary tokenizer stack. Gemini and Grok each have their
+                    own provider-specific token handling as well.
+                    These systems are optimized for efficient text representation, but they do not always split the same
+                    prompt the same way.
                 </p>
                 <p>
-                    Same English text = 5–10% different token count across providers. Example: "The quick brown fox
-                    jumps over the lazy dog" is 9 tokens in tiktoken, might be 8–10 in Claude's tokenizer depending on
-                    whitespace handling. This variance is real but small; the bigger factor is the price difference, not
-                    the token count.
+                    That means the same English text can land in slightly different token counts across providers.
+                    The difference is usually small; the larger factor is the model tier and the output you ask it to
+                    generate.
                 </p>
                 <div class="article-callout">
-                    <strong>Key insight:</strong> Don't compare raw token counts across providers. Always compare costs
-                    (tokens × price per token). The lab below uses a rough English heuristic, but actual token counts
-                    vary by tokenizer, content type, tools, files, and model behavior.
+                    <strong>Key insight:</strong> compare costs, not just token counts.
+                    Tokens Ã— price per token is the real equation. The lab below uses a rough English heuristic, but
+                    actual token counts vary by tokenizer, content type, tools, files, and model behavior.
                 </div>
             </section>
 
-            <!-- REMOVED: CLAUDE VS GPT SECTION (redundant with demo) -->
-            <!-- The lab shows this comparison better than prose -->
-
             <p>
-                Both providers have a price tier strategy: cheap models for high-volume simple tasks, expensive models
-                for complex reasoning. In May 2026, Claude Haiku 4.5 is the low-cost entry point, GPT-5.5 is the
-                mainstream OpenAI frontier model, and Claude Opus 4.7 / GPT-5.5 Pro sit in the premium reasoning tier.
+                Both providers have a price tier strategy: cheap models for high-volume simple tasks, balanced models
+                for day-to-day production work,
+                and premium models for complex reasoning. Current routing patterns usually begin with Claude Haiku 3.5,
+                GPT-5 mini, Gemini 3.1 Flash-Lite, or Grok 4.3, then escalate only when needed.
             </p>
             <div class="example-box">
-                <strong>Claude's approach:</strong> Haiku 4.5 is the low-cost entry point, Sonnet 4.6 is the balanced
-                tier, and Opus 4.7 is the premium tier with the highest output price.
+                <strong>Claude's approach:</strong> Haiku 3.5 is the low-cost entry point, Sonnet 4 is the balanced
+                tier, and Opus 4.1 is the premium tier with the highest output price.
             </div>
             <div class="example-box">
-                <strong>OpenAI's approach (May 2026):</strong> GPT-5.5 is the
-                general-purpose frontier model, and GPT-5.5 Pro is the premium option for the hardest problems.
+                <strong>OpenAI's approach (May 2026):</strong> GPT-5.5, GPT-5.2, GPT-5 mini, and GPT-4.1 cover the main
+                reasoning and lower-cost routing tiers.
+            </div>
+            <div class="example-box">
+                <strong>Gemini and Grok:</strong> Gemini 3.1 Pro handles deep long-context analysis, Gemini 3.1 Flash-Lite
+                handles balanced throughput, and Grok 4.3 covers xAI's flagship route.
             </div>
             <p>
-                The key economic insight: <strong>Claude Haiku 4.5 and GPT-5.5 are the entry points for lower
-                    cost workloads, Claude Sonnet 4.6 is the balanced tier, and GPT-5.5 Pro is the premium option.</strong> Compare your real workload rather than assuming a model label tells the
-                full cost story.
+                The key economic insight: <strong>route by task, not by model prestige.</strong>
+                Compare your real workload rather than assuming a model label tells the full cost story.
             </p>
-            </section>
-
             <!-- THE COST FORMULA -->
             <section class="article-section">
                 <h2>The Token Cost Formula</h2>
                 <p>
                     Cost is the sum of input and output token costs. Output tokens are typically more expensive than
-                    input tokens because the model must generate them token-by-token (autoregressive generation is
-                    serial and computation-heavy).
+                    input tokens because the model must generate them token-by-token.
                 </p>
                 <div class="code-block">
-                    Total Cost = (Input Tokens × Input Price) + (Output Tokens × Output Price)
+                    Total Cost = (Input Tokens Ã— Input Price) + (Output Tokens Ã— Output Price)
                 </div>
                 <p>
                     Use the TokenOps lab below for live calculations with the current shared pricing object.
@@ -249,17 +272,17 @@
                 <h2>At Scale, Model Choice Multiplies</h2>
                 <p>
                     Single-request costs are small. At scale, they compound. Process 100,000 documents monthly, and the
-                    model you pick determines your monthly bill.
+                    model you pick determines the shape of your bill.
                 </p>
                 <div class="batch-example">
-                    <strong>Example: 100,000 requests × 500 input tokens each × 50 output tokens each</strong><br>
+                    <strong>Example: 100,000 requests Ã— 500 input tokens each Ã— 50 output tokens each</strong><br>
                     <br>
                     <span id="batch-example-block">Batch totals are rendered from the shared pricing object.</span>
                 </div>
                 <p>
-                    The spread is wide enough that model selection remains a product engineering decision, not just an
-                    ops decision. On this workload, the cheaper tiers stay dramatically lower cost than the premium
-                    tiers, so route carefully.
+                    The spread is wide enough that model selection is a product engineering decision, not just an API
+                    choice.
+                    A team can save meaningful budget simply by routing simple workloads to lower tiers.
                 </p>
             </section>
 
@@ -267,16 +290,16 @@
             <section class="article-section">
                 <h2>Cost Optimization Levers</h2>
                 <ul class="article-list">
-                    <li><strong>Model Routing:</strong> Not all requests need your most expensive model. Try
-                        Haiku 4.5 first; escalate to Sonnet 4.6 / GPT-5.5 only if confidence is low.
-                        Your cheaper model solves many routine tasks just fine.</li>
+                    <li><strong>Model Routing:</strong> Not all requests need your most expensive model. Try Claude
+                        Haiku 3.5, GPT-5 mini, Gemini 3.1 Flash-Lite, or Grok 4.3 first; escalate only if confidence is low.
+                    </li>
                     <li><strong>Prompt Caching:</strong> If the same system prompt or context is reused across requests,
-                        enable prompt caching (both Claude and OpenAI support it). Cached tokens cost 90% less. For
-                        batch operations, caching can reduce costs by 30–50%.</li>
+                        enable prompt caching where supported. Cached tokens cost far less than fresh input tokens and
+                        should be on by default.</li>
                     <li><strong>Output Budget:</strong> You pay for every output token. Don't ask for 500 tokens if 100
                         will do. Constrain `max_tokens` to what you actually need.</li>
-                    <li><strong>Batch APIs:</strong> Both providers offer batch APIs (24-hour turnaround) with 50%
-                        discounts on input tokens. For non-urgent workloads, batching is nearly always more economical.
+                    <li><strong>Batch APIs:</strong> All major providers now offer batch-style or async workflows for
+                        non-urgent tasks. For lower-priority workloads, batching is often the most economical route.
                     </li>
                 </ul>
             </section>
@@ -285,10 +308,11 @@
             <section class="article-section">
                 <h2>Code Examples: Token Counting & Cost Calculation</h2>
                 <p><strong>Basic token counter (JavaScript):</strong></p>
-                <div style="background: rgba(15, 23, 42, 0.8); padding: 16px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2); overflow-x: auto; margin: 12px 0;">
+                <div
+                    style="background: rgba(15, 23, 42, 0.8); padding: 16px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2); overflow-x: auto; margin: 12px 0;">
                     <code style="color: #93c5fd; font-family: 'Courier New', monospace; font-size: 0.9rem;">
 function estimateTokens(text) {<br/>
-&nbsp;&nbsp;// Rough heuristic: 1 token ≈ 0.75 words in English text<br/>
+ &nbsp;&nbsp;// Rough heuristic: 1 token ~ 0.75 words in English text<br/>
 &nbsp;&nbsp;const words = text.trim().split(/\s+/).length;<br/>
 &nbsp;&nbsp;return Math.round(words / 0.75);<br/>
 }<br/>
@@ -300,198 +324,114 @@ console.log(`~${tokens} tokens`); // Output: ~47 tokens
                 </div>
 
                 <p><strong>Cost calculator (Python):</strong></p>
-                <div style="background: rgba(15, 23, 42, 0.8); padding: 16px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2); overflow-x: auto; margin: 12px 0;">
+                <div
+                    style="background: rgba(15, 23, 42, 0.8); padding: 16px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.2); overflow-x: auto; margin: 12px 0;">
                     <code style="color: #93c5fd; font-family: 'Courier New', monospace; font-size: 0.9rem;">
 MODELS = {<br/>
-&nbsp;&nbsp;"claude-opus-4-7": {"input": 5.00, "output": 25.00},<br/>
-&nbsp;&nbsp;"gpt-5.5": {"input": 5.00, "output": 30.00},<br/>
+&nbsp;&nbsp;"claude-opus-4-1": {"input": 15.00, "output": 75.00},<br/>
+&nbsp;&nbsp;"gpt-5-2": {"input": 1.75, "output": 14.00},<br/>
+&nbsp;&nbsp;"gemini-3.1-pro": {"input": 2.00, "output": 12.00},<br/>
+&nbsp;&nbsp;"grok-4.3": {"input": 1.25, "output": 2.50},<br/>
 }<br/>
 <br/>
 def calculate_cost(model, input_tokens, output_tokens):<br/>
 &nbsp;&nbsp;rates = MODELS[model]<br/>
-&nbsp;&nbsp;cost = (input_tokens * rates["input"] + <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output_tokens * rates["output"]) / 1_000_000<br/>
+&nbsp;&nbsp;cost = (input_tokens * rates["input"] +<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output_tokens * rates["output"]) / 1_000_000<br/>
 &nbsp;&nbsp;return round(cost, 6)<br/>
 <br/>
-cost = calculate_cost("claude-opus-4-7", 2000, 500)<br/>
+cost = calculate_cost("claude-opus-4-1", 2000, 500)<br/>
 print(f"Cost: ${cost:.4f}")  # Output: $0.0125
                     </code>
                 </div>
             </section>
-
-            <!-- COMMON PITFALLS -->
-            <section class="article-section">
-                <h2>Common Pitfalls (and How to Avoid Them)</h2>
-
-                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin: 16px 0;">
-                    <h4 style="margin-top: 0; color: #ef4444;">❌ Pitfall 1: Ignoring output token costs</h4>
-                    <p style="margin: 8px 0; font-size: 0.95rem;">Many teams focus only on input token pricing. Output tokens are cheaper but add up fast if you're not constrained. Solution: Set explicit output limits and track output/input ratio per model.</p>
-                </div>
-
-                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin: 16px 0;">
-                    <h4 style="margin-top: 0; color: #ef4444;">❌ Pitfall 2: Paying full price for cached content</h4>
-                    <p style="margin: 8px 0; font-size: 0.95rem;">If the same system prompt or document is used 1000 times, cache it. Not caching is leaving 30–50% savings on the table. Both Claude and GPT support it; enable it by default.</p>
-                </div>
-
-                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 16px; border-radius: 8px; margin: 16px 0;">
-                    <h4 style="margin-top: 0; color: #ef4444;">❌ Pitfall 3: Using Opus/GPT-5.5 Pro for everything</h4>
-                    <p style="margin: 8px 0; font-size: 0.95rem;">It's tempting to use the best model for all tasks. In reality, Haiku or Sonnet solve 85% of problems perfectly. A/B test your cheaper models first; you'll often find they're sufficient.</p>
-                </div>
-
-                <div style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 16px; border-radius: 8px; margin: 16px 0;">
-                    <h4 style="margin-top: 0; color: #22c55e;">✓ Best Practice: Token-aware architecture</h4>
-                    <p style="margin: 8px 0; font-size: 0.95rem;">Build token budgets into your system design. Know the token cost per request type, set per-request maximums, and monitor spend. The Ledger Lab below helps you calculate; use it to baseline your workload.</p>
-                </div>
-            </section>
-
-            <!-- CTA TO TOKENOPS PLATFORM -->
-            <div class="to-platform-cta">
-                <strong>TokenOps Platform</strong>
-                <p>The full model comparison table and budget simulator live on the TokenOps platform. Use it to estimate your monthly AI infrastructure costs across all providers.</p>
-                <a href="../tokenops.html" class="project-link"><span>Open TokenOps →</span></a>
-            </div>
-
-            <!-- LINK TO TOKENOPS PLATFORM -->
-            <section class="tc-demo-section">
-                <div class="demo-badge">🔧 Interactive Tool</div>
-                <h2>Try the TokenOps Platform</h2>
-                <p>
-                    For hands-on cost calculations and model comparisons, open the TokenOps platform. You'll find:
-                </p>
-                <ul class="article-list">
-                    <li><strong>Ledger Lab:</strong> Paste your text or prompt → see real-time token counts and costs across all models</li>
-                    <li><strong>Model Comparison Table:</strong> Side-by-side pricing, context windows, and capability matrix</li>
-                    <li><strong>Budget Simulator:</strong> Forecast monthly costs based on your request volume and token counts</li>
-                </ul>
-
-                <div style="margin-top: 24px; text-align: center;">
-                    <a href="../../pages/tokenops.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--accent-primary); color: white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s ease;">
-                        <span>Open TokenOps Platform →</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- CONCLUSION -->
-            <section class="article-section">
-                <h2>Take-Away: Model Choice Is a Lever</h2>
-                <p>
-                    Tokens are the atomic unit of LLM economics. Even modest differences in token costs become
-                    meaningful at scale. Use the lab to estimate your own workload, then apply the four optimization
-                    levers (routing, caching, output budget, batch APIs) to squeeze more value out of every token.
-                    Tokens are cheap in absolute terms — but they add up fast at scale.
-                </p>
-            </section>
-
-            <section class="article-section">
-                <h2>Sources</h2>
-                <ul class="article-list">
-                    <li><a href="https://docs.anthropic.com/en/docs/about-claude/pricing" target="_blank" rel="noopener">Anthropic pricing</a></li>
-                    <li><a href="https://developers.openai.com/api/docs/models/gpt-5.5" target="_blank" rel="noopener">OpenAI GPT-5.5</a></li>
-                    <li><a href="https://developers.openai.com/api/docs/models/gpt-5.5-pro" target="_blank" rel="noopener">OpenAI GPT-5.5 Pro</a></li>
-                    <li><a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noopener">OpenAI models overview</a></li>
-                </ul>
-                <div class="article-callout">
-                    Pricing last verified: May 2026. Rates change frequently. This tool is for estimation, not billing reconciliation.
-                </div>
-            </section>
-
         </article>
     </main>
-
     <!-- FOOTER DIVIDER -->
     <div class="footer-divider"></div>
 
     <footer class="footer footer--pro">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-card footer-brand-card">
-                    <a href="../../index.html" class="footer-logo">
-                        <span class="logo-icon">RRR</span>
-                        <span class="logo-text">RaghuRamReddy</span>
-                    </a>
-                    <p class="footer-tagline">Designing technology for human experience</p>
-                    <p class="footer-subline">Platform Engineering • DevSecOps • Automation • AI-assisted Operations</p>
-                    <div class="footer-social-row">
-                        <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank"
-                            rel="noopener">GitHub</a>
-                        <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3"
-                            target="_blank" rel="noopener">LinkedIn</a>
-                        <a class="social-pill" href="../contact.html">Contact</a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-card footer-brand-card">
+            <a href="../../index.html" class="footer-logo">
+              <span class="logo-icon">RRR</span>
+              <span class="logo-text">Raghuramreddy</span>
+            </a>
 
-                <div class="footer-links-col">
-                    <div class="footer-col">
-                        <h4 class="footer-col-title">Navigation</h4>
-                        <div class="footer-links">
-                            <a href="../../index.html" class="footer-link">Home</a>
-                            <a href="../work.html" class="footer-link">Work &amp; Impact</a>
-                            <a href="../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
-                            <a href="../writing.html" class="footer-link">Writing</a>
-                            <a href="../about.html" class="footer-link">About</a>
-                            <a href="../contact.html" class="footer-link">Contact</a>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h4 class="footer-col-title">Explore</h4>
-                        <div class="footer-links">
-                            <a href="../future-systems.html" class="footer-link">Future Systems</a>
-                            <a href="../operational-standards-library.html" class="footer-link">Operational
-                                Standards</a>
-                        </div>
-                    </div>
-                </div>
+            <p class="footer-tagline">Designing technology for human experience</p>
+            <p class="footer-subline">Intelligent Infrastructure Ecosystems<br>Operational Intelligence &bull; Lifecycle Governance &bull; Infrastructure Cognition</p>
 
-                <div class="footer-card footer-connect-card">
-                    <div class="footer-connect-header">
-                        <h4 class="footer-col-title">Connect</h4>
-                        <p class="footer-connect-note">Fastest response on LinkedIn.</p>
-                    </div>
-                    <div class="footer-icon-grid">
-                        <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener"
-                            aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <path
-                                    d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22" />
-                            </svg>
-                        </a>
-                        <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank"
-                            rel="noopener" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <path
-                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z" />
-                                <path d="M2 9h4v12H2z" />
-                                <circle cx="4" cy="4" r="2" />
-                            </svg>
-                        </a>
-                        <a class="icon-btn" href="../contact.html" aria-label="Contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <path d="M4 4h16v16H4z" />
-                                <path d="M4 7l8 6 8-6" />
-                            </svg>
-                        </a>
-                    </div>
-                    <a class="footer-cta" href="../contact.html">Let&apos;s talk &rarr;</a>
-                </div>
-
-                <div class="footer-visual" aria-hidden="true">
-                    <span class="fv-orb fv-orb-1"></span>
-                    <span class="fv-orb fv-orb-2"></span>
-                    <span class="fv-line fv-line-1"></span>
-                    <span class="fv-line fv-line-2"></span>
-                    <span class="fv-dot fv-dot-1"></span>
-                    <span class="fv-dot fv-dot-2"></span>
-                </div>
+            <div class="footer-social-row">
+              <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+              <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="social-pill" href="../../contact.html">Contact</a>
             </div>
-            <div class="footer-bottom footer-bottom--pro">
-                <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
+          </div>
+
+          <div class="footer-links-col">
+            <div class="footer-col">
+              <h4 class="footer-col-title">Navigation</h4>
+              <div class="footer-links">
+                <a href="../../index.html" class="footer-link">Home</a>
+                <a href="../../about.html" class="footer-link">About</a>
+                <a href="../../work.html" class="footer-link">Work &amp; Impact</a>
+                <a href="../../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
+                <a href="../../recognition.html" class="footer-link">Recognition &amp; Credentials</a>
+                <a href="../../future-systems.html" class="footer-link">Future Systems</a>
+                <a href="../../contact.html" class="footer-link">Contact</a>
+              </div>
             </div>
+
+            <div class="footer-col">
+              <h4 class="footer-col-title">Explore</h4>
+              <div class="footer-links">
+                <a href="../../future-systems.html" class="footer-link">Future Systems</a>
+                <a href="../operational-standards-library.html" class="footer-link">Operational Standards Library</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-card footer-connect-card">
+            <div class="footer-connect-header">
+              <h4 class="footer-col-title">Connect</h4>
+              <p class="footer-connect-note">Fastest response on LinkedIn.</p>
+            </div>
+
+            <div class="footer-icon-grid">
+              <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+              </a>
+              <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a class="icon-btn" href="../../contact.html" aria-label="Contact">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+              </a>
+            </div>
+
+            <a class="footer-cta" href="../../contact.html">Let's talk &rarr;</a>
+          </div>
+
+          <div class="footer-visual" aria-hidden="true">
+            <span class="fv-orb fv-orb-1"></span>
+            <span class="fv-orb fv-orb-2"></span>
+            <span class="fv-line fv-line-1"></span>
+            <span class="fv-line fv-line-2"></span>
+            <span class="fv-dot fv-dot-1"></span>
+            <span class="fv-dot fv-dot-2"></span>
+          </div>
         </div>
+
+        <div class="footer-bottom footer-bottom--pro">
+          <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="../../assets/js/main.js?v=20260503"></script>
-    <script src="../../assets/js/aurora.js?v=20260503"></script>
-    <script src="../../assets/js/token-pricing.js?v=20260510"></script>
+    <script src="../../assets/js/main.js?v=20260523"></script>
+    <script src="../../assets/js/aurora.js?v=20260523"></script>
+    <script src="../../assets/js/token-pricing.js?v=20260523"></script>
     <script>
         (() => {
             const pricing = window.TOKENOPS_PRICING;
@@ -502,29 +442,49 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
                 return provider ? provider.models.find(model => model.id === modelId) : null;
             };
 
+            const claudeHaiku = getModel('claude', 'haiku35');
+            const claudeSonnet = getModel('claude', 'sonnet4');
+            const claudeOpus = getModel('claude', 'opus41');
+            const gpt55 = getModel('gpt', 'gpt55');
+            const gpt52 = getModel('gpt', 'gpt52');
+            const gpt5mini = getModel('gpt', 'gpt5mini');
+            const geminiPro = getModel('gemini', 'gemini31pro');
+            const geminiFlash = getModel('gemini', 'gemini31flashlite');
+            const grok43 = getModel('grok', 'grok43');
+
             const formatPair = model => `$${model.input_per_mtok.toFixed(2)}/$${model.output_per_mtok.toFixed(2)}`;
 
-            const claudeOpus = getModel('claude', 'opus');
-            const claudeSonnet = getModel('claude', 'sonnet');
-            const gpt55 = getModel('gpt', 'gpt55');
-            const gpt55p = getModel('gpt', 'gpt55p');
+            const tldrMap = {
+                'tldr-claude-haiku': claudeHaiku,
+                'tldr-claude-sonnet': claudeSonnet,
+                'tldr-claude-opus': claudeOpus,
+                'tldr-gpt55': gpt55,
+                'tldr-gpt52': gpt52,
+                'tldr-gpt5mini': gpt5mini
+            };
 
-            if (claudeOpus) {
-                const node = document.getElementById('tldr-claude-opus');
-                if (node) node.textContent = formatPair(claudeOpus);
-            }
-            if (claudeSonnet) {
-                const node = document.getElementById('tldr-claude-sonnet');
-                if (node) node.textContent = formatPair(claudeSonnet);
-            }
-            if (gpt55) {
-                const node = document.getElementById('tldr-gpt55');
-                if (node) node.textContent = `${formatPair(gpt55)} per 1M tokens (cached input $${gpt55.cached_input_per_mtok.toFixed(2)})`;
-            }
-            if (gpt55p) {
-                const node = document.getElementById('tldr-gpt55p');
-                if (node) node.textContent = formatPair(gpt55p) + ' per 1M tokens';
-            }
+            Object.entries(tldrMap).forEach(([id, model]) => {
+                const node = document.getElementById(id);
+                if (!node || !model) return;
+                node.textContent = model.cached_input_per_mtok != null
+                    ? `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
+                    : formatPair(model);
+            });
+
+            const extraNodes = [
+                ['tldr-gemini-pro', geminiPro],
+                ['tldr-gemini-flash', geminiFlash],
+                ['tldr-grok-43', grok43]
+            ];
+
+            extraNodes.forEach(([id, model]) => {
+                const node = document.getElementById(id);
+                if (node && model) {
+                    node.textContent = model.cached_input_per_mtok != null
+                        ? `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
+                        : formatPair(model);
+                }
+            });
 
             const exampleBlock = document.getElementById('example-cost-block');
             if (exampleBlock && claudeSonnet) {
@@ -533,30 +493,33 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
                 const inputCost = (inputTokens * claudeSonnet.input_per_mtok) / 1_000_000;
                 const outputCost = (outputTokens * claudeSonnet.output_per_mtok) / 1_000_000;
                 const totalCost = inputCost + outputCost;
-                exampleBlock.innerHTML = `Input Cost: ${inputTokens} × ($${claudeSonnet.input_per_mtok.toFixed(2)} / 1M) = $${inputCost.toFixed(4)}<br>` +
-                    `Output Cost: ${outputTokens} × ($${claudeSonnet.output_per_mtok.toFixed(2)} / 1M) = $${outputCost.toFixed(4)}<br>` +
+                exampleBlock.innerHTML = `Input Cost: ${inputTokens} Ã— ($${claudeSonnet.input_per_mtok.toFixed(2)} / 1M) = $${inputCost.toFixed(4)}<br>` +
+                    `Output Cost: ${outputTokens} Ã— ($${claudeSonnet.output_per_mtok.toFixed(2)} / 1M) = $${outputCost.toFixed(4)}<br>` +
                     `Total: $${totalCost.toFixed(4)} per request`;
             }
 
             const batchBlock = document.getElementById('batch-example-block');
             if (batchBlock) {
+                const requests = 100000;
                 const inputTokens = 500;
                 const outputTokens = 50;
-                const requests = 100000;
-                const rows = [];
-                pricing.providers.forEach(provider => {
-                    provider.models.forEach(model => {
-                        const perReq = ((inputTokens * model.input_per_mtok) + (outputTokens * model.output_per_mtok)) / 1_000_000;
-                        const total = perReq * requests;
-                        rows.push(`<strong>${model.name}:</strong> $${total.toFixed(2)} total`);
-                    });
-                });
-                batchBlock.innerHTML = rows.join('<br>');
+                const models = [
+                    claudeHaiku, claudeSonnet, claudeOpus,
+                    gpt55, gpt52, gpt5mini,
+                    geminiPro, geminiFlash,
+                    grok43
+                ].filter(Boolean);
+
+                batchBlock.innerHTML = models.map(model => {
+                    const perReq = ((inputTokens * model.input_per_mtok) + (outputTokens * model.output_per_mtok)) / 1_000_000;
+                    const total = perReq * requests;
+                    return `<strong>${model.name}:</strong> $${total.toFixed(2)} total`;
+                }).join('<br>');
             }
         })();
     </script>
-
 </body>
 
 </html>
+
 

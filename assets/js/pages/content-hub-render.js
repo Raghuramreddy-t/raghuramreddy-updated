@@ -52,6 +52,15 @@
     container.appendChild(frag);
   }
 
+  function readLimit(container) {
+    const raw = Number.parseInt(container && container.dataset ? container.dataset.limit : '', 10);
+    return Number.isFinite(raw) && raw > 0 ? raw : null;
+  }
+
+  function isInsidePageHeader(node) {
+    return Boolean(node && typeof node.closest === 'function' && node.closest('.page-header'));
+  }
+
   function createSvgArrow() {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', '0 0 24 24');
@@ -92,7 +101,8 @@
   }
 
   function renderBlogCards(container, posts) {
-    const hidePublishedMeta = window.location.pathname.includes('/pages/writing.html');
+    const hidePublishedMeta = window.location.pathname.includes('/pages/recognition.html');
+    const limit = readLimit(container);
     const articleVariants = [
       { slug: 'focus', label: 'Article Focus', color: '#3b82f6' },
       { slug: 'lab', label: 'Research Lab', color: '#8b5cf6' },
@@ -102,7 +112,7 @@
       { slug: 'study', label: 'Case Study', color: '#10b981' },
     ];
 
-    const cards = dedupePosts(sortPostsByPublished(posts)).map((post, index) => {
+    const cards = dedupePosts(sortPostsByPublished(posts)).slice(0, limit || undefined).map((post, index) => {
       const card = document.createElement('div');
       card.className = 'publication-card';
       card.classList.add('writing-article-card');
@@ -165,7 +175,8 @@
   }
 
   function renderPublications(grid, papers) {
-    const cards = dedupePosts(sortPostsByPublished(papers)).map((paper, index) => {
+    const limit = readLimit(grid);
+    const cards = dedupePosts(sortPostsByPublished(papers)).slice(0, limit || undefined).map((paper, index) => {
       const card = document.createElement('div');
       card.className = 'publication-card';
       card.dataset.paperId = paper.id || '';
@@ -216,6 +227,68 @@
     clearAndAppend(grid, cards);
   }
 
+  function renderAcademic(grid, academicEntries) {
+    const limit = readLimit(grid);
+    const cards = dedupePosts(sortPostsByPublished(academicEntries)).slice(0, limit || undefined).map((entry, index) => {
+      const card = document.createElement('div');
+      card.className = 'publication-card';
+      card.dataset.academicId = entry.id || '';
+      if (index < 3) {
+        card.setAttribute('data-aos', 'fade-up');
+        if (index) card.setAttribute('data-aos-delay', String(index * 100));
+      }
+
+      const icon = document.createElement('div');
+      icon.className = 'publication-icon';
+      icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"></path></svg>';
+
+      const content = document.createElement('div');
+      content.className = 'publication-content';
+
+      const title = document.createElement('h3');
+      title.textContent = entry.title || '';
+
+      const meta = document.createElement('p');
+      meta.className = 'publication-meta';
+      meta.textContent = [entry.institution, entry.role].filter(Boolean).join(' | ');
+
+      const description = document.createElement('p');
+      description.textContent = entry.description || '';
+
+      const tags = document.createElement('div');
+      tags.className = 'project-tags blog-card-tags';
+      (entry.tags || []).forEach((tag) => {
+        const chip = document.createElement('span');
+        chip.textContent = String(tag);
+        tags.appendChild(chip);
+      });
+
+      const link = document.createElement('a');
+      link.className = 'project-link';
+      link.href = safeHref(entry.link || 'contact.html');
+      if (isExternalHref(entry.link)) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+      }
+
+      const label = document.createElement('span');
+      label.textContent = entry.link && entry.link !== '#' ? (isExternalHref(entry.link) ? 'Open Source' : 'Open Details') : 'Discuss';
+      link.appendChild(label);
+      link.appendChild(createSvgArrow());
+
+      content.appendChild(title);
+      content.appendChild(meta);
+      content.appendChild(description);
+      content.appendChild(tags);
+      content.appendChild(link);
+      card.appendChild(icon);
+      card.appendChild(content);
+      return card;
+    });
+
+    clearAndAppend(grid, cards);
+  }
+
   async function loadJson(fileName) {
     const response = await fetch(resolveDataPath(fileName), { cache: 'no-store' });
     if (!response.ok) throw new Error('Failed to load ' + fileName);
@@ -223,22 +296,27 @@
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
-    const blogContainer = document.querySelector('[data-blog-posts]');
-    const publicationsGrid = document.querySelector('[data-publications-grid]');
-    if (!blogContainer && !publicationsGrid) return;
+    const blogContainers = Array.from(document.querySelectorAll('[data-blog-posts]')).filter((node) => !isInsidePageHeader(node));
+    const publicationsGrids = Array.from(document.querySelectorAll('[data-publications-grid]')).filter((node) => !isInsidePageHeader(node));
+    const academicGrids = Array.from(document.querySelectorAll('[data-academic-grid]')).filter((node) => !isInsidePageHeader(node));
+    if (!blogContainers.length && !publicationsGrids.length && !academicGrids.length) return;
 
     try {
       const [blogIndex, publications] = await Promise.all([
-        blogContainer ? loadJson('blog-index.json') : Promise.resolve(null),
-        publicationsGrid ? loadJson('publications.json') : Promise.resolve(null),
+        blogContainers.length ? loadJson('blog-index.json') : Promise.resolve(null),
+        (publicationsGrids.length || academicGrids.length) ? loadJson('publications.json') : Promise.resolve(null),
       ]);
 
-      if (blogContainer && blogIndex && Array.isArray(blogIndex.posts)) {
-        renderBlogCards(blogContainer, blogIndex.posts);
+      if (blogIndex && Array.isArray(blogIndex.posts)) {
+        blogContainers.forEach((blogContainer) => renderBlogCards(blogContainer, blogIndex.posts));
       }
 
-      if (publicationsGrid && publications && Array.isArray(publications.papers)) {
-        renderPublications(publicationsGrid, publications.papers);
+      if (publications && Array.isArray(publications.papers)) {
+        publicationsGrids.forEach((publicationsGrid) => renderPublications(publicationsGrid, publications.papers));
+      }
+
+      if (publications && Array.isArray(publications.academic)) {
+        academicGrids.forEach((academicGrid) => renderAcademic(academicGrid, publications.academic));
       }
     } catch (error) {
       console.warn('Content hub render failed:', error);

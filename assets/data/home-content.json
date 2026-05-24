@@ -1,0 +1,18 @@
+{
+  "featuredTitle": "Featured Writing",
+  "featuredSubtitle": "Article + companion labs and diagram suites, presented as one writing system.",
+  "knowledgePreview": [
+    {
+      "id": "intelligent-delivery-platforms",
+      "type": "research"
+    },
+    {
+      "id": "token-cost-comparator",
+      "type": "latest"
+    },
+    {
+      "id": "rag-knowledge-systems",
+      "type": "research"
+    }
+  ]
+}

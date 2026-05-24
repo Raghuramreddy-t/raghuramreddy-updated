@@ -4,7 +4,7 @@
 
 /* Page Header */
 .page-header {
-    padding: 110px 0 52px;
+    padding: 72px 0 28px;
     text-align: center;
     position: relative;
 }
@@ -25,14 +25,14 @@
     color: var(--accent-primary);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .page-title {
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .page-subtitle {
@@ -45,7 +45,7 @@
 .profile-grid {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
-    gap: 48px;
+    gap: 32px;
     align-items: center;
 }
 
@@ -248,7 +248,7 @@
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    padding: 40px;
+    padding: 28px;
     position: relative;
     transition: all var(--transition-base);
 }
@@ -392,14 +392,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
 }
 
 .cert-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 32px;
+    padding: 24px;
     text-align: center;
     transition: all var(--transition-base);
 }
@@ -599,7 +599,7 @@
     display: flex;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
 }
 
@@ -670,7 +670,7 @@
 }
 
 .project-content {
-    padding: 32px;
+    padding: 24px;
 }
 
 .project-tags {
@@ -741,10 +741,10 @@
 /* AI Systems Page */
 .ai-hero {
     text-align: center;
-    padding: 48px 0;
+    padding: 32px 0;
     background: var(--accent-gradient-soft);
     border-radius: 32px;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
 }
 
 .ai-hero h2 {
@@ -773,7 +773,7 @@
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    padding: 32px;
+    padding: 24px;
     transition: all var(--transition-base);
 }
 
@@ -844,7 +844,7 @@
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 20px;
-    padding: 32px;
+    padding: 24px;
     transition: all var(--transition-base);
 }
 
@@ -905,7 +905,7 @@
     font-size: 16px;
     color: var(--text-secondary);
     line-height: 1.7;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
 }
 
 .contact-methods {
@@ -963,17 +963,17 @@
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 24px;
-    padding: 40px;
+    padding: 28px;
 }
 
 .contact-form-container h3 {
     font-size: 24px;
     font-weight: 700;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
 
 .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .form-group label {
@@ -1293,7 +1293,7 @@
 
 @media(max-width: 768px) {
     .page-header {
-        padding: 80px 16px 40px;
+        padding: 64px 16px 28px;
     }
 
     .page-header-content {
@@ -1379,7 +1379,7 @@
 
 @media(max-width: 480px) {
     .page-header {
-        padding: 70px 12px 30px;
+        padding: 56px 12px 24px;
         display: block !important;
         width: 100% !important;
         overflow: visible !important;

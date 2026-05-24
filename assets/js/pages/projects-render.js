@@ -75,12 +75,12 @@ const PROJECTS_DATA = [
     },
     {
         id: 'secure-ehr',
-        title: 'Secure EHR DevSecOps Framework',
+        title: 'Secure EHR Lifecycle Governance Framework',
         category: ['security'],
         featured: false,
         tags: ['Security'],
         tech: ['CI platform', 'container scanner', 'code quality scanner', 'secrets manager', 'OPA', 'runtime security monitor'],
-        description: 'End-to-end DevSecOps framework for healthcare systems ensuring continuous compliance with HIPAA, HITECH, and SOC 2 through automated security gates and policy enforcement.',
+        description: 'End-to-end lifecycle governance framework for healthcare systems ensuring continuous compliance with HIPAA, HITECH, and SOC 2 through automated security gates and policy enforcement.',
         features: [
             'Automated HIPAA compliance scanning in CI/CD',
             'Secrets management with secrets manager',
@@ -210,7 +210,7 @@ const PROJECTS_DATA = [
                     <p>${project.description}</p>
                     <ul class="project-features">${featureList}</ul>
                     <div class="project-tech">${techTags}</div>
-                    ${project.link ? `<a href="${project.link}" class="project-link"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>` : ''}
+                    ${project.link ? `<a href="${typeof resolveSitePath === 'function' ? resolveSitePath(project.link) : project.link}" class="project-link"><span>Learn more</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></a>` : ''}
                 </div>
             </div>`;
     }
@@ -253,4 +253,3 @@ const PROJECTS_DATA = [
         return glyphs[projectId] || `<span class="glyph glyph-factory"><span class="g-bar g-bar-1"></span><span class="g-bar g-bar-2"></span><span class="g-bar g-bar-3"></span></span>`;
     }
 })();
-

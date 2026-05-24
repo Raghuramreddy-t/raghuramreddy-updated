@@ -1,13 +1,35 @@
 /* TokenOps Platform Stylesheet */
 /* Complements token-cost-comparator.css for shared .tc-* components */
 
+main.section {
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+}
+
+.ph--blog.page-header {
+  padding: 50px 0 20px !important;
+}
+
+.page-header-content {
+  gap: 6px;
+}
+
+.ph--blog .page-subtitle {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ph--blog .page-subtitle + div {
+  margin-top: 12px !important;
+}
+
 /* ============================================
    Model Comparison Table
    ============================================ */
 
 .to-comparison-section {
-  margin-top: 80px;
-  padding-top: 40px;
+  margin-top: 24px;
+  padding-top: 14px;
   border-top: 1px solid var(--border-color);
 }
 
@@ -17,7 +39,7 @@
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
-  margin: 24px 0;
+  margin: 18px 0;
 }
 
 .to-comparison-table thead {
@@ -26,7 +48,7 @@
 }
 
 .to-comparison-table th {
-  padding: 16px 12px;
+  padding: 12px 10px;
   text-align: left;
   font-size: 0.85rem;
   font-weight: 600;
@@ -37,7 +59,7 @@
 }
 
 .to-comparison-table td {
-  padding: 14px 12px;
+  padding: 10px 10px;
   border-bottom: 1px solid var(--border-color);
   font-size: 0.9rem;
   color: var(--text-secondary);
@@ -67,6 +89,13 @@
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--text-secondary);
+}
+
+.to-deprecation-cell {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #f59e0b;
+  font-weight: 600;
 }
 
 .to-tier-badge {
@@ -117,22 +146,41 @@
   max-width: 300px;
 }
 
+.tc-model-deprecation {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
 /* ============================================
    Budget Simulator
    ============================================ */
 
 .to-budget-section {
-  margin-top: 80px;
-  padding-top: 40px;
+  margin-top: 24px;
+  padding-top: 14px;
   border-top: 1px solid var(--border-color);
+}
+
+.ph--blog .page-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(139, 92, 246, 0.14));
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  color: #dbeafe;
+  box-shadow: 0 10px 24px rgba(59, 130, 246, 0.14);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
 }
 
 .to-budget-controls {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  margin: 24px 0;
-  padding: 20px;
+  gap: 12px;
+  margin: 14px 0;
+  padding: 10px;
   background: var(--bg-tertiary);
   border-radius: 8px;
 }
@@ -140,7 +188,7 @@
 .to-budget-input-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .to-budget-input-group label {
@@ -153,7 +201,7 @@
 
 .to-budget-input-row {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
 }
 
@@ -228,7 +276,7 @@
 .to-budget-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 24px 0;
+  margin: 16px 0;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
@@ -240,7 +288,7 @@
 }
 
 .to-budget-table th {
-  padding: 16px 12px;
+  padding: 12px 10px;
   text-align: left;
   font-size: 0.85rem;
   font-weight: 600;
@@ -250,7 +298,7 @@
 }
 
 .to-budget-table td {
-  padding: 12px;
+  padding: 10px;
   border-bottom: 1px solid var(--border-color);
   font-size: 0.9rem;
   color: var(--text-secondary);
@@ -285,8 +333,8 @@
 }
 
 .to-budget-savings {
-  margin-top: 16px;
-  padding: 16px;
+  margin-top: 12px;
+  padding: 12px;
   background: rgba(34, 197, 94, 0.08);
   border-left: 4px solid #22c55e;
   border-radius: 6px;
@@ -304,9 +352,9 @@
 .to-platform-cta {
   background: rgba(59, 130, 246, 0.08);
   border-left: 4px solid var(--accent-primary);
-  padding: 20px;
+  padding: 12px;
   border-radius: 8px;
-  margin: 32px 0;
+  margin: 16px 0;
 }
 
 .to-platform-cta strong {
@@ -315,11 +363,11 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .to-platform-cta p {
-  margin: 8px 0 12px 0;
+  margin: 4px 0 6px 0;
   color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
@@ -336,11 +384,11 @@
 
   .to-comparison-table th,
   .to-comparison-table td {
-    padding: 10px 8px;
+    padding: 8px 6px;
   }
 
   .to-budget-controls {
-    gap: 16px;
+    gap: 12px;
   }
 }
 

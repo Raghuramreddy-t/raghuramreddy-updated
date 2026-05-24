@@ -1,12 +1,12 @@
-/* ============================================
+﻿/* ============================================
    ANIMATED SVG RADAR CHART
-   index.html — skill proficiency visualization
+   index.html - skill proficiency visualization
    ============================================ */
 
 (function() {
     const skills = [
-        { name: 'Platform Eng',  value: 0.94, color: '#3b82f6' },
-        { name: 'DevSecOps',     value: 0.91, color: '#8b5cf6' },
+        { name: 'Infra Ecosys',  value: 0.94, color: '#3b82f6' },
+        { name: 'Governance',    value: 0.91, color: '#8b5cf6' },
         { name: 'Cloud Arch',    value: 0.87, color: '#06b6d4' },
         { name: 'CI/CD',         value: 0.90, color: '#10b981' },
         { name: 'Observability', value: 0.85, color: '#f59e0b' },
@@ -158,3 +158,4 @@
         initRadar();
     }
 })();
+

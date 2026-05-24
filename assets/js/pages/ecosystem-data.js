@@ -10,7 +10,7 @@ window.ECOSYSTEM = [
     items: ["CI/CD (enterprise pipeline engines)", "GitOps (GitOps controllers)", "Golden Paths & Templates", "Release Governance"]
   },
   {
-    title: "DevSecOps",
+    title: "Lifecycle Governance",
     icon: "https://api.iconify.design/mdi:shield-check-outline.svg?color=5b6ef5",
     items: ["Artifactory + Repos", "SAST/SCA/SBOM", "Policy-as-Code", "Supply Chain Security"]
   },
