@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TokenOps Cost Engineering Lab</title>
     <meta name="description"
-        content="TokenOps: Model comparison, prompt cost calculator, and monthly budget simulator for AI builders. Find which model fits your needs and costs.">
+        content="TokenOps: Tokenization, model comparison, prompt cost calculator, and monthly budget simulator for current Claude, OpenAI, Gemini, and Grok models.">
     <meta property="og:title" content="TokenOps Cost Engineering Lab">
     <meta property="og:description"
-        content="TokenOps: Model comparison, prompt cost calculator, and monthly budget simulator for AI builders.">
+        content="TokenOps: Tokenization, model comparison, prompt cost calculator, and monthly budget simulator for current Claude, OpenAI, Gemini, and Grok models.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://raghuramreddy.tech/pages/tokenops.html">
     <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
@@ -22,14 +22,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/main.css?v=20260508">
-    <link rel="stylesheet" href="../assets/css/animations.css?v=20260508">
-    <link rel="stylesheet" href="../assets/css/pages.css?v=20260508">
-    <link rel="stylesheet" href="../assets/css/components.css?v=20260508">
-    <link rel="stylesheet" href="../assets/css/design-v2.css?v=20260508">
-    <link rel="stylesheet" href="../assets/css/enhancements.css?v=20260508">
-    <link rel="stylesheet" href="../assets/css/token-cost-comparator.css?v=20260508">
-    <link rel="stylesheet" href="../assets/css/tokenops.css?v=20260508">
+    <link rel="stylesheet" href="../assets/css/main.css?v=20260523">
+    <link rel="stylesheet" href="../assets/css/animations.css?v=20260523">
+    <link rel="stylesheet" href="../assets/css/pages.css?v=20260523">
+    <link rel="stylesheet" href="../assets/css/components.css?v=20260523">
+    <link rel="stylesheet" href="../assets/css/design-v2.css?v=20260523">
+    <link rel="stylesheet" href="../assets/css/enhancements.css?v=20260523">
+    <link rel="stylesheet" href="../assets/css/token-cost-comparator.css?v=20260523">
+    <link rel="stylesheet" href="../assets/css/tokenops.css?v=20260523">
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%B7%3C/text%3E%3C/svg%3E">
 </head>
@@ -47,18 +47,18 @@
             <a href="../index.html" class="nav-logo">
                 <span class="logo-icon">RRR</span>
                 <div class="logo-stack">
-                    <span class="logo-name">RaghuRamReddy</span>
+                    <span class="logo-name">Raghuramreddy</span>
                     <span class="logo-tagline">Designing technology for human experience</span>
                 </div>
             </a>
             <div class="nav-menu" id="nav-menu">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="work.html" class="nav-link">Work &amp; Impact</a>
-                <a href="applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
-                <a href="future-systems.html" class="nav-link">Future Systems</a>
-                <a href="writing.html" class="nav-link">Writing</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="contact.html" class="nav-link">Contact</a>
+                                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../work.html" class="nav-link">Work & Impact</a>
+                <a href="../applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
+                <a href="recognition.html" class="nav-link">Recognition & Credentials</a>
+                <a href="../future-systems.html" class="nav-link">Future Systems</a>
+                <a href="../contact.html" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -83,8 +83,19 @@
                 <span class="page-tag">AI Engineering Tool</span>
                 <h1 class="page-title">TokenOps Cost Engineering Lab<span class="gradient-text"></span></h1>
                 <p class="page-subtitle">
-                    Model intelligence and cost engineering for AI builders. Compare models, calculate costs, and plan your AI budget.
+                    Model intelligence and tokenization for AI builders. Compare current Claude, OpenAI, Gemini, and Grok models, calculate costs, and plan your AI budget.
                 </p>
+                <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:16px;">
+                    <a class="project-link" href="#to-comparison-tabs" style="display:inline-flex; align-items:center; gap:8px;">
+                        <span>Compare models</span>
+                    </a>
+                    <a class="project-link" href="#live-demo" style="display:inline-flex; align-items:center; gap:8px;">
+                        <span>Open Ledger Lab</span>
+                    </a>
+                    <a class="project-link" href="#to-budget-tabs" style="display:inline-flex; align-items:center; gap:8px;">
+                        <span>Monthly budget simulator</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -95,67 +106,22 @@
             <!-- SECTION A: MODEL COMPARISON TABLE -->
             <section class="to-comparison-section">
                 <h2>Model Intelligence</h2>
-                <p>Compare pricing, capabilities, and performance across Claude and OpenAI models. Last updated: <strong id="to-version-badge">May 2026</strong></p>
+                <p>Compare pricing, capabilities, and performance across current Claude, OpenAI, Gemini, and Grok models. Last updated: <strong id="to-version-badge">May 2026</strong></p>
+                    <p style="margin-top: 6px; color: var(--text-secondary); font-size: 0.95rem;">
+                    The comparison tables focus on the important models teams actually use, and each row now includes an official release date.
+                </p>
 
                 <!-- Provider Tabs -->
-                <div class="tc-provider-tabs">
-                    <button class="tc-ptab active" data-provider="claude" data-section="comparison" aria-selected="true">
-                        Claude (Anthropic)
-                    </button>
-                    <button class="tc-ptab" data-provider="gpt" data-section="comparison" aria-selected="false">
-                        OpenAI GPT
-                    </button>
-                </div>
-
-                <!-- Claude Comparison Table -->
-                <div class="tc-provider-panel active" id="to-comparison-claude">
-                    <table class="to-comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Model</th>
-                                <th>Input Cost</th>
-                                <th>Output Cost</th>
-                                <th>Context</th>
-                                <th>Tier</th>
-                                <th>Reasoning</th>
-                                <th>Vision</th>
-                                <th>Best For</th>
-                            </tr>
-                        </thead>
-                        <tbody id="to-table-claude">
-                            <!-- Rendered by JS -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- GPT Comparison Table -->
-                <div class="tc-provider-panel" id="to-comparison-gpt">
-                    <table class="to-comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Model</th>
-                                <th>Input Cost</th>
-                                <th>Output Cost</th>
-                                <th>Context</th>
-                                <th>Tier</th>
-                                <th>Reasoning</th>
-                                <th>Vision</th>
-                                <th>Best For</th>
-                            </tr>
-                        </thead>
-                        <tbody id="to-table-gpt">
-                            <!-- Rendered by JS -->
-                        </tbody>
-                    </table>
-                </div>
+                <div class="tc-provider-tabs" id="to-comparison-tabs"></div>
+                <div id="to-comparison-panels"></div>
             </section>
 
             <!-- SECTION B: LEDGER LAB (PROMPT COST ESTIMATOR) -->
             <section class="tc-demo-section">
-                <div class="demo-badge">✨ Live Demo</div>
-                <h2>Ledger Lab</h2>
+                <div class="demo-badge">Live Demo</div>
+                <h2>TokenOps Lab</h2>
                 <p>
-                    Paste your text or prompt below. The lab calculates token count in real-time and shows you costs across all models. Switch provider tabs to compare Claude and GPT side-by-side.
+                    Paste your text or prompt below. The lab calculates token count in real-time and shows you costs across current Claude, OpenAI, Gemini, and Grok models. Switch provider tabs to compare the families side-by-side.
                 </p>
 
                 <div class="tc-wrap" id="live-demo">
@@ -193,30 +159,10 @@
                     </div>
 
                     <!-- Provider Tabs -->
-                    <div class="tc-provider-tabs">
-                        <button class="tc-ptab active" data-provider="claude" data-section="lab" aria-selected="true">
-                            Claude (Anthropic)
-                        </button>
-                        <button class="tc-ptab" data-provider="gpt" data-section="lab" aria-selected="false">
-                            OpenAI GPT
-                        </button>
-                    </div>
+                    <div class="tc-provider-tabs" id="to-lab-tabs"></div>
+                    <div id="to-lab-panels"></div>
 
-                    <!-- CLAUDE LAB PANEL -->
-                    <div class="tc-provider-panel active" id="to-lab-panel-claude">
-                        <div class="tc-model-grid">
-                            <!-- Rendered by JS -->
-                        </div>
-                    </div>
-
-                    <!-- GPT LAB PANEL -->
-                    <div class="tc-provider-panel" id="to-lab-panel-gpt">
-                        <div class="tc-model-grid">
-                            <!-- Rendered by JS -->
-                        </div>
-                    </div>
-
-                                        <div class="tc-disclaimer">
+                    <div class="tc-disclaimer">
                         <strong>Pricing last verified: May 2026. Rates change frequently. This tool is for estimation, not billing reconciliation.</strong>
                         <span>Token counts are approximate and may vary with tokenizer, content type, tools, and model behavior.</span>
                     </div>
@@ -228,7 +174,7 @@
             <section class="to-budget-section">
                 <h2>Monthly Budget Simulator</h2>
                 <p>
-                    Estimate your monthly AI infrastructure costs. Adjust the request volume and token counts to match your workload, then see the projected costs across all models.
+                    Estimate your monthly AI infrastructure costs. Adjust the request volume and token counts to match your workload, then see the projected costs across current Claude, OpenAI, Gemini, and Grok models.
                 </p>
 
                 <div class="to-budget-controls">
@@ -259,158 +205,108 @@
                 </div>
 
                 <!-- Claude Budget Table -->
-                <div class="tc-provider-tabs">
-                    <button class="tc-ptab active" data-provider="claude" data-section="budget" aria-selected="true">
-                        Claude (Anthropic)
-                    </button>
-                    <button class="tc-ptab" data-provider="gpt" data-section="budget" aria-selected="false">
-                        OpenAI GPT
-                    </button>
-                </div>
-
-                <div class="tc-provider-panel active" id="to-budget-panel-claude">
-                    <table class="to-budget-table">
-                        <thead>
-                            <tr>
-                                <th>Model</th>
-                                <th style="text-align: right;">Cost/Request</th>
-                                <th style="text-align: right;">Daily Cost</th>
-                                <th style="text-align: right;">Monthly Cost</th>
-                                <th style="text-align: right;">Annual Cost</th>
-                            </tr>
-                        </thead>
-                        <tbody id="to-budget-table-claude">
-                            <!-- Rendered by JS -->
-                        </tbody>
-                    </table>
-                    <div class="to-budget-savings" id="to-budget-savings-claude">
-                        <!-- Rendered by JS -->
-                    </div>
-                </div>
-
-                <div class="tc-provider-panel" id="to-budget-panel-gpt">
-                    <table class="to-budget-table">
-                        <thead>
-                            <tr>
-                                <th>Model</th>
-                                <th style="text-align: right;">Cost/Request</th>
-                                <th style="text-align: right;">Daily Cost</th>
-                                <th style="text-align: right;">Monthly Cost</th>
-                                <th style="text-align: right;">Annual Cost</th>
-                            </tr>
-                        </thead>
-                        <tbody id="to-budget-table-gpt">
-                            <!-- Rendered by JS -->
-                        </tbody>
-                    </table>
-                    <div class="to-budget-savings" id="to-budget-savings-gpt">
-                        <!-- Rendered by JS -->
-                    </div>
-                </div>
+                <div class="tc-provider-tabs" id="to-budget-tabs"></div>
+                <div id="to-budget-panels"></div>
             </section>
 
         </div>
     </main>
-
     <!-- FOOTER DIVIDER -->
     <div class="footer-divider"></div>
 
     <footer class="footer footer--pro">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-card footer-brand-card">
-                    <a href="../index.html" class="footer-logo">
-                        <span class="logo-icon">RRR</span>
-                        <span class="logo-text">RaghuRamReddy</span>
-                    </a>
-                    <p class="footer-tagline">Designing technology for human experience</p>
-                    <p class="footer-subline">Platform Engineering • DevSecOps • Automation • AI-assisted Operations</p>
-                    <div class="footer-social-row">
-                        <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank"
-                            rel="noopener">GitHub</a>
-                        <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3"
-                            target="_blank" rel="noopener">LinkedIn</a>
-                        <a class="social-pill" href="contact.html">Contact</a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-card footer-brand-card">
+            <a href="../index.html" class="footer-logo">
+              <span class="logo-icon">RRR</span>
+              <span class="logo-text">Raghuramreddy</span>
+            </a>
 
-                <div class="footer-links-col">
-                    <div class="footer-col">
-                        <h4 class="footer-col-title">Navigation</h4>
-                        <div class="footer-links">
-                            <a href="../index.html" class="footer-link">Home</a>
-                            <a href="work.html" class="footer-link">Work &amp; Impact</a>
-                            <a href="applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
-                            <a href="writing.html" class="footer-link">Writing</a>
-                            <a href="about.html" class="footer-link">About</a>
-                            <a href="contact.html" class="footer-link">Contact</a>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h4 class="footer-col-title">Explore</h4>
-                        <div class="footer-links">
-                            <a href="future-systems.html" class="footer-link">Future Systems</a>
-                            <a href="blog.html" class="footer-link">Articles</a>
-                        </div>
-                    </div>
-                </div>
+            <p class="footer-tagline">Designing technology for human experience</p>
+            <p class="footer-subline">Intelligent Infrastructure Ecosystems<br>Operational Intelligence &bull; Lifecycle Governance &bull; Infrastructure Cognition</p>
 
-                <div class="footer-card footer-connect-card">
-                    <div class="footer-connect-header">
-                        <h4 class="footer-col-title">Connect</h4>
-                        <p class="footer-connect-note">Fastest response on LinkedIn.</p>
-                    </div>
-                    <div class="footer-icon-grid">
-                        <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener"
-                            aria-label="GitHub">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <path
-                                    d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22" />
-                            </svg>
-                        </a>
-                        <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank"
-                            rel="noopener" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z" />
-                                <path d="M2 9h4v12H2z" />
-                                <circle cx="4" cy="4" r="2" />
-                            </svg>
-                        </a>
-                        <a class="icon-btn" href="contact.html" aria-label="Contact">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <path d="M4 4h16v16H4z" />
-                                <path d="M4 7l8 6 8-6" />
-                            </svg>
-                        </a>
-                    </div>
-                    <a class="footer-cta" href="contact.html">Let&apos;s talk →</a>
-                </div>
+            <div class="footer-social-row">
+              <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+              <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="social-pill" href="../contact.html">Contact</a>
+            </div>
+          </div>
 
-                <div class="footer-visual" aria-hidden="true">
-                    <span class="fv-orb fv-orb-1"></span>
-                    <span class="fv-orb fv-orb-2"></span>
-                    <span class="fv-line fv-line-1"></span>
-                    <span class="fv-line fv-line-2"></span>
-                    <span class="fv-dot fv-dot-1"></span>
-                    <span class="fv-dot fv-dot-2"></span>
-                </div>
+          <div class="footer-links-col">
+            <div class="footer-col">
+              <h4 class="footer-col-title">Navigation</h4>
+              <div class="footer-links">
+                <a href="../index.html" class="footer-link">Home</a>
+                <a href="../about.html" class="footer-link">About</a>
+                <a href="../work.html" class="footer-link">Work &amp; Impact</a>
+                <a href="../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
+                <a href="../recognition.html" class="footer-link">Recognition &amp; Credentials</a>
+                <a href="../future-systems.html" class="footer-link">Future Systems</a>
+                <a href="../contact.html" class="footer-link">Contact</a>
+              </div>
             </div>
 
-            <div class="footer-bottom footer-bottom--pro">
-                <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
+            <div class="footer-col">
+              <h4 class="footer-col-title">Explore</h4>
+              <div class="footer-links">
+                <a href="../future-systems.html" class="footer-link">Future Systems</a>
+                <a href="operational-standards-library.html" class="footer-link">Operational Standards Library</a>
+              </div>
             </div>
+          </div>
+
+          <div class="footer-card footer-connect-card">
+            <div class="footer-connect-header">
+              <h4 class="footer-col-title">Connect</h4>
+              <p class="footer-connect-note">Fastest response on LinkedIn.</p>
+            </div>
+
+            <div class="footer-icon-grid">
+              <a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+              </a>
+              <a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a class="icon-btn" href="../contact.html" aria-label="Contact">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+              </a>
+            </div>
+
+            <a class="footer-cta" href="../contact.html">Let's talk &rarr;</a>
+          </div>
+
+          <div class="footer-visual" aria-hidden="true">
+            <span class="fv-orb fv-orb-1"></span>
+            <span class="fv-orb fv-orb-2"></span>
+            <span class="fv-line fv-line-1"></span>
+            <span class="fv-line fv-line-2"></span>
+            <span class="fv-dot fv-dot-1"></span>
+            <span class="fv-dot fv-dot-2"></span>
+          </div>
         </div>
+
+        <div class="footer-bottom footer-bottom--pro">
+          <p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="../assets/js/main.js?v=20260508"></script>
-    <script src="../assets/js/aurora.js?v=20260508"></script>
-    <script src="../assets/js/token-pricing.js?v=20260510"></script>
+    <script src="../assets/js/main.js?v=20260523"></script>
+    <script src="../assets/js/aurora.js?v=20260523"></script>
+    <script src="../assets/js/token-pricing.js?v=20260523"></script>
 
     <script>
         // TokenOps Platform - Multi-tool AI cost engineering interface
         (() => {
             const modelsData = window.TOKENOPS_PRICING;
-            let activeProvider = { lab: 'claude', comparison: 'claude', budget: 'claude' };
+            const providerIds = modelsData ? modelsData.providers.map(provider => provider.id) : [];
+            let activeProvider = {
+                lab: providerIds[0] || 'claude',
+                comparison: providerIds[0] || 'claude',
+                budget: providerIds[0] || 'claude'
+            };
 
             const config = {
                 tokenEstimate: 4.5,
@@ -429,6 +325,7 @@
             }
 
             function initializeUI() {
+                renderProviderChrome();
                 renderComparisonTables();
                 renderLabUI();
                 renderBudgetUI();
@@ -444,17 +341,104 @@
                 return provider ? provider.name : id;
             }
 
+            function renderProviderChrome() {
+                renderProviderTabsAndPanels(
+                    'comparison',
+                    'to-comparison-tabs',
+                    'to-comparison-panels',
+                    provider => `
+                        <table class="to-comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Release Date</th>
+                                    <th>Deprecation</th>
+                                    <th>Input Cost</th>
+                                    <th>Output Cost</th>
+                                    <th>Context</th>
+                                    <th>Tier</th>
+                                    <th>Reasoning</th>
+                                    <th>Vision</th>
+                                    <th>Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody id="to-table-${provider.id}"></tbody>
+                        </table>`
+                );
+
+                renderProviderTabsAndPanels(
+                    'lab',
+                    'to-lab-tabs',
+                    'to-lab-panels',
+                    provider => `
+                        <div class="tc-model-grid"></div>`
+                );
+
+                renderProviderTabsAndPanels(
+                    'budget',
+                    'to-budget-tabs',
+                    'to-budget-panels',
+                    provider => `
+                        <table class="to-budget-table">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th style="text-align: right;">Cost/Request</th>
+                                    <th style="text-align: right;">Daily Cost</th>
+                                    <th style="text-align: right;">Monthly Cost</th>
+                                    <th style="text-align: right;">Annual Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody id="to-budget-table-${provider.id}"></tbody>
+                        </table>
+                        <div class="to-budget-savings" id="to-budget-savings-${provider.id}">
+                            <strong>${provider.name} savings are rendered below.</strong>
+                        </div>`
+                );
+            }
+
+            function renderProviderTabsAndPanels(section, tabsContainerId, panelsContainerId, panelMarkupFactory) {
+                const tabsContainer = document.getElementById(tabsContainerId);
+                const panelsContainer = document.getElementById(panelsContainerId);
+                if (!tabsContainer || !panelsContainer) return;
+
+                tabsContainer.innerHTML = '';
+                panelsContainer.innerHTML = '';
+
+                providerIds.forEach((providerId, index) => {
+                    const provider = getProvider(providerId);
+                    if (!provider) return;
+
+                    const tab = document.createElement('button');
+                    tab.className = `tc-ptab${index === 0 ? ' active' : ''}`;
+                    tab.dataset.provider = providerId;
+                    tab.dataset.section = section;
+                    tab.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+                    tab.textContent = provider.name;
+                    tabsContainer.appendChild(tab);
+
+                    const panel = document.createElement('div');
+                    panel.className = `tc-provider-panel${index === 0 ? ' active' : ''}`;
+                    panel.id = `${tabsContainerId.replace('-tabs', '-panel-')}${providerId}`;
+                    panel.innerHTML = panelMarkupFactory(provider);
+                    panelsContainer.appendChild(panel);
+                });
+            }
+
             // ===== COMPARISON TABLES =====
             function renderComparisonTables() {
-                ['claude', 'gpt'].forEach(providerId => {
+                providerIds.forEach(providerId => {
                     const provider = getProvider(providerId);
                     const tbody = document.getElementById(`to-table-${providerId}`);
+                    if (!provider || !tbody) return;
                     tbody.innerHTML = '';
 
                     provider.models.forEach(model => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
                             <td class="to-model-name">${model.name}</td>
+                            <td class="to-release-cell">${formatReleaseDate(model.release_date)}</td>
+                            <td class="to-deprecation-cell">${formatDeprecation(model.deprecation_date, model.deprecation_scope)}</td>
                             <td class="to-pricing-cell">$${model.input_per_mtok.toFixed(2)}</td>
                             <td class="to-pricing-cell">$${model.output_per_mtok.toFixed(2)}</td>
                             <td class="to-context-cell">${formatContextWindow(model.context_window_k)}</td>
@@ -472,11 +456,13 @@
 
             // ===== LEDGER LAB =====
             function renderLabUI() {
-                ['claude', 'gpt'].forEach(providerId => {
+                providerIds.forEach(providerId => {
                     const provider = getProvider(providerId);
+                    if (!provider) return;
                     const panelId = `to-lab-panel-${providerId}`;
                     const gridClass = 'tc-model-grid';
                     const panel = document.getElementById(panelId);
+                    if (!panel) return;
                     const grid = panel.querySelector('.tc-model-grid') || document.createElement('div');
                     grid.className = gridClass;
                     grid.innerHTML = '';
@@ -499,9 +485,11 @@
                 card.innerHTML = `
                     <div class="tc-model-header">
                         <h3>${model.name}</h3>
-                        <span class="tc-model-tier ${model.tier}">${model.tier} ${model.tier === 'fast' ? '⚡' : model.tier === 'balanced' ? '⚡⚡' : '⚡⚡⚡'}</span>
+                        <span class="tc-model-tier ${model.tier}">${model.tier.toUpperCase()}</span>
                         ${model.is_legacy ? `<span class="tc-legacy-badge">${model.deprecated_by ? 'Deprecated' : 'Legacy'}</span>` : ''}
                     </div>
+                    <div class="tc-model-meta">Released ${formatReleaseDate(model.release_date)}</div>
+                    <div class="tc-model-meta tc-model-deprecation">${formatDeprecation(model.deprecation_date, model.deprecation_scope)}</div>
                     <div class="tc-pricing">
                         <div class="tc-price-row"><span>Input:</span><code>$${model.input_per_mtok.toFixed(2)} / 1M</code></div>
                         <div class="tc-price-row"><span>Output:</span><code>$${model.output_per_mtok.toFixed(2)} / 1M</code></div>
@@ -525,8 +513,9 @@
                 document.getElementById('to-lab-char-count').textContent = charCount.toLocaleString();
                 document.getElementById('to-lab-token-count').textContent = tokenCount.toLocaleString();
 
-                ['claude', 'gpt'].forEach(providerId => {
+                providerIds.forEach(providerId => {
                     const provider = getProvider(providerId);
+                    if (!provider) return;
                     provider.models.forEach(model => {
                         const inputCost = (tokenCount * model.input_per_mtok) / 1000000;
                         const outputCost = (outputTokens * model.output_per_mtok) / 1000000;
@@ -553,10 +542,12 @@
 
                 document.getElementById('to-budget-req-display').textContent = reqPerDay.toLocaleString();
 
-                ['claude', 'gpt'].forEach(providerId => {
+                providerIds.forEach(providerId => {
                     const provider = getProvider(providerId);
+                    if (!provider) return;
                     const tableId = `to-budget-table-${providerId}`;
                     const table = document.getElementById(tableId);
+                    if (!table) return;
                     table.innerHTML = '';
 
                     provider.models.forEach(model => {
@@ -612,6 +603,32 @@
                 return `${contextWindowK}K`;
             }
 
+            function formatReleaseDate(releaseDate) {
+                if (!releaseDate) return 'â€”';
+                const date = new Date(`${releaseDate}T00:00:00Z`);
+                if (Number.isNaN(date.getTime())) return releaseDate;
+                return date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric',
+                    timeZone: 'UTC'
+                });
+            }
+
+            function formatDeprecation(deprecationDate, scope) {
+                if (!deprecationDate) return 'Current';
+                const date = new Date(`${deprecationDate}T00:00:00Z`);
+                const formatted = Number.isNaN(date.getTime())
+                    ? deprecationDate
+                    : date.toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                        timeZone: 'UTC'
+                    });
+                return scope ? `${formatted} (${scope})` : formatted;
+            }
+
             // ===== EVENT LISTENERS =====
             function setupEventListeners() {
                 // Lab events
@@ -642,7 +659,7 @@
 
                 // Update active panel
                 document.querySelectorAll(`.tc-provider-panel[id*="${section}"]`).forEach(panel => {
-                    const panelProviderId = panel.id.match(/(claude|gpt)/)[0];
+                    const panelProviderId = providerIds.find(id => panel.id.endsWith(id));
                     panel.classList.toggle('active', panelProviderId === providerId);
                 });
             }
@@ -655,5 +672,6 @@
 </body>
 
 </html>
+
 
 

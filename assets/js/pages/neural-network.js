@@ -1,6 +1,6 @@
-/* ============================================
+﻿/* ============================================
    NEURAL NETWORK CANVAS ANIMATION
-   AI Ops page — animated inference visualization
+   Operational intelligence page - animated inference visualization
    ============================================ */
 
 (function() {
@@ -280,3 +280,4 @@
         initNeuralNetwork('neural-canvas');
     }
 })();
+

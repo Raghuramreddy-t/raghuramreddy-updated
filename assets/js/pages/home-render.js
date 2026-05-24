@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   function resolvePath(path) {
     return window.location.pathname.includes('/pages/') ? '../assets/data/' + path : 'assets/data/' + path;
   }
@@ -134,7 +134,7 @@
         <rect x="58" y="84" width="130" height="7" rx="3" fill="rgba(59,130,246,0.25)"/>
         <rect x="58" y="98" width="95" height="7" rx="3" fill="rgba(59,130,246,0.2)"/>
         <rect x="58" y="118" width="60" height="22" rx="6" fill="rgba(59,130,246,0.25)" stroke="rgba(59,130,246,0.6)" stroke-width="1"/>
-        <text x="88" y="133" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">DevSecOps</text>
+        <text x="88" y="133" text-anchor="middle" fill="#93c5fd" font-size="9" font-weight="700">Governance</text>
         <rect x="80" y="80" width="200" height="130" rx="12" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
         <rect x="88" y="100" width="140" height="10" rx="5" fill="rgba(167,139,250,0.5)"/>
         <rect x="88" y="120" width="110" height="7" rx="3" fill="rgba(167,139,250,0.3)"/>
@@ -150,7 +150,7 @@
         <rect x="328" y="50" width="62" height="26" rx="8" fill="rgba(251,191,36,0.15)" stroke="rgba(251,191,36,0.5)" stroke-width="1"/>
         <text x="359" y="67" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="600">Research</text>
         <rect x="332" y="100" width="58" height="26" rx="8" fill="rgba(239,68,68,0.15)" stroke="rgba(239,68,68,0.5)" stroke-width="1"/>
-        <text x="361" y="117" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">Writing</text>
+        <text x="361" y="117" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600">Recognition</text>
         <rect x="328" y="150" width="62" height="26" rx="8" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.5)" stroke-width="1"/>
         <text x="359" y="167" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="600">Open KB</text>
         <rect x="330" y="200" width="60" height="26" rx="8" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.5)" stroke-width="1"/>
@@ -311,14 +311,25 @@
           const desc = document.createElement('p');
           desc.textContent = item.description || '';
 
-          const link = document.createElement('a');
-          link.href = resolveHref(item.href || item.url || '#');
-          link.textContent = item.type === 'latest' ? 'Open item →' : 'Read article →';
+          const actions = Array.isArray(item.actions) && item.actions.length
+            ? item.actions
+            : [{ label: item.type === 'latest' ? 'Open item' : 'Read article', url: item.href || item.url || '#' }];
+
+          const actionRow = document.createElement('div');
+          actionRow.className = 'kh-article-actions';
+
+          actions.forEach((action, actionIndex) => {
+            const link = document.createElement('a');
+            link.className = 'kh-link ' + (actionIndex === 0 ? 'kh-link--primary' : 'kh-link--secondary');
+            link.href = resolveHref(action.url || item.href || item.url || '#');
+            link.textContent = action.label || (actionIndex === 0 ? 'Read article' : 'Open');
+            actionRow.appendChild(link);
+          });
 
           card.appendChild(tag);
           card.appendChild(title);
           card.appendChild(desc);
-          card.appendChild(link);
+          card.appendChild(actionRow);
           khPreview.appendChild(card);
         });
       }
@@ -327,3 +338,4 @@
     }
   });
 })();
+

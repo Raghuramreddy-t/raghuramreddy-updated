@@ -1,6 +1,6 @@
 /* ============================================
-   MAIN JAVASCRIPT - Portfolio Interactivity
-   ============================================ */
+  MAIN JAVASCRIPT - Portfolio Interactivity
+  ============================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
     ensureSharedBackgroundTheme();
@@ -94,8 +94,7 @@ function ensureOperationalStandardsNavLink() {
     const link = document.createElement('a');
     link.href = href;
     link.className = 'nav-link';
-    // Keep the navbar compact; the full name is preserved for screen readers.
-    link.textContent = 'Standards Library';
+    link.textContent = 'Operational Standards Library';
     link.setAttribute('aria-label', 'Operational Standards Library');
     if (path.endsWith('/operational-standards-library.html')) {
         link.classList.add('active');
@@ -115,13 +114,14 @@ function normalizePrimaryNavOrder() {
         const href = (link.getAttribute('href') || '').toLowerCase();
         const text = (link.textContent || '').toLowerCase();
         if (href.includes('index') || text.includes('home')) return 0;
-        if (href.includes('work') || text.includes('work')) return 1;
-        if (href.includes('applied-ai-systems') || text.includes('applied ai')) return 2;
-        if (href.includes('future-systems') || text.includes('future systems')) return 3;
-        if (href.includes('operational-standards-library') || text.includes('operational standards')) return 4;
-        if (href.includes('writing') || text.includes('writing')) return 5;
-        if (href.includes('about') || text.includes('about')) return 6;
+        if (href.includes('about') || text.includes('about')) return 1;
+        if (href.includes('work') || text.includes('work')) return 2;
+        if (href.includes('applied-ai-systems') || text.includes('applied ai')) return 3;
+        if (href.includes('recognition') || text.includes('recognition')) return 4;
+        if (href.includes('future-systems') || text.includes('future systems')) return 5;
+        if (href.includes('operational-standards-library') || text.includes('operational standards')) return 6;
         if (href.includes('contact') || text.includes('contact')) return 7;
+        if (href.includes('writing') || text.includes('writing')) return 8;
         return 99;
     };
 
@@ -404,7 +404,6 @@ function initTheme() {
 // ============================================
 function initNavbar() {
     const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
 
     window.addEventListener('scroll', throttle(() => {
         const currentScroll = window.pageYOffset;
@@ -415,15 +414,6 @@ function initNavbar() {
         } else {
             navbar.classList.remove('scrolled');
         }
-
-        // Hide/show on scroll direction
-        if (currentScroll > lastScroll && currentScroll > 200) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-
-        lastScroll = currentScroll;
     }, 100));
 }
 
@@ -769,9 +759,9 @@ function initCommandPalette() {
 
     // Search Index
     const searchIndex = [
-        { title: "Project SHIELD", type: "Project", url: "pages/projects.html#shield", tags: "automation, security, reporting" },
-        { title: "Upgrade Factory", type: "Project", url: "pages/projects.html#upgrade-factory", tags: "openshift, automation, platform" },
-        { title: "Impact Dashboard", type: "Page", url: "pages/work.html#impact", tags: "metrics, roi, results" },
+        { title: "Project Portfolio", type: "Page", url: "pages/work.html#panel-projects", tags: "automation, security, reporting" },
+        { title: "Upgrade Factory", type: "Project", url: "pages/work.html#upgrade-factory-case-study", tags: "openshift, automation, platform" },
+        { title: "Impact Dashboard", type: "Page", url: "pages/work.html#panel-impact", tags: "metrics, roi, results" },
         { title: "Operational Standards Library", type: "Resource", url: "pages/operational-standards-library.html", tags: "xops, standards, reliability, governance" },
         { title: "XOps Operating Model", type: "Page", url: "pages/operational-standards-library.html", tags: "xops, platform engineering, delivery, control" },
         { title: "Observability Standards", type: "Resource", url: "pages/operational-standards-library.html", tags: "observability, telemetry, signals, diagnostics" },
@@ -847,12 +837,9 @@ function initGlobalAIWidget() {
         'index.html',
         'pages/about.html',
         'pages/work.html',
-        'pages/projects.html',
-        'pages/platforms.html',
         'pages/applied-ai-systems.html',
         'pages/future-systems.html',
-        'pages/impact.html',
-        'pages/writing.html',
+        'pages/recognition.html',
         'pages/contact.html',
         'pages/operational-standards-library.html',
         'pages/blog/rag-knowledge-systems.html',
@@ -860,7 +847,7 @@ function initGlobalAIWidget() {
         'pages/blog/ci-cd-failures-at-scale.html',
         'pages/blog/secure-by-design-ci-cd.html',
         'pages/blog/toolchain-modernization.html',
-        'pages/blog/xops-beyond-devops-2025.html',
+        'pages/blog/xops-beyond-devops.html',
         'pages/blog/ai-cicd-troubleshooter.html'
     ];
 
@@ -933,7 +920,7 @@ function initGlobalAIWidget() {
       <div class="ai-suggestions" id="ai-suggestions">
         <button class="ai-chip" type="button">Platform engineering work</button>
         <button class="ai-chip" type="button">AI systems built</button>
-        <button class="ai-chip" type="button">DevSecOps experience</button>
+        <button class="ai-chip" type="button">Lifecycle governance</button>
         <button class="ai-chip" type="button">Publications &amp; research</button>
       </div>
       <div class="ai-foot">
@@ -996,17 +983,121 @@ function initGlobalAIWidget() {
         return { page, title, sections };
     }
 
+    function humanizeSourceTitle(path) {
+        const base = String(path || '')
+            .split('/')
+            .pop()
+            .replace(/\.json$/i, '')
+            .replace(/\.html$/i, '')
+            .replace(/[-_]+/g, ' ')
+            .trim();
+        if (!base) return 'Content Source';
+        return base.replace(/\b\w/g, (char) => char.toUpperCase());
+    }
+
+    function extractJsonContent(data, page) {
+        const sections = [];
+        const pageTitle = String(
+            data?.title || data?.featuredTitle || data?.site?.title || data?.site?.author || ''
+        ).trim() || humanizeSourceTitle(page);
+
+        const seen = new Set();
+
+        function addSection(heading, text) {
+            const cleanHeading = String(heading || pageTitle).trim() || pageTitle;
+            const cleanText = String(text || '').replace(/\s+/g, ' ').trim();
+            if (!cleanText || cleanText.length < 8) return;
+            const key = `${cleanHeading}::${cleanText}`;
+            if (seen.has(key)) return;
+            seen.add(key);
+            sections.push({ heading: cleanHeading, text: cleanText });
+        }
+
+        function walk(value, heading) {
+            if (value == null) return;
+
+            if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+                addSection(heading, value);
+                return;
+            }
+
+            if (Array.isArray(value)) {
+                value.forEach((item, index) => {
+                    const itemHeading = item && typeof item === 'object'
+                        ? String(item.title || item.name || item.heading || item.label || item.id || `${heading || pageTitle} ${index + 1}`)
+                        : `${heading || pageTitle} ${index + 1}`;
+                    walk(item, itemHeading);
+                });
+                return;
+            }
+
+            const entries = Object.entries(value);
+            const title = String(value.title || value.name || value.heading || value.label || value.id || heading || pageTitle).trim();
+            const textParts = [];
+
+            entries.forEach(([key, entryValue]) => {
+                if (key === 'id' || key === 'slug' || key === 'url' || key === 'href' || key === 'link' || key === 'page' || key === '_readme') {
+                    return;
+                }
+
+                if (typeof entryValue === 'string') {
+                    const clean = entryValue.replace(/\s+/g, ' ').trim();
+                    if (clean.length >= 8) textParts.push(clean);
+                } else if (typeof entryValue === 'number' || typeof entryValue === 'boolean') {
+                    textParts.push(String(entryValue));
+                } else if (Array.isArray(entryValue)) {
+                    const joined = entryValue
+                        .map((item) => (typeof item === 'string' ? item.replace(/\s+/g, ' ').trim() : ''))
+                        .filter(Boolean)
+                        .join(', ');
+                    if (joined) textParts.push(joined);
+                }
+            });
+
+            if (textParts.length) {
+                addSection(title, textParts.join(' '));
+            }
+
+            entries.forEach(([key, entryValue]) => {
+                if (entryValue && typeof entryValue === 'object') {
+                    walk(entryValue, String(entryValue.title || entryValue.name || entryValue.heading || entryValue.label || key).trim() || title);
+                }
+            });
+        }
+
+        walk(data, pageTitle);
+        if (!sections.length) return null;
+        return { page, title: pageTitle, sections };
+    }
+
     async function buildIndex() {
         if (indexed) return;
-        const tasks = pagesToIndex.map(async (page) => {
+        const dataFilesToIndex = [
+            'assets/data/home-content.json',
+            'assets/data/blog-index.json',
+            'assets/data/publications.json',
+            'assets/data/writings.json'
+        ];
+        const tasks = [
+            ...pagesToIndex.map(async (page) => {
             try {
-                const res = await fetch(normalizePath(page), { cache: 'force-cache' });
+                const res = await fetch(normalizePath(page), { cache: 'no-store' });
                 if (!res.ok) return;
                 const html = await res.text();
                 const parsed = extractPageContent(html, page);
                 if (parsed) index.push(parsed);
             } catch (_) { /* cors / network */ }
-        });
+            }),
+            ...dataFilesToIndex.map(async (file) => {
+                try {
+                    const res = await fetch(normalizePath(file), { cache: 'no-store' });
+                    if (!res.ok) return;
+                    const json = await res.json();
+                    const parsed = extractJsonContent(json, file);
+                    if (parsed) index.push(parsed);
+                } catch (_) { /* cors / network */ }
+            })
+        ];
         await Promise.all(tasks);
         indexed = true;
     }
@@ -1057,7 +1148,7 @@ function initGlobalAIWidget() {
             .slice(0, 4);
 
         if (!scored.length) {
-            return "I couldn\u2019t find that in the site content. Try keywords like: platform engineering, AI systems, DevSecOps, projects, publications, or contact.";
+            return "I couldn\u2019t find that in the site content. Try keywords like: intelligent infrastructure, operational intelligence, lifecycle governance, projects, publications, or contact.";
         }
 
         const topDocs = scored.map((x) => x.doc);
@@ -1155,11 +1246,11 @@ function initTypewriter() {
     if (!el) return;
 
     const roles = [
-        'AI-Augmented Operations Lead',
-        'CICD & DevSecOps Lead',
-        'Enterprise Technology Lead',
-        'Platform Engineering Lead',
-        'Secure Software Delivery Expert',
+        'Intelligent Infrastructure Ecosystems Architect',
+        'Operational Intelligence Architect',
+        'Lifecycle Governance Lead',
+        'Infrastructure Cognition Strategist',
+        'Human-Governed AI Infrastructure Lead',
     ];
 
     let roleIdx = 0;
@@ -1238,6 +1329,9 @@ function initStatCounters() {
 function initScramble() {
     const el = document.querySelector('.hero-line.line-1');
     if (!el) return;
+    if (el.closest('.home-page')) {
+        return;
+    }
 
     const finalText = el.textContent.trim();
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&';

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -33,15 +33,15 @@
 
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="../../index.html" class="nav-logo"><span class="logo-icon">RRR</span><div class="logo-stack"><span class="logo-name">RaghuRamReddy</span><span class="logo-tagline">Designing technology for human experience</span></div></a>
+            <a href="../../index.html" class="nav-logo"><span class="logo-icon">RRR</span><div class="logo-stack"><span class="logo-name">Raghuramreddy</span><span class="logo-tagline">Designing technology for human experience</span></div></a>
             <div class="nav-menu" id="nav-menu">
-                <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work &amp; Impact</a>
-                <a href="../applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
-                <a href="../future-systems.html" class="nav-link">Future Systems</a>
-                <a href="../writing.html" class="nav-link active">Writing</a>
-                <a href="../about.html" class="nav-link">About</a>
-                <a href="../contact.html" class="nav-link">Contact</a>
+                                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="../../about.html" class="nav-link">About</a>
+                <a href="../../work.html" class="nav-link">Work & Impact</a>
+                <a href="../../applied-ai-systems.html" class="nav-link">Applied AI Systems</a>
+                <a href="../recognition.html" class="nav-link active">Recognition & Credentials</a>
+                <a href="../../future-systems.html" class="nav-link">Future Systems</a>
+                <a href="../../contact.html" class="nav-link">Contact</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -80,8 +80,8 @@
             <section class="article-intro">
                 <h2>The Hallucination Problem</h2>
                 <p>Large language models are trained on data up to a specific cutoff date. They have never seen your internal documentation, your current operational status, or your team's real standards. When you ask them a question they cannot answer from their training data, they don't say "I don't know." Instead, they hallucinate — they confidently fabricate plausible-sounding answers.</p>
-                <p>In production systems, hallucination is unacceptable. A model that confidently tells you "your deployment success rate is 92%" when it's actually 96.2%, or that "the P1 incident response is to wait 24 hours" when your actual standard is immediate escalation — these errors cascade into operational chaos.</p>
-                <p><strong>Grounding</strong> is the fix. Instead of asking the model to guess from its frozen training data, you give it access to the right information at runtime. The model reads the answer instead of inventing it. This is the core idea behind RAG, MCP, agents, and multi-agent systems.</p>
+                <p>In production systems, hallucination risk is not something you can ignore. A model that confidently tells you "your deployment success rate is 92%" when it's actually 96.2%, or that "the P1 incident response is to wait 24 hours" when your actual standard is immediate escalation — these errors cascade into operational chaos.</p>
+                <p><strong>Grounding</strong> is the fix. Instead of asking the model to guess from its frozen training data, you give it access to the right information at runtime. The model answers from retrieved context when retrieval is accurate and current. This is the core idea behind RAG, MCP, agents, and multi-agent systems.</p>
                 <div style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 20px; border-radius: 8px; margin: 24px 0;">
                     <strong style="color: #22c55e;">Best Practice:</strong> Always measure your baseline hallucination rate before implementing grounding. Build a test set of questions where you know the ground truth answer, then compare model responses with and without context. This gives you a quantified ROI on your grounding investment.
                 </div>
@@ -312,9 +312,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-card footer-brand-card">
-                    <a href="../../index.html" class="footer-logo"><span class="logo-icon">RRR</span><span class="logo-text">RaghuRamReddy</span></a>
+                    <a href="../../index.html" class="footer-logo"><span class="logo-icon">RRR</span><span class="logo-text">Raghuramreddy</span></a>
                     <p class="footer-tagline">Designing technology for human experience</p>
-                    <p class="footer-subline">Platform Engineering - DevSecOps - Automation - AI-assisted Operations</p>
+                    <p class="footer-subline">Intelligent Infrastructure Ecosystems<br>Operational Intelligence &bull; Lifecycle Governance &bull; Infrastructure Cognition</p>
                     <div class="footer-social-row">
                         <a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
                         <a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
@@ -322,8 +322,14 @@
                     </div>
                 </div>
                 <div class="footer-links-col">
-                    <div class="footer-col"><h4 class="footer-col-title">Navigation</h4><div class="footer-links"><a href="../../index.html" class="footer-link">Home</a><a href="../work.html" class="footer-link">Work &amp; Impact</a><a href="../applied-ai-systems.html" class="footer-link">Applied AI Systems</a><a href="../writing.html" class="footer-link">Writing</a><a href="../about.html" class="footer-link">About</a><a href="../contact.html" class="footer-link">Contact</a></div></div>
-                    <div class="footer-col"><h4 class="footer-col-title">Explore</h4><div class="footer-links"><a href="../future-systems.html" class="footer-link">Future Systems</a><a href="../operational-standards-library.html" class="footer-link">Operational Standards</a></div></div>
+                    <div class="footer-col"><h4 class="footer-col-title">Navigation</h4><div class="footer-links">                <a href="../../index.html" class="footer-link">Home</a>
+                <a href="../../about.html" class="footer-link">About</a>
+                <a href="../../work.html" class="footer-link">Work & Impact</a>
+                <a href="../../applied-ai-systems.html" class="footer-link">Applied AI Systems</a>
+                <a href="../recognition.html" class="footer-link">Recognition & Credentials</a>
+                <a href="../../future-systems.html" class="footer-link">Future Systems</a>
+                <a href="../../contact.html" class="footer-link">Contact</a></div></div>
+                    <div class="footer-col"><h4 class="footer-col-title">Explore</h4><div class="footer-links"><a href="../future-systems.html" class="footer-link">Future Systems</a><a href="../operational-standards-library.html" class="footer-link">Operational Standards Library</a></div></div>
                 </div>
                 <div class="footer-card footer-connect-card">
                     <div class="footer-connect-header"><h4 class="footer-col-title">Connect</h4><p class="footer-connect-note">Fastest response on LinkedIn.</p></div>
@@ -336,7 +342,7 @@
                 </div>
                 <div class="footer-visual" aria-hidden="true"><span class="fv-orb fv-orb-1"></span><span class="fv-orb fv-orb-2"></span><span class="fv-line fv-line-1"></span><span class="fv-line fv-line-2"></span><span class="fv-dot fv-dot-1"></span><span class="fv-dot fv-dot-2"></span></div>
             </div>
-            <div class="footer-bottom footer-bottom--pro"><p>&copy; 2026 RaghuRamReddy Thummalapalli. All rights reserved.</p></div>
+            <div class="footer-bottom footer-bottom--pro"><p>&copy; 2026 Raghuramreddy Thummalapalli. All rights reserved.</p></div>
         </div>
     </footer>
 
@@ -375,7 +381,7 @@
             };
 
             const docNames = {
-                'KB-001': 'Platform Engineering Charter',
+                'KB-001': 'Intelligent Infrastructure Charter',
                 'KB-002': 'CI/CD Pipeline Standards v2.0',
                 'KB-003': 'Q3 2025 Platform Health Report',
                 'KB-004': 'Developer Experience Survey',
@@ -474,4 +480,8 @@
     </script>
 </body>
 </html>
+
+
+
+
 

@@ -1,7 +1,7 @@
 {
   "name": "raghuramreddy-portfolio",
   "version": "1.0.0",
-  "description": "Portfolio site for RaghuRamReddy",
+  "description": "Portfolio site for Raghuramreddy",
   "scripts": {
     "start": "python -m http.server 8080"
   }

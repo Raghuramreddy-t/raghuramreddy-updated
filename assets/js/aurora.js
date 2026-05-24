@@ -1,6 +1,6 @@
 /* ============================================
-   AURORA.JS — Premium Visual Effects
-   Portfolio: RaghuRamReddy Thummalapalli
+   AURORA.JS - Premium Visual Effects
+   Portfolio: Raghuramreddy Thummalapalli
 
    Contains:
    1. Antigravity particle field (mouse-ring effect)
@@ -10,12 +10,12 @@
    5. Section word-reveal on scroll
    ============================================ */
 
-/* ────────────────────────────────────────────
+/* --------------------------------------------
    1. ANTIGRAVITY PARTICLE FIELD
    Particles drift freely. When the mouse is
    near, they form an animated wave-ring around
-   the cursor — inspired by reactbits.dev
-   ──────────────────────────────────────────── */
+   the cursor - inspired by reactbits.dev
+   -------------------------------------------- */
 (function initAntigravity() {
     const canvas = document.getElementById('aurora-canvas');
     if (!canvas) return;
@@ -25,8 +25,8 @@
 
     // Config
     const COUNT          = 260;
-    const MAGNET_RADIUS  = 160;   // px — pull-in zone
-    const RING_RADIUS    = 80;    // px — ring size around cursor
+    const MAGNET_RADIUS  = 160;   // px - pull-in zone
+    const RING_RADIUS    = 80;    // px - ring size around cursor
     const WAVE_SPEED     = 0.018;
     const WAVE_AMP       = 18;    // px wave amplitude on ring
     const LERP_SPEED     = 0.055;
@@ -162,10 +162,10 @@
 })();
 
 
-/* ────────────────────────────────────────────
+/* --------------------------------------------
    2. CURSOR SPOTLIGHT GLOW
    A soft radial gradient follows the cursor
-   ──────────────────────────────────────────── */
+   -------------------------------------------- */
 (function initCursorSpotlight() {
     const isMobile = () => window.matchMedia('(hover: none)').matches;
     if (isMobile()) return;
@@ -202,11 +202,11 @@
 })();
 
 
-/* ────────────────────────────────────────────
+/* --------------------------------------------
    3. TEXT SCRAMBLE REVEAL
    Random characters cycle before settling on
    the real text. Triggered on page load.
-   ──────────────────────────────────────────── */
+   -------------------------------------------- */
 class TextScramble {
     constructor(el) {
         this.el = el;
@@ -254,6 +254,7 @@ class TextScramble {
     function run() {
         const el = document.querySelector('.hero-line.line-1');
         if (!el) return;
+        if (document.body.classList.contains('home-page')) return;
         const text = el.textContent.trim();
         if (!text) return;
 
@@ -271,10 +272,10 @@ class TextScramble {
 })();
 
 
-/* ────────────────────────────────────────────
+/* --------------------------------------------
    4. STAR PARTICLE FIELD
-   Tiny twinkling stars float upward — dark mode
-   ──────────────────────────────────────────── */
+   Tiny twinkling stars float upward - dark mode
+   -------------------------------------------- */
 (function initStarField() {
     const canvas = document.getElementById('hero-particles');
     if (!canvas) return;
@@ -342,11 +343,11 @@ class TextScramble {
 })();
 
 
-/* ────────────────────────────────────────────
+/* --------------------------------------------
    5. SECTION WORD-REVEAL ON SCROLL
    Section subtitles split into words that
    stagger in as you scroll past
-   ──────────────────────────────────────────── */
+   -------------------------------------------- */
 (function initWordReveal() {
     function prepare() {
         const targets = document.querySelectorAll('.section-subtitle, .section-tag');
@@ -379,3 +380,5 @@ class TextScramble {
         prepare();
     }
 })();
+
+
