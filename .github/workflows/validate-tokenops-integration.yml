@@ -1,22 +1,20 @@
-name: Deploy Portfolio to GitHub Pages
+name: Validate TokenOps Portfolio Integration
 
 on:
-  push:
-    branches: ["main"]
+  pull_request:
+    paths:
+      - "pages/tokenops.html"
+      - ".github/workflows/deploy.yml"
+      - ".github/workflows/validate-tokenops-integration.yml"
+      - ".gitignore"
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "portfolio-pages"
-  cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build portfolio with TokenOps module
+  validate:
+    name: Validate embedded TokenOps integration
     runs-on: ubuntu-latest
 
     steps:
@@ -41,19 +39,19 @@ jobs:
         working-directory: .integration/tokenops-source
         run: npm ci
 
-      - name: Validate and build TokenOps portfolio bundle
+      - name: Validate and build TokenOps module
         working-directory: .integration/tokenops-source
         run: |
           npm run validate
           npm test
 
-      - name: Copy TokenOps bundle into portfolio site
+      - name: Copy generated bundle into portfolio workspace
         run: |
           rm -rf assets/external/tokenops
           mkdir -p assets/external/tokenops
           cp -R .integration/tokenops-source/dist/portfolio-embed/. assets/external/tokenops/
 
-      - name: Validate portfolio TokenOps mount and artifact boundary
+      - name: Validate portfolio mount contract
         run: |
           test -f assets/external/tokenops/tokenops-lab.js
           test -f assets/external/tokenops/tokenops-lab.css
@@ -67,28 +65,3 @@ jobs:
           ! grep -q 'token-pricing.js' pages/tokenops.html
           ! grep -q 'raw.githubusercontent.com' pages/tokenops.html
           ! grep -qi '<iframe' pages/tokenops.html
-
-      - name: Remove non-public TokenOps source before publishing
-        run: rm -rf .integration
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v6
-
-      - name: Upload portfolio Pages artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: .
-
-  deploy:
-    name: Deploy portfolio
-    needs: build
-    runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
