@@ -101,7 +101,7 @@
   }
 
   function renderBlogCards(container, posts) {
-    const hidePublishedMeta = window.location.pathname.includes('/pages/recognition.html');
+    const hidePublishedMeta = window.location.pathname.endsWith('/recognition') || window.location.pathname.endsWith('/recognition/');
     const limit = readLimit(container);
     const articleVariants = [
       { slug: 'focus', label: 'Article Focus', color: '#3b82f6' },

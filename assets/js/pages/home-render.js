@@ -1,6 +1,6 @@
 ﻿(function () {
   function resolvePath(path) {
-    return window.location.pathname.includes('/pages/') ? '../assets/data/' + path : 'assets/data/' + path;
+    return '/assets/data/' + path;
   }
 
   function resolveHref(href) {

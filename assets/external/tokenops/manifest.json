@@ -5,7 +5,7 @@
   "repository": "Raghuramreddy-t/tokenops-cost-engineering-lab",
   "portfolioCategory": "Research Laboratories",
   "systemType": "Interactive Laboratory",
-  "status": "Portfolio-Hosted Module — Ready for Integration",
+  "status": "Portfolio-Hosted Module - Ready for Integration",
   "featured": true,
   "brand": {
     "owner": "Raghuramreddy",
@@ -39,13 +39,13 @@
   "links": {
     "repository": "https://github.com/Raghuramreddy-t/tokenops-cost-engineering-lab",
     "liveDemo": "",
-    "portfolioPage": "https://raghuramreddy.tech/pages/tokenops-cost-engineering-lab.html",
+    "portfolioPage": "https://raghuramreddy.tech/labs/tokenops",
     "documentation": "https://github.com/Raghuramreddy-t/tokenops-cost-engineering-lab/tree/main/docs"
   },
   "release": {
-    "version": "0.3.0",
+    "version": "0.3.1",
     "status": "Portfolio Embed Ready",
-    "updatedAt": "2026-05-31",
+    "updatedAt": "2026-06-13",
     "highlights": [
       "Portfolio-hosted module distribution",
       "Calculator-first API and Copilot labs",

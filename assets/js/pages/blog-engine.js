@@ -2,14 +2,7 @@
   // 1) Load blog index
   async function loadBlogIndex() {
     try {
-      // Use a relative path to ensure it works when hosted in subdirectories.
-      let path = './assets/data/blog-index.json';
-      if (window.location.pathname.includes('/pages/blog/')) {
-          path = '../../assets/data/blog-index.json';
-      } else if (window.location.pathname.includes('/pages/')) {
-          path = '../assets/data/blog-index.json';
-      }
-      const res = await fetch(path, { cache: "no-store" });
+      const res = await fetch('/assets/data/blog-index.json', { cache: "no-store" });
       if (!res.ok) throw new Error("Failed to load blog index");
       return await res.json();
     } catch (e) {
@@ -23,11 +16,8 @@
     const changelogContainer = document.getElementById("changelog");
     if (!changelogContainer || !index) return;
 
-    // Normalize the current page's path to match the format in blog-index.json
-    // e.g., turn ".../pages/blog/post.html" into "/pages/blog/post.html"
-    const currentPath = window.location.pathname;
-    const normalizedPath = currentPath.substring(currentPath.indexOf('/pages/'));
-    const post = (index.posts || []).find(p => p.url === normalizedPath);
+    const currentPath = window.location.pathname.replace(/\/index\.html$/, '');
+    const post = (index.posts || []).find(p => p.url === currentPath);
 
     if (!post || !post.changelog) {
       changelogContainer.innerHTML = "<p style='opacity:.7;'>No changelog available.</p>";
