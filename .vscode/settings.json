@@ -1,9 +1,0 @@
-{
-  "files.eol": "\n",
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
-  "editor.wordWrap": "on",
-  "editor.formatOnSave": true,
-  "markdown.preview.breaks": true,
-  "markdown.extension.toc.levels": "2..4"
-}

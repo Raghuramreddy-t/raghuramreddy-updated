@@ -1,9 +1,0 @@
-{
-  "recommendations": [
-    "yzhang.markdown-all-in-one",
-    "DavidAnson.vscode-markdownlint",
-    "bierner.markdown-preview-github-styles",
-    "GitHub.copilot",
-    "GitHub.copilot-chat"
-  ]
-}

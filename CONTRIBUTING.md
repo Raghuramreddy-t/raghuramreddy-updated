@@ -56,16 +56,22 @@ Then open:
 ## Useful Areas
 
 - `index.html` - homepage and featured content
-- `pages/` - main site pages
-- `pages/blog/` - writings, diagrams, and companion content
+- `about/`, `work/`, `recognition/`, `contact/`, etc. - clean URL pages (each is `SLUG/index.html`)
+- `blog/` - articles and diagram suites
+- `labs/` - interactive tools and labs
 - `assets/css/` - site styling
 - `assets/js/` - rendering and interaction logic
 - `assets/data/` - homepage, writing, and metadata content
+
+## Page Structure
+
+All pages live at `SLUG/index.html` and are served at `/SLUG` with no `.html` extension.
+Never create `SLUG.html` files — always use the directory pattern.
+Root-level `.html` files (e.g. `about.html`) are redirect stubs for backward compatibility only.
 
 ## Before You Finish
 
 - Check for broken internal links.
 - Check for stale navigation or footer labels.
-- Check for encoding artifacts or mojibake.
-- Keep the site consistent across the root files and the `pages/` routes.
+- Ensure all new pages use root-relative paths (`/assets/css/...`, `/about`, etc.).
 
