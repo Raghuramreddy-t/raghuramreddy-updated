@@ -273,10 +273,10 @@
           tabs.forEach(function (t) {
             var active = t.dataset.panel === target;
             t.classList.toggle('active', active);
-            t.setAttribute('aria-selected', active <i data-lucide="zap"></i> 'true' : 'false');
+            t.setAttribute('aria-selected', active  'true' : 'false');
           });
           panels.forEach(function (panel) {
-            panel.style.display = panel.id === 'panel-' + target <i data-lucide="zap"></i> '' : 'none';
+            panel.style.display = panel.id === 'panel-' + target  '' : 'none';
           });
           if (smooth) window.scrollTo({ top: 0, behavior: 'smooth' });
         }

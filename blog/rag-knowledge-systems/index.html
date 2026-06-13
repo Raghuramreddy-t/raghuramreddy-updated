@@ -67,10 +67,10 @@
         <article class="article-body container">
             <!-- TL;DR SECTION -->
             <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px; margin-bottom: 32px;">
-                <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;"><i data-lucide="zap"></i> TL;DR</h3>
+                <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;"> TL;DR</h3>
                 <ul style="margin: 8px 0; padding-left: 20px;">
                     <li><strong>Hallucination Problem:</strong> LLMs invent answers when they lack training data; grounding supplies real information at runtime</li>
-                    <li><strong>RAG Pattern:</strong> Retrieve documents <i data-lucide="zap"></i> inject context <i data-lucide="zap"></i> model answers based on text (not training weights)</li>
+                    <li><strong>RAG Pattern:</strong> Retrieve documents  inject context  model answers based on text (not training weights)</li>
                     <li><strong>MCP/Agents/Multi-Agent:</strong> Progressive complexity for structured tools, iterative reasoning, and coordinated verification</li>
                     <li><strong>Choose by task:</strong> RAG for documents, MCP for APIs, Agents for multi-step reasoning, Multi-Agent for compliance</li>
                     <li><strong>Cost vs. Reliability:</strong> Grounded systems cost more per request but prevent expensive hallucination-driven mistakes</li>
@@ -91,7 +91,7 @@
                 <h2>Simple Completion: The Baseline</h2>
                 <p>A simple completion is what you get when you ask a base model a question with no context. The model draws entirely from its training data.</p>
                 <div class="example-box">
-                    <strong>Example:</strong> "What is our deployment success rate<i data-lucide="zap"></i>" <i data-lucide="zap"></i> Model answers: "Deployment success rates vary by team maturity. A healthy platform targets 95% or higher. Rates typically range from 8599% depending on tooling and team experience."
+                    <strong>Example:</strong> "What is our deployment success rate"  Model answers: "Deployment success rates vary by team maturity. A healthy platform targets 95% or higher. Rates typically range from 8599% depending on tooling and team experience."
                 </div>
                 <p>This answer is generic, reasonable, and completely wrong for your organization. It's also confident  the model sounds authoritative because it is describing a pattern it learned. But it has zero knowledge of your actual metrics.</p>
                 <p><strong>When to use Simple Completion:</strong> Brainstorming, creative writing, general knowledge questions where accuracy against your internal state doesn't matter.</p>
@@ -99,14 +99,14 @@
 
             <section class="article-section">
                 <h2>RAG: Retrieval-Augmented Generation</h2>
-                <p>RAG (Retrieval-Augmented Generation) moves your knowledge out of the model's training weights and into a retrieval system. The workflow is three steps: <strong>Retrieve <i data-lucide="zap"></i> Augment <i data-lucide="zap"></i> Generate</strong>.</p>
+                <p>RAG (Retrieval-Augmented Generation) moves your knowledge out of the model's training weights and into a retrieval system. The workflow is three steps: <strong>Retrieve  Augment  Generate</strong>.</p>
                 <div class="workflow-steps">
                     <div class="step-row"><span class="step-no">1</span><div class="step-content"><strong>Retrieve:</strong> A vector search or keyword search finds the most relevant documents or chunks from your knowledge base. Example: your platform health report, incident runbook, or CI/CD standards.</div></div>
                     <div class="step-row"><span class="step-no">2</span><div class="step-content"><strong>Augment:</strong> The retrieved chunks are inserted into the prompt as context. The system prompt explicitly tells the model: "Answer ONLY based on the provided context. If the answer is not in the context, say you don't know."</div></div>
                     <div class="step-row"><span class="step-no">3</span><div class="step-content"><strong>Generate:</strong> The model generates a response based on the context. Lower hallucination risk  the answer is grounded in actual knowledge.</div></div>
                 </div>
                 <div class="example-box">
-                    <strong>Same question with RAG:</strong> "What is our deployment success rate<i data-lucide="zap"></i>" <i data-lucide="zap"></i> Retrieval finds Q3 2025 Platform Health Report <i data-lucide="zap"></i> Model answers: "Based on your Q3 2025 Platform Health Report, your deployment success rate is 96.2%, which exceeds your target of 95%. You had 8 incidents this quarter, down from 14 in Q2."
+                    <strong>Same question with RAG:</strong> "What is our deployment success rate"  Retrieval finds Q3 2025 Platform Health Report  Model answers: "Based on your Q3 2025 Platform Health Report, your deployment success rate is 96.2%, which exceeds your target of 95%. You had 8 incidents this quarter, down from 14 in Q2."
                 </div>
                 <p>Notice the difference: specific numbers, source attribution, context that matters to your business.</p>
                 <p><strong>Key insight:</strong> The retrieval quality determines everything. If your search finds the wrong documents, the model will answer based on wrong context. Good RAG requires: proper chunking, semantic embeddings, and careful prompt engineering.</p>
@@ -117,7 +117,7 @@
                 </div>
                 <div style="background: rgba(15, 23, 42, 0.8); color: #93c5fd; padding: 16px; border-radius: 8px; margin: 24px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; overflow-x: auto;">
                     <div style="margin-bottom: 8px; color: #94a3b8;">// Basic RAG pattern pseudo-code</div>
-                    <div>query = "What is our deployment success rate<i data-lucide="zap"></i>"</div>
+                    <div>query = "What is our deployment success rate"</div>
                     <div>docs = retriever.search(query, top_k=3)  // Vector + keyword hybrid</div>
                     <div>context = "\n".join([d.text for d in docs])</div>
                     <div>prompt = f"Based on: {context}\n\nAnswer: {query}"</div>
@@ -150,19 +150,19 @@
 
             <section class="article-section">
                 <h2>Beyond RAG: MCP, Agents, and Multi-Agents</h2>
-                <p>RAG works well for document-based questions. But what if you need to call APIs, combine multiple sources, or make decisions about what to retrieve<i data-lucide="zap"></i> That's where the other patterns come in.</p>
+                <p>RAG works well for document-based questions. But what if you need to call APIs, combine multiple sources, or make decisions about what to retrieve That's where the other patterns come in.</p>
 
                 <div class="depth-panel">
                     <div class="depth-cols">
                         <div class="depth-card">
                             <h3>MCP (Model Context Protocol)</h3>
                             <p><strong>Structured tool access.</strong> Instead of retrieving text, the model calls typed functions like <code>search_kb(query, filters)</code> or <code>get_metric(name)</code> defined by a server contract. More predictable than RAG, more structured than agents.</p>
-                            <p><strong>Example:</strong> "What is our deployment success rate<i data-lucide="zap"></i>" <i data-lucide="zap"></i> Model calls <code>get_metric("deployment_success_rate")</code> <i data-lucide="zap"></i> Returns exact current value from your monitoring system.</p>
+                            <p><strong>Example:</strong> "What is our deployment success rate"  Model calls <code>get_metric("deployment_success_rate")</code>  Returns exact current value from your monitoring system.</p>
                         </div>
                         <div class="depth-card">
                             <h3>Agent</h3>
                             <p><strong>Autonomous reasoning with iteration.</strong> The model decides what tools to call, in what order, and whether to iterate. Can retrieve, reason, decide to retrieve more, synthesize. Handles uncertainty and multi-step problems.</p>
-                            <p><strong>Example:</strong> "Why did deployments slow down<i data-lucide="zap"></i>" <i data-lucide="zap"></i> Agent retrieves health metrics, sees increase in test failures, retrieves recent CI/CD changes, finds the culprit, synthesizes explanation with evidence.</p>
+                            <p><strong>Example:</strong> "Why did deployments slow down"  Agent retrieves health metrics, sees increase in test failures, retrieves recent CI/CD changes, finds the culprit, synthesizes explanation with evidence.</p>
                         </div>
                         <div class="depth-card">
                             <h3>Multi-Agent</h3>
@@ -245,7 +245,7 @@
             </section>
 
             <section class="article-section">
-                <div class="demo-badge"><i data-lucide="zap"></i> Live Demo</div>
+                <div class="demo-badge"> Live Demo</div>
                 <h2>Grounding Response Lab</h2>
                 <p>Ask one question and compare how five AI patterns respond when they work with different levels of context, tools, and coordination.</p>
 
@@ -351,30 +351,30 @@
     <script>
         (() => {
             const QUERIES = {
-                q1: { text: 'What is our current deployment success rate<i data-lucide="zap"></i>', docs: ['KB-003'] },
-                q2: { text: 'How should we handle a P1 production incident<i data-lucide="zap"></i>', docs: ['KB-005', 'KB-002'] },
-                q3: { text: 'What are our CI/CD pipeline standards<i data-lucide="zap"></i>', docs: ['KB-002'] }
+                q1: { text: 'What is our current deployment success rate', docs: ['KB-003'] },
+                q2: { text: 'How should we handle a P1 production incident', docs: ['KB-005', 'KB-002'] },
+                q3: { text: 'What are our CI/CD pipeline standards', docs: ['KB-002'] }
             };
 
             const RESPONSES = {
                 q1: {
                     simple: '<span class="rag-hallucination">Deployment success rates vary widely by industry, typically 8598% depending on maturity level, tooling quality, and team experience. A well-run platform might achieve 95%, but I cannot know your specific metrics.</span>',
                     rag: '<strong>96.2% deployment success rate</strong> (Q3 2025 Platform Health Report). Target was 95%, so we\'re exceeding goals. MTTR is 12 minutes. Only 8 incidents in Q3 vs 14 in Q2.',
-                    mcp: 'Tool call: <code>search_kb("deployment success rate")</code> <i data-lucide="zap"></i> <strong>96.2%</strong> from KB-003. Mean time to recovery: <strong>12 min</strong>. Incident trend: <i data-lucide="zap"></i> 8 this quarter.',
+                    mcp: 'Tool call: <code>search_kb("deployment success rate")</code>  <strong>96.2%</strong> from KB-003. Mean time to recovery: <strong>12 min</strong>. Incident trend:  8 this quarter.',
                     agent: 'Agent strategy: Pulled Q3 health report, cross-referenced with CI/CD standards to understand what drives success, confirmed we exceed 95% target. <strong>Status: Healthy</strong>.',
                     multi: 'Retrieval agent found KB-003 metrics. Verification agent checked against policy (KB-002). Synthesis agent: <strong>96.2% success</strong>, trending well, 12-min MTTR.'
                 },
                 q2: {
                     simple: '<span class="rag-hallucination">For critical production incidents, best practice is to notify the on-call team, establish clear communication channels, assign a lead, and document what happened. Most teams do a post-mortems within days.</span>',
                     rag: '<strong>P1 Incident Response (from playbook):</strong> 1) Page on-call immediately 2) Run incident.run gameday 3) Establish incident commander 4) Post-mortem within 24 hours. No deviations.',
-                    mcp: 'Tool call: <code>get_document("P1 incident response")</code> <i data-lucide="zap"></i> <strong>Sequence:</strong> page on-call <i data-lucide="zap"></i> gameday flow <i data-lucide="zap"></i> IC assignment <i data-lucide="zap"></i> 24h post-mortem. Mandatory steps.',
+                    mcp: 'Tool call: <code>get_document("P1 incident response")</code>  <strong>Sequence:</strong> page on-call  gameday flow  IC assignment  24h post-mortem. Mandatory steps.',
                     agent: 'Agent checked incident playbook (KB-005), confirmed alignment with CI/CD standards (KB-002). Approved flow: <strong>immediate escalation + structured response + 24h review</strong>.',
-                    multi: 'Runbook agent retrieved playbook. Policy agent verified governance (no shortcuts). Response agent formatted: <strong>page <i data-lucide="zap"></i> gameday <i data-lucide="zap"></i> IC <i data-lucide="zap"></i> review</strong>. Ready to execute.'
+                    multi: 'Runbook agent retrieved playbook. Policy agent verified governance (no shortcuts). Response agent formatted: <strong>page  gameday  IC  review</strong>. Ready to execute.'
                 },
                 q3: {
                     simple: '<span class="rag-hallucination">Modern CI/CD pipelines typically include automated testing, code review gates, and some security checks. The exact requirements vary by team size and risk profile, but are generally quite flexible.</span>',
-                    rag: '<strong>CI/CD Pipeline Standards v2.0 (mandatory):</strong> security scanning <i data-lucide="zap"></i> unit tests <i data-lucide="zap"></i> integration tests <i data-lucide="zap"></i> smoke tests <i data-lucide="zap"></i> deploy. <strong>5-minute deployment target</strong>. No exceptions.',
-                    mcp: 'Tool call: <code>get_document("CI/CD standards")</code> <i data-lucide="zap"></i> <strong>Required gates:</strong> security scan, unit test, integration test, smoke test. <strong>Deploy time: =5 min</strong>.',
+                    rag: '<strong>CI/CD Pipeline Standards v2.0 (mandatory):</strong> security scanning  unit tests  integration tests  smoke tests  deploy. <strong>5-minute deployment target</strong>. No exceptions.',
+                    mcp: 'Tool call: <code>get_document("CI/CD standards")</code>  <strong>Required gates:</strong> security scan, unit test, integration test, smoke test. <strong>Deploy time: =5 min</strong>.',
                     agent: 'Agent retrieved standards (KB-002), verified against health metrics (KB-003). Pipeline enforces <strong>4 mandatory gates + 5-min SLA</strong>. Deviations auto-block.',
                     multi: 'Standards agent retrieved policy. Controls agent verified enforcement (auto-block on fail). Audit agent confirmed: <strong>4/4 gates active, no waivers</strong>. Compliant.'
                 }

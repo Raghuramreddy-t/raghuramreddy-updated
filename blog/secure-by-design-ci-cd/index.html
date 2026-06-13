@@ -105,7 +105,7 @@
         <ul>
           <li><strong>Unverified dependencies.</strong> Most pipelines pull packages from public registries without signature verification or origin validation. A supply chain compromise at the registry level can poison every build in the organization simultaneously.</li>
           <li><strong>Secret sprawl.</strong> Environment variables, hard-coded credentials, and unrotated pipeline tokens are a persistent vulnerability in team-owned pipeline configurations. When credentials are distributed across dozens of team-managed CI configurations, rotation becomes a coordination problem that never quite gets solved.</li>
-          <li><strong>Missing auditability.</strong> Who triggered that build<i data-lucide="zap"></i> What exact source commit did it run against<i data-lucide="zap"></i> What dependencies were resolved at build time<i data-lucide="zap"></i> Without this provenance, a post-incident investigation is guesswork. Compliance auditors asking for evidence of who approved a production deployment can't get a useful answer.</li>
+          <li><strong>Missing auditability.</strong> Who triggered that build What exact source commit did it run against What dependencies were resolved at build time Without this provenance, a post-incident investigation is guesswork. Compliance auditors asking for evidence of who approved a production deployment can't get a useful answer.</li>
         </ul>
 
         <div class="article-callout">
@@ -137,10 +137,10 @@
         </p>
 
         <ul>
-          <li>What dependency sources are approved, and how are dependencies verified against those sources<i data-lucide="zap"></i></li>
-          <li>What scan results must pass before an artifact is considered publishable, and what are the thresholds<i data-lucide="zap"></i></li>
-          <li>How are pipeline secrets managed, rotated, and scoped to minimum necessary permissions<i data-lucide="zap"></i></li>
-          <li>What provenance information is captured and signed at build time, and where is it stored<i data-lucide="zap"></i></li>
+          <li>What dependency sources are approved, and how are dependencies verified against those sources</li>
+          <li>What scan results must pass before an artifact is considered publishable, and what are the thresholds</li>
+          <li>How are pipeline secrets managed, rotated, and scoped to minimum necessary permissions</li>
+          <li>What provenance information is captured and signed at build time, and where is it stored</li>
         </ul>
 
         <h2>4. Solution Model  Embedded Security, Not Appended Security</h2>

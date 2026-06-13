@@ -147,9 +147,9 @@
                 </p>
             </section>
 
-            <!-- WHAT ARE TOKENS<i data-lucide="zap"></i> -->
+            <!-- WHAT ARE TOKENS -->
             <section class="article-section">
-                <h2>What Are Tokens<i data-lucide="zap"></i></h2>
+                <h2>What Are Tokens</h2>
                 <p>
                     LLMs do not read characters or words directly. They read <strong>tokens</strong>, which are subword
                     units produced by a tokenizer.
@@ -174,9 +174,9 @@
                 </p>
             </section>
 
-            <!-- WHAT ARE EMBEDDINGS<i data-lucide="zap"></i> -->
+            <!-- WHAT ARE EMBEDDINGS -->
             <section class="article-section">
-                <h2>What Are Embeddings<i data-lucide="zap"></i></h2>
+                <h2>What Are Embeddings</h2>
                 <p>
                     Once tokenized, each token is converted into an <strong>embedding</strong> - a numerical vector that
                     captures meaning in context.
@@ -448,7 +448,7 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
 
             const getModel = (providerId, modelId) => {
                 const provider = pricing.providers.find(p => p.id === providerId);
-                return provider <i data-lucide="zap"></i> provider.models.find(model => model.id === modelId) : null;
+                return provider  provider.models.find(model => model.id === modelId) : null;
             };
 
             const claudeHaiku = getModel('claude', 'haiku35');
@@ -476,7 +476,7 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
                 const node = document.getElementById(id);
                 if (!node || !model) return;
                 node.textContent = model.cached_input_per_mtok != null
-                    <i data-lucide="zap"></i> `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
+                     `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
                     : formatPair(model);
             });
 
@@ -490,7 +490,7 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
                 const node = document.getElementById(id);
                 if (node && model) {
                     node.textContent = model.cached_input_per_mtok != null
-                        <i data-lucide="zap"></i> `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
+                         `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
                         : formatPair(model);
                 }
             });
