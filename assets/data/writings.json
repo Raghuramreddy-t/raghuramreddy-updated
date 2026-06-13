@@ -1,4 +1,4 @@
-﻿{
+{
   "site": {
     "baseUrl": "https://raghuramreddy.tech",
     "author": "Raghuramreddy Thummalapalli"
@@ -35,7 +35,7 @@
       "id": "token-ledger-lab",
       "title": "Cost Engineering Lab",
       "description": "Interactive playground: calculate token costs in real-time, compare Claude vs GPT-5.5 pricing, and estimate batch costs at scale.",
-      "url": "/labs/tokenops",
+      "url": "/labs/tokenops/",
       "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Lab"],
       "published": "2025-10-28",
       "version": "1.0.0"

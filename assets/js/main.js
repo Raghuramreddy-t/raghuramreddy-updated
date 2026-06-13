@@ -134,8 +134,9 @@ function resolveSitePath(path) {
     const raw = String(path || '').trim();
     if (!raw || /^(https?:|mailto:|tel:|data:|#|javascript:)/i.test(raw)) return raw;
 
-    return raw.startsWith('/') ? raw : '/' + raw;  // clean-url migration
-    // removed: was depth + cleanPath
+    const normalized = raw.startsWith('/') ? raw : '/' + raw;
+    if (normalized.includes('.') || normalized.endsWith('/')) return normalized;
+    return normalized + '/';
 
 
 }
