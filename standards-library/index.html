@@ -9,12 +9,12 @@
     <meta property="og:title" content="Operational Standards Library | Raghuramreddy Thummalapalli">
     <meta property="og:description" content="Operational standards and engineering references for CI/CD reliability, Kubernetes runtime behavior, and AI-assisted troubleshooting.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://raghuramreddy.tech/standards-library">
+    <meta property="og:url" content="https://raghuramreddy.tech/standards-library/">
     <meta property="og:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
     <meta property="og:image:alt" content="Raghuramreddy - Operational Standards Library">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://raghuramreddy.tech/assets/images/og-image.svg">
-    <link rel="canonical" href="https://raghuramreddy.tech/standards-library">
+    <link rel="canonical" href="https://raghuramreddy.tech/standards-library/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -273,10 +273,10 @@
           tabs.forEach(function (t) {
             var active = t.dataset.panel === target;
             t.classList.toggle('active', active);
-            t.setAttribute('aria-selected', active  'true' : 'false');
+            t.setAttribute('aria-selected', active ? 'true' : 'false');
           });
           panels.forEach(function (panel) {
-            panel.style.display = panel.id === 'panel-' + target  '' : 'none';
+            panel.style.display = panel.id === 'panel-' + target ? '' : 'none';
           });
           if (smooth) window.scrollTo({ top: 0, behavior: 'smooth' });
         }

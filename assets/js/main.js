@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initWordReveal();
     initBtnRoll();
     normalizeAllInternalLinks();
+    syncActiveNavLink();
 });
 
 function injectArticleHeaderDate() {
@@ -151,6 +152,64 @@ function normalizeAllInternalLinks() {
         if (!normalized.endsWith('/')) {
             anchor.setAttribute('href', normalized + '/');
         }
+    });
+}
+
+function syncActiveNavLink() {
+    const navMenu = document.getElementById('nav-menu');
+    if (!navMenu) return;
+
+    const currentPath = (window.location.pathname || '/').toLowerCase();
+    const canonicalPath = currentPath.endsWith('/') ? currentPath : currentPath + '/';
+
+    const pageMatchRules = [
+        { test: (path) => path === '/', match: ['/', '/index.html'] },
+        { test: (path) => path.startsWith('/about'), match: ['/about/', '/about.html'] },
+        { test: (path) => path.startsWith('/work'), match: ['/work/', '/work.html'] },
+        { test: (path) => path.startsWith('/applied-ai-systems'), match: ['/applied-ai-systems/', '/applied-ai-systems.html'] },
+        { test: (path) => path.startsWith('/recognition'), match: ['/recognition/', '/recognition.html'] },
+        { test: (path) => path.startsWith('/future-systems'), match: ['/future-systems/', '/future-systems.html'] },
+        { test: (path) => path.startsWith('/contact'), match: ['/contact/', '/contact.html'] },
+        { test: (path) => path.startsWith('/publications'), match: ['/publications/'] },
+        { test: (path) => path.startsWith('/writing'), match: ['/writing/'] },
+        { test: (path) => path.startsWith('/blog'), match: ['/blog/'] },
+        { test: (path) => path.startsWith('/standards-library'), match: ['/standards-library/'] },
+        { test: (path) => path.startsWith('/privacy'), match: ['/privacy/'] },
+        { test: (path) => path.startsWith('/terms'), match: ['/terms/'] },
+        { test: (path) => path.startsWith('/labs/tokenops'), match: ['/labs/tokenops/'] }
+    ];
+
+    const activeTargets = new Set();
+    for (const rule of pageMatchRules) {
+        if (!rule.test(canonicalPath)) continue;
+        rule.match.forEach((path) => activeTargets.add(path));
+        break;
+    }
+
+    const links = Array.from(navMenu.querySelectorAll('a.nav-link'));
+    links.forEach((link) => link.classList.remove('active'));
+
+    const matchedLink = links.find((link) => {
+        const rawHref = (link.getAttribute('href') || '').toLowerCase();
+        let hrefPath = rawHref;
+        try {
+            if (/^(https?:)?\/\//i.test(rawHref)) {
+                hrefPath = new URL(rawHref, window.location.origin).pathname.toLowerCase();
+            }
+        } catch {
+            hrefPath = rawHref;
+        }
+        hrefPath = hrefPath.replace(/index\.html$/, '');
+        return activeTargets.has(hrefPath) || activeTargets.has(hrefPath.replace(/\/$/, '') + '/');
+    });
+
+    if (matchedLink) {
+        matchedLink.classList.add('active');
+        matchedLink.setAttribute('aria-current', 'page');
+    }
+
+    links.forEach((link) => {
+        if (link !== matchedLink) link.removeAttribute('aria-current');
     });
 }
 
