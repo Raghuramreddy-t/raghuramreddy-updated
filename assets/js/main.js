@@ -512,7 +512,10 @@ function animateCounter(element, target) {
     const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-            element.textContent = target + '+';
+            const fmt = target >= 1000
+                ? Math.round(target / 1000) + 'K+'
+                : target + '+';
+            element.textContent = fmt;
             clearInterval(timer);
         } else {
             element.textContent = Math.floor(current);

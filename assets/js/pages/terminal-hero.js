@@ -185,5 +185,37 @@
     }
 })();
 
+// ============================================
+// TYPEWRITER ROTATION FOR JOB SEARCH
+// ============================================
+(function() {
+    const typewriterEl = document.getElementById('typewriter-text');
+    if (!typewriterEl) return;
+
+    const rolesAttr = typewriterEl.getAttribute('data-roles');
+    if (!rolesAttr) return;
+
+    try {
+        const roles = JSON.parse(rolesAttr);
+        if (!Array.isArray(roles) || roles.length < 2) return;
+
+        let currentRoleIdx = 0;
+        const ROTATION_INTERVAL = 4000; // 4 seconds per title
+
+        function rotateRole() {
+            currentRoleIdx = (currentRoleIdx + 1) % roles.length;
+            typewriterEl.textContent = roles[currentRoleIdx];
+            // Could add fade/typewriter effect here if desired
+        }
+
+        // Start rotation after 6 seconds (let first role display)
+        setTimeout(() => {
+            setInterval(rotateRole, ROTATION_INTERVAL);
+        }, 6000);
+    } catch (e) {
+        console.error('Failed to parse typewriter roles:', e);
+    }
+})();
+
 
 

@@ -3,97 +3,145 @@
 
   <url>
     <loc>https://raghuramreddy.tech/</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/about.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/work.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/applied-ai-systems.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/pages/writing.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/pages/recognition.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/pages/tokenops.html</loc>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/future-systems.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://raghuramreddy.tech/pages/recognition.html</loc>
-    <lastmod>2026-05-10</lastmod>
-    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/contact.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/pages/tokenops.html</loc>
-    <lastmod>2026-05-10</lastmod>
-    <priority>0.9</priority>
+    <loc>https://raghuramreddy.tech/pages/publications.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/pages/blog.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/operational-standards-library.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
+    <loc>https://raghuramreddy.tech/pages/privacy.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/pages/terms.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
     <loc>https://raghuramreddy.tech/pages/blog/intelligent-delivery-platforms.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/blog/intelligent-delivery-platforms-diagrams.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/blog/token-cost-comparator.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/blog/rag-knowledge-systems.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/blog/secure-by-design-ci-cd.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/blog/ai-cicd-troubleshooter.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://raghuramreddy.tech/pages/blog/xops-beyond-devops.html</loc>
-    <lastmod>2026-05-10</lastmod>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/pages/blog/ci-cd-failures-at-scale.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/pages/blog/devops-to-platform-engineering.html</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/pages/blog/toolchain-modernization.html</loc>
+    <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 

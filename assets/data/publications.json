@@ -7,7 +7,7 @@
       "title": "Building Resilient Internal Developer Platforms",
       "type": "Technical Paper",
       "description": "A comprehensive guide to designing Internal Developer Platforms that scale with organizational growth while maintaining developer experience and operational reliability.",
-      "link": "#",
+      "link": null,
       "tags": ["IDP", "Intelligent Infrastructure", "Reliability"]
     },
     {
@@ -15,7 +15,7 @@
       "title": "Secure Lifecycle Governance at Enterprise Scale",
       "type": "Technical Paper",
       "description": "Practical insights from implementing security automation across large enterprises. Covers toolchain integration, policy enforcement, and cultural transformation.",
-      "link": "#",
+      "link": null,
       "tags": ["Lifecycle Governance", "Enterprise", "Security Automation"]
     },
     {
@@ -23,7 +23,7 @@
       "title": "AI Governance Framework for Enterprise Operations",
       "type": "Technical Paper",
       "description": "A framework for safely integrating AI into enterprise operations with proper governance, audit trails, and human oversight mechanisms.",
-      "link": "#",
+      "link": null,
       "tags": ["AI Governance", "AIOps", "Enterprise"]
     }
   ],
@@ -33,6 +33,7 @@
       "id": "ai-biology",
       "title": "AI Application for Biological Sciences Curriculum Development",
       "institution": "Alcorn State University",
+      "institution_url": "https://www.alcornstate.edu/",
       "role": "AI Project Student Assistantship Awardee - Research & Teaching Assistantship",
       "description": "Research and teaching assistantship exploring applications of artificial intelligence in biological sciences curriculum development. Recognized with departmental AI Project Assistantship Award.",
       "tags": ["AI", "Research", "Academia"]
@@ -40,6 +41,19 @@
   ],
 
   "patents": [
+  ],
+
+  "books": [
+    {
+      "id": "tech-ecosystem-field-manual",
+      "title": "The Complete Technology Ecosystem Field Manual",
+      "publisher": "Amazon KDP",
+      "year": 2025,
+      "pages": 122,
+      "link": null,
+      "description": "A 122-page practitioner field manual covering platform engineering, DevSecOps, lifecycle governance, and infrastructure cognition patterns from real-world deployments.",
+      "tags": ["Platform Engineering", "DevSecOps", "Lifecycle Governance"]
+    }
   ],
 
   "articles": [
@@ -56,7 +70,7 @@
       "title": "The Evolution of Intelligent Infrastructure Ecosystems",
       "outlet": "Medium",
       "description": "How platform engineering has evolved from infrastructure automation to building Internal Developer Platforms that scale teams and reduce cognitive load.",
-      "link": "#",
+      "link": null,
       "tags": ["Intelligent Infrastructure", "IDP"]
     },
     {
@@ -64,7 +78,7 @@
       "title": "Security Should Enable, Not Block",
       "outlet": "LinkedIn Newsletter",
       "description": "Rethinking security's role in the development lifecycle. How governed security can accelerate delivery instead of slowing it down.",
-      "link": "#",
+      "link": null,
       "tags": ["Lifecycle Governance", "Security Culture"]
     },
     {
@@ -72,7 +86,7 @@
       "title": "Safe AI Adoption in Enterprise Operations",
       "outlet": "LinkedIn Newsletter",
       "description": "A practical guide to adopting AI-powered tools in enterprise environments while maintaining security, compliance, and human oversight.",
-      "link": "#",
+      "link": null,
       "tags": ["Operational Intelligence", "Enterprise", "Governance"]
     }
   ]
