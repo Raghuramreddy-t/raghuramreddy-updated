@@ -135,8 +135,7 @@ function moduleTemplate() {
   return `
     <section class="tokenops-module" aria-label="TokenOps Cost Engineering Lab">
       <header class="tokenops-module__hero">
-        <span class="tokenops-module__eyebrow">Portfolio-Hosted Interactive Laboratory</span>
-        <h1>TokenOps <span>Cost Engineering Lab</span></h1>
+        <h2><span>Cost Engineering Lab</span></h2>
         <p>A decision lab for direct API model economics and GitHub Copilot AI Credits. Compare verified rates, forecast workload impact, and make lower-cost AI usage decisions with transparent assumptions.</p>
         <div class="tokenops-trust">
           <span>Browser-Local Calculation</span>
@@ -164,7 +163,7 @@ function moduleTemplate() {
 
 function apiPanelTemplate() {
   return `
-    <div class="tokenops-heading"><div><h2>API Model Cost Lab</h2><p>Direct provider economics for applications and workflows you build.</p></div><span class="tokenops-badge tokenops-badge--ok">Direct API only</span></div>
+    <div class="tokenops-heading"><div><h3>API Model Cost Lab</h3><p>Direct provider economics for applications and workflows you build.</p></div><span class="tokenops-badge tokenops-badge--ok">Direct API only</span></div>
     <nav class="tokenops-subtabs" role="tablist" aria-label="API lab views">
       <button class="tokenops-subtab" role="tab" aria-selected="true" data-sub-tab="api-calc">Workload Calculator</button>
       <button class="tokenops-subtab" role="tab" aria-selected="false" data-sub-tab="api-mechanics">Pricing Mechanics</button>
@@ -201,7 +200,7 @@ function apiPanelTemplate() {
 
 function copilotPanelTemplate() {
   return `
-    <div class="tokenops-heading"><div><h2>GitHub Copilot AI Credits Lab</h2><p>Usage-based planning estimates from GitHub-published model pricing and plan allowances.</p></div><span class="tokenops-badge">GitHub billing model</span></div>
+    <div class="tokenops-heading"><div><h3>GitHub Copilot AI Credits Lab</h3><p>Usage-based planning estimates from GitHub-published model pricing and plan allowances.</p></div><span class="tokenops-badge">GitHub billing model</span></div>
     <div class="tokenops-kpi-strip">
       <span>1 AI Credit = $0.01 USD</span>
       <span>API pricing and Copilot billing are separate</span>

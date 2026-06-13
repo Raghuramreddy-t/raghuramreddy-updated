@@ -2,25 +2,22 @@
 /* Complements token-cost-comparator.css for shared .tc-* components */
 
 main.section {
-  padding-top: 24px !important;
-  padding-bottom: 24px !important;
+  padding-top: 18px !important;
+  padding-bottom: 20px !important;
 }
 
 .ph--blog.page-header {
-  padding: 50px 0 20px !important;
+  padding: 34px 0 18px !important;
 }
 
-.page-header-content {
-  gap: 6px;
+.page-header-content { display: none; }
+
+.ph--blog.page-header {
+  padding: 18px 0 0 !important;
 }
 
-.ph--blog .page-subtitle {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.ph--blog .page-subtitle + div {
-  margin-top: 12px !important;
+.tokenops-host-page {
+  margin-top: 0;
 }
 
 /* ============================================

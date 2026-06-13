@@ -14,10 +14,10 @@
       "version": "1.0.0"
     },
     {
-      "id": "token-cost-comparator",
+      "id": "token-ledger",
       "title": "The Token Ledger",
       "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
-      "url": "blog/token-cost-comparator.html",
+      "url": "blog/token-ledger.html",
       "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Claude", "GPT"],
       "published": "2026-04-01",
       "version": "1.2.0"
@@ -32,10 +32,10 @@
       "version": "1.0.0"
     },
     {
-      "id": "token-cost-comparator-lab",
+      "id": "token-ledger-lab",
       "title": "Ledger Lab",
       "description": "Interactive playground: calculate token costs in real-time, compare Claude vs GPT-5.5 pricing, and estimate batch costs at scale.",
-      "url": "blog/token-cost-comparator.html#live-demo",
+      "url": "blog/token-ledger.html#live-demo",
       "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Interactive"],
       "published": "2025-10-28",
       "version": "1.0.0"

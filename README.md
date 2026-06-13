@@ -1,6 +1,6 @@
 # Raghuramreddy Thummalapalli — Intelligent Infrastructure Ecosystems
 
-[Live Site](https://raghuramreddy.tech) | [Work](https://raghuramreddy.tech/pages/work.html) | [Applied AI](https://raghuramreddy.tech/pages/applied-ai-systems.html) | [TokenOps](https://raghuramreddy.tech/pages/tokenops.html) | [Recognition](https://raghuramreddy.tech/pages/recognition.html)
+[Live Site](https://raghuramreddy.tech) | [Work](https://raghuramreddy.tech/pages/work.html) | [Applied AI](https://raghuramreddy.tech/pages/applied-ai-systems.html) | [TokenOps](https://raghuramreddy.tech/pages/tokenops-cost-engineering-lab.html) | [Recognition](https://raghuramreddy.tech/pages/recognition.html)
 
 ## What's Here
 
@@ -42,7 +42,7 @@ Visit: `http://localhost:8080`
 │   ├── contact.html
 │   ├── future-systems.html
 │   ├── applied-ai-systems.html
-│   ├── tokenops.html
+│   ├── tokenops-cost-engineering-lab.html
 │   ├── blog/                  # Blog articles
 │   └── ...
 ├── assets/
