@@ -265,7 +265,7 @@
 
       const link = document.createElement('a');
       link.className = 'project-link';
-      link.href = safeHref(entry.link || 'contact.html');
+      link.href = safeHref(entry.link || '/contact/');
       if (isExternalHref(entry.link)) {
         link.target = '_blank';
         link.rel = 'noopener';
