@@ -11,13 +11,13 @@
     "owner": "Raghuramreddy",
     "tagline": "Designing technology for human experience"
   },
-  "summary": "A browser-local decision lab for API model economics and GitHub Copilot AI Credits: compare verified pricing, estimate agentic usage, track model changes, and design lower-cost AI workflows with transparent assumptions.",
-  "problem": "AI usage economics vary by token type, cache behavior, processing mode, context tier, agentic workload and product-specific billing rules.",
+  "summary": "A browser-local decision lab for API model economics and GitHub Copilot AI Credits: compare verified pricing, estimate usage, track model changes, and design lower-cost AI workflows with transparent assumptions.",
+  "problem": "AI usage economics vary by token type, cache behavior, processing mode, context tier, workload shape, and product-specific billing rules.",
   "capabilities": [
     "API model cost estimation",
     "GitHub Copilot AI Credits estimation",
     "Cross-provider comparison",
-    "Agentic workload forecasting",
+    "Workflow forecasting",
     "Verified pricing and lifecycle change radar",
     "Official-source registry"
   ],

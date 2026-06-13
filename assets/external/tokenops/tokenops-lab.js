@@ -23,6 +23,13 @@ export function money(value) {
 export function credits(value) {
   return Number(value || 0).toLocaleString(undefined, { maximumFractionDigits: 2 });
 }
+export function mmddyyyy(value) {
+  const raw = String(value || '').trim();
+  if (!raw) return '';
+  const match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return raw;
+  return `${match[2]}${match[3]}${match[1]}`;
+}
 export function nonNegative(value, fallback = 0) {
   const number = Number(value);
   return Number.isFinite(number) && number >= 0 ? number : fallback;
@@ -489,7 +496,7 @@ function initializeCopilot(root, data) {
   const panel = $root(root, '[data-top-panel="copilot"]');
   panel.innerHTML = copilotPanelTemplate();
   setupSubTabs(panel, 'copilot-');
-  $root(root, '[data-role="copilot-verified"]').textContent = `Verified ${data.copilot.metadata.verifiedOn}`;
+  $root(root, '[data-role="copilot-verified"]').textContent = `Verified ${mmddyyyy(data.copilot.metadata.verifiedOn)}`;
   const scenario = id(root, 'to-copilot-scenario');
   const plan = id(root, 'to-copilot-plan');
   const seats = id(root, 'to-copilot-seats');
@@ -630,7 +637,7 @@ function initializeCopilot(root, data) {
     ['Public Preview', data.copilot.models.filter(entry => entry.releaseStatus === 'public-preview')],
     ['Closing Down / Retired', data.copilot.models.filter(entry => ['closing-down','retired'].includes(entry.releaseStatus))]
   ];
-  lifecycle.innerHTML = grouped.map(([title, items]) => `<h3>${safeText(title)}</h3><div class="tokenops-lifecycle-grid">${items.map(entry => `<article class="tokenops-lifecycle-card"><h3>${safeText(entry.name)}</h3><p>${badge(entry.releaseStatus)}</p><p>${safeText(entry.note || `Verified ${entry.verifiedOn}`)}</p></article>`).join('')}</div>`).join('') + sourceLink(data.copilot.metadata.supportedModelsSource, 'Official supported-model source ↗');
+  lifecycle.innerHTML = grouped.map(([title, items]) => `<h3>${safeText(title)}</h3><div class="tokenops-lifecycle-grid">${items.map(entry => `<article class="tokenops-lifecycle-card"><h3>${safeText(entry.name)}</h3><p>${badge(entry.releaseStatus)}</p><p>${safeText(entry.note || `Verified ${mmddyyyy(entry.verifiedOn)}`)}</p></article>`).join('')}</div>`).join('') + sourceLink(data.copilot.metadata.supportedModelsSource, 'Official supported-model source ↗');
 }
 
 function initializeSources(root, data) {
@@ -642,7 +649,7 @@ function initializeSources(root, data) {
     { title: 'GitHub Copilot Individual Plans', detail: 'Included allowance registry', source: data.plans.metadata.individualSource, date: data.plans.metadata.verifiedOn },
     { title: 'GitHub Copilot Organizations', detail: 'Pooled allowances and promotional periods', source: data.plans.metadata.organizationSource, date: data.plans.metadata.verifiedOn }
   ]);
-  panel.innerHTML = `<div class="tokenops-heading"><div><h2>Source Registry</h2><p>Official documentation sources used by the estimation registries.</p></div><span class="tokenops-badge tokenops-badge--ok">Traceable</span></div><div class="tokenops-source-grid">${entries.map(item => `<article class="tokenops-source-card"><h3>${safeText(item.title)}</h3><p>${safeText(item.detail)}</p><p>Verified ${safeText(item.date)}</p>${sourceLink(item.source)}</article>`).join('')}</div>`;
+  panel.innerHTML = `<div class="tokenops-heading"><div><h2>Source Registry</h2><p>Official documentation sources used by the estimation registries.</p></div><span class="tokenops-badge tokenops-badge--ok">Traceable</span></div><div class="tokenops-source-grid">${entries.map(item => `<article class="tokenops-source-card"><h3>${safeText(item.title)}</h3><p>${safeText(item.detail)}</p><p>Verified ${safeText(mmddyyyy(item.date))}</p>${sourceLink(item.source)}</article>`).join('')}</div>`;
 }
 
 function initializeRadar(root, announcements) {
@@ -670,7 +677,7 @@ export async function mountTokenOps(root) {
       readJson(baseUrl, FILES.announcements, false)
     ]);
     const data = { api, copilot, plans, scenarios, learning, legacy, announcements };
-    $root(root, '[data-role="verified-date"]').textContent = `Verified: ${copilot.metadata.verifiedOn}`;
+    $root(root, '[data-role="verified-date"]').textContent = `Verified: ${mmddyyyy(copilot.metadata.verifiedOn)}`;
     status.hidden = true;
     app.hidden = false;
     setupTopTabs(root);

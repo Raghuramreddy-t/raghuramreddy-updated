@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": "otel-notes",
     "category": "Downloads",
@@ -6,7 +6,7 @@
     "title": "OpenTelemetry Certification Notes",
     "description": "Comprehensive study guide for OTel certification, covering tracing, metrics, and collector configuration.",
     "tags": ["PDF", "Observability"],
-    "link": "contact.html"
+    "link": "/contact"
   },
   {
     "id": "k8s-patterns",
@@ -15,7 +15,7 @@
     "title": "Kubernetes Patterns Cheat Sheet",
     "description": "Quick reference for common K8s architectural patterns, sidecars, adapters, and ambassadors.",
     "tags": ["PDF", "Architecture"],
-    "link": "contact.html"
+    "link": "/contact"
   },
   {
     "id": "platform-roadmap",
@@ -24,7 +24,7 @@
     "title": "Intelligent Infrastructure Roadmap",
     "description": "A strategic roadmap template for organizations moving from DevOps to intelligent infrastructure ecosystems.",
     "tags": ["Template", "Strategy"],
-    "link": "contact.html"
+    "link": "/contact"
   },
   {
     "id": "idp-arch",
@@ -32,7 +32,7 @@
     "type": "diagram",
     "title": "Enterprise IDP Reference Architecture",
     "description": "High-level blueprint for an Internal Developer Platform integrating Backstage, GitOps controllers, and Crossplane.",
-    "link": "contact.html"
+    "link": "/contact"
   },
   {
     "id": "secure-supply-chain",
@@ -40,6 +40,6 @@
     "type": "diagram",
     "title": "Secure Supply Chain Flow",
     "description": "Visualizing the flow of artifacts from commit to production with security gates (SAST, SCA, Signing).",
-    "link": "contact.html"
+    "link": "/contact"
   }
 ]

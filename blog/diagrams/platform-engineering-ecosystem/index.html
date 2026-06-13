@@ -1,0 +1,791 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Six pillars of intelligent infrastructure: operational intelligence, observability, runtime security, governance, reliability, and supply chain security.">
+<title>Intelligent Infrastructure Ecosystem | Intelligent Delivery Platforms</title>
+<link rel="canonical" href="https://raghuramreddy.tech/blog/diagrams/platform-engineering-ecosystem">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Future of Intelligent Infrastructure Ecosystem">
+<meta property="og:description" content="Six pillars: Operational Intelligence, Observability, Runtime Security, Governance, Reliability Engineering, Supply Chain Security">
+<meta property="og:url" content="https://raghuramreddy.tech/blog/diagrams/platform-engineering-ecosystem">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css?v=20260513">
+<link rel="stylesheet" href="/assets/css/animations.css?v=20260513">
+<link rel="stylesheet" href="/assets/css/pages.css?v=20260513">
+<link rel="stylesheet" href="/assets/css/components.css?v=20260513">
+<link rel="stylesheet" href="/assets/css/design-v2.css?v=20260513">
+<link rel="stylesheet" href="/assets/css/enhancements.css?v=20260513">
+<link rel="stylesheet" href="/assets/css/diagram-styles.css?v=20260513">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #050816;
+  font-family: Inter, sans-serif;
+  color: white;
+  padding: 44px 18px 56px;
+  overflow-x: hidden;
+}
+.container{
+width:100%;
+max-width:1200px;
+margin:0 auto;
+}
+.back-btn{
+display:inline-block;
+margin-bottom:40px;
+padding:10px 16px;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:8px;
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+transition:all 0.3s ease;
+}
+.back-btn:hover{
+border-color:rgba(255,255,255,0.3);
+color:#fff;
+}
+.header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.title {
+  font-size: 54px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6, #d946ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.stack-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.ecosystem-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 28px;
+  align-items: start;
+  margin-top: 42px;
+}
+
+.stack-layer {
+  display: flex;
+  margin-bottom: 0;
+  border-radius: 0;
+  overflow: hidden;
+  position: relative;
+  animation: slideInLayer 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes slideInLayer {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.layer-top {
+  width: 12px;
+  background: var(--color);
+  flex-shrink: 0;
+}
+
+.layer-content {
+  flex: 1;
+  padding: 26px 30px;
+  background: linear-gradient(135deg, rgba(20, 30, 60, 0.9), rgba(30, 40, 80, 0.9));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-left: none;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+
+.stack-layer:hover .layer-content {
+  background: linear-gradient(135deg, rgba(20, 30, 60, 1), rgba(30, 60, 120, 0.95));
+  border-color: var(--color);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 0 30px var(--color);
+  padding-left: 34px;
+}
+
+.stack-layer:hover .layer-top {
+  width: 16px;
+}
+
+.layer-content h3 {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color);
+  transition: all 0.3s ease;
+}
+
+.layer-content p {
+  margin: 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.55;
+  transition: color 0.3s ease;
+}
+
+.stack-layer:hover .layer-content p {
+  color: #e2e8f0;
+}
+
+.layer-click-hint {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.stack-layer:hover .layer-click-hint {
+  color: var(--color);
+}
+
+.details-panel {
+  position: sticky;
+  top: 92px;
+  width: 100%;
+  max-height: min(600px, calc(100vh - 160px));
+  padding: 32px 28px 32px 32px;
+  background: linear-gradient(135deg, rgba(20, 30, 60, 0.95), rgba(30, 40, 80, 0.95));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  overflow: auto;
+  scrollbar-width: thin;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: translateY(-40px);
+}
+
+.details-panel.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.details-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.details-close:hover {
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.details-content h2 {
+  margin: 0 0 20px 0;
+  font-size: 32px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #6ee7ff, #d946ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.details-content {
+  display: block;
+  padding-right: 6px;
+}
+
+.details-content h3 {
+  margin: 20px 0 10px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #a78bfa;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.details-content p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.details-content ul {
+  margin: 12px 0;
+  padding-left: 18px;
+  list-style: none;
+}
+
+.details-content li {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 20px;
+  overflow-wrap: anywhere;
+}
+
+.details-content li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color, #6ee7ff);
+  font-weight: 700;
+}
+
+@media (max-width: 1200px) {
+  .ecosystem-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .details-panel {
+    position: static;
+    max-height: none;
+  }
+}
+[data-theme="light"] body {
+  background: linear-gradient(135deg, #f0f4f8, #f9fafb);
+  color: #111827;
+}
+
+[data-theme="light"] .layer-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 248, 252, 0.95));
+  border-color: rgba(14, 165, 233, 0.2);
+}
+
+[data-theme="light"] .layer-content h3 {
+  color: var(--color);
+}
+
+[data-theme="light"] .layer-content p {
+  color: #475569;
+}
+
+[data-theme="light"] .stack-layer:hover .layer-content {
+  background: linear-gradient(135deg, rgba(248, 251, 255, 1), rgba(239, 246, 255, 0.95));
+  border-color: var(--color);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.1), inset 0 0 30px var(--color);
+}
+
+[data-theme="light"] .stack-layer:hover .layer-content p {
+  color: #1e293b;
+}
+
+[data-theme="light"] .layer-click-hint {
+  color: #94a3b8;
+}
+
+[data-theme="light"] .stack-layer:hover .layer-click-hint {
+  color: var(--color);
+}
+
+[data-theme="light"] .details-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 248, 252, 0.95));
+  border-color: rgba(14, 165, 233, 0.2);
+  box-shadow: 0 20px 60px rgba(14, 165, 233, 0.1);
+}
+
+[data-theme="light"] .details-content h2 {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .details-content h3 {
+  color: #0ea5e9;
+}
+
+[data-theme="light"] .details-content p,
+[data-theme="light"] .details-content li {
+  color: #475569;
+}
+
+[data-theme="light"] .details-close {
+  color: #64748b;
+}
+
+@media(max-width: 1024px) {
+  .layer-content {
+    padding: 24px 32px;
+  }
+
+  .layer-content h3 {
+    font-size: 24px;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+}
+
+@media(max-width: 768px) {
+  body {
+    padding: 34px 14px 48px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .layer-content {
+    padding: 20px 24px;
+  }
+
+  .layer-content h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .layer-content p {
+    font-size: 13px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}
+
+@media(max-width: 640px) {
+  body {
+    padding: 28px 12px 42px;
+  }
+
+  .header {
+    margin-bottom: 36px;
+  }
+
+  .layer-content {
+    padding: 16px 18px;
+  }
+
+  .layer-content h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+  }
+
+  .layer-content p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+<body class="diagram-suite-page">
+<div class="bg-gradient"></div>
+<div class="floating-orbs">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="/" class="nav-logo">
+<span class="logo-icon">RRR</span>
+<div class="logo-stack">
+<span class="logo-name">Raghuramreddy</span>
+<span class="logo-tagline">Designing technology for human experience</span>
+</div>
+</a>
+<div class="nav-menu" id="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/work" class="nav-link">Work & Impact</a>
+                <a href="/applied-ai-systems" class="nav-link">Applied AI Systems</a>
+                <a href="/recognition" class="nav-link">Recognition & Credentials</a>
+                <a href="/future-systems" class="nav-link">Future Systems</a>
+                <a href="/contact" class="nav-link">Contact</a>
+</div>
+<div class="nav-actions">
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+<svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+<svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+<button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</div>
+</nav>
+
+<main class="section">
+<div class="container">
+<a href="/blog/intelligent-delivery-platforms-diagrams" class="back-btn">&larr; Back to Diagrams</a>
+<div class="header">
+<div class="title">Intelligent Infrastructure<br>Ecosystem</div>
+<p class="subtitle">Six integrated layers forming an intelligent platform stack</p>
+</div>
+<div class="diagram-insight">
+<div class="insight-card">
+<strong>Layered Architecture</strong>
+<p>Each layer builds upon the previous one, creating a cohesive platform engineering ecosystem where security, reliability, and intelligence are baked in at every level.</p>
+</div>
+</div>
+<div class="ecosystem-layout">
+  <div class="stack-container">
+    <div class="stack-layer" data-layer="ai" style="animation-delay: 0.6s; --color: #d946ef;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>AI-Augmented Platform</h3>
+        <p>Knowledge agents • Change risk • Automated remediation</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="automation" style="animation-delay: 0.5s; --color: #f472b6;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Automation & Operations</h3>
+        <p>Upgrade factory • Patching • Standardization • Compliance</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="observability" style="animation-delay: 0.4s; --color: #06b6d4;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Observability & Reliability</h3>
+        <p>OpenTelemetry • SLOs • Incident patterns • Self-healing</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="devsecops" style="animation-delay: 0.3s; --color: #34d399;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Secure Delivery</h3>
+        <p>SAST • SCA • Supply chain • Policy-as-code</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="delivery" style="animation-delay: 0.2s; --color: #a78bfa;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Delivery Systems</h3>
+        <p>CI/CD • GitOps • Golden paths • Release governance</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+
+    <div class="stack-layer" data-layer="foundation" style="animation-delay: 0.1s; --color: #6ee7ff;">
+      <div class="layer-top"></div>
+      <div class="layer-content">
+        <h3>Platform Foundation</h3>
+        <p>Kubernetes • Networking • IAM • Storage & DR</p>
+        <span class="layer-click-hint">Click for details</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="details-panel" id="detailsPanel">
+    <div class="details-close" onclick="document.getElementById('detailsPanel').classList.remove('active')">×</div>
+    <div class="details-content">
+      <h2 id="detailsTitle"></h2>
+      <div id="detailsDescription"></div>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+
+<div class="footer-divider"></div>
+
+<footer class="footer footer--pro">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-card footer-brand-card">
+<a href="/" class="footer-logo">
+<span class="logo-icon">RRR</span>
+<span class="logo-text">Raghuramreddy</span>
+</a>
+
+<p class="footer-tagline">Designing technology for human experience</p>
+<p class="footer-subline">Intelligent Infrastructure Ecosystems<br>Operational Intelligence &bull; Lifecycle Governance &bull; Infrastructure Cognition</p>
+
+<div class="footer-social-row">
+<a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+<a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+<a class="social-pill" href="/contact">Contact</a>
+</div>
+</div>
+
+<div class="footer-links-col">
+<div class="footer-col">
+<h4 class="footer-col-title">Navigation</h4>
+<div class="footer-links">
+                <a href="/" class="footer-link">Home</a>
+                <a href="/about" class="footer-link">About</a>
+                <a href="/work" class="footer-link">Work & Impact</a>
+                <a href="/applied-ai-systems" class="footer-link">Applied AI Systems</a>
+                <a href="/recognition" class="footer-link">Recognition & Credentials</a>
+                <a href="/future-systems" class="footer-link">Future Systems</a>
+                <a href="/contact" class="footer-link">Contact</a>
+</div>
+</div>
+
+<div class="footer-col">
+<h4 class="footer-col-title">Explore</h4>
+<div class="footer-links">
+<a href="/future-systems" class="footer-link">Future Systems</a>
+<a href="/standards-library" class="footer-link">Operational Standards Library</a>
+</div>
+</div>
+</div>
+
+<div class="footer-card footer-connect-card">
+<div class="footer-connect-header">
+<h4 class="footer-col-title">Connect</h4>
+<p class="footer-connect-note">Fastest response on LinkedIn.</p>
+</div>
+
+<div class="footer-icon-grid">
+<a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+</a>
+<a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+</a>
+<a class="icon-btn" href="/contact" aria-label="Contact">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+</a>
+</div>
+
+<a class="footer-cta" href="/contact">Let's talk &rarr;</a>
+</div>
+
+<div class="footer-visual" aria-hidden="true">
+<span class="fv-orb fv-orb-1"></span>
+<span class="fv-orb fv-orb-2"></span>
+<span class="fv-line fv-line-1"></span>
+<span class="fv-line fv-line-2"></span>
+<span class="fv-dot fv-dot-1"></span>
+<span class="fv-dot fv-dot-2"></span>
+</div>
+</div>
+
+<div class="footer-bottom footer-bottom--pro">
+<p>&copy; 2026 Raghuramreddy Thummalapalli. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<script src="/assets/js/main.js?v=20260513"></script>
+<script>
+const layerDetails = {
+  ai: {
+    title: 'AI-Augmented Platform',
+    content: `
+      <h3>Purpose</h3>
+      <p>Integrates AI and machine learning into platform operations to enable intelligent automation, predictive analytics, and guided decision-making for engineers.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>LLM-powered knowledge agents for incident diagnosis</li>
+        <li>Change risk assessment and automated impact analysis</li>
+        <li>Intelligent remediation recommendations with confidence scoring</li>
+        <li>Anomaly detection and pattern recognition across logs/metrics</li>
+        <li>Guardrails and audit trails for safe automated actions</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>40% faster MTTR through AI-assisted RCA</li>
+        <li>Reduced toil via automated operational decisions</li>
+        <li>Improved reliability through predictive scaling</li>
+        <li>Engineers focus on strategic work, not firefighting</li>
+      </ul>
+    `
+  },
+  automation: {
+    title: 'Automation & Operations',
+    content: `
+      <h3>Purpose</h3>
+      <p>Provides standardized, repeatable operational processes that eliminate manual toil and enforce consistency across infrastructure and deployments at scale.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>Upgrade Factory: automated cluster upgrades with orchestration</li>
+        <li>Patch automation and vulnerability remediation</li>
+        <li>Policy enforcement and compliance automation</li>
+        <li>Infrastructure cleanup and resource optimization bots</li>
+        <li>Standardization of deployment templates and runbooks</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Case-study outcome: 90% faster upgrades (8 hours → 45 minutes)</li>
+        <li>Zero-touch compliance and audit reporting</li>
+        <li>Reduced operational overhead and manual work</li>
+        <li>Consistent infrastructure across deployments</li>
+      </ul>
+    `
+  },
+  observability: {
+    title: 'Observability & Reliability',
+    content: `
+      <h3>Purpose</h3>
+      <p>Provides comprehensive visibility into system behavior and ensures reliability through SLOs, incident detection, and proactive recovery mechanisms.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>OpenTelemetry: unified metrics, logs, and traces</li>
+        <li>SLO definitions and real-time monitoring dashboards</li>
+        <li>Incident pattern recognition and root cause libraries</li>
+        <li>Self-healing mechanisms and automated runbooks</li>
+        <li>Alerting policies tied to business outcomes</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Proactive incident detection before user impact</li>
+        <li>Faster troubleshooting with comprehensive context</li>
+        <li>SLO-driven engineering prioritization</li>
+        <li>Reduced mean time to resolution (MTTR)</li>
+      </ul>
+    `
+  },
+  devsecops: {
+    title: 'Secure Delivery',
+    content: `
+      <h3>Purpose</h3>
+      <p>Integrates security into every phase of the software development and deployment lifecycle, shifting left to prevent vulnerabilities before they reach production.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>SAST/DAST: static and dynamic application security testing</li>
+        <li>SCA: software composition analysis and dependency scanning</li>
+        <li>Supply chain security with SBOM generation and verification</li>
+        <li>Policy-as-Code enforcement (OPA, Kyverno, etc.)</li>
+        <li>Container image scanning and artifact integrity checks</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Zero critical CVEs shipped to production</li>
+        <li>Case-study outcome: 80% faster vulnerability remediation</li>
+        <li>Compliance automated into pipelines</li>
+        <li>Engineers shift left, catching issues early</li>
+      </ul>
+    `
+  },
+  delivery: {
+    title: 'Delivery Systems',
+    content: `
+      <h3>Purpose</h3>
+      <p>Provides the core CI/CD infrastructure, golden paths, and governance frameworks that enable safe, repeatable software delivery at enterprise scale.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>Enterprise CI/CD pipeline engines (Jenkins, GitLab CI, etc.)</li>
+        <li>GitOps controllers for declarative deployments</li>
+        <li>Golden path templates and scaffolding tools</li>
+        <li>Release governance and change advisory processes</li>
+        <li>Deployment orchestration across environments</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Self-service deployments for development teams</li>
+        <li>Consistent release processes across orgs</li>
+        <li>Reduced time-to-market for new features</li>
+        <li>Audit-ready deployment trails</li>
+      </ul>
+    `
+  },
+  foundation: {
+    title: 'Platform Foundation',
+    content: `
+      <h3>Purpose</h3>
+      <p>The underlying infrastructure layer that provides compute, networking, security, and resilience primitives for the entire platform to operate.</p>
+
+      <h3>Key Components</h3>
+      <ul>
+        <li>Kubernetes or enterprise container orchestration</li>
+        <li>Networking: service mesh, ingress, network policies</li>
+        <li>Identity & Access Management (IAM/SSO)</li>
+        <li>Storage: persistent volumes, backup, disaster recovery</li>
+        <li>Multi-region/multi-cloud infrastructure</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Scalable foundation for millions of transactions/day</li>
+        <li>High availability with automated failover</li>
+        <li>Secure by default with zero-trust networking</li>
+        <li>Cost-optimized resource utilization</li>
+      </ul>
+    `
+  }
+};
+
+document.querySelectorAll('.stack-layer').forEach(layer => {
+  layer.addEventListener('click', function() {
+    const layerType = this.dataset.layer;
+    const details = layerDetails[layerType];
+
+    if (details) {
+      document.getElementById('detailsTitle').textContent = details.title;
+      document.getElementById('detailsDescription').innerHTML = details.content;
+      document.getElementById('detailsPanel').classList.add('active');
+
+      // Set color variable on panel
+      document.getElementById('detailsPanel').style.setProperty('--color', this.style.getPropertyValue('--color'));
+    }
+  });
+});
+</script>
+</body>
+</html>
+
+

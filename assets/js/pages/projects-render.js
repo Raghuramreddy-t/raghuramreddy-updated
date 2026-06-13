@@ -105,7 +105,7 @@ const PROJECTS_DATA = [
             'Human-in-the-loop review workflow with audit trail'
         ],
         impact: 'Signal Detection Automation',
-        link: 'pages/blog/ai-cicd-troubleshooter.html'
+        link: '/blog/ai-cicd-troubleshooter'
     }
 ];
 

@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
   MAIN JAVASCRIPT - Portfolio Interactivity
   ============================================ */
 
@@ -82,21 +82,21 @@ function ensureOperationalStandardsNavLink() {
 
     const hasLink = Array.from(navMenu.querySelectorAll('a.nav-link')).some((link) => {
         const href = (link.getAttribute('href') || '').toLowerCase();
-        return href.includes('operational-standards-library.html');
+        return href.includes('operational-standards-library.html') || href.includes('/standards-library');
     });
     if (hasLink) return;
 
     const path = window.location.pathname.toLowerCase();
-    const inPages = path.includes('/pages/');
-    const inBlog = path.includes('/pages/blog/');
-    const href = inBlog ? '../operational-standards-library.html' : (inPages ? 'operational-standards-library.html' : 'pages/operational-standards-library.html');
+    // removed inPages
+    // removed inBlog
+    const href = '/standards-library';
 
     const link = document.createElement('a');
     link.href = href;
     link.className = 'nav-link';
     link.textContent = 'Operational Standards Library';
     link.setAttribute('aria-label', 'Operational Standards Library');
-    if (path.endsWith('/operational-standards-library.html')) {
+    if (path.endsWith('/standards-library') || path.endsWith('/operational-standards-library.html')) {
         link.classList.add('active');
     }
 
@@ -134,10 +134,10 @@ function resolveSitePath(path) {
     const raw = String(path || '').trim();
     if (!raw || /^(https?:|mailto:|tel:|data:|#|javascript:)/i.test(raw)) return raw;
 
-    const cleanPath = raw.replace(/^\/+/, '');
-    const depth = window.location.pathname.includes('/pages/blog/') ? '../../' :
-        window.location.pathname.includes('/pages/') ? '../' : '';
-    return depth + cleanPath;
+    return raw.startsWith('/') ? raw : '/' + raw;  // clean-url migration
+    // removed: was depth + cleanPath
+
+
 }
 
 function initSocialIcons() {
@@ -351,9 +351,9 @@ function ensureSharedBackgroundTheme() {
     ));
     if (!hasAuroraScript) {
         const script = document.createElement('script');
-        const pageDepth = window.location.pathname.includes('/pages/blog/') ? '../../' :
-            window.location.pathname.includes('/pages/') ? '../' : '';
-        script.src = pageDepth + 'assets/js/aurora.js';
+        // removed pageDepth - use root-relative
+    
+        script.src = '/assets/js/aurora.js';
         script.defer = true;
         document.body.appendChild(script);
     }
@@ -762,14 +762,14 @@ function initCommandPalette() {
 
     // Search Index
     const searchIndex = [
-        { title: "Project Portfolio", type: "Page", url: "pages/work.html#panel-projects", tags: "automation, security, reporting" },
-        { title: "Upgrade Factory", type: "Project", url: "pages/work.html#upgrade-factory-case-study", tags: "openshift, automation, platform" },
-        { title: "Impact Dashboard", type: "Page", url: "pages/work.html#panel-impact", tags: "metrics, roi, results" },
-        { title: "Operational Standards Library", type: "Resource", url: "pages/operational-standards-library.html", tags: "xops, standards, reliability, governance" },
-        { title: "XOps Operating Model", type: "Page", url: "pages/operational-standards-library.html", tags: "xops, platform engineering, delivery, control" },
-        { title: "Observability Standards", type: "Resource", url: "pages/operational-standards-library.html", tags: "observability, telemetry, signals, diagnostics" },
-        { title: "AI Governance", type: "System", url: "pages/applied-ai-systems.html", tags: "safety, policy, copilot" },
-        { title: "Why AI Fails Without Grounding", type: "Article", url: "pages/blog/rag-knowledge-systems.html", tags: "rag, mcp, agents, grounding, ai safety" }
+        { title: "Project Portfolio", type: "Page", url: "/work#panel-projects", tags: "automation, security, reporting" },
+        { title: "Upgrade Factory", type: "Project", url: "/work#upgrade-factory-case-study", tags: "openshift, automation, platform" },
+        { title: "Impact Dashboard", type: "Page", url: "/work#panel-impact", tags: "metrics, roi, results" },
+        { title: "Operational Standards Library", type: "Resource", url: "/standards-library", tags: "xops, standards, reliability, governance" },
+        { title: "XOps Operating Model", type: "Page", url: "/standards-library", tags: "xops, platform engineering, delivery, control" },
+        { title: "Observability Standards", type: "Resource", url: "/standards-library", tags: "observability, telemetry, signals, diagnostics" },
+        { title: "AI Governance", type: "System", url: "/applied-ai-systems", tags: "safety, policy, copilot" },
+        { title: "Why AI Fails Without Grounding", type: "Article", url: "/blog/rag-knowledge-systems", tags: "rag, mcp, agents, grounding, ai safety" }
     ];
 
     // Toggle Logic
@@ -837,21 +837,21 @@ function initGlobalAIWidget() {
     if (document.getElementById('ai-fab') || document.getElementById('ai-panel')) return;
 
     const pagesToIndex = [
-        'index.html',
-        'pages/about.html',
-        'pages/work.html',
-        'pages/applied-ai-systems.html',
-        'pages/future-systems.html',
-        'pages/recognition.html',
-        'pages/contact.html',
-        'pages/operational-standards-library.html',
-        'pages/blog/rag-knowledge-systems.html',
-        'pages/blog/devops-to-platform-engineering.html',
-        'pages/blog/ci-cd-failures-at-scale.html',
-        'pages/blog/secure-by-design-ci-cd.html',
-        'pages/blog/toolchain-modernization.html',
-        'pages/blog/xops-beyond-devops.html',
-        'pages/blog/ai-cicd-troubleshooter.html'
+        '/',
+        '/about',
+        '/work',
+        '/applied-ai-systems',
+        '/future-systems',
+        '/recognition',
+        '/contact',
+        '/standards-library',
+        '/blog/rag-knowledge-systems',
+        '/blog/devops-to-platform-engineering',
+        '/blog/ci-cd-failures-at-scale',
+        '/blog/secure-by-design-ci-cd',
+        '/blog/toolchain-modernization',
+        '/blog/xops-beyond-devops',
+        '/blog/ai-cicd-troubleshooter'
     ];
 
     if (!document.getElementById('ai-widget-styles')) {
@@ -1172,7 +1172,7 @@ function initGlobalAIWidget() {
         });
 
         const sourceNames = [...new Set(topDocs.slice(0, 3).map((d) =>
-            d.page.replace('pages/blog/', '').replace('pages/', '').replace('.html', '').replace('index', 'home')
+            d.page.replace(/^\//, '').split('/').pop() || 'home'
         ))].join(', ');
 
         return `${lines.join('\n\n').slice(0, 900).trim()}\n\n\u2014 Sources: ${sourceNames}`;

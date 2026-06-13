@@ -1,0 +1,838 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intelligent Delivery Platform Diagrams | Raghuramreddy Thummalapalli</title>
+<meta name="description" content="Architecture diagrams, operational flows, and evolution timeline for Intelligent Delivery Platforms." />
+<link rel="canonical" href="https://raghuramreddy.tech/blog/intelligent-delivery-platforms-diagrams" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Intelligent Delivery Platform Diagrams" />
+<meta property="og:description" content="Visual architecture and operational intelligence flows." />
+<meta property="og:url" content="https://raghuramreddy.tech/blog/intelligent-delivery-platforms-diagrams" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Critical CSS -->
+<link rel="stylesheet" href="/assets/css/main.css?v=20260508" />
+<link rel="stylesheet" href="/assets/css/pages.css?v=20260508" />
+<link rel="stylesheet" href="/assets/css/enhancements.css?v=20260508" />
+
+<!-- Non-critical CSS - deferred -->
+<link rel="stylesheet" href="/assets/css/animations.css?v=20260508" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="/assets/css/components.css?v=20260508" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="/assets/css/design-v2.css?v=20260508" media="print" onload="this.media='all'" />
+<noscript>
+<link rel="stylesheet" href="/assets/css/animations.css?v=20260508" />
+<link rel="stylesheet" href="/assets/css/components.css?v=20260508" />
+<link rel="stylesheet" href="/assets/css/design-v2.css?v=20260508" />
+</noscript>
+
+<style>
+.diagram-suite-main{
+  padding: 56px 20px 84px;
+}
+
+.diagram-shell{
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gallery-header{
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.suite-kicker{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(110, 231, 255, 0.12);
+  border: 1px solid rgba(110, 231, 255, 0.22);
+  color: #6ee7ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.suite-kicker::before{
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.gallery-title{
+  font-size: clamp(34px, 4.3vw, 56px);
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6, #d946ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.gallery-subtitle{
+  font-size: 18px;
+  color: #cbd5e1;
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.suite-overview{
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  margin: 30px 0 42px;
+}
+
+.suite-panel{
+  padding: 24px 26px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, rgba(16, 23, 42, 0.88), rgba(20, 29, 57, 0.9));
+  border: 1px solid rgba(110, 231, 255, 0.16);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+  animation: floatPanel 10s ease-in-out infinite;
+}
+
+.suite-panel h3{
+  margin: 0 0 12px;
+  font-size: 22px;
+  color: #f8fafc;
+}
+
+.suite-panel p{
+  margin: 0;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.suite-metrics{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.suite-metric{
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+  animation: metricPulse 7s ease-in-out infinite;
+}
+
+.suite-metric strong{
+  display: block;
+  font-size: 24px;
+  line-height: 1;
+  color: #6ee7ff;
+  margin-bottom: 8px;
+  animation: metricGlow 7s ease-in-out infinite;
+}
+
+.suite-metric span{
+  display: block;
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.diagrams-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.diagram-card{
+  padding: 28px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(20, 30, 60, 0.84), rgba(30, 40, 80, 0.84));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(124, 58, 237, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.6s ease-out backwards;
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+}
+
+.diagram-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(110, 231, 255, 0.3), transparent);
+}
+
+.diagram-card::after{
+  content:'';
+  position:absolute;
+  inset:auto 0 0 -30%;
+  height:2px;
+  width:40%;
+  background: linear-gradient(90deg, transparent, rgba(110, 231, 255, 0.85), transparent);
+  opacity:0;
+  animation: cardSweep 4.5s ease-in-out infinite;
+}
+
+.diagram-card:nth-child(1) { animation-delay: 0.1s; }
+.diagram-card:nth-child(2) { animation-delay: 0.15s; }
+.diagram-card:nth-child(3) { animation-delay: 0.2s; }
+.diagram-card:nth-child(4) { animation-delay: 0.25s; }
+.diagram-card:nth-child(5) { animation-delay: 0.3s; }
+.diagram-card:nth-child(6) { animation-delay: 0.35s; }
+
+.diagram-card:hover{
+  background: linear-gradient(135deg, rgba(20, 30, 60, 0.95), rgba(30, 60, 120, 0.9));
+  border-color: rgba(110, 231, 255, 0.4);
+  box-shadow: 0 30px 80px rgba(124, 58, 237, 0.25);
+  transform: translateY(-6px);
+}
+
+.diagram-card-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+  animation: floatTop 9s ease-in-out infinite;
+}
+
+.diagram-icon{
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: rgba(110, 231, 255, 0.12);
+  border: 1px solid rgba(110, 231, 255, 0.24);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+  flex: 0 0 auto;
+  animation: iconFloat 7s ease-in-out infinite;
+}
+
+.diagram-tag{
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+}
+
+.diagram-card h3{
+  font-size: 28px;
+  margin-bottom: 12px;
+  color: #f1f5f9;
+  font-weight: 700;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.diagram-card p{
+  color: #b8c1ec;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+  font-size: 15px;
+}
+
+.diagram-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #6ee7ff;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.diagram-card:hover .diagram-link{
+  gap: 12px;
+  color: #ffffff;
+}
+
+.diagram-link svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatPanel {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes metricPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(110, 231, 255, 0); }
+  50% { box-shadow: 0 0 26px rgba(110, 231, 255, 0.08); }
+}
+
+@keyframes metricGlow {
+  0%, 100% { text-shadow: 0 0 0 rgba(110, 231, 255, 0); }
+  50% { text-shadow: 0 0 18px rgba(110, 231, 255, 0.2); }
+}
+
+@keyframes cardSweep {
+  0% { transform: translateX(-18%); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateX(220%); opacity: 0; }
+}
+
+@keyframes floatTop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-3px) rotate(2deg); }
+}
+
+[data-theme="light"] .suite-panel{
+  background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(243,248,252,0.96));
+  border-color: rgba(59,130,246,0.12);
+  box-shadow: 0 20px 50px rgba(59,130,246,0.08);
+}
+
+[data-theme="light"] .suite-panel h3{
+  color: #0f172a;
+}
+
+[data-theme="light"] .suite-panel p,
+[data-theme="light"] .suite-metric span{
+  color: #475569;
+}
+
+[data-theme="light"] .suite-metric{
+  background: rgba(255,255,255,0.72);
+  border-color: rgba(59,130,246,0.12);
+}
+
+[data-theme="light"] .suite-metric strong{
+  color: #0ea5e9;
+}
+
+[data-theme="light"] .diagram-card{
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 248, 252, 0.95));
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 20px 50px rgba(59, 130, 246, 0.08);
+}
+
+[data-theme="light"] .diagram-card::before {
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+}
+
+[data-theme="light"] .diagram-card:hover{
+  background: linear-gradient(135deg, rgba(248, 251, 255, 1), rgba(239, 246, 255, 0.95));
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 30px 80px rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="light"] .diagram-card h3{
+  color: #0f172a;
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .diagram-card p{
+  color: #475569;
+}
+
+[data-theme="light"] .diagram-link {
+  color: #0ea5e9;
+}
+
+[data-theme="light"] .diagram-card:hover .diagram-link{
+  color: #06b6d4;
+}
+
+[data-theme="light"] .diagram-icon{
+  background: rgba(14, 165, 233, 0.1);
+  border-color: rgba(14, 165, 233, 0.18);
+}
+
+[data-theme="light"] .diagram-tag{
+  color: #475569;
+  border-color: rgba(59,130,246,0.12);
+  background: rgba(255,255,255,0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .suite-panel,
+  .suite-metric,
+  .suite-metric strong,
+  .diagram-card::after,
+  .diagram-card-top,
+  .diagram-icon {
+    animation: none !important;
+  }
+}
+
+@media(max-width:1024px){
+  .suite-overview{
+    grid-template-columns: 1fr;
+  }
+
+  .suite-metrics{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .diagrams-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media(max-width:768px){
+  .diagram-suite-main{
+    padding: 42px 16px 72px;
+  }
+
+  .gallery-title{
+    font-size: 36px;
+  }
+
+  .gallery-subtitle{
+    font-size: 16px;
+  }
+
+  .suite-panel{
+    padding: 20px;
+  }
+
+  .suite-panel h3{
+    font-size: 18px;
+  }
+
+  .suite-metrics{
+    grid-template-columns: 1fr;
+  }
+
+  .diagram-card{
+    padding: 22px;
+  }
+
+  .diagram-card h3{
+    font-size: 24px;
+  }
+
+  .diagram-icon{
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+}
+
+@media(max-width:640px){
+  .gallery-header{
+    margin-bottom: 18px;
+  }
+
+  .gallery-title{
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .gallery-subtitle{
+    font-size: 14px;
+  }
+
+  .suite-panel{
+    padding: 18px;
+  }
+
+  .diagrams-grid{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .diagram-card{
+    padding: 20px;
+  }
+
+  .diagram-card h3{
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .diagram-card p {
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  .diagram-icon{
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+
+  .diagram-link {
+    font-size: 13px;
+  }
+}
+
+/* Light mode overrides */
+[data-theme="light"] {
+  .page-tag {
+    background: rgba(99, 102, 241, 0.1) !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    color: rgba(79, 70, 229, 0.9) !important;
+  }
+
+  .page-tag::before {
+    color: rgba(79, 70, 229, 0.85) !important;
+  }
+
+  .page-title {
+    color: var(--text-primary) !important;
+  }
+
+  .page-subtitle {
+    color: rgba(51, 65, 85, 0.8) !important;
+  }
+
+  .suite-kicker {
+    background: rgba(59, 130, 246, 0.1) !important;
+    border-color: rgba(59, 130, 246, 0.25) !important;
+    color: #2563eb !important;
+  }
+
+  .suite-kicker::before {
+    background: #2563eb !important;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.4) !important;
+  }
+
+  .gallery-title {
+    background: linear-gradient(90deg, #2563eb, #7c3aed, #db2777) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  .gallery-subtitle {
+    color: rgba(51, 65, 85, 0.8) !important;
+  }
+
+  .suite-panel {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05)) !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
+  }
+
+  .suite-panel h3 {
+    color: rgba(30, 41, 59, 0.9) !important;
+  }
+
+  .suite-panel p {
+    color: rgba(51, 65, 85, 0.85) !important;
+  }
+
+  .suite-metric {
+    background: rgba(99, 102, 241, 0.06) !important;
+    border-color: rgba(99, 102, 241, 0.15) !important;
+  }
+
+  .suite-metric strong {
+    color: #2563eb !important;
+  }
+
+  .suite-metric span {
+    color: rgba(51, 65, 85, 0.75) !important;
+  }
+
+  .diagram-bg {
+    background: rgba(255, 255, 255, 0.5) !important;
+  }
+
+  .diagram-text-label {
+    color: rgba(30, 41, 59, 0.9) !important;
+  }
+
+  .diagram-node {
+    border-color: rgba(59, 130, 246, 0.3) !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .diagram-connector,
+  .diagram-line {
+    stroke: rgba(59, 130, 246, 0.35) !important;
+  }
+
+  .diagram-card {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(59, 130, 246, 0.2) !important;
+  }
+
+  .diagram-card h3 {
+    color: rgba(30, 41, 59, 0.95) !important;
+  }
+
+  .diagram-card p {
+    color: rgba(51, 65, 85, 0.85) !important;
+  }
+}
+</style>
+<link rel="stylesheet" href="/assets/css/diagram-styles.css?v=20260503" />
+</head>
+<body class="diagram-suite-page">
+<div class="bg-gradient"></div>
+<div class="floating-orbs">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="/" class="nav-logo">
+<span class="logo-icon">RRR</span>
+<div class="logo-stack">
+<span class="logo-name">Raghuramreddy</span>
+<span class="logo-tagline">Designing technology for human experience</span>
+</div>
+</a>
+<div class="nav-menu" id="nav-menu">
+<a href="/" class="nav-link">Home</a>
+<a href="/about" class="nav-link">About</a>
+<a href="/work" class="nav-link">Work &amp; Impact</a>
+<a href="/applied-ai-systems" class="nav-link">Applied AI Systems</a>
+<a href="/recognition" class="nav-link">Recognition &amp; Credentials</a>
+<a href="/future-systems" class="nav-link">Future Systems</a>
+<a href="/contact" class="nav-link">Contact</a>
+</div>
+<div class="nav-actions">
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+<svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+<svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+<button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</div>
+</nav>
+
+<header class="page-header ph--blog">
+<div class="container">
+<div class="page-header-content">
+<span class="page-tag">Visual Guide</span>
+<h1 class="page-title">Intelligent Delivery Platform <span class="gradient-text">Architecture &amp; Flows</span></h1>
+<p class="page-subtitle">Premium reference diagrams showing platform architecture, operational flows, and evolution timeline.</p>
+<div class="card-tags" style="margin-top:16px;">
+<span>May 2026</span><span>Architecture Diagrams</span><span>Visual Reference</span>
+</div>
+</div>
+</div>
+</header>
+
+<main class="diagram-suite-main">
+<div class="diagram-shell">
+<div class="gallery-header">
+<span class="suite-kicker">Visual companion</span>
+<h2 class="gallery-title">Intelligent Delivery Platform Architecture &amp; Flows</h2>
+<p class="gallery-subtitle">A single reference suite for architecture, operational intelligence, runtime comparison, evolution, and ecosystem mapping. Built to stay sharp in both dark and light mode.</p>
+</div>
+
+<div class="suite-overview">
+<div class="suite-panel">
+<h3>Why this suite exists</h3>
+<p>Use these diagrams to move from the strategic story into the technical layers without losing continuity. Every page is meant to read like part of one system, not six separate assets.</p>
+</div>
+
+<div class="suite-panel">
+<h3>At a glance</h3>
+<div class="suite-metrics">
+<div class="suite-metric"><strong>6</strong><span>linked diagrams that tell one coherent platform story.</span></div>
+<div class="suite-metric"><strong>2</strong><span>theme modes tuned for clean contrast and legibility.</span></div>
+<div class="suite-metric"><strong>1</strong><span>article companion that anchors the visual set.</span></div>
+</div>
+</div>
+</div>
+
+<div class="diagrams-grid">
+<a href="/blog/diagrams/traditional-vs-intelligent-pipelines" class="diagram-card">
+<div class="diagram-card-top">
+<div class="diagram-icon" aria-hidden="true">&#128202;</div>
+<span class="diagram-tag">Compare</span>
+</div>
+<h3>Traditional vs Intelligent Pipelines</h3>
+<p>Compare linear execution models with continuously analyzing operational intelligence platforms.</p>
+<span class="diagram-link">Open diagram &rarr;</span>
+</a>
+
+<a href="/blog/diagrams/reference-architecture" class="diagram-card">
+<div class="diagram-card-top">
+<div class="diagram-icon" aria-hidden="true">&#127959;</div>
+<span class="diagram-tag">Blueprint</span>
+</div>
+<h3>Reference Architecture</h3>
+<p>8-layer architecture from developer workflows through AI operational analysis to decision layers.</p>
+<span class="diagram-link">Open diagram &rarr;</span>
+</a>
+
+<a href="/blog/diagrams/operational-intelligence-flow" class="diagram-card">
+<div class="diagram-card-top">
+<div class="diagram-icon" aria-hidden="true">&#129504;</div>
+<span class="diagram-tag">Signals</span>
+</div>
+<h3>Operational Intelligence Flow</h3>
+<p>How deployments, logs, metrics, and security signals converge into AI-driven operational analysis.</p>
+<span class="diagram-link">Open diagram &rarr;</span>
+</a>
+
+<a href="/blog/diagrams/evolution-of-software-delivery" class="diagram-card">
+<div class="diagram-card-top">
+<div class="diagram-icon" aria-hidden="true">&#9201;</div>
+<span class="diagram-tag">Timeline</span>
+</div>
+<h3>Evolution Timeline</h3>
+<p>From manual ops through CI/CD, DevSecOps, cloud-native, to intelligent autonomous systems.</p>
+<span class="diagram-link">Open diagram &rarr;</span>
+</a>
+
+<a href="/blog/diagrams/runtime-reality-vs-desired-state" class="diagram-card">
+<div class="diagram-card-top">
+<div class="diagram-icon" aria-hidden="true">&#128260;</div>
+<span class="diagram-tag">Reality check</span>
+</div>
+<h3>Runtime Reality vs Desired State</h3>
+<p>How modern systems continuously compare desired infrastructure against operational reality.</p>
+<span class="diagram-link">Open diagram &rarr;</span>
+</a>
+
+<a href="/blog/diagrams/platform-engineering-ecosystem" class="diagram-card">
+<div class="diagram-card-top">
+<div class="diagram-icon" aria-hidden="true">&#127760;</div>
+<span class="diagram-tag">Ecosystem</span>
+</div>
+<h3>Platform Engineering Ecosystem</h3>
+<p>Six pillars of intelligent platform engineering: AI ops, observability, security, governance, reliability, supply chain.</p>
+<span class="diagram-link">Open diagram &rarr;</span>
+</a>
+</div>
+</div>
+</main>
+
+<div class="footer-divider"></div>
+
+<footer class="footer footer--pro">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-card footer-brand-card">
+<a href="/" class="footer-logo">
+<span class="logo-icon">RRR</span>
+<span class="logo-text">Raghuramreddy</span>
+</a>
+
+<p class="footer-tagline">Designing technology for human experience</p>
+<p class="footer-subline">Intelligent Infrastructure Ecosystems<br>Operational Intelligence &bull; Lifecycle Governance &bull; Infrastructure Cognition</p>
+
+<div class="footer-social-row">
+<a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+<a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+<a class="social-pill" href="/contact">Contact</a>
+</div>
+</div>
+
+<div class="footer-links-col">
+<div class="footer-col">
+<h4 class="footer-col-title">Navigation</h4>
+<div class="footer-links">
+<a href="/" class="footer-link">Home</a>
+<a href="/about" class="footer-link">About</a>
+<a href="/work" class="footer-link">Work &amp; Impact</a>
+<a href="/applied-ai-systems" class="footer-link">Applied AI Systems</a>
+<a href="/recognition" class="footer-link">Recognition &amp; Credentials</a>
+<a href="/future-systems" class="footer-link">Future Systems</a>
+<a href="/contact" class="footer-link">Contact</a>
+</div>
+</div>
+
+<div class="footer-col">
+<h4 class="footer-col-title">Explore</h4>
+<div class="footer-links">
+<a href="/future-systems" class="footer-link">Future Systems</a>
+<a href="/standards-library" class="footer-link">Operational Standards Library</a>
+</div>
+</div>
+</div>
+
+<div class="footer-card footer-connect-card">
+<div class="footer-connect-header">
+<h4 class="footer-col-title">Connect</h4>
+<p class="footer-connect-note">Fastest response on LinkedIn.</p>
+</div>
+
+<div class="footer-icon-grid">
+<a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+</a>
+<a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+</a>
+<a class="icon-btn" href="/contact" aria-label="Contact">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+</a>
+</div>
+
+<a class="footer-cta" href="/contact">Let's talk &rarr;</a>
+</div>
+
+<div class="footer-visual" aria-hidden="true">
+<span class="fv-orb fv-orb-1"></span>
+<span class="fv-orb fv-orb-2"></span>
+<span class="fv-line fv-line-1"></span>
+<span class="fv-line fv-line-2"></span>
+<span class="fv-dot fv-dot-1"></span>
+<span class="fv-dot fv-dot-2"></span>
+</div>
+</div>
+
+<div class="footer-bottom footer-bottom--pro">
+<p>&copy; 2026 Raghuramreddy Thummalapalli. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<script src="/assets/js/main.js?v=20260503"></script>
+</body>
+</html>

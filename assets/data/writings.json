@@ -1,4 +1,4 @@
-{
+﻿{
   "site": {
     "baseUrl": "https://raghuramreddy.tech",
     "author": "Raghuramreddy Thummalapalli"
@@ -8,7 +8,7 @@
       "id": "intelligent-delivery-platforms",
       "title": "The Rise of Intelligent Delivery Platforms",
       "description": "Why traditional CI/CD pipelines are evolving into AI-assisted operational systems. Exploring the shift from deployment automation to continuous operational intelligence.",
-      "url": "blog/intelligent-delivery-platforms.html",
+      "url": "/blog/intelligent-delivery-platforms",
       "tags": ["Platform Engineering", "DevSecOps", "AI Operations", "Cloud-Native", "Delivery Platforms"],
       "published": "2026-05-08",
       "version": "1.0.0"
@@ -17,7 +17,7 @@
       "id": "token-ledger",
       "title": "The Token Ledger",
       "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
-      "url": "blog/token-ledger.html",
+      "url": "/blog/token-ledger",
       "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Claude", "GPT"],
       "published": "2026-04-01",
       "version": "1.2.0"
@@ -26,7 +26,7 @@
       "id": "rag-knowledge-systems",
       "title": "Grounded AI Systems",
       "description": "Comprehensive guide to grounding knowledge in AI systems. Learn RAG, vector embeddings, MCP, agents, and multi-agent architectures. Includes hallucination problems, retrieval strategies, real-world considerations, and when to use each pattern.",
-      "url": "blog/rag-knowledge-systems.html",
+      "url": "/blog/rag-knowledge-systems",
       "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering", "Grounding"],
       "published": "2026-03-01",
       "version": "1.0.0"
@@ -35,7 +35,7 @@
       "id": "token-ledger-lab",
       "title": "Ledger Lab",
       "description": "Interactive playground: calculate token costs in real-time, compare Claude vs GPT-5.5 pricing, and estimate batch costs at scale.",
-      "url": "blog/token-ledger.html#live-demo",
+      "url": "/labs/tokenops",
       "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Interactive"],
       "published": "2025-10-28",
       "version": "1.0.0"
@@ -44,7 +44,7 @@
       "id": "grounded-ai-lab",
       "title": "Grounded AI Systems Lab",
       "description": "Interactive playground: Ask any question and compare how Simple Completion, RAG, MCP, Agent, and Multi-Agent systems respond. See the difference between hallucination and grounded answers.",
-      "url": "blog/rag-knowledge-systems.html#live-demo",
+      "url": "/blog/rag-knowledge-systems#live-demo",
       "tags": ["RAG", "Interactive Lab", "AI Patterns", "Demo"],
       "published": "2025-10-21",
       "version": "1.0.0"
@@ -53,7 +53,7 @@
       "id": "xops-beyond-devops-2025",
       "title": "Why XOps Is the Next Step Beyond DevOps in 2025",
       "description": "DevOps got us here - but it won't take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.",
-      "url": "blog/xops-beyond-devops-2025.html",
+      "url": "/blog/xops-beyond-devops-2025",
       "tags": ["XOps", "DevOps", "Platform Engineering", "AI Ops"],
       "published": "2025-10-15",
       "version": "1.0.0"

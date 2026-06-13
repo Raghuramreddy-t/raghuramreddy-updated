@@ -1,6 +1,6 @@
 (function () {
   function resolveDataPath(fileName) {
-    return window.location.pathname.includes('/pages/') ? '../assets/data/' + fileName : 'assets/data/' + fileName;
+    return '/assets/data/' + fileName;
   }
 
   function isExternalHref(href) {

@@ -1,7 +1,7 @@
 window.TOKENOPS_PRICING = {
   version: '2026-05-23',
   last_verified: '2026-05-23',
-  display_last_verified: 'May 2026',
+  display_last_verified: '05232026',
   providers: [
     {
       id: 'claude',
@@ -75,7 +75,7 @@ window.TOKENOPS_PRICING = {
           reasoning: true,
           vision: true,
           speed: 'slow',
-          best_for: 'Professional work, coding, and long-running agentic tasks',
+          best_for: 'Professional work, coding, and long-running workflows',
           color: '#0f766e',
           source: 'https://openai.com/api/pricing/'
         },

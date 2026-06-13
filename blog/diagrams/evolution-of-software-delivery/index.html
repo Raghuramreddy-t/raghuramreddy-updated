@@ -1,0 +1,686 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<script>!function(){var t=localStorage.getItem("theme")||"dark";document.documentElement.setAttribute("data-theme",t);document.documentElement.classList.add("no-transition");requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.remove("no-transition");})})}();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Evolution of software delivery: from manual operations through CI/CD, secure delivery, cloud-native, to intelligent autonomous systems.">
+<title>Evolution of Software Delivery | Intelligent Delivery Platforms</title>
+<link rel="canonical" href="https://raghuramreddy.tech/blog/diagrams/evolution-of-software-delivery">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Evolution of Software Delivery Systems">
+<meta property="og:description" content="Timeline: Manual Ops &rarr; CI/CD &rarr; Secure Delivery &rarr; Cloud-Native &rarr; Intelligent Platforms &rarr; Autonomous Systems">
+<meta property="og:url" content="https://raghuramreddy.tech/blog/diagrams/evolution-of-software-delivery">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css?v=20260524">
+<link rel="stylesheet" href="/assets/css/animations.css?v=20260524">
+<link rel="stylesheet" href="/assets/css/pages.css?v=20260524">
+<link rel="stylesheet" href="/assets/css/components.css?v=20260524">
+<link rel="stylesheet" href="/assets/css/design-v2.css?v=20260524">
+<link rel="stylesheet" href="/assets/css/enhancements.css?v=20260524">
+<link rel="stylesheet" href="/assets/css/diagram-styles.css?v=20260524">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #050816;
+  font-family: Inter, sans-serif;
+  color: white;
+  padding: 60px 20px;
+  overflow-x: hidden;
+}
+.container{
+width:100%;
+max-width:1500px;
+margin:0 auto;
+}
+.back-btn{
+display:inline-block;
+margin-bottom:40px;
+padding:10px 16px;
+border:1px solid rgba(255,255,255,0.1);
+border-radius:8px;
+color:#cbd5e1;
+text-decoration:none;
+font-size:14px;
+transition:all 0.3s ease;
+}
+.back-btn:hover{
+border-color:rgba(255,255,255,0.3);
+color:#fff;
+}
+.header {
+  text-align: center;
+  margin-bottom: 100px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.title {
+  font-size: 54px;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6, #d946ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #cbd5e1;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Insight Cards Section */
+.diagram-insight {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 80px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.insight-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08));
+  border: 1px solid rgba(110, 231, 255, 0.2);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1);
+  transition: all 0.3s ease;
+}
+
+.insight-card:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12));
+  border-color: rgba(110, 231, 255, 0.4);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.2);
+  transform: translateY(-4px);
+}
+
+.insight-card strong {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.insight-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+/* Stage Index Badge */
+.stage-index {
+  display: block;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.8;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  gap: 20px;
+  padding: 60px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 90%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #2563eb, #7c3aed, #8b5cf6, #d946ef, transparent);
+  transform: translateY(-50%);
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.8), inset 0 0 30px rgba(139, 92, 246, 0.4);
+  z-index: 1;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 90%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent);
+  transform: translateY(-50%);
+  z-index: 0;
+  filter: blur(8px);
+  opacity: 0.6;
+}
+
+.node {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(20, 30, 60, 0.9), rgba(30, 40, 80, 0.9));
+  border: 2px solid rgba(110, 231, 255, 0.3);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 18px;
+  gap: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 50px rgba(124, 58, 237, 0.4), inset 0 0 30px rgba(110, 231, 255, 0.1);
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: slideUpAndGlow 0.8s ease-out backwards;
+}
+
+.node::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 30% 30%, rgba(110, 231, 255, 0.2), transparent);
+  pointer-events: none;
+}
+
+.node::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: #6ee7ff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(110, 231, 255, 0.8);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.node:nth-child(1) { animation-delay: 0.1s; }
+.node:nth-child(3) { animation-delay: 0.2s; }
+.node:nth-child(5) { animation-delay: 0.3s; }
+.node:nth-child(7) { animation-delay: 0.4s; }
+.node:nth-child(9) { animation-delay: 0.5s; }
+.node:nth-child(11) { animation-delay: 0.6s; }
+
+.node:hover {
+  background: linear-gradient(135deg, rgba(20, 30, 60, 1), rgba(30, 60, 120, 0.95));
+  border-color: rgba(110, 231, 255, 0.6);
+  box-shadow: 0 0 80px rgba(124, 58, 237, 0.6), inset 0 0 40px rgba(110, 231, 255, 0.15);
+  transform: scale(1.12) translateY(-10px);
+}
+
+.node:hover::after {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.node h2 {
+  font-size: clamp(18px, 1.45vw, 24px);
+  margin: 0;
+  text-align: center;
+  padding: 0;
+  font-weight: 700;
+  line-height: 1.05;
+  background: linear-gradient(90deg, #6ee7ff, #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.node span {
+  margin-top: 0;
+  font-size: 13px;
+  color: #b8c1ec;
+  text-align: center;
+  padding: 0;
+  line-height: 1.45;
+  position: relative;
+  z-index: 1;
+  max-width: 85%;
+  overflow-wrap: anywhere;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpAndGlow {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.3);
+  }
+}
+[data-theme="light"] body {
+  background: linear-gradient(135deg, #f0f4f8, #f9fafb);
+  color: #111827;
+}
+
+[data-theme="light"] .timeline::before {
+  background: linear-gradient(90deg, transparent, #0ea5e9, #06b6d4, #0ea5e9, transparent);
+  box-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
+}
+
+[data-theme="light"] .timeline::after {
+  background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.2), transparent);
+}
+
+[data-theme="light"] .node {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(243, 248, 252, 0.95));
+  border-color: rgba(14, 165, 233, 0.3);
+  box-shadow: 0 0 50px rgba(14, 165, 233, 0.2);
+}
+
+[data-theme="light"] .node::after {
+  background: #0ea5e9;
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.6);
+}
+
+[data-theme="light"] .node:hover {
+  background: linear-gradient(135deg, rgba(248, 251, 255, 1), rgba(239, 246, 255, 0.95));
+  border-color: rgba(14, 165, 233, 0.5);
+  box-shadow: 0 0 80px rgba(14, 165, 233, 0.3);
+}
+
+[data-theme="light"] .node h2 {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .node span {
+  color: #475569;
+}
+
+[data-theme="light"] .diagram-insight {
+  max-width: 900px;
+}
+
+[data-theme="light"] .insight-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(139, 92, 246, 0.06));
+  border-color: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+}
+
+[data-theme="light"] .insight-card:hover {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="light"] .insight-card strong {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .insight-card p {
+  color: #475569;
+}
+
+[data-theme="light"] .stage-index {
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .back-btn {
+  border-color: rgba(14, 165, 233, 0.2);
+  color: #475569;
+}
+
+[data-theme="light"] .back-btn:hover {
+  border-color: rgba(14, 165, 233, 0.4);
+  color: #0ea5e9;
+  background: rgba(14, 165, 233, 0.05);
+}
+
+@media(max-width: 1024px) {
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding: 40px 0;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .timeline::after {
+    display: none;
+  }
+
+  .node {
+    width: min(100%, 320px);
+    height: 190px;
+    margin: 0 auto;
+    border-radius: 28px;
+  }
+
+  .title {
+    font-size: 42px;
+  }
+}
+
+@media(max-width: 768px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  body {
+    padding: 40px 16px;
+  }
+
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .diagram-insight {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+
+  .insight-card {
+    padding: 18px;
+  }
+
+  .insight-card strong {
+    font-size: 16px;
+  }
+
+  .insight-card p {
+    font-size: 13px;
+  }
+
+  .timeline {
+    padding: 40px 0;
+  }
+
+  .node {
+    width: 160px;
+    height: 160px;
+  }
+
+  .node h2 {
+    font-size: 20px;
+  }
+
+  .stage-index {
+    font-size: 28px;
+  }
+
+  .node span {
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+}
+
+@media(max-width: 640px) {
+  body {
+    padding: 30px 14px;
+  }
+
+  .header {
+    margin-bottom: 50px;
+  }
+
+  .diagram-insight {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 50px;
+  }
+
+  .insight-card {
+    padding: 16px;
+  }
+
+  .insight-card strong {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .insight-card p {
+    font-size: 12px;
+  }
+
+  .timeline {
+    padding: 20px 0;
+  }
+
+  .node {
+    width: min(100%, 320px);
+    height: auto;
+    min-height: 160px;
+    padding: 18px 16px;
+    border-radius: 28px;
+  }
+
+  .node h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .stage-index {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .node span {
+    font-size: 11px;
+    margin-top: 0;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+<body class="diagram-suite-page">
+<div class="bg-gradient"></div>
+<div class="floating-orbs">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+</div>
+
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="/" class="nav-logo">
+<span class="logo-icon">RRR</span>
+<div class="logo-stack">
+<span class="logo-name">Raghuramreddy</span>
+<span class="logo-tagline">Designing technology for human experience</span>
+</div>
+</a>
+<div class="nav-menu" id="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/work" class="nav-link">Work & Impact</a>
+                <a href="/applied-ai-systems" class="nav-link">Applied AI Systems</a>
+                <a href="/recognition" class="nav-link">Recognition & Credentials</a>
+                <a href="/future-systems" class="nav-link">Future Systems</a>
+                <a href="/contact" class="nav-link">Contact</a>
+</div>
+<div class="nav-actions">
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+<svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+<svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+<button class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></button>
+</div>
+</div>
+</nav>
+
+<main class="section">
+<div class="container">
+<a href="/blog/intelligent-delivery-platforms-diagrams" class="back-btn">&larr; Back to Diagrams</a>
+<div class="header">
+<div class="title">Evolution of Software<br>Delivery Systems</div>
+<p class="subtitle">From manual operations through automation, security integration, cloud-native platforms, to intelligent autonomous systems</p>
+</div>
+<div class="diagram-insight">
+<div class="insight-card">
+<strong>Transformation</strong>
+<p>Every stage adds more automation, more context, and more safety, until delivery becomes continuously analyzed instead of manually pushed.</p>
+</div>
+<div class="insight-card">
+<strong>End state</strong>
+<p>Intelligent and autonomous systems combine policy, telemetry, and AI to predict failure before it affects the release path.</p>
+</div>
+</div>
+<div class="timeline">
+<div class="node"><span class="stage-index">01</span><h2>Manual Ops</h2><span>Human-driven deployments</span></div>
+<div class="node"><span class="stage-index">02</span><h2>CI/CD</h2><span>Pipeline automation</span></div>
+<div class="node"><span class="stage-index">03</span><h2>Secure Delivery</h2><span>Integrated security</span></div>
+<div class="node"><span class="stage-index">04</span><h2>Cloud Native</h2><span>Kubernetes + GitOps</span></div>
+<div class="node"><span class="stage-index">05</span><h2>Intelligent Platforms</h2><span>AI-assisted governance</span></div>
+<div class="node"><span class="stage-index">06</span><h2>Autonomous Systems</h2><span>Predictive operations</span></div>
+</div>
+</div>
+</div>
+</main>
+
+<div class="footer-divider"></div>
+
+<footer class="footer footer--pro">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-card footer-brand-card">
+<a href="/" class="footer-logo">
+<span class="logo-icon">RRR</span>
+<span class="logo-text">Raghuramreddy</span>
+</a>
+
+<p class="footer-tagline">Designing technology for human experience</p>
+<p class="footer-subline">Intelligent Infrastructure Ecosystems<br>Operational Intelligence &bull; Lifecycle Governance &bull; Infrastructure Cognition</p>
+
+<div class="footer-social-row">
+<a class="social-pill" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener">GitHub</a>
+<a class="social-pill" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener">LinkedIn</a>
+<a class="social-pill" href="/contact">Contact</a>
+</div>
+</div>
+
+<div class="footer-links-col">
+<div class="footer-col">
+<h4 class="footer-col-title">Navigation</h4>
+<div class="footer-links">
+                <a href="/" class="footer-link">Home</a>
+                <a href="/about" class="footer-link">About</a>
+                <a href="/work" class="footer-link">Work &amp; Impact</a>
+                <a href="/applied-ai-systems" class="footer-link">Applied AI Systems</a>
+                <a href="/recognition" class="footer-link">Recognition &amp; Credentials</a>
+                <a href="/future-systems" class="footer-link">Future Systems</a>
+                <a href="/contact" class="footer-link">Contact</a>
+</div>
+</div>
+
+<div class="footer-col">
+<h4 class="footer-col-title">Explore</h4>
+<div class="footer-links">
+<a href="/future-systems" class="footer-link">Future Systems</a>
+<a href="/standards-library" class="footer-link">Operational Standards Library</a>
+</div>
+</div>
+</div>
+
+<div class="footer-card footer-connect-card">
+<div class="footer-connect-header">
+<h4 class="footer-col-title">Connect</h4>
+<p class="footer-connect-note">Fastest response on LinkedIn.</p>
+</div>
+
+<div class="footer-icon-grid">
+<a class="icon-btn" href="https://github.com/Raghuramreddy-t" target="_blank" rel="noopener" aria-label="GitHub">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-5-3m10 6v-3.5c0-1 .1-1.4-.5-2 2.2-.2 4.5-1.1 4.5-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-2.9 1.1a10 10 0 0 0-5.2 0C6.8 2.3 5.9 2.6 5.9 2.6a3.6 3.6 0 0 0-.1 2.7A3.9 3.9 0 0 0 4.8 8c0 3.9 2.3 4.8 4.5 5-.5.5-.6 1.1-.5 2V22"/></svg>
+</a>
+<a class="icon-btn" href="https://www.linkedin.com/in/raghuramreddy-t-9237901b3" target="_blank" rel="noopener" aria-label="LinkedIn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+</a>
+<a class="icon-btn" href="/contact" aria-label="Contact">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 7l8 6 8-6"/></svg>
+</a>
+</div>
+
+<a class="footer-cta" href="/contact">Let's talk &rarr;</a>
+</div>
+
+<div class="footer-visual" aria-hidden="true">
+<span class="fv-orb fv-orb-1"></span>
+<span class="fv-orb fv-orb-2"></span>
+<span class="fv-line fv-line-1"></span>
+<span class="fv-line fv-line-2"></span>
+<span class="fv-dot fv-dot-1"></span>
+<span class="fv-dot fv-dot-2"></span>
+</div>
+</div>
+
+<div class="footer-bottom footer-bottom--pro">
+<p>&copy; 2026 Raghuramreddy Thummalapalli. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<script src="/assets/js/main.js?v=20260524"></script>
+</body>
+</html>
+
+
