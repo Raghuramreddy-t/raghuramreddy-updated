@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -273,10 +273,10 @@
           tabs.forEach(function (t) {
             var active = t.dataset.panel === target;
             t.classList.toggle('active', active);
-            t.setAttribute('aria-selected', active ? 'true' : 'false');
+            t.setAttribute('aria-selected', active <i data-lucide="zap"></i> 'true' : 'false');
           });
           panels.forEach(function (panel) {
-            panel.style.display = panel.id === 'panel-' + target ? '' : 'none';
+            panel.style.display = panel.id === 'panel-' + target <i data-lucide="zap"></i> '' : 'none';
           });
           if (smooth) window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -301,8 +301,12 @@
         }
       })();
     </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () { if (window.lucide) { lucide.createIcons(); } });</script>
 </body>
 </html>
+
 
 
 

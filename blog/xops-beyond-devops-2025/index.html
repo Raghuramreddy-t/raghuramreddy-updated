@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
@@ -127,7 +127,7 @@
 
         <!-- TL;DR SECTION -->
         <div style="background: rgba(59, 130, 246, 0.08); border-left: 4px solid #3b82f6; padding: 20px; border-radius: 8px; margin-bottom: 32px;">
-            <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;">⚡ TL;DR</h3>
+            <h3 style="margin-top: 0; color: #3b82f6; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em;"><i data-lucide="zap"></i> TL;DR</h3>
             <ul style="margin: 8px 0; padding-left: 20px;">
                 <li><strong>XOps extends DevOps:</strong> From "Dev + Ops together" to "all stakeholders (Security, Data, Platform, Reliability, AI) in one loop"</li>
                 <li><strong>Key shift:</strong> Decision loops replace handoffs; security is default (not a gate); metrics are shared, not siloed</li>
@@ -153,25 +153,25 @@
 
         <p>But speed without direction becomes expensive. As organizations scaled, they hit new constraints:</p>
         <ul>
-          <li><strong>Security teams</strong> remained gatekeepers, not partners — compliance checks happened at the end, after weeks of development.</li>
-          <li><strong>Data teams</strong> built in isolation — machine learning pipelines didn't integrate with production systems until the last mile.</li>
-          <li><strong>Reliability</strong> was reactive — SREs fought fires instead of preventing them.</li>
-          <li><strong>AI adoption</strong> was tribal knowledge, not standard practice — different teams used different models, frameworks, and guardrails.</li>
+          <li><strong>Security teams</strong> remained gatekeepers, not partners  compliance checks happened at the end, after weeks of development.</li>
+          <li><strong>Data teams</strong> built in isolation  machine learning pipelines didn't integrate with production systems until the last mile.</li>
+          <li><strong>Reliability</strong> was reactive  SREs fought fires instead of preventing them.</li>
+          <li><strong>AI adoption</strong> was tribal knowledge, not standard practice  different teams used different models, frameworks, and guardrails.</li>
         </ul>
 
         <h2>XOps: Cross-Functional Operations at Scale</h2>
         <p>XOps isn't about replacing DevOps. It's about extending it. The "X" stands for the next dimension: <strong>cross-functional integration at the operational level</strong>.</p>
 
-        <p>Where DevOps said "developers and operators work together," XOps says "all stakeholders — security, data, platform, reliability, AI — operate inside the same feedback loop, from problem definition through production."</p>
+        <p>Where DevOps said "developers and operators work together," XOps says "all stakeholders  security, data, platform, reliability, AI  operate inside the same feedback loop, from problem definition through production."</p>
 
         <h2>Key Principles of XOps</h2>
-        <p><strong>1. Decision loops, not handoffs</strong><br/>In traditional orgs, security reviews your code after development. In XOps, security requirements are baked into the developer experience — linters, gates, and guardrails that work in real-time.</p>
+        <p><strong>1. Decision loops, not handoffs</strong><br/>In traditional orgs, security reviews your code after development. In XOps, security requirements are baked into the developer experience  linters, gates, and guardrails that work in real-time.</p>
 
         <p><strong>2. Shared metrics, not siloed success</strong><br/>DevOps measured deployment frequency. XOps measures deployment frequency AND security incidents prevented AND time-to-AI-insight AND cost-per-transaction. One dashboard, all stakeholders.</p>
 
         <p><strong>3. Automation over governance</strong><br/>Instead of "you need approval to deploy," XOps enforces "your code must pass these automated gates to deploy." Measurable, scalable, non-political.</p>
 
-        <p><strong>4. AI as infrastructure, not software</strong><br/>Machine learning isn't a separate project. It's a capability built into platform tooling — anomaly detection, cost optimization, incident root-cause analysis, deployment safety checks.</p>
+        <p><strong>4. AI as infrastructure, not software</strong><br/>Machine learning isn't a separate project. It's a capability built into platform tooling  anomaly detection, cost optimization, incident root-cause analysis, deployment safety checks.</p>
 
         <div style="background: rgba(34, 197, 94, 0.08); border-left: 4px solid #22c55e; padding: 20px; border-radius: 8px; margin: 24px 0;">
             <strong style="color: #22c55e;">Best Practice: Shared Metrics Dashboard</strong><br/>
@@ -193,7 +193,7 @@
           <tr style="border-bottom:1px solid rgba(148,163,184,0.2);">
             <td style="padding:12px;"><strong>Integration point</strong></td>
             <td style="padding:12px;">Deployment pipeline</td>
-            <td style="padding:12px;">Entire operating loop (design → build → test → deploy → monitor → learn)</td>
+            <td style="padding:12px;">Entire operating loop (design <i data-lucide="zap"></i> build <i data-lucide="zap"></i> test <i data-lucide="zap"></i> deploy <i data-lucide="zap"></i> monitor <i data-lucide="zap"></i> learn)</td>
           </tr>
           <tr style="border-bottom:1px solid rgba(148,163,184,0.2);">
             <td style="padding:12px;"><strong>Security model</strong></td>
@@ -215,12 +215,12 @@
         <div style="background: rgba(15, 23, 42, 0.8); color: #93c5fd; padding: 16px; border-radius: 8px; margin: 24px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9em; overflow-x: auto;">
             <div style="margin-bottom: 8px; color: #94a3b8;">// XOps workflow: Embedded gates in developer loop</div>
             <div>$ git push origin feature/auth-redesign</div>
-            <div style="margin-top: 4px;"><span style="color: #22c55e;">✓ SAST scan passed (0 high-severity findings)</span></div>
-            <div><span style="color: #22c55e;">✓ Unit tests: 156/156 passed</span></div>
-            <div><span style="color: #22c55e;">✓ Performance profile: 12ms (target: <20ms)</span></div>
-            <div><span style="color: #22c55e;">✓ Compliance check: Meets SOC2 encryption requirements</span></div>
-            <div style="margin-top: 4px;"><span style="color: #3b82f6;">→ Deploying to staging...</span></div>
-            <div style="color: #94a3b8; margin-top: 8px;"><span style="color: #22c55e;">✓ Smoke tests passed</span> <span style="color: #3b82f6;">→ Ready for production</span></div>
+            <div style="margin-top: 4px;"><span style="color: #22c55e;"><i data-lucide="zap"></i> SAST scan passed (0 high-severity findings)</span></div>
+            <div><span style="color: #22c55e;"><i data-lucide="zap"></i> Unit tests: 156/156 passed</span></div>
+            <div><span style="color: #22c55e;"><i data-lucide="zap"></i> Performance profile: 12ms (target: <20ms)</span></div>
+            <div><span style="color: #22c55e;"><i data-lucide="zap"></i> Compliance check: Meets SOC2 encryption requirements</span></div>
+            <div style="margin-top: 4px;"><span style="color: #3b82f6;"><i data-lucide="zap"></i> Deploying to staging...</span></div>
+            <div style="color: #94a3b8; margin-top: 8px;"><span style="color: #22c55e;"><i data-lucide="zap"></i> Smoke tests passed</span> <span style="color: #3b82f6;"><i data-lucide="zap"></i> Ready for production</span></div>
             <div style="color: #94a3b8; margin-top: 4px;">No gatekeepers. Just automated gates.</div>
         </div>
 
@@ -228,10 +228,10 @@
         <p>A platform team at a Fortune 500 company moved from DevOps to XOps by making one structural change: instead of separate pipeline for security and performance testing, they embedded them in the developer's IDE and local dev loop.</p>
 
         <p><strong>Before (DevOps):</strong><br/>
-        Developer commits → Pipeline runs tests → Security team reviews in 3 days → Performance team reviews in 5 days → Deploy (if approved)</p>
+        Developer commits <i data-lucide="zap"></i> Pipeline runs tests <i data-lucide="zap"></i> Security team reviews in 3 days <i data-lucide="zap"></i> Performance team reviews in 5 days <i data-lucide="zap"></i> Deploy (if approved)</p>
 
         <p><strong>After (XOps):</strong><br/>
-        Developer writes code → IDE flags security issues (SAST) in real-time → Local performance profiling shows bottlenecks → Automated gates check compliance → Deploy (no manual review needed, gates replace gatekeepers)</p>
+        Developer writes code <i data-lucide="zap"></i> IDE flags security issues (SAST) in real-time <i data-lucide="zap"></i> Local performance profiling shows bottlenecks <i data-lucide="zap"></i> Automated gates check compliance <i data-lucide="zap"></i> Deploy (no manual review needed, gates replace gatekeepers)</p>
 
         <p>Result: Deployment frequency increased 5x. Security incidents decreased 60%. Time-to-deploy went from 8 days to 4 hours. No additional headcount.</p>
 
@@ -268,7 +268,7 @@
         </div>
 
         <h2>Conclusion</h2>
-        <p>DevOps got us to deployment. XOps takes us beyond — to an operating model where all functions align on shared goals, automation replaces gatekeeping, and speed doesn't come at the cost of safety, security, or stability. It's not a new tool or framework. It's a structural shift in how organizations think about moving code to production at scale.</p>
+        <p>DevOps got us to deployment. XOps takes us beyond  to an operating model where all functions align on shared goals, automation replaces gatekeeping, and speed doesn't come at the cost of safety, security, or stability. It's not a new tool or framework. It's a structural shift in how organizations think about moving code to production at scale.</p>
 
         <hr style="margin: 36px 0; opacity:0.2;" />
 </article>
@@ -342,8 +342,12 @@
 
   <script src="/assets/js/main.js?v=20260503"></script>
   <script src="/assets/js/pages/blog-engine.js?v=20260503"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () { if (window.lucide) { lucide.createIcons(); } });</script>
 </body>
 </html>
+
 
 
 

@@ -1007,6 +1007,29 @@ body::after {
         border: 1px solid rgba(99,102,241,0.2) !important;
         box-shadow: 0 4px 16px rgba(59,130,246,0.1) !important;
 }
+.card-icon i {
+        width: 28px;
+        height: 28px;
+        color: var(--accent-primary);
+        stroke-width: 1.5;
+}
+.tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+        gap: 12px;
+        align-items: center;
+}
+.tool-icon {
+        width: 40px;
+        height: 40px;
+        filter: grayscale(1) brightness(0.8) opacity(0.7);
+        transition: filter 0.2s ease, transform 0.2s ease;
+        display: block;
+}
+.tool-icon:hover {
+        filter: none;
+        transform: translateY(-3px);
+}
 /* 11. TAGS */
 .card-tags span, .project-tags span, .blog-card-tags span {
         background: rgba(99,102,241,0.1) !important;

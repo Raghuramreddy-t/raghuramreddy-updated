@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
@@ -149,7 +149,7 @@
             <ul style="margin: 8px 0; padding-left: 20px;">
                 <li><strong>Problem:</strong> Traditional CI/CD pipelines automate deployment execution but lack operational intelligence for modern distributed systems</li>
                 <li><strong>Solution:</strong> Intelligent Delivery Platforms (IDPs) continuously correlate deployment, security, observability, and governance signals</li>
-                <li><strong>Key shift:</strong> From "How fast can we deploy?" to "How do we understand operational risk in real time?"</li>
+                <li><strong>Key shift:</strong> From "How fast can we deploy<i data-lucide="zap"></i>" to "How do we understand operational risk in real time<i data-lucide="zap"></i>"</li>
                 <li><strong>Core capability:</strong> AI-assisted operational analysis, runtime awareness, continuous governance, and telemetry correlation</li>
                 <li><strong>Impact:</strong> Faster MTTR, reduced alert noise, proactive operations, better reliability at scale</li>
             </ul>
@@ -159,7 +159,7 @@
 
         <p>For years, engineering organizations measured delivery maturity using a simple metric:</p>
 
-        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;"><em>"How fast can we deploy?"</em></p>
+        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;"><em>"How fast can we deploy<i data-lucide="zap"></i>"</em></p>
 
         <p>That question shaped the rise of:</p>
 
@@ -190,11 +190,11 @@
 
         <p>The problem is no longer:</p>
 
-        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;"><em>"How do we automate deployments?"</em></p>
+        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;"><em>"How do we automate deployments<i data-lucide="zap"></i>"</em></p>
 
         <p>The real problem is:</p>
 
-        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;"><em>"How do we continuously understand operational risk across distributed systems in real time?"</em></p>
+        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;"><em>"How do we continuously understand operational risk across distributed systems in real time<i data-lucide="zap"></i>"</em></p>
 
         <p>This is where traditional CI/CD pipelines begin to evolve into something much larger.</p>
 
@@ -252,20 +252,20 @@
         <p>Traditional CI/CD systems were designed primarily for execution. They answer questions like:</p>
 
         <ul>
-          <li>Did the build pass?</li>
-          <li>Did the deployment complete?</li>
-          <li>Did the tests succeed?</li>
+          <li>Did the build pass<i data-lucide="zap"></i></li>
+          <li>Did the deployment complete<i data-lucide="zap"></i></li>
+          <li>Did the tests succeed<i data-lucide="zap"></i></li>
         </ul>
 
         <p>But modern environments require answers to much deeper operational questions:</p>
 
         <ul>
-          <li>What deployment increased production risk?</li>
-          <li>Which dependency introduced the vulnerability?</li>
-          <li>What runtime drift exists after deployment?</li>
-          <li>Which services are affected downstream?</li>
-          <li>Which deployment correlates with degraded telemetry?</li>
-          <li>Which operational pattern resembles previous incidents?</li>
+          <li>What deployment increased production risk<i data-lucide="zap"></i></li>
+          <li>Which dependency introduced the vulnerability<i data-lucide="zap"></i></li>
+          <li>What runtime drift exists after deployment<i data-lucide="zap"></i></li>
+          <li>Which services are affected downstream<i data-lucide="zap"></i></li>
+          <li>Which deployment correlates with degraded telemetry<i data-lucide="zap"></i></li>
+          <li>Which operational pattern resembles previous incidents<i data-lucide="zap"></i></li>
         </ul>
 
         <p>Traditional pipelines rarely understand operational context. They execute workflows. They do not understand systems.</p>
@@ -413,11 +413,11 @@
 
         <p>Traditional operations were reactive:</p>
 
-        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;">Failure occurs → Human investigates → Manual correlation → Resolution</p>
+        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;">Failure occurs <i data-lucide="zap"></i> Human investigates <i data-lucide="zap"></i> Manual correlation <i data-lucide="zap"></i> Resolution</p>
 
         <p>Intelligent Delivery Platforms introduce:</p>
 
-        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;">Continuous telemetry analysis → Risk detection → Context correlation → AI-assisted recommendations → Human-governed action</p>
+        <p style="background: rgba(99, 102, 241, 0.1); border-left: 4px solid #6366f1; padding: 16px; border-radius: 6px; margin: 16px 0;">Continuous telemetry analysis <i data-lucide="zap"></i> Risk detection <i data-lucide="zap"></i> Context correlation <i data-lucide="zap"></i> AI-assisted recommendations <i data-lucide="zap"></i> Human-governed action</p>
 
         <p>This transforms operations from reactive firefighting into intelligence-driven systems.</p>
 
@@ -598,6 +598,10 @@
 
   <!-- SCRIPTS -->
   <script src="/assets/js/main.js?v=20260503"></script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () { if (window.lucide) { lucide.createIcons(); } });</script>
 </body>
 </html>
+
 

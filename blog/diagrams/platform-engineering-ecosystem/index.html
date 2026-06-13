@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
@@ -268,7 +268,7 @@ color:#fff;
 }
 
 .details-content li::before {
-  content: '→';
+  content: '<i data-lucide="zap"></i>';
   position: absolute;
   left: 0;
   color: var(--color, #6ee7ff);
@@ -477,7 +477,7 @@ color:#fff;
       <div class="layer-top"></div>
       <div class="layer-content">
         <h3>AI-Augmented Platform</h3>
-        <p>Knowledge agents • Change risk • Automated remediation</p>
+        <p>Knowledge agents  Change risk  Automated remediation</p>
         <span class="layer-click-hint">Click for details</span>
       </div>
     </div>
@@ -486,7 +486,7 @@ color:#fff;
       <div class="layer-top"></div>
       <div class="layer-content">
         <h3>Automation & Operations</h3>
-        <p>Upgrade factory • Patching • Standardization • Compliance</p>
+        <p>Upgrade factory  Patching  Standardization  Compliance</p>
         <span class="layer-click-hint">Click for details</span>
       </div>
     </div>
@@ -495,7 +495,7 @@ color:#fff;
       <div class="layer-top"></div>
       <div class="layer-content">
         <h3>Observability & Reliability</h3>
-        <p>OpenTelemetry • SLOs • Incident patterns • Self-healing</p>
+        <p>OpenTelemetry  SLOs  Incident patterns  Self-healing</p>
         <span class="layer-click-hint">Click for details</span>
       </div>
     </div>
@@ -504,7 +504,7 @@ color:#fff;
       <div class="layer-top"></div>
       <div class="layer-content">
         <h3>Secure Delivery</h3>
-        <p>SAST • SCA • Supply chain • Policy-as-code</p>
+        <p>SAST  SCA  Supply chain  Policy-as-code</p>
         <span class="layer-click-hint">Click for details</span>
       </div>
     </div>
@@ -513,7 +513,7 @@ color:#fff;
       <div class="layer-top"></div>
       <div class="layer-content">
         <h3>Delivery Systems</h3>
-        <p>CI/CD • GitOps • Golden paths • Release governance</p>
+        <p>CI/CD  GitOps  Golden paths  Release governance</p>
         <span class="layer-click-hint">Click for details</span>
       </div>
     </div>
@@ -522,14 +522,14 @@ color:#fff;
       <div class="layer-top"></div>
       <div class="layer-content">
         <h3>Platform Foundation</h3>
-        <p>Kubernetes • Networking • IAM • Storage & DR</p>
+        <p>Kubernetes  Networking  IAM  Storage & DR</p>
         <span class="layer-click-hint">Click for details</span>
       </div>
     </div>
   </div>
 
   <div class="details-panel" id="detailsPanel">
-    <div class="details-close" onclick="document.getElementById('detailsPanel').classList.remove('active')">×</div>
+    <div class="details-close" onclick="document.getElementById('detailsPanel').classList.remove('active')"></div>
     <div class="details-content">
       <h2 id="detailsTitle"></h2>
       <div id="detailsDescription"></div>
@@ -664,7 +664,7 @@ const layerDetails = {
 
       <h3>Benefits</h3>
       <ul>
-        <li>Case-study outcome: 90% faster upgrades (8 hours → 45 minutes)</li>
+        <li>Case-study outcome: 90% faster upgrades (8 hours <i data-lucide="zap"></i> 45 minutes)</li>
         <li>Zero-touch compliance and audit reporting</li>
         <li>Reduced operational overhead and manual work</li>
         <li>Consistent infrastructure across deployments</li>
@@ -785,7 +785,11 @@ document.querySelectorAll('.stack-layer').forEach(layer => {
   });
 });
 </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () { if (window.lucide) { lucide.createIcons(); } });</script>
 </body>
 </html>
+
 
 

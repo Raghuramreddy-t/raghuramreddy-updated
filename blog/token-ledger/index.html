@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 
 <head>
@@ -88,7 +88,7 @@
     <header class="page-header ph--blog">
         <div class="container">
             <div class="page-header-content">
-                <span class="page-tag animate-fade-in">Engineering Guide • Token Economics</span>
+                <span class="page-tag animate-fade-in">Engineering Guide  Token Economics</span>
                 <h1 class="page-title animate-slide-up">The Token Ledger<span class="gradient-text"></span></h1>
                 <p class="page-subtitle animate-slide-up delay-1">
                     Understanding tokenization, LLM pricing models, and cost optimization strategies for building cost-aware AI systems at scale.
@@ -147,9 +147,9 @@
                 </p>
             </section>
 
-            <!-- WHAT ARE TOKENS? -->
+            <!-- WHAT ARE TOKENS<i data-lucide="zap"></i> -->
             <section class="article-section">
-                <h2>What Are Tokens?</h2>
+                <h2>What Are Tokens<i data-lucide="zap"></i></h2>
                 <p>
                     LLMs do not read characters or words directly. They read <strong>tokens</strong>, which are subword
                     units produced by a tokenizer.
@@ -174,9 +174,9 @@
                 </p>
             </section>
 
-            <!-- WHAT ARE EMBEDDINGS? -->
+            <!-- WHAT ARE EMBEDDINGS<i data-lucide="zap"></i> -->
             <section class="article-section">
-                <h2>What Are Embeddings?</h2>
+                <h2>What Are Embeddings<i data-lucide="zap"></i></h2>
                 <p>
                     Once tokenized, each token is converted into an <strong>embedding</strong> - a numerical vector that
                     captures meaning in context.
@@ -448,7 +448,7 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
 
             const getModel = (providerId, modelId) => {
                 const provider = pricing.providers.find(p => p.id === providerId);
-                return provider ? provider.models.find(model => model.id === modelId) : null;
+                return provider <i data-lucide="zap"></i> provider.models.find(model => model.id === modelId) : null;
             };
 
             const claudeHaiku = getModel('claude', 'haiku35');
@@ -476,7 +476,7 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
                 const node = document.getElementById(id);
                 if (!node || !model) return;
                 node.textContent = model.cached_input_per_mtok != null
-                    ? `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
+                    <i data-lucide="zap"></i> `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
                     : formatPair(model);
             });
 
@@ -490,7 +490,7 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
                 const node = document.getElementById(id);
                 if (node && model) {
                     node.textContent = model.cached_input_per_mtok != null
-                        ? `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
+                        <i data-lucide="zap"></i> `${formatPair(model)} per 1M tokens (cached input $${model.cached_input_per_mtok.toFixed(2)})`
                         : formatPair(model);
                 }
             });
@@ -527,6 +527,10 @@ print(f"Cost: ${cost:.4f}")  # Output: $0.0125
             }
         })();
     </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () { if (window.lucide) { lucide.createIcons(); } });</script>
 </body>
 
 </html>
+

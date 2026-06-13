@@ -1,66 +1,53 @@
-# Raghuramreddy Thummalapalli — Intelligent Infrastructure Ecosystems
+# Raghuramreddy Thummalapalli
 
-[Live Site](https://raghuramreddy.tech) | [Work](https://raghuramreddy.tech/pages/work.html) | [Applied AI](https://raghuramreddy.tech/pages/applied-ai-systems.html) | [TokenOps](https://raghuramreddy.tech/pages/tokenops-cost-engineering-lab.html) | [Recognition](https://raghuramreddy.tech/pages/recognition.html)
+## Intelligent Infrastructure Ecosystems Architect
 
-## What's Here
+[raghuramreddy.tech](https://raghuramreddy.tech) · [Work](https://raghuramreddy.tech/work) · [Applied AI Systems](https://raghuramreddy.tech/applied-ai-systems) · [Blog](https://raghuramreddy.tech/blog) · [TokenOps Lab](https://raghuramreddy.tech/labs/tokenops)
 
-Public portfolio covering intelligent infrastructure ecosystems, operational intelligence, lifecycle governance, and AI-assisted infrastructure modernization.
+---
 
-## Pages
+Portfolio covering intelligent infrastructure ecosystems, operational intelligence, lifecycle governance, and AI-assisted infrastructure modernization.
 
-- **Home** — Identity, frameworks, knowledge hub
-- **About** — Background and philosophy
-- **Work & Impact** — Project stories and case studies
-- **Applied AI Systems** — AI governance and infrastructure
-- **Future Systems** — Autonomous operations frameworks
-- **TokenOps** — Cost engineering lab + pricing comparison
-- **Recognition** — Credentials and publications
+## Structure
 
-## Quick Start
+```text
+index.html                  # Home
+about/                      # Background and philosophy
+work/                       # Projects and case studies
+applied-ai-systems/         # AI governance and infrastructure
+future-systems/             # Autonomous operations frameworks
+recognition/                # Credentials and publications
+blog/                       # Articles and diagram suites
+labs/tokenops/              # TokenOps cost engineering lab
+standards-library/          # Operational standards reference
+assets/
+  css/                      # Stylesheets
+  js/                       # JavaScript
+  data/                     # JSON content
+  images/                   # SVGs and images
+  external/tokenops/        # TokenOps lab bundle
+```
+
+All pages follow the `SLUG/index.html` pattern, served at `/SLUG` with no `.html` extension.
+
+## Local Development
 
 ```bash
 npm start
 ```
 
-Or:
-
 ```bash
 python -m http.server 8080
 ```
 
-Visit: `http://localhost:8080`
+Open `http://localhost:8080`
 
-## Project Structure
+## Stack
 
-```text
-.
-├── index.html                 # Home page
-├── pages/                     # Portfolio pages
-│   ├── about.html
-│   ├── work.html
-│   ├── recognition.html
-│   ├── contact.html
-│   ├── future-systems.html
-│   ├── applied-ai-systems.html
-│   ├── tokenops-cost-engineering-lab.html
-│   ├── blog/                  # Blog articles
-│   └── ...
-├── assets/
-│   ├── css/                   # Stylesheets
-│   ├── js/                    # JavaScript
-│   ├── data/                  # JSON data files
-│   └── images/
-├── package.json               # Dev dependencies
-└── README.md
-```
-
-## Tech Stack
-
-- HTML, CSS, Vanilla JavaScript
-- Static JSON data
-- GitHub Pages
-- No frontend framework
+- HTML · CSS · Vanilla JavaScript
+- Static JSON data files
+- GitHub Pages — no build step
 
 ## License
 
-Content and branding © 2026 Raghuramreddy Thummalapalli. Not for reuse without permission.
+Content and branding © 2025–2026 Raghuramreddy Thummalapalli. All rights reserved.

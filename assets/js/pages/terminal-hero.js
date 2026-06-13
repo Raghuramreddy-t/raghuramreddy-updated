@@ -29,12 +29,12 @@
         {
             prompt: 'Get-FlagshipProjects',
             lines: [
-                { text: '✓ upgrade-factory             90% faster Kubernetes upgrades', tone: 'success' },
-                { text: '✓ project-shield              End-to-end supply chain security', tone: 'success' },
-                { text: '✓ cicd-rca-ai                 Intelligent incident root cause analysis', tone: 'primary' },
-                { text: '✓ toolchain-modernization     GitOps-driven infrastructure automation', tone: 'accent' },
-                { text: '✓ copilot-governance          LLM safety & compliance framework', tone: 'success' },
-                { text: '✓ observability-stack         Unified metrics, logs, traces platform', tone: 'accent' },
+                { text: 'upgrade-factory             90% faster Kubernetes upgrades', tone: 'success' },
+                { text: 'project-shield              End-to-end supply chain security', tone: 'success' },
+                { text: 'cicd-rca-ai                 Intelligent incident root cause analysis', tone: 'primary' },
+                { text: 'toolchain-modernization     GitOps-driven infrastructure automation', tone: 'accent' },
+                { text: 'copilot-governance          LLM safety & compliance framework', tone: 'success' },
+                { text: 'observability-stack         Unified metrics, logs, traces platform', tone: 'accent' },
             ],
         },
         {
@@ -51,12 +51,12 @@
         {
             prompt: 'Get-ImpactMetrics',
             lines: [
-                { text: '⚡ 90% faster cluster upgrades  │ 8h → 45min', tone: 'success' },
-                { text: '⚡ 80% faster vulnerability fix │ 2d → 5h', tone: 'success' },
-                { text: '⚡ 70% reduced deployment risk  │ manual → automated', tone: 'primary' },
-                { text: '⚡ 100% audit compliance        │ supply chain secured', tone: 'accent' },
-                { text: '⚡ 50+ systems influenced       │ across multiple orgs', tone: 'success' },
-                { text: '⚡ Zero incidents in prod       │ proven reliability', tone: 'success' },
+                { text: '90% faster cluster upgrades  │ 8h → 45min', tone: 'success' },
+                { text: '80% faster vulnerability fix │ 2d → 5h', tone: 'success' },
+                { text: '70% reduced deployment risk  │ manual → automated', tone: 'primary' },
+                { text: '100% audit compliance        │ supply chain secured', tone: 'accent' },
+                { text: '50+ systems influenced       │ across multiple orgs', tone: 'success' },
+                { text: 'Zero incidents in prod       │ proven reliability', tone: 'success' },
             ],
         },
         {
@@ -73,12 +73,12 @@
         {
             prompt: 'Test-SystemStatus',
             lines: [
-                { text: '[✓] Intelligent Infrastructure Ready    Status: HEALTHY', tone: 'success' },
-                { text: '[✓] Lifecycle Governance Ready          Status: OPTIMAL', tone: 'success' },
-                { text: '[✓] Enterprise Scale Readiness         Status: PROVEN', tone: 'success' },
-                { text: '[✓] Infrastructure Cognition Ready      Status: ADVANCED', tone: 'primary' },
-                { text: '[✓] Security & Compliance Framework    Status: CERTIFIED', tone: 'accent' },
-                { text: '[✓] Open for Strategic Collaboration   Status: AVAILABLE', tone: 'success' },
+                { text: 'Intelligent Infrastructure Ready    Status: HEALTHY', tone: 'success' },
+                { text: 'Lifecycle Governance Ready          Status: OPTIMAL', tone: 'success' },
+                { text: 'Enterprise Scale Readiness         Status: PROVEN', tone: 'success' },
+                { text: 'Infrastructure Cognition Ready      Status: ADVANCED', tone: 'primary' },
+                { text: 'Security & Compliance Framework    Status: CERTIFIED', tone: 'accent' },
+                { text: 'Open for Strategic Collaboration   Status: AVAILABLE', tone: 'success' },
             ],
         },
         {
@@ -117,7 +117,7 @@
 
         function addOutputLine(text, tone) {
             const line = document.createElement('div');
-            line.className = 'term-output-line' + (tone ? ` tone-${tone}` : '');
+            line.className = 'term-output-line' + (tone ` tone-${tone}` : '');
             line.textContent = text;
             termBody.insertBefore(line, promptEl);
             termBody.scrollTop = termBody.scrollHeight;
