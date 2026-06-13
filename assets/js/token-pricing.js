@@ -1,7 +1,7 @@
 window.TOKENOPS_PRICING = {
   version: '2026-05-23',
   last_verified: '2026-05-23',
-  display_last_verified: '05232026',
+  display_last_verified: '05-23-2026',
   providers: [
     {
       id: 'claude',

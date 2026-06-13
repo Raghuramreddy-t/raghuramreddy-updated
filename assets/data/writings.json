@@ -18,7 +18,7 @@
       "title": "The Token Ledger",
       "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
       "url": "/blog/token-ledger",
-      "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Claude", "GPT"],
+      "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Article"],
       "published": "2026-04-01",
       "version": "1.2.0"
     },
@@ -33,10 +33,10 @@
     },
     {
       "id": "token-ledger-lab",
-      "title": "Ledger Lab",
+      "title": "Cost Engineering Lab",
       "description": "Interactive playground: calculate token costs in real-time, compare Claude vs GPT-5.5 pricing, and estimate batch costs at scale.",
       "url": "/labs/tokenops",
-      "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Interactive"],
+      "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Lab"],
       "published": "2025-10-28",
       "version": "1.0.0"
     },

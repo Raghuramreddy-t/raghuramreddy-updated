@@ -25,17 +25,17 @@
     {
       "id": "token-ledger",
       "title": "The Token Ledger",
-      "description": "Estimate token usage, compare Claude and OpenAI costs, and use the standalone TokenOps lab for interactive cost estimation.",
+      "description": "Estimate token usage, compare Claude and OpenAI costs, and use the standalone Cost Engineering Lab for interactive cost estimation.",
       "url": "/blog/token-ledger",
       "published": "2026-05-10",
-      "tags": ["Tokenizers", "Token Economics", "Claude", "Demo"],
+      "tags": ["Tokenizers", "Token Economics", "Claude", "Article", "Lab"],
       "actions": [
         {
           "label": "Read Article",
           "url": "/blog/token-ledger"
         },
         {
-          "label": "Open TokenOps Lab",
+          "label": "Open Cost Engineering Lab",
           "url": "/labs/tokenops"
         }
       ]
