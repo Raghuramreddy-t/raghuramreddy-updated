@@ -23,8 +23,8 @@
     const ctx = canvas.getContext('2d');
     let W = 0, H = 0, t = 0;
 
-    // Config
-    const COUNT          = 260;
+    // Config — reduced from 260 for performance
+    const COUNT          = 100;
     const MAGNET_RADIUS  = 160;   // px - pull-in zone
     const RING_RADIUS    = 80;    // px - ring size around cursor
     const WAVE_SPEED     = 0.018;
@@ -142,11 +142,12 @@
             ctx.fill();
         });
 
-        requestAnimationFrame(draw);
+        if (!document.hidden) requestAnimationFrame(draw);
     }
 
     resize();
     init();
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) requestAnimationFrame(draw); });
     window.addEventListener('resize', () => { resize(); init(); }, { passive: true });
 
     document.addEventListener('mousemove', (e) => {

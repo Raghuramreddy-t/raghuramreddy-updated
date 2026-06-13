@@ -9,7 +9,7 @@ class ParticleSystem {
         
         this.ctx = this.canvas.getContext('2d');
         this.particles = [];
-        this.particleCount = 50;
+        this.particleCount = 30;
         this.mouse = { x: null, y: null, radius: 150 };
         this.colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#6366f1'];
         

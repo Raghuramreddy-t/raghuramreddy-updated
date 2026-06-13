@@ -1,36 +1,10 @@
 {
+  "_readme": "Supplemental search-index data for entries not covered by blog-index.json. blog-index.json is the canonical source for all blog post rendering (writing.html, blog.html, index.html carousel). This file contains only entries unique to it: interactive lab sub-sections and article variants not present in blog-index.json. Do not add duplicates here.",
   "site": {
     "baseUrl": "https://raghuramreddy.tech",
     "author": "Raghuramreddy Thummalapalli"
   },
   "posts": [
-    {
-      "id": "intelligent-delivery-platforms",
-      "title": "The Rise of Intelligent Delivery Platforms",
-      "description": "Why traditional CI/CD pipelines are evolving into AI-assisted operational systems. Exploring the shift from deployment automation to continuous operational intelligence.",
-      "url": "blog/intelligent-delivery-platforms.html",
-      "tags": ["Platform Engineering", "DevSecOps", "AI Operations", "Cloud-Native", "Delivery Platforms"],
-      "published": "2026-05-08",
-      "version": "1.0.0"
-    },
-    {
-      "id": "token-ledger",
-      "title": "The Token Ledger",
-      "description": "A hands-on look at tokens, embeddings, and tokenizers, with side-by-side Claude and GPT-5.5 cost calculations.",
-      "url": "blog/token-ledger.html",
-      "tags": ["Token Economics", "Tokenizers", "LLM Costs", "Claude", "GPT"],
-      "published": "2026-04-01",
-      "version": "1.2.0"
-    },
-    {
-      "id": "rag-knowledge-systems",
-      "title": "Grounded AI Systems",
-      "description": "Comprehensive guide to grounding knowledge in AI systems. Learn RAG, vector embeddings, MCP, agents, and multi-agent architectures. Includes hallucination problems, retrieval strategies, real-world considerations, and when to use each pattern.",
-      "url": "blog/rag-knowledge-systems.html",
-      "tags": ["RAG", "Vector Embeddings", "Agents", "MCP", "AI Engineering", "Grounding"],
-      "published": "2026-03-01",
-      "version": "1.0.0"
-    },
     {
       "id": "token-ledger-lab",
       "title": "Ledger Lab",
@@ -56,24 +30,6 @@
       "url": "blog/xops-beyond-devops-2025.html",
       "tags": ["XOps", "DevOps", "Platform Engineering", "AI Ops"],
       "published": "2025-10-15",
-      "version": "1.0.0"
-    },
-    {
-      "id": "llm-sonnet-4-6",
-      "title": "LLM Sonnet 4.6 Is Here - Closing the Gap with Frontier Models",
-      "description": "LLM Sonnet 4.6 overview, capability improvements, and what the model shift means for practical AI engineering workflows.",
-      "url": "https://raghuramreddy-tech.medium.com/llm-sonnet-4-6-is-here-and-its-closing-the-gap-with-opus-fa7dbbb80b4e",
-      "tags": ["AI", "LLM", "GenAI"],
-      "published": "2025-10-08",
-      "version": "1.0.0"
-    },
-    {
-      "id": "software-platforms-critical-infra",
-      "title": "Software Platforms as Critical Infrastructure: Why Reliability Is Now a Public Interest Problem",
-      "description": "Why platform reliability is now a public-interest problem and how platform teams should treat reliability, governance, and resilience as infrastructure responsibilities.",
-      "url": "https://raghuramreddy-tech.medium.com/software-platforms-as-critical-infrastructure-why-reliability-is-now-a-public-interest-problem-27da1b5dfc1b",
-      "tags": ["Platform Engineering", "Reliability", "Infrastructure"],
-      "published": "2025-10-01",
       "version": "1.0.0"
     }
   ]

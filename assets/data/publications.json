@@ -7,7 +7,7 @@
       "title": "Building Resilient Internal Developer Platforms",
       "type": "Technical Paper",
       "description": "A comprehensive guide to designing Internal Developer Platforms that scale with organizational growth while maintaining developer experience and operational reliability.",
-      "link": null,
+      "link": "#",
       "tags": ["IDP", "Intelligent Infrastructure", "Reliability"]
     },
     {
@@ -15,7 +15,7 @@
       "title": "Secure Lifecycle Governance at Enterprise Scale",
       "type": "Technical Paper",
       "description": "Practical insights from implementing security automation across large enterprises. Covers toolchain integration, policy enforcement, and cultural transformation.",
-      "link": null,
+      "link": "#",
       "tags": ["Lifecycle Governance", "Enterprise", "Security Automation"]
     },
     {
@@ -23,7 +23,7 @@
       "title": "AI Governance Framework for Enterprise Operations",
       "type": "Technical Paper",
       "description": "A framework for safely integrating AI into enterprise operations with proper governance, audit trails, and human oversight mechanisms.",
-      "link": null,
+      "link": "#",
       "tags": ["AI Governance", "AIOps", "Enterprise"]
     }
   ],
@@ -50,7 +50,7 @@
       "publisher": "Amazon KDP",
       "year": 2025,
       "pages": 122,
-      "link": null,
+      "link": "#",
       "description": "A 122-page practitioner field manual covering platform engineering, DevSecOps, lifecycle governance, and infrastructure cognition patterns from real-world deployments.",
       "tags": ["Platform Engineering", "DevSecOps", "Lifecycle Governance"]
     }
@@ -70,7 +70,7 @@
       "title": "The Evolution of Intelligent Infrastructure Ecosystems",
       "outlet": "Medium",
       "description": "How platform engineering has evolved from infrastructure automation to building Internal Developer Platforms that scale teams and reduce cognitive load.",
-      "link": null,
+      "link": "#",
       "tags": ["Intelligent Infrastructure", "IDP"]
     },
     {
@@ -78,7 +78,7 @@
       "title": "Security Should Enable, Not Block",
       "outlet": "LinkedIn Newsletter",
       "description": "Rethinking security's role in the development lifecycle. How governed security can accelerate delivery instead of slowing it down.",
-      "link": null,
+      "link": "#",
       "tags": ["Lifecycle Governance", "Security Culture"]
     },
     {
@@ -86,7 +86,7 @@
       "title": "Safe AI Adoption in Enterprise Operations",
       "outlet": "LinkedIn Newsletter",
       "description": "A practical guide to adopting AI-powered tools in enterprise environments while maintaining security, compliance, and human oversight.",
-      "link": null,
+      "link": "#",
       "tags": ["Operational Intelligence", "Enterprise", "Governance"]
     }
   ]
