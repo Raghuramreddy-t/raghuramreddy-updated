@@ -42,14 +42,14 @@
       "verifiedOn": "2026-05-31"
     },
     {
-      "id": "copilot-extended-context-consumption",
+      "id": "copilot-agentic-consumption",
       "provider": "GitHub Copilot",
       "category": "Usage economics",
       "status": "Current documentation",
       "effectiveDate": null,
-      "title": "Extended sessions and larger context may consume more AI Credits",
-      "summary": "GitHub states that longer sessions, larger context windows and higher reasoning consume more tokens and credits.",
-      "impact": "The presets deliberately use larger editable context assumptions.",
+      "title": "Agentic sessions and extended context may consume more AI Credits",
+      "summary": "GitHub states that long agentic sessions, larger context windows and higher reasoning consume more tokens and credits.",
+      "impact": "Agentic presets deliberately use larger editable context assumptions.",
       "source": "https://docs.github.com/en/copilot/concepts/billing/usage-based-billing-for-individuals",
       "verifiedOn": "2026-05-31"
     }

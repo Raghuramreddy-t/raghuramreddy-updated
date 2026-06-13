@@ -62,7 +62,7 @@
     },
     {
       "number": "06",
-      "title": "Break down multi-step tasks",
+      "title": "Break down agentic tasks",
       "body": "Cloud-agent and multi-step workflows can involve multiple model calls. Narrow task boundaries make assumptions and spending easier to control.",
       "certainty": "documented-plus-guidance"
     },
@@ -102,7 +102,7 @@
       "inputTokens": 40000,
       "cachedInputTokens": 8000,
       "outputTokens": 8000,
-      "note": "High-context workflow assumption"
+      "note": "High-context agentic assumption"
     },
     {
       "task": "Architecture analysis",

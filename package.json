@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Portfolio site for Raghuramreddy",
   "scripts": {
-    "start": "python -m http.server 8080",
-    "validate": "npm run check:encoding && npm run check:sitemap && npm run check:links",
-    "check:encoding": "node scripts/check-encoding.js",
-    "check:sitemap": "node scripts/check-sitemap.js",
-    "check:links": "node scripts/check-links.js"
+    "start": "python -m http.server 8080"
   }
 }

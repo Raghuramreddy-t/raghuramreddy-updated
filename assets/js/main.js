@@ -427,9 +427,7 @@ function initMobileNav() {
     navToggle?.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
-        const isOpen = navMenu.classList.contains('active');
-        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        document.body.style.overflow = isOpen ? 'hidden' : '';
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
 
     // Close menu when clicking outside
@@ -437,7 +435,6 @@ function initMobileNav() {
         if (!navMenu?.contains(e.target) && !navToggle?.contains(e.target)) {
             navMenu?.classList.remove('active');
             navToggle?.classList.remove('active');
-            navToggle?.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         }
     });

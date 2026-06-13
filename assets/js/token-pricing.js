@@ -75,7 +75,7 @@ window.TOKENOPS_PRICING = {
           reasoning: true,
           vision: true,
           speed: 'slow',
-          best_for: 'Professional work, coding, and long-running workflows',
+          best_for: 'Professional work, coding, and long-running agentic tasks',
           color: '#0f766e',
           source: 'https://openai.com/api/pricing/'
         },
