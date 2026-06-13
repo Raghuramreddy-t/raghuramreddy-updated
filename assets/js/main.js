@@ -850,24 +850,6 @@ function initCommandPalette() {
 function initGlobalAIWidget() {
     if (document.getElementById('ai-fab') || document.getElementById('ai-panel')) return;
 
-    const pagesToIndex = [
-        '/',
-        '/about',
-        '/work',
-        '/applied-ai-systems',
-        '/future-systems',
-        '/recognition',
-        '/contact',
-        '/standards-library',
-        '/blog/rag-knowledge-systems',
-        '/blog/devops-to-platform-engineering',
-        '/blog/ci-cd-failures-at-scale',
-        '/blog/secure-by-design-ci-cd',
-        '/blog/toolchain-modernization',
-        '/blog/xops-beyond-devops',
-        '/blog/ai-cicd-troubleshooter'
-    ];
-
     if (!document.getElementById('ai-widget-styles')) {
         const style = document.createElement('style');
         style.id = 'ai-widget-styles';
@@ -971,6 +953,30 @@ function initGlobalAIWidget() {
 
     function normalizePath(path) {
         return resolveSitePath(path);
+    }
+
+    async function loadSitemapRoutes() {
+        try {
+            const res = await fetch('/sitemap.xml', { cache: 'no-store' });
+            if (!res.ok) return [];
+            const xml = await res.text();
+            const doc = new DOMParser().parseFromString(xml, 'application/xml');
+            const urls = Array.from(doc.querySelectorAll('url > loc'))
+                .map((node) => String(node.textContent || '').trim())
+                .filter(Boolean)
+                .map((url) => {
+                    try {
+                        const parsed = new URL(url);
+                        return parsed.pathname.replace(/\/index\.html$/i, '/') || '/';
+                    } catch {
+                        return String(url).replace(/^https?:\/\/[^/]+/i, '').replace(/\/index\.html$/i, '/') || '/';
+                    }
+                })
+                .filter((path) => path !== '/' || path === '/');
+            return Array.from(new Set(urls));
+        } catch (_) {
+            return [];
+        }
     }
 
     function extractPageContent(html, page) {
@@ -1095,8 +1101,9 @@ function initGlobalAIWidget() {
             'assets/data/publications.json',
             'assets/data/writings.json'
         ];
+        const sitemapRoutes = await loadSitemapRoutes();
         const tasks = [
-            ...pagesToIndex.map(async (page) => {
+            ...sitemapRoutes.map(async (page) => {
             try {
                 const res = await fetch(normalizePath(page), { cache: 'no-store' });
                 if (!res.ok) return;
