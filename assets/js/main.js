@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initNavCharStagger();
     initWordReveal();
     initBtnRoll();
+    normalizeAllInternalLinks();
 });
 
 function injectArticleHeaderDate() {
@@ -139,6 +140,18 @@ function resolveSitePath(path) {
     return normalized + '/';
 
 
+}
+
+function normalizeAllInternalLinks() {
+    const routePattern = /^\/(about|work|applied-ai-systems|recognition|future-systems|contact|publications|blog|standards-library|privacy|terms|writing|labs\/tokenops)(?:[?#].*)?$/i;
+    document.querySelectorAll('a[href]').forEach((anchor) => {
+        const href = anchor.getAttribute('href');
+        if (!href || !routePattern.test(href)) return;
+        const normalized = href.replace(/([?#].*)$/, '');
+        if (!normalized.endsWith('/')) {
+            anchor.setAttribute('href', normalized + '/');
+        }
+    });
 }
 
 function initSocialIcons() {
