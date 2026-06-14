@@ -117,7 +117,7 @@
 
         function addOutputLine(text, tone) {
             const line = document.createElement('div');
-            line.className = 'term-output-line' + (tone ` tone-${tone}` : '');
+            line.className = 'term-output-line' + (tone ? ` tone-${tone}` : '');
             line.textContent = text;
             termBody.insertBefore(line, promptEl);
             termBody.scrollTop = termBody.scrollHeight;

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
@@ -8,135 +8,171 @@
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/about/</loc>
+    <loc>https://raghuramreddy.tech/about</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/work/</loc>
+    <loc>https://raghuramreddy.tech/work</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/applied-ai-systems/</loc>
+    <loc>https://raghuramreddy.tech/applied-ai-systems</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/recognition/</loc>
+    <loc>https://raghuramreddy.tech/recognition</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/labs/tokenops/</loc>
+    <loc>https://raghuramreddy.tech/labs/tokenops</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/future-systems/</loc>
+    <loc>https://raghuramreddy.tech/future-systems</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/contact/</loc>
+    <loc>https://raghuramreddy.tech/contact</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/publications/</loc>
+    <loc>https://raghuramreddy.tech/publications</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/</loc>
+    <loc>https://raghuramreddy.tech/blog</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/standards-library/</loc>
+    <loc>https://raghuramreddy.tech/standards-library</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/privacy/</loc>
+    <loc>https://raghuramreddy.tech/privacy</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/terms/</loc>
+    <loc>https://raghuramreddy.tech/terms</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/intelligent-delivery-platforms/</loc>
+    <loc>https://raghuramreddy.tech/blog/intelligent-delivery-platforms</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/intelligent-delivery-platforms-diagrams/</loc>
+    <loc>https://raghuramreddy.tech/blog/intelligent-delivery-platforms-diagrams</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/token-ledger/</loc>
+    <loc>https://raghuramreddy.tech/blog/token-ledger</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/rag-knowledge-systems/</loc>
+    <loc>https://raghuramreddy.tech/blog/rag-knowledge-systems</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/secure-by-design-ci-cd/</loc>
+    <loc>https://raghuramreddy.tech/blog/secure-by-design-ci-cd</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/ai-cicd-troubleshooter/</loc>
+    <loc>https://raghuramreddy.tech/blog/ai-cicd-troubleshooter</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/xops-beyond-devops/</loc>
+    <loc>https://raghuramreddy.tech/blog/xops-beyond-devops</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/ci-cd-failures-at-scale/</loc>
+    <loc>https://raghuramreddy.tech/blog/ci-cd-failures-at-scale</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/devops-to-platform-engineering/</loc>
+    <loc>https://raghuramreddy.tech/blog/devops-to-platform-engineering</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
   </url>
 
   <url>
-    <loc>https://raghuramreddy.tech/blog/toolchain-modernization/</loc>
+    <loc>https://raghuramreddy.tech/blog/toolchain-modernization</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/blog/diagrams/reference-architecture</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/blog/diagrams/evolution-of-software-delivery</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/blog/diagrams/operational-intelligence-flow</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/blog/diagrams/platform-engineering-ecosystem</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/blog/diagrams/runtime-reality-vs-desired-state</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://raghuramreddy.tech/blog/diagrams/traditional-vs-intelligent-pipelines</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
