@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   function resolvePath(path) {
     return '/assets/data/' + path;
   }
@@ -75,7 +75,7 @@
         <text x="100" y="225" text-anchor="middle" fill="#34d399" font-size="20" font-weight="bold">11 min</text>
         <rect x="230" y="180" width="120" height="60" rx="10" fill="rgba(15,23,42,0.8)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
         <text x="290" y="200" text-anchor="middle" fill="#94a3b8" font-size="10">Coverage</text>
-        <text x="290" y="225" text-anchor="middle" fill="#a78bfa" font-size="20" font-weight="bold">5,000+</text>
+        <text x="290" y="225" text-anchor="middle" fill="#a78bfa" font-size="20" font-weight="bold">1,000+</text>
         <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="rgba(59,130,246,0.5)"/></marker></defs>
       </svg>`;
   }

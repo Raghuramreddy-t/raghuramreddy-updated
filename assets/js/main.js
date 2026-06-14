@@ -1378,8 +1378,11 @@ function initTypewriter() {
 // STAT COUNTERS (evidence cards with suffix)
 // ============================================
 function initStatCounters() {
-    const els = document.querySelectorAll('.stat-num[data-count-to]');
+    const els = document.querySelectorAll('[data-count-to]');
     if (!els.length) return;
+
+    const fmt = (n) => Number(n).toLocaleString('en-US');
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const obs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1388,18 +1391,22 @@ function initStatCounters() {
             const target = parseInt(el.dataset.countTo, 10);
             const suffix = el.dataset.suffix || '';
             const prefix = el.dataset.prefix || '';
+            obs.unobserve(el);
+            if (prefersReduced || isNaN(target)) {
+                el.textContent = prefix + fmt(target || 0) + suffix;
+                return;
+            }
             let frame = 0;
             const total = 50;
             const step = setInterval(() => {
                 frame++;
                 const val = Math.round(target * (frame / total));
-                el.textContent = prefix + val + suffix;
+                el.textContent = prefix + fmt(val) + suffix;
                 if (frame >= total) {
-                    el.textContent = prefix + target + suffix;
+                    el.textContent = prefix + fmt(target) + suffix;
                     clearInterval(step);
                 }
             }, 1600 / total);
-            obs.unobserve(el);
         });
     }, { threshold: 0.4 });
 

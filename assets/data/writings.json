@@ -35,7 +35,7 @@
       "id": "token-ledger-lab",
       "title": "Cost Engineering Lab",
       "description": "Interactive playground: calculate token costs in real-time, compare Claude vs GPT-5.5 pricing, and estimate batch costs at scale.",
-      "url": "https://raghuramreddy.tech/labs/tokenops/",
+      "url": "/labs/tokenops",
       "tags": ["Token Economics", "Cost Calculator", "Claude", "GPT", "Lab"],
       "published": "2025-10-28",
       "version": "1.0.0"
@@ -50,10 +50,10 @@
       "version": "1.0.0"
     },
     {
-      "id": "xops-beyond-devops-2025",
-      "title": "Why XOps Is the Next Step Beyond DevOps in 2025",
+      "id": "xops-beyond-devops",
+      "title": "Why XOps Is the Next Step Beyond DevOps",
       "description": "DevOps got us here - but it won't take us further alone. Why XOps is the practical evolution for secure, scalable, AI-augmented operations.",
-      "url": "/blog/xops-beyond-devops-2025",
+      "url": "/blog/xops-beyond-devops",
       "tags": ["XOps", "DevOps", "Platform Engineering", "AI Ops"],
       "published": "2025-10-15",
       "version": "1.0.0"
